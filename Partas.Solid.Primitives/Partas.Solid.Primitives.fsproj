@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <FablePackageType>library</FablePackageType>
+        <TargetFramework>net9.0</TargetFramework>
+        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
+        <PackageId>Partas.Solid.Primitives</PackageId>
+        <Title>Partas.Solid.Primitives</Title>
+        <RootNamespace>Partas.Solid.Primitives</RootNamespace>
+        <AssemblyName>Partas.Solid.Primitives</AssemblyName>
+        <Company>F# Community</Company>
+        <Description>Bindings for different packages in Solid-Primitives in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Lucide</PackageTags>
+        <Authors>Shayan Habibi</Authors>
+        <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
+        <Version>0.1.0</Version>
+        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <PackageVersion>0.1.0</PackageVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Primitives.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fable.Browser.Dom" Version="2.18.1" />
+      <PackageReference Include="Fable.Core" Version="4.5.0" />
+      <PackageReference Include="Partas.Solid" Version="0.2.6" />
+    </ItemGroup>
+
+</Project>
