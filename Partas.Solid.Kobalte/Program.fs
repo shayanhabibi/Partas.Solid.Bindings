@@ -2,6 +2,7 @@
 
 // Kobalte v0.13.8
 
+open Partas.Solid.Polymorphism
 open Partas.Solid
 open Fable.Core
 
@@ -56,11 +57,13 @@ type Orientation =
 [<Erase; Import("Root", button)>]
 type Button() =
     inherit button()
+    interface Polymorph
     member val disabled : bool = jsNative with get,set
 
 [<Erase; Import("Root", collapsible)>]
 type Collapsible() =
     inherit div()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : bool -> unit = jsNative with get,set
@@ -72,13 +75,16 @@ module Collapsible =
     [<Erase; Import("Trigger", collapsible)>]
     type Trigger() =
         inherit button()
+        interface Polymorph
     [<Erase; Import("Content", collapsible)>]
     type Content() =
         inherit RegularNode()
+        interface Polymorph
 
 [<Erase; Import("Root", accordion)>]
 type Accordion() =
     inherit div()
+    interface Polymorph
     member val value : string[] = jsNative with get,set
     member val defaultValue : string[] = jsNative with get,set
     member val onChange : string[] -> unit = jsNative with get,set
@@ -92,6 +98,7 @@ module Accordion =
     [<Erase; Import("Item", accordion)>]
     type Item() =
         inherit RegularNode()
+        interface Polymorph
         member val open' : bool = jsNative with get,set
         member val defaultOpen : bool = jsNative with get,set
         member val onOpenChange : bool -> unit = jsNative with get,set
@@ -102,21 +109,26 @@ module Accordion =
     type Trigger() =
         // inherit Collapsible.Trigger()
         inherit button()
+        interface Polymorph
     [<Erase; Import("Content", accordion)>]
     type Content() =
         // inherit Collapsible.Content()
         inherit div()
+        interface Polymorph
     [<Erase; Import("Header", accordion)>]
     type Header() =
         inherit h3()
+        interface Polymorph
 
 [<Erase; Import("Root", alert)>]
 type Alert() =
     inherit div()
+    interface Polymorph
 
 [<Erase; Import("Root", alertDialog)>]
 type AlertDialog() =
     inherit RegularNode()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : bool -> unit = jsNative with get,set
@@ -130,9 +142,11 @@ module AlertDialog =
     [<Erase; Import("Trigger", alertDialog)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", alertDialog)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -143,22 +157,28 @@ module AlertDialog =
     [<Erase; Import("Portal", alertDialog)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Overlay", alertDialog)>]
     type Overlay() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("CloseButton", alertDialog)>]
     type CloseButton() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Title", alertDialog)>]
     type Title() =
         inherit h2()
+        interface Polymorph
     [<Erase; Import("Description", alertDialog)>]
     type Description() =
         inherit p()
+        interface Polymorph
 
 [<Erase; Import("Root", badge)>]
 type Badge() =
     inherit span()
+    interface Polymorph
     member val textValue : string = jsNative with get,set
 
 [<Erase; AutoOpen>]
@@ -166,11 +186,13 @@ module Kobalte =
     [<Erase; Import("Root", link)>]
     type Link() =
         inherit a()
+        interface Polymorph
         member val disabled : bool = jsNative with get,set
 
 [<Erase; Import("Root", breadcrumbs)>]
 type Breadcrumbs() =
     inherit nav()
+    interface Polymorph
     member val separator : JSX.Element = jsNative with get,set
     member val translations : string = jsNative with get,set
 
@@ -179,11 +201,13 @@ module Breadcrumbs =
     [<Erase; Import("Link", breadcrumbs)>]
     type Link() =
         inherit Kobalte.Link()
+        interface Polymorph
         member val currrent : bool = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("Separator", breadcrumbs)>]
     type Separator() =
         inherit span()
+        interface Polymorph
     
 [<StringEnum>]
 type ValidationState =
@@ -193,6 +217,7 @@ type ValidationState =
 [<Erase; Import("Root", checkbox)>]
 type Checkbox() =
     inherit div()
+    interface Polymorph
     member val checked' : bool = jsNative with get,set
     member val defaultChecked : bool = jsNative with get,set
     member val onChange : bool -> unit = jsNative with get,set
@@ -212,23 +237,29 @@ module Checkbox =
     [<Erase; Import("Indicator", checkbox)>]
     type Indicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("ErrorMessage", checkbox)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Label", checkbox)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("Description", checkbox)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Control", checkbox)>]
     type Control() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Input", checkbox)>]
     type Input() =
         inherit input()
+        interface Polymorph
 
 // UNRELEASED vvv
 // [<Erase; Import("Root", colorArea)>]
@@ -346,6 +377,7 @@ type Placement =
 [<Erase; Import("Root", combobox)>]
 type Combobox() =
     inherit div()
+    interface Polymorph
     member val defaultFilter : ComboboxFilter = jsNative with get,set
     member val options : 'T[] = jsNative with get,set
     member val optionValue : 'T -> string = jsNative with get,set
@@ -405,68 +437,86 @@ module Combobox =
     [<Erase; Import("Control", combobox)>]
     type Control() =
         inherit div()
+        interface Polymorph
         member val selectedOptions : unit -> 'T[] = jsNative with get,set
         member val remove : 'T -> unit = jsNative with get,set
         member val clear : unit -> unit = jsNative with get,set
     [<Erase; Import("Trigger", combobox)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Icon", combobox)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", combobox)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Content", combobox)>]
     type Content() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Arrow", combobox)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Listbox", combobox)>]
     type Listbox() =
         inherit div()
+        interface Polymorph
         member val scrollRef : unit -> HtmlElement = jsNative with get,set
         member val scrollToItem : string -> unit = jsNative with get,set
     [<Erase; Import("Item", combobox)>]
     type Item() =
         inherit li()
+        interface Polymorph
         member val item : 'T = jsNative with get,set
     [<Erase; Import("ItemIndicator", combobox)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("ItemLabel", combobox)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", combobox)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Section", combobox)>]
     type Section() =
         inherit li()
+        interface Polymorph
     [<Erase; Import("Label", combobox)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("Description", combobox)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", combobox)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("HiddenSelect", combobox)>]
     type HiddenSelect() =
         inherit RegularNode()
+        interface Polymorph
     [<Erase; Import("Input",  combobox)>]
     type Input() =
         inherit input()
+        interface Polymorph
         
     
 [<Erase; Import("Root", contextMenu)>]
 type ContextMenu() =
     inherit RegularNode()
+    interface Polymorph
     member val onOpenChange : bool -> unit = jsNative with get,set
     member val id : string = jsNative with get,set
     member val modal : bool = jsNative with get,set
@@ -491,10 +541,12 @@ module ContextMenu =
     [<Erase ; Import("Trigger", contextMenu)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
         member val disabled : bool = jsNative with get,set
     [<Erase ; Import("Content", contextMenu)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -504,10 +556,12 @@ module ContextMenu =
     [<Erase ; Import("Arrow", contextMenu)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase ; Import("Item", contextMenu)>]    
     type Item() =
         inherit div()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
         member val closeOnSelect : bool = jsNative with get,set
@@ -515,10 +569,12 @@ module ContextMenu =
     [<Erase; Import("ItemIndicator", contextMenu)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("RadioGroup", contextMenu)>]
     type RadioGroup() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val defaultValue : string = jsNative with get,set
         member val onChange : string -> unit = jsNative with get,set
@@ -526,6 +582,7 @@ module ContextMenu =
     [<Erase; Import("RadioItem", contextMenu)>]
     type RadioItem() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
@@ -534,6 +591,7 @@ module ContextMenu =
     [<Erase; Import("CheckboxItem", contextMenu)>]
     type CheckboxItem() =
         inherit div()
+        interface Polymorph
         member val checked' : bool = jsNative with get,set
         member val defaultChecked : bool = jsNative with get,set
         member val onChange : bool -> unit = jsNative with get,set
@@ -545,6 +603,7 @@ module ContextMenu =
     [<Erase; Import("Sub", contextMenu)>]
     type Sub() =
         inherit div()
+        interface Polymorph
         member val open' : bool = jsNative with get,set
         member val defaultOpen : bool = jsNative with get,set
         member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -562,11 +621,13 @@ module ContextMenu =
     [<Erase; Import("SubTrigger", contextMenu)>]
     type SubTrigger() =
         inherit Button()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("SubContent", contextMenu)>]
     type SubContent() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
         member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
@@ -574,28 +635,36 @@ module ContextMenu =
     [<Erase; Import("Icon", contextMenu)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", contextMenu)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Separator", contextMenu)>]
     type Separator() =
         inherit hr()
+        interface Polymorph
     [<Erase; Import("Group", contextMenu)>]
     type Group() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("GroupLabel", contextMenu)>]
     type GroupLabel() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ItemLabel", contextMenu)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", contextMenu)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
     
 [<Erase; Import("Root", dialog)>]
 type Dialog() =
     inherit RegularNode()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -610,9 +679,11 @@ module Dialog =
     [<Erase; Import("Trigger", dialog)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", dialog)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -622,22 +693,28 @@ module Dialog =
     [<Erase; Import("Overlay", dialog)>]
     type Overlay() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("CloseButton", dialog)>]
     type CloseButton() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Title", dialog)>]
     type Title() =
         inherit h2()
+        interface Polymorph
     [<Erase; Import("Description", dialog)>]
     type Description() =
         inherit p()
+        interface Polymorph
     [<Erase; Import("Portal", dialog)>]
     type Portal() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", dropdownMenu)>]
 type DropdownMenu() =
     inherit RegularNode()
+    interface Polymorph
     member val onOpenChange : (bool -> unit) = jsNative with get,set
     member val id : string = jsNative with get,set
     member val modal : bool = jsNative with get,set
@@ -663,9 +740,11 @@ module DropdownMenu =
     [<Erase; Import("Trigger", dropdownMenu)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", dropdownMenu)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -675,10 +754,12 @@ module DropdownMenu =
     [<Erase; Import("Arrow", dropdownMenu)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Item", dropdownMenu)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
         member val closeOnSelect : bool = jsNative with get,set
@@ -686,10 +767,12 @@ module DropdownMenu =
     [<Erase; Import("ItemIndicator", dropdownMenu)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("RadioGroup", dropdownMenu)>]
     type RadioGroup() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val defaultValue : string = jsNative with get,set
         member val onChange : string -> unit = jsNative with get,set
@@ -697,6 +780,7 @@ module DropdownMenu =
     [<Erase; Import("RadioItem", dropdownMenu)>]
     type RadioItem() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
@@ -705,6 +789,7 @@ module DropdownMenu =
     [<Erase; Import("CheckboxItem", dropdownMenu)>]
     type CheckboxItem() =
         inherit div()
+        interface Polymorph
         member val checked' : bool = jsNative with get,set
         member val defaultChecked : bool = jsNative with get,set
         member val onChange : bool -> unit = jsNative with get,set
@@ -716,6 +801,7 @@ module DropdownMenu =
     [<Erase; Import("Sub", dropdownMenu)>]
     type Sub() =
         inherit div()
+        interface Polymorph
         member val open' : bool = jsNative with get,set
         member val defaultOpen : bool = jsNative with get,set
         member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -734,11 +820,13 @@ module DropdownMenu =
     [<Erase; Import("SubTrigger", dropdownMenu)>]
     type SubTrigger() =
         inherit Button()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("SubContent", dropdownMenu)>]
     type SubContent() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
         member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
@@ -746,28 +834,36 @@ module DropdownMenu =
     [<Erase; Import("Icon", dropdownMenu)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", dropdownMenu)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Separator", dropdownMenu)>]
     type Separator() =
         inherit hr()
+        interface Polymorph
     [<Erase; Import("Group", dropdownMenu)>]
     type Group() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("GroupLabel", dropdownMenu)>]
     type GroupLabel() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ItemLabel", dropdownMenu)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", dropdownMenu)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
     
 [<Erase; Import("Root", fileField)>]
 type FileField() =
     inherit div()
+    interface Polymorph
     member val multiple : bool = jsNative with get,set
     member val maxFiles : int = jsNative with get,set
     member val disabled : bool = jsNative with get,set
@@ -785,50 +881,64 @@ module FileField =
     [<Erase; Import("Item", fileField)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val file : obj = jsNative with get,set
     [<Erase; Import("ItemSize", fileField)>]
     type ItemSize() =
         inherit VoidNode()
+        interface Polymorph
         member val precision : int = jsNative with get,set
     [<Erase; Import("ItemPreview", fileField)>]
     type ItemPreview() =
         inherit VoidNode()
+        interface Polymorph
         member val type' : string = jsNative with get,set
     [<Erase; Import("Dropzone", fileField)>]
     type Dropzone() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Trigger", fileField)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Label", fileField)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("HiddenInput", fileField)>]
     type HiddenInput() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("ItemList", fileField)>]
     type ItemList() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemPreviewImage", fileField)>]
     type ItemPreviewImage() =
         inherit img()
+        interface Polymorph
     [<Erase; Import("ItemName", fileField)>]
     type ItemName() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ItemDeleteTrigger", fileField)>]
     type ItemDeleteTrigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Description", fileField)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", fileField)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
 
 [<Erase; Import("Root", hoverCard)>]
 type HoverCard() =
     inherit RegularNode()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -856,15 +966,19 @@ module HoverCard =
     [<Erase; Import("Trigger", hoverCard)>]
     type Trigger() =
         inherit Link()
+        interface Polymorph
     [<Erase; Import("Portal", hoverCard)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Content", hoverCard)>]
     type Content() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Arrow", hoverCard)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
 
 [<StringEnum>]
 type LoadingStatus =
@@ -876,6 +990,7 @@ type LoadingStatus =
 [<Erase; Import("Root", image)>]
 type Image() =
     inherit RegularNode()
+    interface Polymorph
     member val fallbackDelay : int = jsNative with get,set
     member val onLoadingStatusChange : LoadingStatus -> unit = jsNative with get,set
 
@@ -884,13 +999,16 @@ module Image =
     [<Erase; Import("Fallback", image)>]
     type Fallback() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("Img", image)>]
     type Img() =
         inherit img()
+        interface Polymorph
 
 [<Erase; Import("Root", menubar)>]
 type Menubar() =
     inherit RegularNode()
+    interface Polymorph
     member val defaultValue : string = jsNative with get,set
     member val value : string = jsNative with get,set
     member val onValueChange : string -> unit = jsNative with get,set
@@ -902,6 +1020,7 @@ module Menubar =
     [<Erase; Import("Menu", menubar)>]
     type Menu() =
         inherit div()
+        interface Polymorph
         member val onOpenChange : (bool -> unit) = jsNative with get,set
         member val id : string = jsNative with get,set
         member val modal : bool = jsNative with get,set
@@ -924,9 +1043,11 @@ module Menubar =
     [<Erase; Import("Trigger", menubar)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", menubar)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -936,10 +1057,12 @@ module Menubar =
     [<Erase; Import("Arrow", menubar)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Item", menubar)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
         member val closeOnSelect : bool = jsNative with get,set
@@ -947,10 +1070,12 @@ module Menubar =
     [<Erase; Import("ItemIndicator", menubar)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("RadioGroup", menubar)>]
     type RadioGroup() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val defaultValue : string = jsNative with get,set
         member val onChange : string -> unit = jsNative with get,set
@@ -958,6 +1083,7 @@ module Menubar =
     [<Erase; Import("RadioItem", menubar)>]
     type RadioItem() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
@@ -966,6 +1092,7 @@ module Menubar =
     [<Erase; Import("CheckboxItem", menubar)>]
     type CheckboxItem() =
         inherit div()
+        interface Polymorph
         member val checked' : bool = jsNative with get,set
         member val defaultChecked : bool = jsNative with get,set
         member val onChange : bool -> unit = jsNative with get,set
@@ -977,6 +1104,7 @@ module Menubar =
     [<Erase; Import("Sub", menubar)>]
     type Sub() =
         inherit div()
+        interface Polymorph
         member val open' : bool = jsNative with get,set
         member val defaultOpen : bool = jsNative with get,set
         member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -994,11 +1122,13 @@ module Menubar =
     [<Erase; Import("SubTrigger", menubar)>]
     type SubTrigger() =
         inherit Button()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("SubContent", menubar)>]
     type SubContent() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
         member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
@@ -1006,28 +1136,36 @@ module Menubar =
     [<Erase; Import("Icon", menubar)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", menubar)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Separator", menubar)>]
     type Separator() =
         inherit hr()
+        interface Polymorph
     [<Erase; Import("Group", menubar)>]
     type Group() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("GroupLabel", menubar)>]
     type GroupLabel() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ItemLabel", menubar)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", menubar)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", meter)>]
 type Meter() =
     inherit div()
+    interface Polymorph
     member val value : int = jsNative with get,set
     member val minValue : int = jsNative with get,set
     member val maxValue : int = jsNative with get,set
@@ -1038,19 +1176,24 @@ module Meter =
     [<Erase; Import("Label", meter)>]
     type Label() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ValueLabel", meter)>]
     type ValueLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Track", meter)>]
     type Track() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Fill", meter)>]
     type Fill() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", navigationMenu)>]
 type NavigationMenu() =
     inherit div()
+    interface Polymorph
     member val defaultValue : string = jsNative with get,set
     member val value : string = jsNative with get,set
     member val onValueChange : string -> unit = jsNative with get,set
@@ -1066,6 +1209,7 @@ module NavigationMenu =
     [<Erase; Import("Viewport", navigationMenu)>]
     type Viewport() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
         member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
@@ -1073,10 +1217,12 @@ module NavigationMenu =
     [<Erase; Import("Arrow", navigationMenu)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Menu", navigationMenu)>]
     type Menu() =
         inherit div()
+        interface Polymorph
         member val onOpenChange : (bool -> unit) = jsNative with get,set
         member val id : string = jsNative with get,set
         member val modal : bool = jsNative with get,set
@@ -1099,9 +1245,11 @@ module NavigationMenu =
     [<Erase; Import("Trigger", navigationMenu)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", navigationMenu)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
@@ -1111,6 +1259,7 @@ module NavigationMenu =
     [<Erase; Import("Item", navigationMenu)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
         member val closeOnSelect : bool = jsNative with get,set
@@ -1118,10 +1267,12 @@ module NavigationMenu =
     [<Erase; Import("ItemIndicator", navigationMenu)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("RadioGroup", navigationMenu)>]
     type RadioGroup() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val defaultValue : string = jsNative with get,set
         member val onChange : string -> unit = jsNative with get,set
@@ -1129,6 +1280,7 @@ module NavigationMenu =
     [<Erase; Import("RadioItem", navigationMenu)>]
     type RadioItem() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
@@ -1137,6 +1289,7 @@ module NavigationMenu =
     [<Erase; Import("CheckboxItem", navigationMenu)>]
     type CheckboxItem() =
         inherit div()
+        interface Polymorph
         member val checked' : bool = jsNative with get,set
         member val defaultChecked : bool = jsNative with get,set
         member val onChange : bool -> unit = jsNative with get,set
@@ -1148,6 +1301,7 @@ module NavigationMenu =
     [<Erase; Import("Sub", navigationMenu)>]
     type Sub() =
         inherit div()
+        interface Polymorph
         member val open' : bool = jsNative with get,set
         member val defaultOpen : bool = jsNative with get,set
         member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -1165,11 +1319,13 @@ module NavigationMenu =
     [<Erase; Import("SubTrigger", navigationMenu)>]
     type SubTrigger() =
         inherit Button()
+        interface Polymorph
         member val textValue : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("SubContent", navigationMenu)>]
     type SubContent() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
         member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
@@ -1177,28 +1333,36 @@ module NavigationMenu =
     [<Erase; Import("Icon", navigationMenu)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", navigationMenu)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Separator", navigationMenu)>]
     type Separator() =
         inherit hr()
+        interface Polymorph
     [<Erase; Import("Group", navigationMenu)>]
     type Group() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("GroupLabel", navigationMenu)>]
     type GroupLabel() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ItemLabel", navigationMenu)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", navigationMenu)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", numberField)>]
 type NumberField() =
     inherit div()
+    interface Polymorph
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1223,25 +1387,32 @@ module NumberField =
     [<Erase; Import("ErrorMessage", numberField)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Label", numberField)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("Input", numberField)>]
     type Input() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("HiddenInput", numberField)>]
     type HiddenInput() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("IncrementTrigger", numberField)>]
     type IncrementTrigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("DecrementTrigger", numberField)>]
     type DecrementTrigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Description", numberField)>]
     type Description() =
         inherit div()
+        interface Polymorph
 
 [<Erase>]
 module pagination =
@@ -1253,6 +1424,7 @@ module pagination =
 [<Erase; Import("Root", pagination)>]
 type Pagination() =
     inherit div()
+    interface Polymorph
     member val page : int = jsNative with get,set
     member val defaultPage : int = jsNative with get,set
     member val onPageChange : int -> unit = jsNative with get,set
@@ -1270,23 +1442,29 @@ module Pagination =
     [<Erase; Import("Item", pagination)>]
     type Item() =
         inherit Button()
+        interface Polymorph
         member val page : int = jsNative with get,set
     [<Erase; Import("Ellipsis", pagination)>]
     type Ellipsis() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Previous", pagination)>]
     type Previous() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Next", pagination)>]
     type Next() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Items", pagination)>]
     type Items() =
         inherit div()
+        interface Polymorph
     
 [<Erase; Import("Root", popover)>]
 type Popover() =
     inherit div()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -1316,9 +1494,11 @@ module Popover =
     [<Erase; Import("Trigger", popover)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", popover)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val gutter : int = jsNative with get,set
         member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
         member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
@@ -1329,26 +1509,33 @@ module Popover =
     [<Erase; Import("Arrow", popover)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Portal", popover)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Anchor", popover)>]
     type Anchor() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("CloseButton", popover)>]
     type CloseButton() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Title", popover)>]
     type Title() =
         inherit h2()
+        interface Polymorph
     [<Erase; Import("Description", popover)>]
     type Description() =
         inherit p()
+        interface Polymorph
 
 [<Erase; Import("Root", progress)>]
 type Progress() =
     inherit div()
+    interface Polymorph
     member val value : int = jsNative with get,set
     member val minValue : int = jsNative with get,set
     member val maxValue : int = jsNative with get,set
@@ -1360,19 +1547,24 @@ module Progress =
     [<Erase; Import("Label", progress)>]
     type Label() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("ValueLabel", progress)>]
     type ValueLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Track", progress)>]
     type Track() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Fill", progress)>]
     type Fill() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", radioGroup)>]
 type RadioGroup() =
     inherit div()
+    interface Polymorph
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1388,37 +1580,47 @@ module RadioGroup =
     [<Erase; Import("Label", radioGroup)>]
     type Label() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("Description", radioGroup)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", radioGroup)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Item", radioGroup)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("ItemInput", radioGroup)>]
     type ItemInput() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("ItemControl", radioGroup)>]
     type ItemControl() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemIndicator", radioGroup)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemLabel", radioGroup)>]
     type ItemLabel() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("ItemDescription", radioGroup)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", select)>]
 type Select() =
     inherit div()
+    interface Polymorph
     member val options : obj[] = jsNative with get,set
     member val optionValue : obj -> int = jsNative with get,set
     member val optionTextValue : obj -> string = jsNative with get,set
@@ -1467,9 +1669,11 @@ module Select =
     [<Erase; Import("Trigger", select)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Value", select)>]
     type Value() =
         inherit div()
+        interface Polymorph
         member val selectedOption : obj = jsNative with get,set
         member val selectedOptions : obj[] = jsNative with get,set
         member val remove : obj -> unit = jsNative with get,set
@@ -1477,61 +1681,77 @@ module Select =
     [<Erase; Import("Icon", select)>]
     type Icon() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", select)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Content", select)>]
     type Content() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Arrow", select)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("ListBox", select)>]
     type ListBox() =
         inherit div()
+        interface Polymorph
         member val scrollRef : unit -> HtmlElement = jsNative with get,set
         member val scrollToItem : string -> unit = jsNative with get,set
         member val children : obj[] -> JSX.Element = jsNative with get,set
     [<Erase; Import("Item", select)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val item : obj = jsNative with get,set
     [<Erase; Import("ItemIndicator", select)>]
     type ItemIndicator() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Label", select)>]
     type Label() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("Description", select)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Portal", select)>]
     type Portal() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Section", select)>]
     type Section() =
         inherit li()
+        interface Polymorph
     [<Erase; Import("ItemLabel", select)>]
     type ItemLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ItemDescription", select)>]
     type ItemDescription() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("HiddenSelect", select)>]
     type HiddenSelect() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", separator)>]
 type Separator() =
     inherit hr()
+    interface Polymorph
     member val orientation : Orientation = jsNative with get,set
 
 [<Erase; Import("Root", skeleton)>]
 type Skeleton() =
     inherit div()
+    interface Polymorph
     member val visible : bool = jsNative with get,set
     member val animate : bool = jsNative with get,set
     member val width : int = jsNative with get,set
@@ -1543,6 +1763,7 @@ type Skeleton() =
 [<Erase; Import("Root", slider)>]
 type Slider() =
     inherit div()
+    interface Polymorph
     member val value : int[] = jsNative with get,set
     member val defaultValue : int[] = jsNative with get,set
     member val onChange : int[] -> unit = jsNative with get,set
@@ -1565,28 +1786,36 @@ module Slider =
     [<Erase; Import("Track", slider)>]
     type Track() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Fill", slider)>]
     type Fill() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Thumb", slider)>]
     type Thumb() =
         inherit span()
+        interface Polymorph
     [<Erase; Import("Input", slider)>]
     type Input() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("ValueLabel", slider)>]
     type ValueLabel() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Description", slider)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", slider)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", switch)>]
 type Switch() =
     inherit div()
+    interface Polymorph
     member val checked' : bool = jsNative with get,set
     member val defaultChecked : bool = jsNative with get,set
     member val onChange : bool -> unit = jsNative with get,set
@@ -1604,25 +1833,32 @@ module Switch =
     [<Erase; Import("Input", switch)>]
     type Input() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("Control", switch)>]
     type Control() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Indicator", switch)>]
     type Indicator() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Label", switch)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("Description", switch)>]
     type Description() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("ErrorMessage", switch)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Thumb", switch)>]
     type Thumb() =
         inherit div()
+        interface Polymorph
 
 [<StringEnum>]
 type ActivationMode =
@@ -1632,6 +1868,7 @@ type ActivationMode =
 [<Erase; Import("Root", tabs)>]
 type Tabs() =
     inherit div()
+    interface Polymorph
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1644,23 +1881,28 @@ module Tabs =
     [<Erase; Import("Trigger", tabs)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("Content", tabs)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("List", tabs)>]
     type List() =
         inherit div()
+        interface Polymorph
     [<Erase; Import("Indicator", tabs)>]
     type Indicator() =
         inherit div()
+        interface Polymorph
 
 [<Erase; Import("Root", textField)>]
 type TextField() =
     inherit div()
+    interface Polymorph
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1675,21 +1917,26 @@ module TextField =
     [<Erase; Import("TextArea", textField)>]
     type TextArea() =
         inherit textarea()
+        interface Polymorph
         member val autoResize : bool = jsNative with get,set
         member val submitOnEnter : bool = jsNative with get,set
     [<Erase; Import("ErrorMessage", textField)>]
     type ErrorMessage() =
         inherit div()
+        interface Polymorph
         member val forceMount : bool = jsNative with get,set
     [<Erase; Import("Label", textField)>]
     type Label() =
         inherit label()
+        interface Polymorph
     [<Erase; Import("Input", textField)>]
     type Input() =
         inherit input()
+        interface Polymorph
     [<Erase; Import("Description", textField)>]
     type Description() =
         inherit div()
+        interface Polymorph
 
 // [<Erase; Import("Root", toast)>]
 // type Toast() =
@@ -1704,6 +1951,7 @@ module TextField =
 [<Erase; Import("Root", toggleButton)>]
 type ToggleButton() =
     inherit button()
+    interface Polymorph
     member val pressed : bool = jsNative with get,set
     member val defaultPressed : bool = jsNative with get,set
     member val onChange : bool -> unit = jsNative with get,set
@@ -1714,6 +1962,7 @@ type ToggleButton() =
 [<Erase; Import("Root", toggleGroup)>]
 type ToggleGroup() =
     inherit div()
+    interface Polymorph
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1726,6 +1975,7 @@ module ToggleGroup =
     [<Erase; Import("Item", toggleGroup)>]
     type Item() =
         inherit div()
+        interface Polymorph
         member val value : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
         member val children : Fragment = jsNative with get,set
@@ -1735,6 +1985,7 @@ module ToggleGroup =
 [<Erase; Import("Root", tooltip)>]
 type Tooltip() =
     inherit div()
+    interface Polymorph
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -1765,15 +2016,19 @@ module Tooltip =
     [<Erase; Import("Trigger", tooltip)>]
     type Trigger() =
         inherit Button()
+        interface Polymorph
     [<Erase; Import("Content", tooltip)>]
     type Content() =
         inherit div()
+        interface Polymorph
         member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
         member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
     [<Erase; Import("Arrow", tooltip)>]
     type Arrow() =
         inherit div()
+        interface Polymorph
         member val size : int = jsNative with get,set
     [<Erase; Import("Portal", tooltip)>]
     type Portal() =
         inherit div()
+        interface Polymorph
