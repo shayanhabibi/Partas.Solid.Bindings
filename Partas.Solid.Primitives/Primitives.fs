@@ -254,3 +254,43 @@ module Clipboard =
         
         [<ImportMember(path)>]
         static member newItem () = jsNative
+
+/// <summary>
+/// Requires <c>npm install @solid-primitives/broadcast-channel</c>
+/// </summary>
+[<AutoOpen; Erase>]
+module rec BroadcastChannel =
+    
+    [<AllowNullLiteral; Interface>]
+    type MessageEvent<'T> =
+        inherit MessageEvent
+        abstract member data: 'T with get
+        
+    
+    [<AllowNullLiteral; Interface>]
+    type BroadcastChannelResult = interface end
+    
+    
+    [<AllowNullLiteral; Interface>]
+    type MakeBroadcastChannelResult<'T> =
+        inherit BroadcastChannelResult
+        abstract member onMessage: event: MessageEvent<'T> -> unit with get
+        abstract member postMessage: 'T -> unit with get
+        abstract member close: unit -> unit with get
+        abstract member channelName: string with get
+        abstract member instance: BroadcastChannel<'T> with get
+    [<AllowNullLiteral; Interface>]
+    type CreateBroadcastChannelResult<'T> =
+        inherit BroadcastChannelResult
+        abstract member message: Accessor<'T> -> unit with get
+        abstract member postMessage: 'T -> unit with get
+        abstract member close: unit -> unit with get
+        abstract member channelName: string with get
+        abstract member instance: BroadcastChannel<'T> with get
+    
+    [<Erase>]
+    type BroadcastChannel<'T> =
+        [<ImportMember("@solid-primitives/broadcast-channel")>]
+        static member makeBroadcastChannel<'T> (name: string): MakeBroadcastChannelResult<'T> = jsNative
+        [<ImportMember("@solid-primitives/broadcast-channel")>]
+        static member createBroadcastChannel<'T> (name: string): CreateBroadcastChannelResult<'T> = jsNative
