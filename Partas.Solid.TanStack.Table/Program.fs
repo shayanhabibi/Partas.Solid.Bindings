@@ -1,6 +1,5 @@
 ﻿namespace rec Partas.Solid.TanStack.Table
 
-open System.Runtime.InteropServices.JavaScript
 open Partas.Solid
 open Fable.Core
 open System
@@ -46,19 +45,19 @@ type CellRenderProps<'Data> =
     inherit RowRenderProp<'Data>
     inherit ColumnRenderProp<'Data>
     inherit CellRenderProp<'Data>
-    abstract member getValue: unit -> JSType.Any with get
-    abstract member renderValue: unit -> JSType.Any with get
+    abstract member getValue: unit -> obj with get
+    abstract member renderValue: unit -> obj with get
     
 [<AllowNullLiteral; Interface>]
 type ColumnDef<'Data> =
     abstract member id: string with get,set
     abstract member accessorKey: string with get,set
-    abstract member accessorFn: ('Data * int -> JSType.Any) with get,set
+    abstract member accessorFn: ('Data * int -> obj) with get,set
     abstract member columns: 'Data[] with get,set
-    abstract member header: HeaderRenderProps<'Data> -> JSType.Any with get,set
-    abstract member footer: FooterRenderProps<'Data> -> JSType.Any with get,set
-    abstract member cell: CellRenderProps<'Data> -> JSType.Any with get,set
-    abstract member meta: JSType.Any with get,set
+    abstract member header: HeaderRenderProps<'Data> -> obj with get,set
+    abstract member footer: FooterRenderProps<'Data> -> obj with get,set
+    abstract member cell: CellRenderProps<'Data> -> obj with get,set
+    abstract member meta: obj with get,set
 
 [<AllowNullLiteral;Interface>]
 type TableState =
@@ -85,7 +84,7 @@ type Table<'Data> =
     abstract member defaultColumn: ColumnDef<'Data> with get,set
     abstract member initialState: TableState with get,set
     abstract member autoResetAll: bool with get,set
-    abstract member meta: JSType.Any with get,set
+    abstract member meta: obj with get,set
     abstract member state: TableState with get,set
     // TODO - Updater<TableState>
     abstract member onStateChange: Updater<'Data> -> unit with get,set
@@ -133,19 +132,19 @@ type TableObj<'Data> =
     abstract member getCenterFooterGroups: unit -> FooterGroup<'Data>[] with get
     abstract member getRightFooterGroups: unit -> FooterGroup<'Data>[] with get
     
-    abstract member getLeftFlatHeaders: unit -> Header<'Data, JSType.Any>[] with get
-    abstract member getCenterFlatHeaders: unit -> Header<'Data, JSType.Any>[] with get
-    abstract member getRightFlatHeaders: unit -> Header<'Data, JSType.Any>[] with get
+    abstract member getLeftFlatHeaders: unit -> Header<'Data, obj>[] with get
+    abstract member getCenterFlatHeaders: unit -> Header<'Data, obj>[] with get
+    abstract member getRightFlatHeaders: unit -> Header<'Data, obj>[] with get
     
-    abstract member  getLeftLeafHeaders: unit -> Header<'Data, JSType.Any>[] with get
-    abstract member getCenterLeafHeaders: unit -> Header<'Data, JSType.Any>[] with get
-    abstract member getRightLeafHeaders: unit -> Header<'Data, JSType.Any>[] with get
+    abstract member  getLeftLeafHeaders: unit -> Header<'Data, obj>[] with get
+    abstract member getCenterLeafHeaders: unit -> Header<'Data, obj>[] with get
+    abstract member getRightLeafHeaders: unit -> Header<'Data, obj>[] with get
  
 [<AllowNullLiteral;Interface>]
 type Column<'Data> =
     abstract member id: string with get
     abstract member depth: int with get
-    abstract member accessorFn: 'Data -> JSType.Any with get
+    abstract member accessorFn: 'Data -> obj with get
     abstract member columnDef: ColumnDef<'Data> with get
     abstract member columns: ColumnDef<'Data>[] with get
     abstract member parent: Column<'Data> with get
@@ -185,7 +184,7 @@ type Header<'Data> =
     abstract member getLeafHeaders: (unit -> Header<'Data>[]) with get,set
     abstract member isPlaceholder: bool with get,set
     abstract member placeholderId: string with get,set
-    abstract member getContext: HeaderContext<'Data, JSType.Any> with get,set
+    abstract member getContext: HeaderContext<'Data, obj> with get,set
 
 [<AllowNullLiteral;Interface>]
 type Row<'Data> =
@@ -194,9 +193,9 @@ type Row<'Data> =
     abstract member index: int with get,set
     abstract member original: 'Data with get,set
     abstract member parentId: string with get,set
-    abstract member getValue: string -> JSType.Any with get,set
-    abstract member renderValue: string -> JSType.Any with get,set
-    abstract member getUniqueValues: string -> JSType.Any[] with get,set
+    abstract member getValue: string -> obj with get,set
+    abstract member renderValue: string -> obj with get,set
+    abstract member getUniqueValues: string -> obj[] with get,set
     abstract member subRows: Row<'Data>[] with get,set
     abstract member getParentRow: (unit -> Row<'Data> option) with get,set
     abstract member getParentRows: (unit -> Row<'Data>[] option) with get,set
@@ -221,11 +220,11 @@ type Cell<'Data, 'Value> =
 [<AllowNullLiteral;Interface>]
 type Cell<'Data> =
     abstract member id: string with get,set
-    abstract member getValue: (unit -> JSType.Any) with get,set
-    abstract member renderValue: (unit -> JSType.Any) with get,set
+    abstract member getValue: (unit -> obj) with get,set
+    abstract member renderValue: (unit -> obj) with get,set
     abstract member row: Row<'Data> with get,set
     abstract member column: Column<'Data> with get,set
-    abstract member getContext: CellContext<'Data, JSType.Any> with get,set
+    abstract member getContext: CellContext<'Data, obj> with get,set
 
 [<AllowNullLiteral;Interface>]
 type VisibilityTableState = interface end
@@ -254,8 +253,8 @@ type RowSelectionTableState = interface end
 type FilterFnProps<'Data> =
     abstract member row: Row<'Data> with get
     abstract member columnId: string with get
-    abstract member filterValue: JSType.Any with get
-    abstract member addMeta: (JSType.Any -> unit) with get
+    abstract member filterValue: obj with get
+    abstract member addMeta: (obj -> unit) with get
 
 [<AutoOpen>]
 module TanStack =
