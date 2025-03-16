@@ -312,6 +312,25 @@ module Drawer =
     type Portal() =
         inherit Dialog.Portal()
 
+[<JS.Pojo>]
+type OtpFieldContext
+    (
+        value: Accessor<string>,
+        isFocused: Accessor<bool>,
+        isHovered: Accessor<bool>,
+        isInserting: Accessor<bool>,
+        maxLength: Accessor<int>,
+        activeSlots: Accessor<int[]>,
+        shiftPWManagers: Accessor<bool>
+    ) =
+    member val value: Accessor<string>
+    member val isFocused: Accessor<bool>
+    member val isHovered: Accessor<bool>
+    member val isInserting: Accessor<bool>
+    member val maxLength: Accessor<int>
+    member val activeSlots: Accessor<int[]>
+    member val shiftPWManagers: Accessor<bool>
+
 [<Erase; Import("Root", otpField)>]
 type OtpField() =
     inherit RegularNode()
@@ -322,7 +341,9 @@ type OtpField() =
     member val shiftPWManagers : bool = jsNative with get,set
     member val contextId: string = jsNative with get,set
     member val as' : string = jsNative with get,set
-
+    [<ImportMember(otpField)>]
+    static member useContext (): OtpFieldContext = jsNative
+    
 [<Erase; RequireQualifiedAccess>]
 module OtpField =
     [<Erase; Import("Input", otpField)>]

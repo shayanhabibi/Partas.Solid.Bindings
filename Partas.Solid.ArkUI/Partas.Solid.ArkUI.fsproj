@@ -3,30 +3,30 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-<!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
-        <PackageId>Partas.Solid.Cmdk</PackageId>
-        <Title>Partas.Solid.Cmdk</Title>
-        <RootNamespace>Partas.Solid.Cmdk</RootNamespace>
-        <AssemblyName>Partas.Solid.Cmdk</AssemblyName>
+        <WarningsAsErrors>3239;0025</WarningsAsErrors>
+        <PackageId>Partas.Solid.ArkUI</PackageId>
+        <Title>Partas.Solid.ArkUI</Title>
+        <RootNamespace>Partas.Solid.ArkUI</RootNamespace>
+        <AssemblyName>Partas.Solid.ArkUI</AssemblyName>
         <Company>F# Community</Company>
-        <Description>Bindings for Solid-Cmdk in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <Description>Bindings for ArkUI in Oxpecker.Solid Style compatible with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Cmdk</PackageTags>
+        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ArkUI</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.1.0</Version>
-<!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.1.0</PackageVersion>
-<!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
+        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
-            <NpmPackage Name="cmdk-solid" Version=">= 1.0.4" />
+            <NpmPackage Name="@ark-ui/solid" Version=">= 5.0.0" />
         </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
+        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="Program.fs" />
     </ItemGroup>
 
@@ -40,7 +40,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" />
     </ItemGroup>
 
 </Project>

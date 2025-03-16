@@ -1,10 +1,11 @@
 ﻿namespace Partas.Solid.Kobalte
 
-// Kobalte v0.13.8
+// Kobalte v0.13.9
 
 open Partas.Solid.Polymorphism
 open Partas.Solid
 open Fable.Core
+open Fable.Core.JsInterop
 
 #nowarn 64
 
@@ -19,8 +20,8 @@ module private Helper =
     let [<Erase; Literal>] breadcrumbs = "@kobalte/core/breadcrumbs"
     let [<Erase; Literal>] link = "@kobalte/core/link"
     let [<Erase; Literal>] checkbox = "@kobalte/core/checkbox"
-    // let [<Erase; Literal>] colorArea = "@kobalte/core/color-area"
-    // let [<Erase; Literal>] colorChannelField = "@kobalte/core/color-channel-field"
+    let [<Erase; Literal>] colorArea = "@kobalte/core/color-area"
+    let [<Erase; Literal>] colorChannelField = "@kobalte/core/color-channel-field"
     let [<Erase; Literal>] combobox = "@kobalte/core/combobox"
     let [<Erase; Literal>] contextMenu = "@kobalte/core/context-menu"
     let [<Erase; Literal>] dialog = "@kobalte/core/dialog"
@@ -49,224 +50,380 @@ module private Helper =
     let [<Erase; Literal>] toggleGroup = "@kobalte/core/toggle-group"
     let [<Erase; Literal>] I18nProvider = "@kobalte/core/i18n-provider"
 
-[<StringEnum>]
-type Orientation =
-    | Horizontal
-    | Vertical
+// =============================================== Enums
+[<AutoOpen>]
+module Enums =
+    [<StringEnum>]
+    type Orientation =
+        | Horizontal
+        | Vertical
+    
+    [<StringEnum>]
+    type ValidationState =
+        | Valid
+        | Invalid
+    
+    [<StringEnum>]
+    type TriggerMode =
+        | Input
+        | Focus
+        | Manual
 
+    [<StringEnum>]
+    type SelectionBehavior  =
+        | Toggle
+        | Replace
+    
+    [<StringEnum>]
+    type LoadingStatus =
+        | Idle
+        | Loading
+        | Loaded
+        | Error
+
+    [<StringEnum>]
+    type ActivationMode =
+        | Automatic
+        | Manual
+
+// =================================================== Button
+/// <summary>
+/// data-disabled: present when the button is disabled
+/// </summary>
 [<Erase; Import("Root", button)>]
 type Button() =
     inherit button()
     interface Polymorph
     member val disabled : bool = jsNative with get,set
 
+// ========================================================== Collapsible
+/// <summary></summary>
+/// <param name="data-expanded">Present when the collapsible is expanded</param>
+/// <param name="data-closed">Present when the collapsible is closed</param>
+/// <param name="data-disabled">Present when the collapsible is disabled</param>
 [<Erase; Import("Root", collapsible)>]
 type Collapsible() =
     inherit div()
     interface Polymorph
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : bool -> unit = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
+    member val open' : bool = jsNative with get,set // v0.13.9
+    member val defaultOpen : bool = jsNative with get,set // v0.13.9
+    member val onOpenChange : bool -> unit = jsNative with get,set // v0.13.9
+    member val disabled : bool = jsNative with get,set // v0.13.9
+    member val forceMount : bool = jsNative with get,set // v0.13.9
 
 [<RequireQualifiedAccess; Erase>]
 module Collapsible =
+    /// <summary></summary>
+    /// <param name="data-expanded">Present when the collapsible is expanded</param>
+    /// <param name="data-closed">Present when the collapsible is closed</param>
+    /// <param name="data-disabled">Present when the collapsible is disabled</param>
     [<Erase; Import("Trigger", collapsible)>]
-    type Trigger() =
+    type Trigger() = // v0.13.9
         inherit button()
         interface Polymorph
+    /// <summary></summary>
+    /// <param name="data-expanded">Present when the collapsible is expanded</param>
+    /// <param name="data-closed">Present when the collapsible is closed</param>
+    /// <param name="data-disabled">Present when the collapsible is disabled</param>
     [<Erase; Import("Content", collapsible)>]
-    type Content() =
+    type Content() = // v0.13.9
         inherit RegularNode()
         interface Polymorph
+// ===================================================== Link
 
-[<Erase; Import("Root", accordion)>]
-type Accordion() =
-    inherit div()
-    interface Polymorph
-    member val value : string[] = jsNative with get,set
-    member val defaultValue : string[] = jsNative with get,set
-    member val onChange : string[] -> unit = jsNative with get,set
-    member val multiple : bool = jsNative with get,set
-    member val collapsible : bool = jsNative with get,set
-    member val shouldFocusWrap : bool = jsNative with get,set
-    member val class' : string = jsNative with get,set
-
-[<Erase>]
-module Accordion =
-    [<Erase; Import("Item", accordion)>]
-    type Item() =
-        inherit RegularNode()
-        interface Polymorph
-        member val open' : bool = jsNative with get,set
-        member val defaultOpen : bool = jsNative with get,set
-        member val onOpenChange : bool -> unit = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val forceMount : bool = jsNative with get,set
-        member val value : string = jsNative with get,set
-    [<Erase; Import("Trigger", accordion)>]
-    type Trigger() =
-        // inherit Collapsible.Trigger()
-        inherit button()
-        interface Polymorph
-    [<Erase; Import("Content", accordion)>]
-    type Content() =
-        // inherit Collapsible.Content()
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("Header", accordion)>]
-    type Header() =
-        inherit h3()
-        interface Polymorph
-
-[<Erase; Import("Root", alert)>]
-type Alert() =
-    inherit div()
-    interface Polymorph
-
-[<Erase; Import("Root", alertDialog)>]
-type AlertDialog() =
-    inherit RegularNode()
-    interface Polymorph
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : bool -> unit = jsNative with get,set
-    member val id : string = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
-
-[<Erase; RequireQualifiedAccess>]
-module AlertDialog =
-    [<Erase; Import("Trigger", alertDialog)>]
-    type Trigger() =
-        inherit Button()
-        interface Polymorph
-    [<Erase; Import("Content", alertDialog)>]
-    type Content() =
-        inherit div()
-        interface Polymorph
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set
-
-    [<Erase; Import("Portal", alertDialog)>]
-    type Portal() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("Overlay", alertDialog)>]
-    type Overlay() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("CloseButton", alertDialog)>]
-    type CloseButton() =
-        inherit Button()
-        interface Polymorph
-    [<Erase; Import("Title", alertDialog)>]
-    type Title() =
-        inherit h2()
-        interface Polymorph
-    [<Erase; Import("Description", alertDialog)>]
-    type Description() =
-        inherit p()
-        interface Polymorph
-
-[<Erase; Import("Root", badge)>]
-type Badge() =
-    inherit span()
-    interface Polymorph
-    member val textValue : string = jsNative with get,set
-
-[<Erase; AutoOpen>]
+// We wrap this in a module due to other items named Link inheriting this
+[<AutoOpen; Erase>]
 module Kobalte =
+    /// <summary>
+    /// data-disabled: Present when the link is disabled
+    /// </summary>
     [<Erase; Import("Root", link)>]
     type Link() =
         inherit a()
         interface Polymorph
         member val disabled : bool = jsNative with get,set
+    
+//============================================================== Accordion
+[<Erase; Import("Root", accordion)>]
+type Accordion() =
+    inherit div()
+    interface Polymorph
+    member val value : string[] = jsNative with get,set //v0.13.9
+    member val defaultValue : string[] = jsNative with get,set //v0.13.9
+    member val onChange : string[] -> unit = jsNative with get,set //v0.13.9
+    member val multiple : bool = jsNative with get,set //v0.13.9
+    member val collapsible : bool = jsNative with get,set //v0.13.9
+    member val shouldFocusWrap : bool = jsNative with get,set //v0.13.9
 
+[<Erase>]
+module Accordion =
+    /// <summary>
+    /// data-expanded: present when accordion item is expanded<br/>
+    /// data-closed: present when accordion item is collapsed<br/>
+    /// data-disabled: present when accordion item is disabled
+    /// </summary>
+    [<Erase; Import("Item", accordion)>]
+    type Item() =
+        inherit Collapsible()  //v0.13.9
+        interface Polymorph //v0.13.9
+        member val open' : bool = jsNative with get,set //v0.13.9
+        member val defaultOpen : bool = jsNative with get,set //v0.13.9
+        member val onOpenChange : bool -> unit = jsNative with get,set //v0.13.9
+        member val disabled : bool = jsNative with get,set //v0.13.9
+        member val forceMount : bool = jsNative with get,set //v0.13.9
+        member val value : string = jsNative with get,set //v0.13.9
+    [<Erase; Import("Trigger", accordion)>]
+    type Trigger() =
+        inherit Collapsible.Trigger() //v0.13.9
+        // inherit button()
+        interface Polymorph //v0.13.9
+    [<Erase; Import("Content", accordion)>]
+    type Content() =
+        inherit Collapsible.Content() //v0.13.9
+        // inherit div()
+        interface Polymorph  //v0.13.9
+    [<Erase; Import("Header", accordion)>]
+    type Header() =
+        inherit h3() //v0.13.9
+        interface Polymorph //v0.13.9
+
+// ============================================================ Alert
+[<Erase; Import("Root", alert)>]
+type Alert() =
+    inherit div() //v0.13.9
+    interface Polymorph //v0.13.9
+
+
+
+// ========================================================== AlertDialog
+[<Erase; Import("Root", alertDialog)>]
+type AlertDialog() =
+    inherit RegularNode()
+    interface Polymorph
+    member val open' : bool = jsNative with get,set //v0.13.9
+    member val defaultOpen : bool = jsNative with get,set //v0.13.9
+    member val onOpenChange : bool -> unit = jsNative with get,set //v0.13.9
+    member val id : string = jsNative with get,set //v0.13.9
+    member val modal : bool = jsNative with get,set //v0.13.9
+    member val preventScroll : bool = jsNative with get,set //v0.13.9
+    member val forceMount : bool = jsNative with get,set //v0.13.9
+
+[<Erase; RequireQualifiedAccess>]
+module AlertDialog =
+    /// <summary>
+    /// data-expanded: Present when the dialog is open<br/>
+    /// data-closed: Present when the dialog is closed
+    /// </summary>
+    [<Erase; Import("Trigger", alertDialog)>]
+    type Trigger() =
+        inherit Button() //v0.13.9
+        interface Polymorph
+    [<Erase; Import("Content", alertDialog)>]
+    /// <summary>
+    /// data-expanded: Present when the dialog is open<br/>
+    /// data-closed: Present when the dialog is closed
+    /// </summary>
+    type Content() =
+        inherit div()
+        interface Polymorph
+        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
+        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
+        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set //v0.13.9
+        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set //v0.13.9
+        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set //v0.13.9
+        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
+    [<Erase; Import("Portal", alertDialog)>]
+    type Portal() = //v0.13.9
+        inherit div()
+        interface Polymorph
+    /// <summary>
+    /// data-expanded: Present when the dialog is open<br/>
+    /// data-closed: Present when the dialog is closed
+    /// </summary>
+    [<Erase; Import("Overlay", alertDialog)>]
+    type Overlay() = //v0.13.9
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("CloseButton", alertDialog)>]
+    type CloseButton() = //v0.13.9
+        inherit Button()
+        interface Polymorph
+    [<Erase; Import("Title", alertDialog)>]
+    type Title() = //v0.13.9
+        inherit h2()
+        interface Polymorph
+    [<Erase; Import("Description", alertDialog)>]
+    type Description() = //v0.13.9
+        inherit p()
+        interface Polymorph
+
+// ======================================================== Badge
+[<Erase; Import("Root", badge)>]
+type Badge() =
+    inherit span()
+    interface Polymorph
+    /// Accessible text description of the badge if child is not text
+    member val textValue : string = jsNative with get,set //v0.13.9
+
+// ========================================================= Breadcrumbs
 [<Erase; Import("Root", breadcrumbs)>]
 type Breadcrumbs() =
     inherit nav()
-    interface Polymorph
-    member val separator : JSX.Element = jsNative with get,set
-    member val translations : string = jsNative with get,set
+    interface Polymorph // the custom is that if a property takes an element or string, then the apostrophised version takes the element
+    member val separator' : #HtmlElement = jsNative with get,set //v0.13.9
+    member val separator : string = jsNative with get,set  //v0.13.9
+    // member val translations : string = jsNative with get,set // todo- support  //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
 module Breadcrumbs =
+    /// <summary>
+    /// data-current: whether the breadcrumb link represents the current page
+    /// </summary>
     [<Erase; Import("Link", breadcrumbs)>]
     type Link() =
         inherit Kobalte.Link()
         interface Polymorph
-        member val currrent : bool = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
+        member val currrent : bool = jsNative with get,set //v0.13.9
+        member val disabled : bool = jsNative with get,set //v0.13.9
     [<Erase; Import("Separator", breadcrumbs)>]
-    type Separator() =
+    type Separator() = //v0.13.9
         inherit span()
         interface Polymorph
-    
-[<StringEnum>]
-type ValidationState =
-    | Valid
-    | Invalid
 
+// ========================================================================== Checkbox
+[<Erase>]
+type CheckboxRenderProp =
+    abstract checked': Accessor<bool> //v0.13.9
+    abstract indeterminate: Accessor<bool> //v0.13.9
+/// <summary>
+/// 
+/// </summary>
+/// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+/// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+/// <param name="data-required">Present when the checkbox is required</param>
+/// <param name="data-disabled">Present when the checkbox is disabled</param>
+/// <param name="data-readonly">Present when the checkbox is readonly</param>
+/// <param name="data-checked">Present when the checkbox is checked</param>
+/// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
 [<Erase; Import("Root", checkbox)>]
 type Checkbox() =
     inherit div()
     interface Polymorph
-    member val checked' : bool = jsNative with get,set
-    member val defaultChecked : bool = jsNative with get,set
-    member val onChange : bool -> unit = jsNative with get,set
-    member val indeterminate : bool = unbox null with get,set
-    member val name : string = jsNative with get,set
-    member val value : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
-    member val children : Fragment = jsNative with get,set
-    member inline this.Checked : unit -> bool = fun _ -> this.checked'
-    member inline this.Indeterminate : unit -> bool = fun _ -> this.indeterminate
+    member val checked' : bool = jsNative with get,set //v0.13.9
+    member val defaultChecked : bool = jsNative with get,set //v0.13.9
+    member val onChange : bool -> unit = jsNative with get,set //v0.13.9
+    member val indeterminate : bool = unbox null with get,set //v0.13.9
+    member val name : string = jsNative with get,set //v0.13.9
+    member val value : string = jsNative with get,set //v0.13.9
+    member val validationState : ValidationState = jsNative with get,set //v0.13.9
+    member val required : bool = jsNative with get,set //v0.13.9
+    member val disabled : bool = jsNative with get,set //v0.13.9
+    member val readOnly : bool = jsNative with get,set //v0.13.9
+    member val children : CheckboxRenderProp -> #HtmlElement = jsNative with get,set  //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
-module Checkbox =
+module Checkbox = //v0.13.9
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("Indicator", checkbox)>]
-    type Indicator() =
+    type Indicator() = //v0.13.9
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        member val forceMount : bool = jsNative with get,set //v0.13.9
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("ErrorMessage", checkbox)>]
-    type ErrorMessage() =
+    type ErrorMessage() = //v0.13.9
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        member val forceMount : bool = jsNative with get,set //v0.13.9
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("Label", checkbox)>]
-    type Label() =
+    type Label() = //v0.13.9
         inherit label()
         interface Polymorph
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("Description", checkbox)>]
     type Description() =
-        inherit div()
+        inherit div() //v0.13.9
         interface Polymorph
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("Control", checkbox)>]
-    type Control() =
+    type Control() = //v0.13.9
         inherit div()
         interface Polymorph
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="data-valid">Present when the checkbox is valid according to validation rules</param>
+    /// <param name="data-invalid">Present when the checkbox is invalid according to the validation rules</param>
+    /// <param name="data-required">Present when the checkbox is required</param>
+    /// <param name="data-disabled">Present when the checkbox is disabled</param>
+    /// <param name="data-readonly">Present when the checkbox is readonly</param>
+    /// <param name="data-checked">Present when the checkbox is checked</param>
+    /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
     [<Erase; Import("Input", checkbox)>]
-    type Input() =
+    type Input() = //v0.13.9
         inherit input()
         interface Polymorph
-
-// UNRELEASED vvv
+// // ================================================================= Color
+// /// To retrieve a Color object for Kobalte, you must use the Kobalte.Utils.parseColor func on a string
+// [<Erase>]
+// type KobalteColor = interface end
+//
+// [<Erase>]
+// module Utils =
+//     [<Import("parseColor", "@kobalte/utils")>]
+//     let parseColor (value: string): KobalteColor = jsNative
+// // ========================================================================== Color Area
 // [<Erase; Import("Root", colorArea)>]
 // type ColorArea() =
 //     inherit div()
-//     member val value : string = jsNative with get,set
-//     member val defaultValue : string = jsNative with get,set
+//     member val value : KobalteColor = jsNative with get,set
+//     member val defaultValue : KobalteColor = jsNative with get,set
 //     member val colorSpace : string = jsNative with get,set
 //     member val onChange : (string -> unit) = jsNative with get,set
 //     member val onChangeEnd : (string -> unit) = jsNative with get,set
@@ -344,23 +501,17 @@ module Checkbox =
 //         inherit div()
 // UNRELEASED ^^^
 
+
+// =============================================================== Combobox
+/// <summary>
+/// Values for the <c>defaultFilter</c> prop of the Combobox
+/// </summary>
 [<Erase>]
 type ComboboxFilter =
     static member inline startsWith : ComboboxFilter = unbox "startsWith"
     static member inline contains : ComboboxFilter = unbox "contains"
     static member inline endsWith : ComboboxFilter = unbox "endsWith"
     static member inline func<'T> (filter : 'T * string -> bool ) : ComboboxFilter = unbox filter
-
-[<StringEnum>]
-type TriggerMode =
-    | Input
-    | Focus
-    | Manual
-
-[<StringEnum>]
-type SelectionBehavior  =
-    | Toggle
-    | Replace
 
 [<Erase>]
 type Placement =
@@ -372,266 +523,365 @@ type Placement =
     static member inline bottomRight : Placement = unbox "bottom right"
     static member inline left : Placement = unbox "left"
     static member inline right : Placement = unbox "right"
+    
+[<RequireQualifiedAccess; Erase>]
+module Combobox =
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    [<Erase; Import("Control", combobox)>]
+    type Control() = // v0.13.9
+        inherit div()
+        interface Polymorph
+        member val selectedOptions : Accessor<'T[]> = jsNative with get,set // v0.13.9
+        member val remove : 'T -> unit = jsNative with get,set // v0.13.9
+        member val clear : unit -> unit = jsNative with get,set // v0.13.9
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    /// <param name="data-expanded">Present when combobox is open</param>
+    /// <param name="data-closed">Present when combobox is closed</param>
+    [<Erase; Import("Trigger", combobox)>]
+    type Trigger() = // v0.13.9
+        inherit Button()
+        interface Polymorph
+    /// <param name="data-expanded">Present when combobox is open</param>
+    /// <param name="data-closed">Present when combobox is closed</param>
+    [<Erase; Import("Icon", combobox)>]
+    type Icon() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    [<Erase; Import("ErrorMessage", combobox)>]
+    type ErrorMessage() = // v0.13.9
+        inherit div()
+        interface Polymorph
+        member val forceMount : bool = jsNative with get,set // v0.13.9
+    /// <param name="data-expanded">Present when combobox is open</param>
+    /// <param name="data-closed">Present when combobox is closed</param>
+    [<Erase; Import("Content", combobox)>]
+    type Content() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("Arrow", combobox)>]
+    type Arrow() = // v0.13.9
+        inherit div()
+        interface Polymorph
+        member val size : int = jsNative with get,set // v0.13.9
+    [<Erase; Import("Listbox", combobox)>]
+    type Listbox() = // v0.13.9
+        inherit div()
+        interface Polymorph
+        member val scrollRef : Accessor<#HtmlElement> = jsNative with get,set // v0.13.9
+        member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
+        // member val children //TODO
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-selected">Present when the item is selected</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
+    [<Erase; Import("Item", combobox)>]
+    type Item() = // v0.13.9
+        inherit li()
+        interface Polymorph
+        member val item : 'Value = jsNative with get,set
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-selected">Present when the item is selected</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
+    [<Erase; Import("ItemIndicator", combobox)>]
+    type ItemIndicator() = // v0.13.9
+        inherit div()
+        interface Polymorph
+        member val forceMount : bool = jsNative with get,set
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-selected">Present when the item is selected</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
+    [<Erase; Import("ItemLabel", combobox)>]
+    type ItemLabel() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-selected">Present when the item is selected</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
+    [<Erase; Import("ItemDescription", combobox)>]
+    type ItemDescription() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("Section", combobox)>]
+    type Section() = // v0.13.9
+        inherit li()
+        interface Polymorph
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    [<Erase; Import("Label", combobox)>]
+    type Label() = // v0.13.9
+        inherit label()
+        interface Polymorph
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    [<Erase; Import("Description", combobox)>]
+    type Description() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("Portal", combobox)>]
+    type Portal() = // v0.13.9
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("HiddenSelect", combobox)>]
+    type HiddenSelect() = // v0.13.9
+        inherit RegularNode()
+        interface Polymorph
+    /// <summary>
+    /// </summary>
+    /// <param name="data-valid">Present when the combobox is valid</param>
+    /// <param name="data-invalid">Present when the combobox is invalid</param>
+    /// <param name="data-required">Present when the combobox is required</param>
+    /// <param name="data-disabled">Present when the combobox is disabled</param>
+    /// <param name="data-readonly">Present when the combobox is readonly</param>
+    [<Erase; Import("Input",  combobox)>]
+    type Input() = // v0.13.9
+        inherit input()
+        interface Polymorph
 
-
+/// <summary>
+/// </summary>
+/// <param name="data-valid">Present when the combobox is valid</param>
+/// <param name="data-invalid">Present when the combobox is invalid</param>
+/// <param name="data-required">Present when the combobox is required</param>
+/// <param name="data-disabled">Present when the combobox is disabled</param>
+/// <param name="data-readonly">Present when the combobox is readonly</param>
 [<Erase; Import("Root", combobox)>]
 type Combobox() =
     inherit div()
     interface Polymorph
-    member val defaultFilter : ComboboxFilter = jsNative with get,set
-    member val options : 'T[] = jsNative with get,set
-    member val optionValue : 'T -> string = jsNative with get,set
-    member val optionTextValue : 'T -> string = jsNative with get,set
-    member val optionLabel : 'T -> string = jsNative with get,set
-    member val optionDisabled : 'T -> bool = jsNative with get,set
+    member val defaultFilter : ComboboxFilter = jsNative with get,set // v0.13.9
+    member val options : 'Value[] = jsNative with get,set // v0.13.9
+    member val optionValue : 'Value -> string = jsNative with get,set // v0.13.9
+    member val optionTextValue : 'Value -> string = jsNative with get,set // v0.13.9
+    member val optionLabel : 'Value -> string = jsNative with get,set // v0.13.9
+    member val optionDisabled : 'Value -> bool = jsNative with get,set // v0.13.9
     /// <summary>
     /// Key property that refers to children of the option group.
     /// </summary>
-    member val optionGroupChildren : string = jsNative with get,set
-    member val itemComponent : 'T -> JSX.Element = jsNative with get,set
-    member val sectionComponent : 'T -> JSX.Element = jsNative with get,set
-    member val multiple : bool = jsNative with get,set
-    member val placeholder : JSX.Element = jsNative with get,set
-    member val value : U2<'T, 'T[]> = jsNative with get,set
-    member val defaultValue : U2<'T, 'T[]> = jsNative with get,set
-    member val onChange : U2<'T, 'T[]> -> unit = jsNative with get,set
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : bool * TriggerMode -> unit = jsNative with get,set
-    member val onInputChange : string -> unit = jsNative with get,set
-    member val triggerMode : TriggerMode = jsNative with get,set
-    member val removeOnBackspace : bool = jsNative with get,set
-    member val allowDuplicateSelectionEvents : bool = jsNative with get,set
-    member val disallowEmptySelection : bool = jsNative with get,set
-    member val allowsEmptyCollection : bool = jsNative with get,set
-    member val closeOnSelection : bool = jsNative with get,set
-    member val selectionBehavior : SelectionBehavior = jsNative with get,set
-    member val virtualized : bool = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
-    member val translations : string = jsNative with get,set
-    member val autoComplete : string = jsNative with get,set
-    member val noResetInputOnBlue : bool = jsNative with get,set
+    member val optionGroupChildren : string = jsNative with get,set // v0.13.9
+    member val itemComponent : Combobox.Item -> #HtmlElement = jsNative with get,set // v0.13.9
+    member val sectionComponent : Combobox.Item -> #HtmlElement = jsNative with get,set // v0.13.9
+    member val multiple : bool = jsNative with get,set // v0.13.9
+    member val placeholder : string = jsNative with get,set // v0.13.9
+    member this.placeholder' // v0.13.9
+        with set(value: #HtmlElement) = () // v0.13.9
+        and get(): #HtmlElement = unbox null // v0.13.9
+    member val value : 'Value = jsNative with get,set // will add an s when it is an array and reroute it to value
+    member this.values // v0.13.9
+        with inline set(values: 'Value[]) = this.value <- !!values // v0.13.9
+        and inline get(): 'Value[] = !!this.value // v0.13.9
+    member val defaultValue : 'Value = jsNative with get,set // v0.13.9
+    member this.defaultValues // v0.13.9
+        with inline set(values: 'Value[]) = this.defaultValue <- !!values // v0.13.9
+        and inline get(): 'Value[] = !!this.defaultValue // v0.13.9
+    member val onChange : 'Value -> unit = jsNative with get,set // v0.13.9
+    member this.onChanges // v0.13.9
+        with inline set(values: 'Value[] -> unit) = this.onChange <- !!values // v0.13.9
+        and inline get(): 'Value[] -> unit = !!this.onChange // v0.13.9
+    member val open' : bool = jsNative with get,set // v0.13.9
+    member val defaultOpen : bool = jsNative with get,set // v0.13.9
+    member val onOpenChange : bool * TriggerMode -> unit = jsNative with get,set // v0.13.9
+    member val onInputChange : string -> unit = jsNative with get,set // v0.13.9
+    member val triggerMode : TriggerMode = jsNative with get,set // v0.13.9
+    member val removeOnBackspace : bool = jsNative with get,set // v0.13.9
+    member val allowDuplicateSelectionEvents : bool = jsNative with get,set // v0.13.9
+    member val disallowEmptySelection : bool = jsNative with get,set // v0.13.9
+    member val allowsEmptyCollection : bool = jsNative with get,set // v0.13.9
+    member val closeOnSelection : bool = jsNative with get,set // v0.13.9
+    member val selectionBehavior : SelectionBehavior = jsNative with get,set // v0.13.9
+    member val virtualized : bool = jsNative with get,set // v0.13.9
+    member val modal : bool = jsNative with get,set // v0.13.9
+    member val preventScroll : bool = jsNative with get,set // v0.13.9
+    member val forceMount : bool = jsNative with get,set // v0.13.9
+    member val name : string = jsNative with get,set // v0.13.9
+    member val validationState : ValidationState = jsNative with get,set // v0.13.9
+    member val required : bool = jsNative with get,set // v0.13.9
+    member val disabled : bool = jsNative with get,set // v0.13.9
+    member val readOnly : bool = jsNative with get,set // v0.13.9
+    member val translations : string = jsNative with get,set // v0.13.9
+    member val autoComplete : string = jsNative with get,set // v0.13.9
+    member val noResetInputOnBlur : bool = jsNative with get,set // v0.13.9
 
-    member val placement : Placement = jsNative with get,set
-    member val gutter : int = jsNative with get,set
-    member val shift : int = jsNative with get,set
-    member val flip : bool = jsNative with get,set
-    member val slide : bool = jsNative with get,set
-    member val overlap : bool = jsNative with get,set
-    member val sameWidth : bool = jsNative with get,set
-    member val fitViewport : bool = jsNative with get,set
-    member val hideWhenDetached : bool = jsNative with get,set
-    member val detachedPadding : int = jsNative with get,set
-    member val arrowPadding : int = jsNative with get,set
-    member val overflowPadding : int = jsNative with get,set
+    member val placement : Placement = jsNative with get,set // v0.13.9
+    member val gutter : int = jsNative with get,set // v0.13.9
+    member val shift : int = jsNative with get,set // v0.13.9
+    member val flip : bool = jsNative with get,set // v0.13.9
+    member val slide : bool = jsNative with get,set // v0.13.9
+    member val overlap : bool = jsNative with get,set // v0.13.9
+    member val sameWidth : bool = jsNative with get,set // v0.13.9
+    member val fitViewport : bool = jsNative with get,set // v0.13.9
+    member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
+    member val detachedPadding : int = jsNative with get,set // v0.13.9
+    member val arrowPadding : int = jsNative with get,set // v0.13.9
+    member val overflowPadding : int = jsNative with get,set // v0.13.9
 
-[<RequireQualifiedAccess; Erase>]
-module Combobox =
-    [<Erase; Import("Control", combobox)>]
-    type Control() =
-        inherit div()
-        interface Polymorph
-        member val selectedOptions : unit -> 'T[] = jsNative with get,set
-        member val remove : 'T -> unit = jsNative with get,set
-        member val clear : unit -> unit = jsNative with get,set
-    [<Erase; Import("Trigger", combobox)>]
-    type Trigger() =
-        inherit Button()
-        interface Polymorph
-    [<Erase; Import("Icon", combobox)>]
-    type Icon() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("ErrorMessage", combobox)>]
-    type ErrorMessage() =
-        inherit div()
-        interface Polymorph
-        member val forceMount : bool = jsNative with get,set
-    [<Erase; Import("Content", combobox)>]
-    type Content() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("Arrow", combobox)>]
-    type Arrow() =
-        inherit div()
-        interface Polymorph
-        member val size : int = jsNative with get,set
-    [<Erase; Import("Listbox", combobox)>]
-    type Listbox() =
-        inherit div()
-        interface Polymorph
-        member val scrollRef : unit -> HtmlElement = jsNative with get,set
-        member val scrollToItem : string -> unit = jsNative with get,set
-    [<Erase; Import("Item", combobox)>]
-    type Item() =
-        inherit li()
-        interface Polymorph
-        member val item : 'T = jsNative with get,set
-    [<Erase; Import("ItemIndicator", combobox)>]
-    type ItemIndicator() =
-        inherit div()
-        interface Polymorph
-        member val forceMount : bool = jsNative with get,set
-    [<Erase; Import("ItemLabel", combobox)>]
-    type ItemLabel() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("ItemDescription", combobox)>]
-    type ItemDescription() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("Section", combobox)>]
-    type Section() =
-        inherit li()
-        interface Polymorph
-    [<Erase; Import("Label", combobox)>]
-    type Label() =
-        inherit label()
-        interface Polymorph
-    [<Erase; Import("Description", combobox)>]
-    type Description() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("Portal", combobox)>]
-    type Portal() =
-        inherit div()
-        interface Polymorph
-    [<Erase; Import("HiddenSelect", combobox)>]
-    type HiddenSelect() =
-        inherit RegularNode()
-        interface Polymorph
-    [<Erase; Import("Input",  combobox)>]
-    type Input() =
-        inherit input()
-        interface Polymorph
+
         
-    
+// ====================================================================== ContextMenu
 [<Erase; Import("Root", contextMenu)>]
 type ContextMenu() =
     inherit RegularNode()
     interface Polymorph
-    member val onOpenChange : bool -> unit = jsNative with get,set
-    member val id : string = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
+    member val onOpenChange : bool -> unit = jsNative with get,set // v0.13.9
+    member val id : string = jsNative with get,set // v0.13.9
+    member val modal : bool = jsNative with get,set // v0.13.9
+    member val preventScroll : bool = jsNative with get,set // v0.13.9
+    member val forceMount : bool = jsNative with get,set // v0.13.9
 
-    member val placement : Placement = jsNative with get,set
-    member val gutter : int = jsNative with get,set
-    member val shift : int = jsNative with get,set
-    member val flip : bool = jsNative with get,set
-    member val slide : bool = jsNative with get,set
-    member val overlap : bool = jsNative with get,set
-    member val sameWidth : bool = jsNative with get,set
-    member val fitViewport : bool = jsNative with get,set
-    member val hideWhenDetached : bool = jsNative with get,set
-    member val detachedPadding : int = jsNative with get,set
-    member val arrowPadding : int = jsNative with get,set
-    member val overflowPadding : int = jsNative with get,set
+    member val placement : Placement = jsNative with get,set // v0.13.9
+    member val gutter : int = jsNative with get,set // v0.13.9
+    member val shift : int = jsNative with get,set // v0.13.9
+    member val flip : bool = jsNative with get,set // v0.13.9
+    member val slide : bool = jsNative with get,set // v0.13.9
+    member val overlap : bool = jsNative with get,set // v0.13.9
+    member val sameWidth : bool = jsNative with get,set // v0.13.9
+    member val fitViewport : bool = jsNative with get,set // v0.13.9
+    member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
+    member val detachedPadding : int = jsNative with get,set // v0.13.9
+    member val arrowPadding : int = jsNative with get,set // v0.13.9
+    member val overflowPadding : int = jsNative with get,set // v0.13.9
 
 [<RequireQualifiedAccess; Erase>]
 module ContextMenu =
+    /// <param name="data-expanded">Present when the trigger is expanded</param>
+    /// <param name="data-closed">Present when the trigger is closed</param>
+    /// <param name="data-disabled">Present when the trigger is disabled</param>
     [<Erase ; Import("Trigger", contextMenu)>]
-    type Trigger() =
+    type Trigger() = // v0.13.9
         inherit Button()
         interface Polymorph
-        member val disabled : bool = jsNative with get,set
+        member val disabled : bool = jsNative with get,set // v0.13.9
+    /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase ; Import("Content", contextMenu)>]
     type Content() =
         inherit div()
         interface Polymorph
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set
+        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
+        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
+        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set // v0.13.9
+        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set // v0.13.9
+        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set // v0.13.9
+        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
     [<Erase ; Import("Arrow", contextMenu)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        member val size : int = jsNative with get,set
+        member val size : int = jsNative with get,set // v0.13.9
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase ; Import("Item", contextMenu)>]    
     type Item() =
         inherit div()
         interface Polymorph
-        member val textValue : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val closeOnSelect : bool = jsNative with get,set
-        member val onSelect : unit -> unit = jsNative with get,set
+        member val textValue : string = jsNative with get,set // v0.13.9
+        member val disabled : bool = jsNative with get,set // v0.13.9
+        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
+        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("ItemIndicator", contextMenu)>]
     type ItemIndicator() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        member val forceMount : bool = jsNative with get,set // v0.13.9
     [<Erase; Import("RadioGroup", contextMenu)>]
     type RadioGroup() =
         inherit div()
         interface Polymorph
-        member val value : string = jsNative with get,set
-        member val defaultValue : string = jsNative with get,set
-        member val onChange : string -> unit = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
+        member val value : string = jsNative with get,set // v0.13.9
+        member val defaultValue : string = jsNative with get,set // v0.13.9
+        member val onChange : string -> unit = jsNative with get,set // v0.13.9
+        member val disabled : bool = jsNative with get,set // v0.13.9
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-checked">Present when the item is checked</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("RadioItem", contextMenu)>]
     type RadioItem() =
         inherit div()
         interface Polymorph
-        member val value : string = jsNative with get,set
-        member val textValue : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val closeOnSelect : bool = jsNative with get,set
-        member val onSelect : unit -> unit = jsNative with get,set
+        member val value : string = jsNative with get,set // v0.13.9
+        member val textValue : string = jsNative with get,set // v0.13.9
+        member val disabled : bool = jsNative with get,set // v0.13.9
+        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
+        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-indeterminate">Present when the item is indeterminate</param>
+    /// <param name="data-checked">Present when the item is checked</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("CheckboxItem", contextMenu)>]
     type CheckboxItem() =
         inherit div()
         interface Polymorph
-        member val checked' : bool = jsNative with get,set
-        member val defaultChecked : bool = jsNative with get,set
-        member val onChange : bool -> unit = jsNative with get,set
-        member val textValue : string = jsNative with get,set
-        member val indeterminate : bool = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val closeOnSelect : bool = jsNative with get,set
-        member val onSelect : unit -> unit = jsNative with get,set
+        member val checked' : bool = jsNative with get,set // v0.13.9
+        member val defaultChecked : bool = jsNative with get,set // v0.13.9
+        member val onChange : bool -> unit = jsNative with get,set // v0.13.9
+        member val textValue : string = jsNative with get,set // v0.13.9
+        member val indeterminate : bool = jsNative with get,set // v0.13.9
+        member val disabled : bool = jsNative with get,set // v0.13.9
+        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
+        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
     [<Erase; Import("Sub", contextMenu)>]
     type Sub() =
         inherit div()
         interface Polymorph
-        member val open' : bool = jsNative with get,set
-        member val defaultOpen : bool = jsNative with get,set
-        member val onOpenChange : (bool -> unit) = jsNative with get,set
+        member val open' : bool = jsNative with get,set // v0.13.9
+        member val defaultOpen : bool = jsNative with get,set // v0.13.9
+        member val onOpenChange : (bool -> unit) = jsNative with get,set // v0.13.9
 
-        member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-        member val gutter : int = jsNative with get,set
-        member val shift : int = jsNative with get,set
-        member val slide : bool = jsNative with get,set
-        member val overlap : bool = jsNative with get,set
-        member val fitViewport : bool = jsNative with get,set
-        member val hideWhenDetached : bool = jsNative with get,set
-        member val detachedPadding : int = jsNative with get,set
-        member val arrowPadding : int = jsNative with get,set
-        member val overflowPadding : int = jsNative with get,set
+        member val getAnchorRect : HtmlElement -> obj = jsNative with get,set // v0.13.9
+        member val gutter : int = jsNative with get,set // v0.13.9
+        member val shift : int = jsNative with get,set // v0.13.9
+        member val slide : bool = jsNative with get,set // v0.13.9
+        member val overlap : bool = jsNative with get,set // v0.13.9
+        member val fitViewport : bool = jsNative with get,set // v0.13.9
+        member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
+        member val detachedPadding : int = jsNative with get,set // v0.13.9
+        member val arrowPadding : int = jsNative with get,set // v0.13.9
+        member val overflowPadding : int = jsNative with get,set // v0.13.9
+    /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("SubTrigger", contextMenu)>]
     type SubTrigger() =
         inherit Button()
         interface Polymorph
-        member val textValue : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
+        member val textValue : string = jsNative with get,set // v0.13.9
+        member val disabled : bool = jsNative with get,set // v0.13.9
+    /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("SubContent", contextMenu)>]
     type SubContent() =
         inherit div()
         interface Polymorph
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set
+        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set // v0.13.9
+        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set // v0.13.9
+        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set // v0.13.9
+        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
+    /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("Icon", contextMenu)>]
     type Icon() =
         inherit div()
@@ -652,10 +902,14 @@ module ContextMenu =
     type GroupLabel() =
         inherit span()
         interface Polymorph
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("ItemLabel", contextMenu)>]
     type ItemLabel() =
         inherit div()
         interface Polymorph
+    /// <param name="data-disabled">Present when the item is disabled</param>
+    /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("ItemDescription", contextMenu)>]
     type ItemDescription() =
         inherit div()
@@ -980,12 +1234,7 @@ module HoverCard =
         inherit div()
         interface Polymorph
 
-[<StringEnum>]
-type LoadingStatus =
-    | Idle
-    | Loading
-    | Loaded
-    | Error
+
 
 [<Erase; Import("Root", image)>]
 type Image() =
@@ -1696,8 +1945,8 @@ module Select =
         inherit div()
         interface Polymorph
         member val size : int = jsNative with get,set
-    [<Erase; Import("ListBox", select)>]
-    type ListBox() =
+    [<Erase; Import("Listbox", select)>]
+    type Listbox() =
         inherit div()
         interface Polymorph
         member val scrollRef : unit -> HtmlElement = jsNative with get,set
@@ -1773,7 +2022,7 @@ type Slider() =
     member val maxValue : int = jsNative with get,set
     member val step : int = jsNative with get,set
     member val minStepsBetweenThumbs : int = jsNative with get,set
-    member val getValueLabel : {| value: int[] ; min : int ; max : int |} -> string = jsNative with get,set
+    member val getValueLabel : {| values: int[] ; min : int ; max : int |} -> string = jsNative with get,set
     member val orientation : Orientation = jsNative with get,set
     member val name : string = jsNative with get,set
     member val validationState : ValidationState = jsNative with get,set
@@ -1801,6 +2050,10 @@ module Slider =
         interface Polymorph
     [<Erase; Import("ValueLabel", slider)>]
     type ValueLabel() =
+        inherit div()
+        interface Polymorph
+    [<Erase; Import("Label", slider)>]
+    type Label() =
         inherit div()
         interface Polymorph
     [<Erase; Import("Description", slider)>]
@@ -1859,11 +2112,6 @@ module Switch =
     type Thumb() =
         inherit div()
         interface Polymorph
-
-[<StringEnum>]
-type ActivationMode =
-    | Automatic
-    | Manual
 
 [<Erase; Import("Root", tabs)>]
 type Tabs() =
@@ -1955,7 +2203,7 @@ type ToggleButton() =
     member val pressed : bool = jsNative with get,set
     member val defaultPressed : bool = jsNative with get,set
     member val onChange : bool -> unit = jsNative with get,set
-    member val children : Fragment = jsNative with get,set
+    member val children : ToggleButton -> #HtmlElement = jsNative with get,set
 
     member inline this.Pressed : unit -> bool = fun _ -> this.pressed
 

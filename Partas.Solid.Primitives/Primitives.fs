@@ -7,7 +7,7 @@ open Partas.Solid
 
 /// Call this func to remove the listener
 [<Erase>]
-type ListenerDestructor = unit -> unit
+type DisposeCallback = unit -> unit
 
 /// <summary>
 /// Requires <c>npm install @solid-primitives/media</c>
@@ -32,7 +32,7 @@ module Media =
     [<Erase>]
     type Media =
         [<ImportMember(path)>]
-        static member makeMediaQueryListener (query: string) (handler: MediaQueryEvent -> unit): ListenerDestructor = jsNative
+        static member makeMediaQueryListener (query: string) (handler: MediaQueryEvent -> unit): DisposeCallback = jsNative
         
         [<ImportMember(path)>]
         static member createMediaQuery (query: string, ?serverFallback: bool): MediaQuery = jsNative
@@ -139,7 +139,7 @@ module ActiveElement =
         /// non reactive
         /// </remarks>
         [<ImportMember(path)>]
-        static member makeActiveElementListener (handler: #HtmlElement -> unit): ListenerDestructor = jsNative
+        static member makeActiveElementListener (handler: #HtmlElement -> unit): DisposeCallback = jsNative
         
         /// <summary>
         /// Attaches "blur" and "focus" event listeners to the element
@@ -148,7 +148,7 @@ module ActiveElement =
         /// <param name="callBack"></param>
         /// <param name="useCapture"></param>
         [<ImportMember(path)>]
-        static member makeFocusListener (target: #HtmlElement, callBack: bool -> unit, ?useCapture: bool): ListenerDestructor = jsNative
+        static member makeFocusListener (target: #HtmlElement, callBack: bool -> unit, ?useCapture: bool): DisposeCallback = jsNative
         
         /// <summary>
         /// Provides a reactive signal of <c>document.activeElement</c>. Check which element is currently focused.
@@ -183,20 +183,20 @@ module EventBus =
     
     [<Erase>]
     type EventBus<'T> =
-        abstract listen: ('T -> unit) -> ListenerDestructor
+        abstract listen: ('T -> unit) -> DisposeCallback
         abstract emit: 'T -> unit
         abstract clear: unit -> unit
     
     [<Erase>]
     type Emitter<'T> =
-        abstract on: (string * (obj -> unit)) -> ListenerDestructor
+        abstract on: (string * (obj -> unit)) -> DisposeCallback
         abstract emit: (string * obj) -> unit
         abstract clear: unit -> unit
     
     [<Erase>]
     type GlobalEmitter<'T> =
         inherit Emitter<'T>
-        abstract listen: (obj -> unit) -> ListenerDestructor
+        abstract listen: (obj -> unit) -> DisposeCallback
     
     [<Erase>]
     type EventHub<'T> =
@@ -258,6 +258,7 @@ module Clipboard =
 /// <summary>
 /// Requires <c>npm install @solid-primitives/broadcast-channel</c>
 /// </summary>
+/// <value>v0.1.0</value>
 [<AutoOpen; Erase>]
 module rec BroadcastChannel =
     
@@ -274,23 +275,253 @@ module rec BroadcastChannel =
     [<AllowNullLiteral; Interface>]
     type MakeBroadcastChannelResult<'T> =
         inherit BroadcastChannelResult
+        /// A function to subscribe to messages from other tabs on the same channel
         abstract member onMessage: event: MessageEvent<'T> -> unit with get
+        /// A function to send messages to other tabs
         abstract member postMessage: 'T -> unit with get
+        /// A function to close the channel
         abstract member close: unit -> unit with get
+        /// The name of the channel
         abstract member channelName: string with get
+        /// The underlying BroadcastChannel instance
         abstract member instance: BroadcastChannel<'T> with get
     [<AllowNullLiteral; Interface>]
     type CreateBroadcastChannelResult<'T> =
         inherit BroadcastChannelResult
+        /// An accessor that updates when postMessage is fired from other contexts
         abstract member message: Accessor<'T> -> unit with get
+        /// A function to send messages to other tabs
         abstract member postMessage: 'T -> unit with get
+        /// A function to close the channel
         abstract member close: unit -> unit with get
+        /// The name of the channel
         abstract member channelName: string with get
+        /// The underlying BroadcastChannel instance
         abstract member instance: BroadcastChannel<'T> with get
     
     [<Erase>]
     type BroadcastChannel<'T> =
+        /// <summary>
+        /// Creates a new BroadcastChannel instance for cross-tab communication.<br/>
+        /// The channel name is used to identify the channel. If a channel with the same name already exists, it will
+        /// be returned instead of creating a new one.<br/>
+        /// Channel attempt closing the channel when the on owner cleanup. If there are multiple connected instances, the
+        /// channel will not be closed until the last owner is removed.
+        /// </summary>
+        /// <param name="name">Channel name to listen/broadcast on</param>
+        /// <returns>An object with the following properties<br/>
+        /// onMessage, postMessage, close, channelName, instance</returns>
         [<ImportMember("@solid-primitives/broadcast-channel")>]
         static member makeBroadcastChannel<'T> (name: string): MakeBroadcastChannelResult<'T> = jsNative
+        /// <summary>
+        /// Provides the same functionality as <c>makeBroadcastChannel</c> but instead of returning <c>onMessage</c>, it
+        /// returns a <c>message</c> signal accessor that updates when postMessage is fired from other contexts.
+        /// </summary>
+        /// <param name="name">Channel name to listen/broadcast on</param>
+        /// <returns>An object with the following properties<br/>
+        /// message, postMessage, close, channelName, instance</returns>
         [<ImportMember("@solid-primitives/broadcast-channel")>]
         static member createBroadcastChannel<'T> (name: string): CreateBroadcastChannelResult<'T> = jsNative
+
+
+/// <summary>
+/// Requires <c>npm install @solid-primitives/scroll</c>
+/// </summary>
+/// <value>v2.1.0</value>
+[<AutoOpen; Erase>]
+module Scroll =
+    let [<Literal>] private path = "@solid-primitives/scroll"
+    
+    [<AllowNullLiteral; Interface>]
+    type ScrollPosition =
+        abstract member x: int with get
+        abstract member y: int with get
+    
+    [<Erase>]
+    type Scroll =
+        /// Default target of window
+        [<ImportMember(path)>]
+        static member createScrollPosition (): Accessor<ScrollPosition> = jsNative
+        /// Element ref target or Accessor<#HtmlElement>
+        [<ImportMember(path)>]
+        static member createScrollPosition (element: unit -> #HtmlElement): Accessor<ScrollPosition> = jsNative
+        /// Returns reactive object with current window scroll position; signals and event-listeners are shared
+        /// between dependendents making it more optimised to use in multiple places at once
+        [<ImportMember(path)>]
+        static member useWindowScrollPosition (): ScrollPosition = jsNative
+        /// <summary>
+        /// Gets a <c>ScrollPosition</c> element/window scroll position
+        /// </summary>
+        [<ImportMember(path)>]
+        static member getScrollPosition (): ScrollPosition = jsNative
+        
+/// <summary>
+/// Requires <c>npm install @solid-primitives/idle</c>
+/// </summary>
+/// <value>v0.2.0</value>
+[<AutoOpen; Erase>]
+module Idle =
+    let [<Literal>] private path = "@solid-primitives/idle"
+    
+    [<AllowNullLiteral; Interface>]
+    type IdleTimer =
+        /// Report user status.
+        abstract member isIdle: bool Accessor with get
+        /// Report user status.
+        abstract member isPrompted: bool Accessor with get
+        /// Start timer
+        abstract member start: unit -> unit with get
+        /// Stop timer
+        abstract member stop: unit -> unit with get
+        /// Reset timer
+        abstract member reset: unit -> unit with get
+        /// Manually sets isIdle to true and triggers onIdle callback (with custom manualidle event).
+        abstract member triggerIdle: unit -> unit with get
+    
+    [<AllowNullLiteral; Pojo>]
+    type IdleTimerOptions
+        (
+            ?idleTimeout: int,
+            ?promptTimeout: int,
+            ?onIdle: Event -> unit,
+            ?onPrompt: Event -> unit,
+            ?onActive: Event -> unit,
+            ?startManually: bool,
+            ?events: Event[],
+            ?element: HtmlElement
+        ) =
+        member val idleTimeout: int = unbox null with get,set
+        member val promptTimeout: int = unbox null with get,set 
+        member val onIdle: Event -> unit = unbox null with get,set
+        member val onPrompt: Event -> unit = unbox null with get,set
+        member val onActive: Event -> unit = unbox null with get,set
+        member val startManually: bool = unbox null with get,set
+        member val events: Event[] = unbox null with get,set
+        member val element: HtmlElement = unbox null with get,set
+    
+    
+    [<Erase>]
+    type Idle =
+        /// Provides different accessors and methods to observe the user's idle status and react to its changing.
+        [<ImportMember(path)>]
+        static member createIdleTimer (?options: obj): IdleTimer = jsNative
+
+/// <summary>
+/// Requires <c>npm install @solid-primitives/timer</c>
+/// </summary>
+/// <value>v1.4.0</value>
+[<AutoOpen; Erase>]
+module Timer =
+    let [<Literal>] private path = "@solid-primitives/timer"
+    
+    [<Erase>]
+    type IntervalOrTimeout = (unit -> unit) -> int -> int
+    
+    [<Erase>]
+    type Timer =
+        /// Makes an automatically cleaned up timer. Takes a callback, the timespan, and then either the
+        /// the function `setInterval` or `setTimeout`
+        [<ImportMember(path)>]
+        static member makeTimer (callback: unit -> unit, timespan: int, policy: IntervalOrTimeout): DisposeCallback = jsNative
+        /// makeTimer but with a fully reactive delay. The delay can also be set to 'false' in which case the timer is disabled.
+        [<ImportMember(path)>]
+        static member createTimer (callback: unit -> unit, timespan: int, policy: IntervalOrTimeout): unit = jsNative
+        /// makeTimer but with a fully reactive delay. The delay can also be set to 'false' in which case the timer is disabled.
+        [<ImportMember(path)>]
+        static member createTimer (callback: unit -> unit, timespan: unit -> U2<bool, int>, policy: IntervalOrTimeout): unit = jsNative
+        /// makeTimer but with a fully reactive delay. The delay can also be set to 'false' in which case the timer is disabled.
+        [<ImportMember(path)>]
+        static member createTimer (callback: unit -> unit, timespan: unit -> int, policy: IntervalOrTimeout): unit = jsNative
+        /// makeTimer but with a fully reactive delay. The delay can also be set to 'false' in which case the timer is disabled.
+        [<ImportMember(path)>]
+        static member createTimer (callback: unit -> unit, timespan: unit -> bool, policy: IntervalOrTimeout): unit = jsNative
+        /// <summary>
+        /// Similar to an interval created with createTimer, but the delay does not update until the callback is executed
+        /// </summary>
+        /// <example><code>
+        /// let cb = fun () -> ()
+        /// let delay,setDelay = createSignal(1000)
+        /// createTimeoutLoop(cb, delay)
+        /// //...
+        /// 500 |> setDelay
+        /// </code></example>
+        [<ImportMember(path)>]
+        static member createTimeoutLoop (callback: unit -> unit, timespan: int): unit = jsNative
+        [<ImportMember(path)>]
+        static member createTimeoutLoop (callback: unit -> unit, timespan: Accessor<int>): unit = jsNative
+        /// <summary>
+        /// Periodically polls a function, returning an accessor to its last return value.
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="timespan"></param>
+        [<ImportMember(path)>]
+        static member createPolled(callback: unit -> 'T, timespan: int): Accessor<'T> = jsNative
+        /// <summary>
+        /// Periodically polls a function, returning an accessor to its last return value.
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="timespan"></param>
+        [<ImportMember(path)>]
+        static member createPolled(callback: unit -> 'T, timespan: Accessor<int>): Accessor<'T> = jsNative
+        /// <summary>
+        /// A counter which increments periodically on the delay.
+        /// </summary>
+        /// <param name="timespan"></param>
+        [<ImportMember(path)>]
+        static member createIntervalCounter(timespan: int): Accessor<int> = jsNative
+        /// <summary>
+        /// A counter which increments periodically on the delay.
+        /// </summary>
+        /// <param name="timespan"></param>
+        [<ImportMember(path)>]
+        static member createIntervalCounter(timespan: Accessor<int>): Accessor<int> = jsNative
+
+/// <summary>
+/// Requires <c>npm install @solid-primitives/scheduled</c>
+/// </summary>
+/// <value>v1.5.0</value>
+[<AutoOpen; Erase>]
+module Scheduled =
+    let [<Literal>] private path = "@solid-primitives/scheduled"
+    
+    [<AllowNullLiteral; Interface>]
+    type Schedule<'T> =
+        [<Emit("$0($1)")>]
+        abstract member exec: 'T -> unit
+        abstract member clear: unit -> unit with get  
+    
+    type DebounceOrThrottle<'T> = ('T -> unit) * int -> Schedule<'T>
+    
+    [<Erase>]
+    type Scheduled =
+        [<ImportMember(path)>]
+        static member debounce (callback: 'T -> unit, timespan: int): Schedule<'T> = jsNative
+        [<ImportMember(path)>]
+        static member throttle (callback: 'T -> unit, timespan: int): Schedule<'T> = jsNative
+        [<ImportMember(path)>]
+        static member scheduleIdle (callback: 'T -> unit, timespan: int): Schedule<'T> = jsNative
+        [<ImportMember(path)>]
+        static member leading(debOrThrot: DebounceOrThrottle<'T>, callback: 'T -> unit, timespan: int): Schedule<'T> = jsNative
+        [<ImportMember(path)>]
+        static member leadingAndTrailing (debOrThrot: DebounceOrThrottle<'T>, callback: 'T -> unit, timespan: int): Schedule<'T> = jsNative
+        // [<ImportMember(path)>]
+        // static member createScheduled (schedule: ('T -> unit) -> ()
+        
+
+// /// <summary> // TODO - need to implement a type provider for this
+// /// Requires <c>npm install @solid-primitives/state-machine</c>
+// /// </summary>
+// /// <value>v0.1.0</value>
+// [<AutoOpen; Erase>]
+// module StateMachine =
+//     let [<Literal>] private path = "@solid-primitives/state-machine"
+//     
+//     [<Pojo>]
+//     type StateMachineConfig
+//         (
+//             initial: string,
+//             states: string[]
+//         ) =
+//         member val initial: string = initial with get,set
+//         member val states: string = initial with get,set
+    
