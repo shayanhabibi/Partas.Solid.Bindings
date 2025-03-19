@@ -40,26 +40,26 @@ module DatePicker =
     /// data-readonly<br/>
     [<Import("DatePicker.Root", datePicker)>]
     type Root() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlTag = unbox null with get,set
         [<Erase>] member val closeOnSelect: bool = unbox null with get,set
-        [<Erase>] member val defaultFocusedValue: DateOnly = unbox null with get,set
+        [<Erase>] member val defaultFocusedValue: DateValue = unbox null with get,set
         [<Erase>] member val defaultOpen: bool = unbox null with get,set
-        [<Erase>] member val defaultValue: DateOnly[] = unbox null with get,set
+        [<Erase>] member val defaultValue: DateValue[] = unbox null with get,set
         [<Erase>] member val defaultView: DateView = unbox null with get,set
         [<Erase>] member val disabled: bool = unbox null with get,set
         [<Erase>] member val fixedWeeks: bool = unbox null with get,set
-        [<Erase>] member val focusedValue: DateOnly = unbox null with get,set
-        [<Erase>] member val format: DateOnly * obj -> string = unbox null with get,set
+        [<Erase>] member val focusedValue: DateValue = unbox null with get,set
+        [<Erase>] member val format: DateValue * LocaleDetails -> string = unbox null with get,set
         [<Erase>] member val ids: obj = unbox null with get,set // todo
         [<Erase>] member val immediate: bool = unbox null with get,set
-        [<Erase>] member val isDateUnavailable: DateOnly * string -> bool = unbox null with get,set
+        [<Erase>] member val isDateUnavailable: DateValue * string -> bool = unbox null with get,set
         [<Erase>] member val lazyMount: bool = unbox null with get,set
         [<Erase>] member val locale: string = unbox null with get,set
-        [<Erase>] member val max: DateOnly = unbox null with get,set
+        [<Erase>] member val max: DateValue = unbox null with get,set
         [<Erase>] member val maxView: DateView = unbox null with get,set
-        [<Erase>] member val min: DateOnly = unbox null with get,set
+        [<Erase>] member val min: DateValue = unbox null with get,set
         [<Erase>] member val minView: DateView = unbox null with get,set
         [<Erase>] member val name: string = unbox null with get,set
         [<Erase>] member val numOfMonths: int = unbox null with get,set
@@ -69,7 +69,7 @@ module DatePicker =
         [<Erase>] member val onValueChange: Browser.Types.Event -> unit = unbox null with get,set
         [<Erase>] member val onViewChange: Browser.Types.Event -> unit = unbox null with get,set
         [<Erase>] member val open': bool = unbox null with get,set
-        [<Erase>] member val parse: string * obj -> DateOnly option = unbox null with get,set
+        [<Erase>] member val parse: string * obj -> DateValue option = unbox null with get,set
         [<Erase>] member val placeholder: string = unbox null with get,set
         [<Erase>] member val positioning: PositioningOptions = unbox null with get,set
         [<Erase>] member val present: bool = unbox null with get,set
@@ -79,69 +79,69 @@ module DatePicker =
         [<Erase>] member val timeZone: string = unbox null with get,set
         [<Erase>] member val translations: obj = unbox null with get,set
         [<Erase>] member val unmountOnExit: bool = unbox null with get,set
-        [<Erase>] member val value: DateOnly[] = unbox null with get,set
+        [<Erase>] member val value: DateValue[] = unbox null with get,set
         [<Erase>] member val view: DateView = unbox null with get,set
     [<Import("DatePicker.ClearTrigger", datePicker)>]
     type ClearTrigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set
     [<Import("DatePicker.Content", datePicker)>]
     type Content() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.Control", datePicker)>]
     type Control() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.Input", datePicker)>]
     type Input() =
-        inherit RegularNode()
+        inherit input()
         interface Polymorph
         [<Erase>] member val asChild: input -> HtmlElement = unbox null with get,set        
         [<Erase>] member val fixOnBlur: bool = unbox null with get,set        
         [<Erase>] member val index: int = unbox null with get,set        
     [<Import("DatePicker.Label", datePicker)>]
     type Label() =
-        inherit RegularNode()
+        inherit label()
         interface Polymorph
         [<Erase>] member val asChild: label -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.MonthSelect", datePicker)>]
     type MonthSelect() =
-        inherit RegularNode()
+        inherit select()
         interface Polymorph
         [<Erase>] member val asChild: select -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.NextTrigger", datePicker)>]
     type NextTrigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.Positioner", datePicker)>]
     type Positioner() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.PresetTrigger", datePicker)>]
     type PresetTrigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set
         [<Erase>] member val value: PresetTriggerValue = unbox null with get,set
     [<Import("DatePicker.PrevTrigger", datePicker)>]
     type PrevTrigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.RangeText", datePicker)>]
     type RangeText() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.RootProvider", datePicker)>]
     type RootProvider() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set
         [<Erase>] member val value: DatePickerApi = unbox null with get,set
@@ -152,68 +152,68 @@ module DatePicker =
         [<Erase>] member val unmountOnExit: bool = unbox null with get,set
     [<Import("DatePicker.TableBody", datePicker)>]
     type TableBody() =
-        inherit RegularNode()
+        inherit tbody()
         interface Polymorph
         [<Erase>] member val asChild: tbody -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.TableCell", datePicker)>]
     type TableCell() =
-        inherit RegularNode()
+        inherit td()
         interface Polymorph
         [<Erase>] member val asChild: td -> HtmlElement = unbox null with get,set        
-        [<Erase>] member val value: DateOnly = unbox null with get,set        
+        [<Erase>] member val value: DateValue = unbox null with get,set        
         [<Erase>] member val columns: int = unbox null with get,set        
         [<Erase>] member val disabled: bool = unbox null with get,set        
         [<Erase>] member val visibleRange: VisibleRange = unbox null with get,set        
     [<Import("DatePicker.TableCellTrigger", datePicker)>]
     type TableCellTrigger() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.TableHead", datePicker)>]
     type TableHead() =
-        inherit RegularNode()
+        inherit thead()
         interface Polymorph
         [<Erase>] member val asChild: thead -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.TableHeader", datePicker)>]
     type TableHeader() =
-        inherit RegularNode()
+        inherit th()
         interface Polymorph
         [<Erase>] member val asChild: th -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.Table", datePicker)>]
     type Table() =
-        inherit RegularNode()
+        inherit table()
         interface Polymorph
         [<Erase>] member val asChild: table -> HtmlElement = unbox null with get,set
         [<Erase>] member val columns: int = unbox null with get,set
     [<Import("DatePicker.TableRow", datePicker)>]
     type TableRow() =
-        inherit RegularNode()
+        inherit tr()
         interface Polymorph
         [<Erase>] member val asChild: tr -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.Trigger", datePicker)>]
     type Trigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.ViewControl", datePicker)>]
     type ViewControl() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.View", datePicker)>]
     type View() =
-        inherit RegularNode()
+        inherit div()
         interface Polymorph
         [<Erase>] member val view: DateView = unbox null with get,set
         [<Erase>] member val asChild: div -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.ViewTrigger", datePicker)>]
     type ViewTrigger() =
-        inherit RegularNode()
+        inherit button()
         interface Polymorph
         [<Erase>] member val asChild: button -> HtmlElement = unbox null with get,set        
     [<Import("DatePicker.YearSelect", datePicker)>]
     type YearSelect() =
-        inherit RegularNode()
+        inherit select()
         interface Polymorph
         [<Erase>] member val asChild: select -> HtmlElement = unbox null with get,set
         

@@ -280,8 +280,6 @@ type Exports with
     static member startOfMonth (date: CalendarDateTime) : CalendarDateTime = nativeOnly
     [<Import("startOfMonth", "@internationalized/date")>]
     static member startOfMonth (date: CalendarDate) : CalendarDate = nativeOnly
-    [<Import("startOfMonth", "@internationalized/date")>]
-    static member startOfMonth (date: DateValue) : DateValue = nativeOnly
     /// <summary>
     /// Returns the last date of the month for the given date.
     /// </summary>
@@ -291,8 +289,6 @@ type Exports with
     static member endOfMonth (date: CalendarDateTime) : CalendarDateTime = nativeOnly
     [<Import("endOfMonth", "@internationalized/date")>]
     static member endOfMonth (date: CalendarDate) : CalendarDate = nativeOnly
-    [<Import("endOfMonth", "@internationalized/date")>]
-    static member endOfMonth (date: DateValue) : DateValue = nativeOnly
     /// <summary>
     /// Returns the first day of the year for the given date.
     /// </summary>
@@ -302,8 +298,6 @@ type Exports with
     static member startOfYear (date: CalendarDateTime) : CalendarDateTime = nativeOnly
     [<Import("startOfYear", "@internationalized/date")>]
     static member startOfYear (date: CalendarDate) : CalendarDate = nativeOnly
-    [<Import("startOfYear", "@internationalized/date")>]
-    static member startOfYear (date: DateValue) : DateValue = nativeOnly
     /// <summary>
     /// Returns the last day of the year for the given date.
     /// </summary>
@@ -313,8 +307,6 @@ type Exports with
     static member endOfYear (date: CalendarDateTime) : CalendarDateTime = nativeOnly
     [<Import("endOfYear", "@internationalized/date")>]
     static member endOfYear (date: CalendarDate) : CalendarDate = nativeOnly
-    [<Import("endOfYear", "@internationalized/date")>]
-    static member endOfYear (date: DateValue) : DateValue = nativeOnly
     [<Import("getMinimumMonthInYear", "@internationalized/date")>]
     static member getMinimumMonthInYear (date: AnyCalendarDate) : float = nativeOnly
     [<Import("getMinimumDayInMonth", "@internationalized/date")>]
@@ -328,8 +320,6 @@ type Exports with
     static member startOfWeek (date: CalendarDateTime, locale: string, ?firstDayOfWeek: DayOfWeek) : CalendarDateTime = nativeOnly
     [<Import("startOfWeek", "@internationalized/date")>]
     static member startOfWeek (date: CalendarDate, locale: string, ?firstDayOfWeek: DayOfWeek) : CalendarDate = nativeOnly
-    [<Import("startOfWeek", "@internationalized/date")>]
-    static member startOfWeek (date: DateValue, locale: string, ?firstDayOfWeek: DayOfWeek) : DateValue = nativeOnly
     /// <summary>
     /// Returns the last date of the week for the given date and locale.
     /// </summary>
@@ -339,8 +329,6 @@ type Exports with
     static member endOfWeek (date: CalendarDateTime, locale: string, ?firstDayOfWeek: DayOfWeek) : CalendarDateTime = nativeOnly
     [<Import("endOfWeek", "@internationalized/date")>]
     static member endOfWeek (date: CalendarDate, locale: string, ?firstDayOfWeek: DayOfWeek) : CalendarDate = nativeOnly
-    [<Import("endOfWeek", "@internationalized/date")>]
-    static member endOfWeek (date: DateValue, locale: string, ?firstDayOfWeek: DayOfWeek) : DateValue = nativeOnly
     /// <summary>
     /// Returns the number of weeks in the given month and locale.
     /// </summary>
@@ -542,8 +530,8 @@ type GregorianCalendar =
     abstract member isInverseEra: date: AnyCalendarDate -> bool
     abstract member balanceDate: date: Mutable<AnyCalendarDate> -> unit
 
-type DateValue =
-    U3<CalendarDate, CalendarDateTime, ZonedDateTime>
+type DateValue = CalendarDateTime
+    // U3<CalendarDate, CalendarDateTime, ZonedDateTime>
 
 [<RequireQualifiedAccess>]
 [<StringEnum(CaseRules.None)>]

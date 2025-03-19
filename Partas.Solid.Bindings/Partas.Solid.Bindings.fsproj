@@ -5,4 +5,18 @@
         <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Include="Generator.fs" />
+      <Content Include="package.json" />
+      <Content Include="README.md" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fable.Core" Version="4.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Partas.Utilities.StructuredTypes\Partas.Utilities.StructuredTypes.fsproj" />
+    </ItemGroup>
+
 </Project>

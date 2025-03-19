@@ -1814,6 +1814,7 @@ module Progress =
 type RadioGroup() =
     inherit div()
     interface Polymorph
+    member val ref: HtmlElement = jsNative with get,set
     member val value : string = jsNative with get,set
     member val defaultValue : string = jsNative with get,set
     member val onChange : string -> unit = jsNative with get,set
@@ -1843,6 +1844,7 @@ module RadioGroup =
     type Item() =
         inherit div()
         interface Polymorph
+        member val ref : HtmlElement = jsNative with get,set
         member val value : string = jsNative with get,set
         member val disabled : bool = jsNative with get,set
     [<Erase; Import("ItemInput", radioGroup)>]
