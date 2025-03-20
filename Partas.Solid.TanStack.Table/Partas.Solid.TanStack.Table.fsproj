@@ -1,11 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
+        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
+        <PackageId>Partas.Solid.TanStack.Table</PackageId>
+        <Title>Partas.Solid.TanStack.Table</Title>
+        <RootNamespace>Partas.Solid.TanStack.Table</RootNamespace>
+        <AssemblyName>Partas.Solid.TanStack.Table</AssemblyName>
+        <Company>F# Community</Company>
+        <Description>Bindings for TanStack.Table for Partas.Solid</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Table; TanStack</PackageTags>
+        <Authors>Shayan Habibi</Authors>
+        <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
+        <Version>0.1.0</Version>
+        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <PackageVersion>0.1.0</PackageVersion>
+        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
+        <NpmDependencies>
+            <NpmPackage Name="@tanstack/solid-table" Version=">= 8.0.0" />
+        </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
+        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="Program.fs" />
         <Compile Include="Table.fs" />
         <Compile Include="ColumnFiltering.fs" />
@@ -22,11 +43,17 @@
         <Compile Include="Pagination.fs" />
         <Compile Include="RowPinning.fs" />
         <Compile Include="RowSelection.fs" />
+        <Content Include="README.md" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="0.2.18" />
+        <PackageReference Include="Fable.Core" Version="4.5.0" />
+        <PackageReference Include="Fable.Package.SDK" Version="1.3.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Partas.Solid" Version="0.2.22" />
     </ItemGroup>
 
 </Project>
+

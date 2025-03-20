@@ -59,6 +59,7 @@ module rec Types =
             ?cell: CellRenderProps<'Data> -> obj,
             ?meta: obj
         ) =
+        
         /// <summary>
         /// The unique identifier for the column. <br/>
         /// <br/>
@@ -68,12 +69,16 @@ module rec Types =
         /// The column header is defined as a string<br/>
         /// </summary>
         member val id: string = id.Value with get,set
+        
         /// The key of the row object to use when extracting the value for the column.
         member val accessorKey: string = accessorKey.Value with get,set
+        
         /// The accessor function to use when extracting the value for the column from each row.
         member val accessorFn: ('Data * int -> obj) = accessorFn.Value with get,set
+        
         /// The child column defs to include in a group column.
         member val columns: 'Data[] = columns.Value with get,set
+        
         /// <summary>
         /// The header to display for the column. If a string is passed, it can be used as a default for the column ID. If a function is passed, it will be passed a props object for the header and should return the rendered header value (the exact type depends on the adapter being used).
         /// <code>
@@ -87,6 +92,7 @@ module rec Types =
         /// </code>
         /// </summary>
         member val header: HeaderRenderProps<'Data> -> obj = header.Value with get,set
+        
         /// <summary>
         /// The footer to display for the column. If a function is passed, it will be passed a props object for the footer and should return the rendered footer value (the exact type depends on the adapter being used).
         /// <code>
@@ -100,6 +106,7 @@ module rec Types =
         /// </code>
         /// </summary>
         member val footer: FooterRenderProps<'Data> -> obj = footer.Value with get,set
+        
         /// <summary>
         /// The cell to display each row for the column. If a function is passed, it will be passed a props object for the cell and should return the rendered cell value (the exact type depends on the adapter being used).
         /// <code>
@@ -116,6 +123,7 @@ module rec Types =
         /// </code>
         /// </summary>
         member val cell: CellRenderProps<'Data> -> obj = cell.Value with get,set
+        
         member val meta: obj = meta.Value with get,set
 
 
@@ -158,22 +166,98 @@ module rec Types =
             ?getSubRows: 'Data * int -> 'Data[],
             ?getRowId: 'Data * int * Row<'Data> -> string
         ) =
+        
+        /// <summary>
+        /// The data for the table to display. This array should match the type you provided to <c>table.setRowType[...]</c>, but in theory could be an array of anything. It's common for each item in the array to be an object of key/values but this is not required. Columns can access this data via string/index or a functional accessor to return anything they want.<br/><br/>
+        /// When the data option changes reference (compared via Object.is), the table will reprocess the data. Any other data processing that relies on the core data model (such as grouping, sorting, filtering, etc) will also be reprocessed.<br/><br/>
+        /// 🧠 Make sure your <c>data</c> option is only changing when you want the table to reprocess. Providing an inline [] or constructing the data array as a new object every time you want to render the table will result in a lot of unnecessary re-processing. This can easily go unnoticed in smaller tables, but you will likely notice it in larger tables.
+        /// </summary>
         member val data: 'Data[] option = data with get,set
+        
+        /// The array of column defs to use for the table. See the Column Defs Guide for more information on creating column definitions.
         member val columns: ColumnDef<'Data>[] option = columns with get,set
+        
+        /// <summary>Default column options to use for all column defs supplied to the table. This is useful for providing default cell/header/footer renderers, sorting/filtering/grouping options, etc. All column definitions passed to <c>options.columns</c> are merged with this default column definition to produce the final column definitions.</summary>
         member val defaultColumn: ColumnDef<'Data> option = defaultColumn with get,set
+        
+        /// <summary>
+        /// Use this option to optionally pass initial state to the table. This state will be used when resetting various table states either automatically by the table (eg. <c>options.autoResetPageIndex</c>) or via functions like <c>table.resetRowSelection()</c>. Most reset function allow you optionally pass a flag to reset to a blank/default state instead of the initial state.<br/><br/>
+        /// 🧠 Table state will not be reset when this object changes, which also means that the initial state object does not need to be stable.
+        /// </summary>
         member val initialState: TableState option = initialState with get,set
+        
+        /// <summary>
+        /// Set this option to override any of the <c>autoReset...</c> feature options.
+        /// </summary>
         member val autoResetAll: bool option = autoResetAll with get,set
+        
+        /// <summary>
+        /// You can pass any object to <c>options.meta</c> and access it anywhere the table is available via <c>table.options.meta</c> This type is global to all tables and can be extended like so:
+        /// <code>
+        /// declare module '@tanstack/table-core' {
+        ///   interface TableMeta [TData extends RowData] {
+        ///     foo: string
+        ///   }
+        /// }
+        /// </code>
+        /// 🧠 Think of this option as an arbitrary "context" for your table. This is a great way to pass arbitrary data or functions to your table without having to pass it to every thing the table touches. A good example is passing a locale object to your table to use for formatting dates, numbers, etc or even a function that can be used to update editable data like in the editable-data example.
+        /// </summary>
         member val meta: obj option = meta with get,set
+        
+        /// <summary>
+        /// The <c>state</c> option can be used to optionally control part or all of the table state. The state you pass here will merge with and overwrite the internal automatically-managed state to produce the final state for the table. You can also listen to state changes via the <c>onStateChange</c> option.
+        /// </summary>
         member val state: TableState option = state with get,set
+        
+        /// <summary>
+        /// The <c>onStateChange</c> option can be used to optionally listen to state changes within the table. If you provide this options, you will be responsible for controlling and updating the table state yourself. You can provide the state back to the table with the <c>state</c> option.
+        /// </summary>
         member val onStateChange: (Updater<'Data> -> unit) option = onStateChange with get,set
+        
+        /// <summary>
+        /// ⚠️ Debugging is only available in development mode.<br/><br/>
+        /// </summary>
         member val debugAll: bool option = debugAll with get,set
+        
+        /// <summary>
+        /// ⚠️ Debugging is only available in development mode.<br/><br/>
+        /// Set this option to true to output table debugging information to the console.
+        /// </summary>
         member val debugTable: bool option = debugTable with get,set
+        
+        /// <summary>
+        /// ⚠️ Debugging is only available in development mode.<br/><br/>
+        /// Set this option to true to output header debugging information to the console.
+        /// </summary>
         member val debugHeaders: bool option = debugHeaders with get,set
+        
+        /// <summary>
+        /// ⚠️ Debugging is only available in development mode.<br/><br/>
+        /// Set this option to true to output column debugging information to the console.
+        /// </summary>
         member val debugColumns: bool option = debugColumns with get,set
+        
+        /// <summary>
+        /// ⚠️ Debugging is only available in development mode.<br/><br/>
+        /// Set this option to true to output row debugging information to the console.
+        /// </summary>
         member val debugRows: bool option = debugRows with get,set
+        
+        /// An array of extra features that you can add to the table instance.
         member val _features: TableFeature[] option = _features with get,set
+        
+        /// <summary>
+        /// This required option is a factory for a function that computes and returns the core row model for the table. It is called once per table and should return a new function which will calculate and return the row model for the table. <br/><br/>
+        /// A default implementation is provided via any table adapter's <c>{ getCoreRowModel }</c> export.
+        /// </summary>
         member val getCoreRowModel: ((TableOptions<'Data> -> unit) -> RowModel<'Data>) option = getCoreRowModel with get,set 
+        
+        /// This optional function is used to access the sub rows for any given row. If you are using nested rows, you will need to use this function to return the sub rows object (or undefined) from the row.
         member val getSubRows: ('Data * int -> 'Data[]) option = getSubRows with get,set
+        
+        /// <summary>
+        /// This optional function is used to derive a unique ID for any given row. If not provided the rows index is used (nested rows join together with <c>.</c> using their grandparents' index eg. <c>index.index.index</c>). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity eg. a userId, taskId, database ID field, etc.
+        /// </summary>
         member val getRowId: ('Data * int * Row<'Data> -> string) option = getRowId with get,set
 
     [<AllowNullLiteral; Interface>]
@@ -414,7 +498,7 @@ module rec Types =
         /// <example>
         /// <code>flexRender(cell.column.columnDef.cell, cell.getContext())</code>
         /// </example> 
-        abstract member getContext: CellContext<'Data, obj> with get
+        abstract member getContext: (unit -> CellContext<'Data, obj>) with get
 
     
     [<AllowNullLiteral; Interface>]
@@ -546,7 +630,7 @@ module TanStack =
     [<Import("getCoreRowModel", "@tanstack/solid-table")>]
     let getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
     [<Import("flexRender", "@tanstack/solid-table")>]
-    let flexRender<'Data>([<ParamArray>] values): HtmlElement = jsNative
+    let flexRender<'Data>(x, y): HtmlElement = jsNative
 
 [<AutoOpen>]
 module Extensions =
