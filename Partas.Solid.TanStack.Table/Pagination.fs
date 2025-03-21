@@ -6,7 +6,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen; Erase>]
-module Table =
+module Pagination =
     type TableOptions<'Data> with
         member _.manualPagination with set(value: bool) = ()
         member _.pageCount with set(value: int) = ()

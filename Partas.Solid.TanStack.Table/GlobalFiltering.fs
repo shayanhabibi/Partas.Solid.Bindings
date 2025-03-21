@@ -5,20 +5,16 @@ open Fable.Core.JS
 open Fable.Core.JsInterop
 
 [<AutoOpen; Erase>]
-module Column =
+module GlobalFiltering =
     type ColumnDef<'Data> with
         member _.enableGlobalFilter with set(value: bool) = ()
     
     type Column<'Data> with
         member _.getCanGlobalFilter with get(): (unit -> bool) = unbox null
 
-[<AutoOpen; Erase>]
-module Row =
     type Row<'Data> with
         member _.columnFiltersMeta with get(): Map<string, obj> = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     type TableOptions<'Data> with
         member _.filterFns with set(value: Map<string, FilterFn>) = ()
         member _.filterFromLeafRows with set(value: bool) = ()

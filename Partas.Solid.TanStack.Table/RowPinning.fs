@@ -6,7 +6,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen; Erase>]
-module Table =
+module RowPinning =
     type TableOptions<'Data> with
         member _.enableRowPinning with set(value: Row<'Data> -> bool) = ()
         member _.keepPinnedRows with set(value: bool) = ()
@@ -20,8 +20,6 @@ module Table =
         member _.getBottomRows with get(): (unit -> Row<'Data>[]) = unbox null
         member _.getCenterRows with get(): (unit -> Row<'Data>[]) = unbox null
 
-[<AutoOpen; Erase>]
-module Row =
     type Row<'Data> with
         member _.pin with get(): RowPinningPosition -> unit = unbox null
         member _.getCanPin with get(): (unit -> bool) = unbox null

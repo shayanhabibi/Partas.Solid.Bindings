@@ -5,7 +5,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen; Erase>]
-module Table =
+module RowSelection =
     type TableOptions<'Data> with
         member _.enableRowSelection with set(value: Row<'Data> -> bool) = ()
         member _.enableMultiRowSelection with set(value: Row<'Data> -> bool) = ()
@@ -28,8 +28,6 @@ module Table =
         member _.getFilteredSelectedRowModel with get(): (unit -> RowModel<'Data>) = unbox null
         member _.getGroupedSelectedRowModel with get(): (unit -> RowModel<'Data>) = unbox null
 
-[<AutoOpen; Erase>]
-module Row =
     type Row<'Data> with
         member _.getIsSelected with get(): (unit -> bool) = unbox null
         member _.getIsSomeSelected with get(): (unit -> bool) = unbox null

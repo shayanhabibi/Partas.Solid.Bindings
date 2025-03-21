@@ -7,7 +7,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen;Erase>]
-module Column =
+module ColumnVisibility =
     type ColumnDef<'Data> with
         member _.enableHiding with set(value: bool) = ()
     
@@ -17,8 +17,6 @@ module Column =
         member _.toggleVisibility with get(): (bool -> unit) = unbox null
         member _.getToggleVisibilityHandler with get(): (unit -> (Event -> unit)) = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     type TableOptions<'Data> with
         member _.onColumnVisibilityChange with set(value: OnChangeFn<VisibilityState>) = ()
         member _.enableHiding with set(value: bool) = ()
@@ -36,8 +34,6 @@ module Table =
         member _.getIsSomeColumnsVisible with get(): (unit -> bool) = unbox null
         member _.getToggleAllColumnsVisibilityHandler with get(): (unit -> (Event -> unit)) = unbox null
 
-[<AutoOpen; Erase>]
-module Row =
     type Row<'Data> with
         [<Extension; Erase>]
         member _.getVisibleCells with get(): (unit -> Cell<'Data>[]) = unbox null

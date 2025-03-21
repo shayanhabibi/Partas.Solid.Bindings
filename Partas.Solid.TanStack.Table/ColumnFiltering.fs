@@ -52,8 +52,6 @@ module rec ColumnFilteringTypes =
         /// Number range inclusion
         abstract member inNumberRange: BuiltInFilterFn with get
     
-[<Erase; AutoOpen>]
-module ColumnDef =
     type ColumnDef<'Data>  with
         /// <summary>
         /// The filter function to use with this column.<br/>
@@ -67,8 +65,6 @@ module ColumnDef =
         /// Enables/disables the column filter for this column.
         member _.enableColumnFilter with set(value: bool) = () and get(): bool = unbox null
 
-[<Erase; AutoOpen>]
-module Column =
     type Column<'Data> with
         member _.getCanFilter with get(): (unit -> bool) = unbox null
         member _.getFilterIndex with get(): (unit -> int) = unbox null
@@ -78,14 +74,10 @@ module Column =
         member _.getAutoFilterFn with get(): (string -> FilterFn) = unbox null
         member _.getFilterFn with get(): (string -> FilterFn) = unbox null
 
-[<Erase; AutoOpen>]
-module Row =
     type Row<'Data> with
         member _.columnFilters with get(): JS.Object = unbox null
         member _.columnFiltersMeta with get(): JS.Object = unbox null
 
-[<Erase; AutoOpen>]
-module Table =
     type TableOptions<'Data> with
         member _.filterFns with set(value: obj) = ()
         member _.filterFromLeafRows with set(value: bool) = ()

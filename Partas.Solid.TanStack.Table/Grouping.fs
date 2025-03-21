@@ -21,8 +21,8 @@ type Renderable<'Data>(
     member val getValue = getValue with get,set
     member val renderValue = renderValue with get,set
 
-[<AutoOpen; Erase>]
-module Column =
+[<Erase; AutoOpen>]
+module GroupingExtensions =
     type ColumnDef<'Data> with
         member _.aggregationFn with set(value: AggregationFn) = ()
         member _.aggregatedCell with set(value: Renderable<'Data>) = ()
@@ -39,16 +39,12 @@ module Column =
         member _.getAutoAggregationFn with get(): (unit -> AggregationFn option) = unbox null
         member _.getAggregationFn with get(): (unit -> AggregationFn option) = unbox null
 
-[<AutoOpen; Erase>]
-module Row =
     type Row<'Data> with
         member _.groupingColumnId with get(): string = unbox null
         member _.groupingValue with get(): obj = unbox null
         member _.getIsGrouped with get(): (unit -> bool) = unbox null
         member _.getGroupingValue with get(): (string -> obj) = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     [<StringEnum>]
     type GroupedColumnMode =
         | [<CompiledValue(false)>] False
@@ -69,8 +65,6 @@ module Table =
         member _.getPreGroupedRowModel with get(): (unit -> RowModel<'Data>) = unbox null
         member _.getGroupedRowModel with get(): (unit -> RowModel<'Data>) = unbox null
 
-[<AutoOpen; Erase>]
-module Cell =
     type Cell<'Data> with
         member _.getIsAggregated with get(): (unit -> bool) = unbox null
         member _.getIsGrouped with get(): (unit -> bool) = unbox null

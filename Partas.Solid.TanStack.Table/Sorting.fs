@@ -13,7 +13,7 @@ type SortUndefined =
     | [<CompiledValue(1)>] Positive
 
 [<AutoOpen; Erase>]
-module Column =
+module Sorting =
     
     type ColumnDef<'Data> with
         member _.sortingFn with set(value: SortingFn) = ()
@@ -37,8 +37,6 @@ module Column =
         member _.toggleSorting with get(): ((bool option * bool option) -> unit) = unbox null
         member _.getToggleSortingHandler with get(): (Browser.Types.Event -> unit) = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     type TableOptions<'Data> with
         member _.sortingFns with set(value: Map<string, SortingFn>) = ()
         member _.manualSorting with set(value: bool) = ()

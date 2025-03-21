@@ -6,7 +6,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen; Erase>]
-module Column =
+module ColumnSizing =
     type ColumnDef<'Data> with
         member _.enableResizing with set(value: bool) = ()
         member _.size with set(value: int) = ()
@@ -21,15 +21,11 @@ module Column =
         member _.getIsResizing with get(): (unit -> bool) = unbox null
         member _.resetSize with get(): (unit -> unit) = unbox null
 
-[<AutoOpen; Erase>]
-module Header =
     type Header<'Data> with
         member _.getSize with get(): (unit -> int) = unbox null
         member _.getStart with get(): ColumnPinningPosition option -> int = unbox null
         member _.getResizeHandler with get(): (unit -> (MouseEvent -> unit)) = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     [<StringEnum>]
     type ColumnResizingMode =
         | OnChange

@@ -6,7 +6,7 @@ open Fable.Core.JsInterop
 open Browser.Types
 
 [<AutoOpen; Erase>]
-module Row =
+module Expanding =
     type Row<'Data> with
         member _.toggleExpanded with get(): (bool -> unit) = unbox null
         member _.getIsExpanded with get(): (unit -> bool) = unbox null
@@ -14,8 +14,6 @@ module Row =
         member _.getCanExpand with get(): (unit -> bool) = unbox null
         member _.getToggleExpandedHandler with get(): (unit -> (unit -> unit)) = unbox null
 
-[<AutoOpen; Erase>]
-module Table =
     type TableOptions<'Data> with
         member _.manualExpanding with set(value: bool) = ()
         member _.onExpandedChange with set(value: OnChangeFn<ExpandedState>) = ()

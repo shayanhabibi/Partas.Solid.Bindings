@@ -5,7 +5,7 @@ open Fable.Core.JS
 open Fable.Core.JsInterop
 
 [<AutoOpen; Erase>]
-module Table =
+module GlobalFaceting =
     type Table<'Data> with
         member _.getGlobalFacetedRowModel with get(): (unit -> RowModel<'Data>) = unbox null
         member _.getGlobalFacetedUniqueValues with get(): (unit -> Map<obj, int>) = unbox null
