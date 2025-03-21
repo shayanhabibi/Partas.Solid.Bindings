@@ -49,39 +49,39 @@ module Extensions =
             with set(value: TagValue) = ()
     type OptionKeys with
         member _.initial
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.animate
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.inView
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.inViewOptions
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.hover
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.press
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.variants
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.transition
-            with set(value: string) = ()
+            with set(value: obj) = ()
         member _.exit
-            with set(value: string) = ()
+            with set(value: obj) = ()
 
-// open Partas.Solid.Polymorphism
-//
-// [<Import("Motion", "solid-motionone")>]
-// type Motion() =
-//     inherit RegularNode()
-//     interface OptionKeys
-//     interface AttrKey
-//     // Enable polymorphism with the tag attribute name
-//     interface Polymorph
-//     [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: TagValue = unbox null with get,set
-//     [<Erase>]
-//     member this.tag
-//         with inline set(value: TagValue) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
-//         and inline get(): TagValue = this.``__PARTAS_POLYMORPHIC__tag``
-//
+open Partas.Solid.Polymorphism
+
+[<Import("Motion", "solid-motionone")>]
+type Motion() =
+    inherit RegularNode()
+    interface OptionKeys
+    interface AttrKey
+    // Enable polymorphism with the tag attribute name
+    interface Polymorph
+    [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: TagValue = unbox null with get,set
+    [<Erase>]
+    member this.tag
+        with inline set(value: TagValue) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
+        and inline get(): TagValue = this.``__PARTAS_POLYMORPHIC__tag``
+
 // [<AbstractClass>]
 // [<Erase>]
 // type Exports =
@@ -113,92 +113,3 @@ module Extensions =
 //     /// </param>
 //     [<Import("motion", "REPLACE_ME_WITH_MODULE_NAME")>]
 //     static member motion (el: Element, props: Accessor<Options>) : unit = nativeOnly
-//
-//
-//
-//
-//
-//
-//
-// [<AllowNullLiteral>]
-// [<Interface>]
-// type MotionEventHandlers =
-//     abstract member onMotionStart: (MotionEvent -> unit) option with get, set
-//     abstract member onMotionComplete: (motionone.MotionEvent -> unit) option with get, set
-//     abstract member onHoverStart: (motionone.CustomPointerEvent -> unit) option with get, set
-//     abstract member onHoverEnd: (motionone.CustomPointerEvent -> unit) option with get, set
-//     abstract member onPressStart: (motionone.CustomPointerEvent -> unit) option with get, set
-//     abstract member onPressEnd: (motionone.CustomPointerEvent -> unit) option with get, set
-//     abstract member onViewEnter: (motionone.ViewEvent -> unit) option with get, set
-//     abstract member onViewLeave: (motionone.ViewEvent -> unit) option with get, set
-//
-// module _AT_motionone/dom =
-//
-//     [<AllowNullLiteral>]
-//     [<Interface>]
-//     type CSSStyleDeclarationWithTransform =
-//         inherit Omit<PropertiesHyphen, CSSStyleDeclarationWithTransform>
-//
-//     [<AllowNullLiteral>]
-//     [<Interface>]
-//     type Options =
-//         abstract member exit: motionone.VariantDefinition option with get, set
-//
-//     [<RequireQualifiedAccess>]
-//     [<StringEnum(CaseRules.None)>]
-//     type CSSStyleDeclarationWithTransform =
-//         | direction
-//         | transition
-//
-// type MotionComponentProps =
-//     ParentProps<MotionComponentProps.ParentProps.ReturnType>
-//
-// [<AllowNullLiteral>]
-// [<Interface>]
-// type MotionComponent =
-//     [<Emit("$0($1...)")>]
-//     abstract member Invoke: props: obj -> JSX.Element
-//     [<Emit("$0($1...)")>]
-//     abstract member Invoke: props: obj -> JSX.Element
-//
-// [<AllowNullLiteral>]
-// [<Interface>]
-// type MotionProxyComponent<'T> =
-//     [<Emit("$0($1...)")>]
-//     abstract member Invoke: props: obj -> JSX.Element
-//
-// [<AllowNullLiteral>]
-// [<Interface>]
-// type MotionProxy =
-//     interface end
-//
-// module ``solid-js`` =
-//
-//     module JSX =
-//
-//         [<AllowNullLiteral>]
-//         [<Interface>]
-//         type Directives =
-//             abstract member motion: motionone.Options with get, set
-//
-// type E =
-//     JSX.Element
-//
-//
-// [<AllowNullLiteral>]
-// [<Interface>]
-// type PresenceContextState =
-//     abstract member initial: bool with get, set
-//     abstract member mount: Accessor<bool> with get, set
-//
-//
-//
-//
-// module MotionComponentProps =
-//
-//     module ParentProps =
-//
-//         [<AllowNullLiteral>]
-//         [<Interface>]
-//         type ReturnType =
-//             interface end

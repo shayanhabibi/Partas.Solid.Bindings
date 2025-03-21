@@ -17,7 +17,7 @@ type ApexCharts =
     abstract member updateOptions: options: obj * ?redrawPaths: bool * ?animate: bool * ?updateSyncedCharts: bool -> JS.Promise<unit>
     abstract member updateSeries: newSeries: U2<ApexAxisChartSeries, ApexNonAxisChartSeries> * ?animate: bool -> JS.Promise<unit>
     abstract member appendSeries: newSeries: U2<ApexAxisChartSeries, ApexNonAxisChartSeries> * ?animate: bool -> JS.Promise<unit>
-    abstract member appendData: data: ResizeArray<obj> * ?overwriteInitialSeries: bool -> unit
+    abstract member appendData: data: array<obj> * ?overwriteInitialSeries: bool -> unit
     abstract member toggleSeries: seriesName: string -> obj
     abstract member highlightSeries: seriesName: string -> obj
     abstract member showSeries: seriesName: string -> unit
@@ -34,17 +34,17 @@ type ApexCharts =
     abstract member removeAnnotation: id: string * ?options: obj -> unit
     abstract member clearAnnotations: ?options: obj -> unit
     abstract member dataURI: ?options: ApexCharts.dataURI.options -> JS.Promise<ApexCharts.dataURI>
-    static member inline exec (chartID: string, fn: string, [<ParamArray>] args: ResizeArray<obj> []): obj =
+    static member inline exec (chartID: string, fn: string, [<ParamArray>] args: array<obj> []): obj =
         emitJsExpr (chartID, fn, args) $$"""
-import { ApexCharts } from "REPLACE_ME_WITH_MODULE_NAME";
+import { ApexCharts } from "apexcharts";
 ApexCharts.exec($0, $1, $2)"""
     static member inline getChartByID (chartID: string): ApexCharts  =
         emitJsExpr (chartID) $$"""
-import { ApexCharts } from "REPLACE_ME_WITH_MODULE_NAME";
+import { ApexCharts } from "apexcharts";
 ApexCharts.getChartByID($0)"""
     static member inline initOnLoad () : unit =
         emitJsExpr () $$"""
-import { ApexCharts } from "REPLACE_ME_WITH_MODULE_NAME";
+import { ApexCharts } from "apexcharts";
 ApexCharts.initOnLoad()"""
     abstract member exports: ApexCharts.exports with get, set
 
@@ -55,17 +55,17 @@ module ApexCharts =
     type ApexOptions =
         abstract member annotations: ApexAnnotations  with get, set
         abstract member chart: ApexChart  with get, set
-        abstract member colors: ResizeArray<obj>  with get, set
+        abstract member colors: array<obj>  with get, set
         abstract member dataLabels: ApexDataLabels  with get, set
         abstract member fill: ApexFill  with get, set
         abstract member forecastDataPoints: ApexForecastDataPoints  with get, set
         abstract member grid: ApexGrid  with get, set
-        abstract member labels: ResizeArray<string>  with get, set
+        abstract member labels: array<string>  with get, set
         abstract member legend: ApexLegend  with get, set
         abstract member markers: ApexMarkers  with get, set
         abstract member noData: ApexNoData  with get, set
         abstract member plotOptions: ApexPlotOptions  with get, set
-        abstract member responsive: ResizeArray<ApexResponsive>  with get, set
+        abstract member responsive: array<ApexResponsive>  with get, set
         abstract member series: U2<ApexAxisChartSeries, ApexNonAxisChartSeries>  with get, set
         abstract member states: ApexStates  with get, set
         abstract member stroke: ApexStroke  with get, set
@@ -74,7 +74,7 @@ module ApexCharts =
         abstract member title: ApexTitleSubtitle  with get, set
         abstract member tooltip: ApexTooltip  with get, set
         abstract member xaxis: ApexXAxis  with get, set
-        abstract member yaxis: U2<ApexYAxis, ResizeArray<ApexYAxis>>  with get, set
+        abstract member yaxis: U2<ApexYAxis, array<ApexYAxis>>  with get, set
 
     [<AllowNullLiteral>]
     [<Interface>]
@@ -154,7 +154,7 @@ type ApexChart =
     abstract member brush: ApexChart.brush  with get, set
     abstract member id: string  with get, set
     abstract member group: string  with get, set
-    abstract member locales: ResizeArray<ApexLocale>  with get, set
+    abstract member locales: array<ApexLocale>  with get, set
     abstract member defaultLocale: string  with get, set
     abstract member parentHeightOffset: float  with get, set
     abstract member redrawOnParentResize: bool  with get, set
@@ -201,7 +201,7 @@ type ApexTitleSubtitle =
 /// </summary>
 
 type ApexNonAxisChartSeries =
-    ResizeArray<float>
+    array<float>
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -209,19 +209,19 @@ type ApexStroke =
     abstract member show: bool  with get, set
     abstract member curve: ApexStroke.curve  with get, set
     abstract member lineCap: ApexStroke.lineCap  with get, set
-    abstract member colors: U2<ResizeArray<obj>, ResizeArray<string>>  with get, set
-    abstract member width: U2<float, ResizeArray<float>>  with get, set
-    abstract member dashArray: U2<float, ResizeArray<float>>  with get, set
+    abstract member colors: U2<array<obj>, array<string>>  with get, set
+    abstract member width: U2<float, array<float>>  with get, set
+    abstract member dashArray: U2<float, array<float>>  with get, set
     abstract member fill: ApexFill  with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
 type ApexAnnotations =
-    abstract member yaxis: ResizeArray<YAxisAnnotations>  with get, set
-    abstract member xaxis: ResizeArray<XAxisAnnotations>  with get, set
-    abstract member points: ResizeArray<PointAnnotations>  with get, set
-    abstract member texts: ResizeArray<TextAnnotations>  with get, set
-    abstract member images: ResizeArray<ImageAnnotations>  with get, set
+    abstract member yaxis: array<YAxisAnnotations>  with get, set
+    abstract member xaxis: array<XAxisAnnotations>  with get, set
+    abstract member points: array<PointAnnotations>  with get, set
+    abstract member texts: array<TextAnnotations>  with get, set
+    abstract member images: array<ImageAnnotations>  with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -359,9 +359,9 @@ type ApexColorStop =
 [<AllowNullLiteral>]
 [<Interface>]
 type ApexFill =
-    abstract member colors: ResizeArray<obj>  with get, set
-    abstract member opacity: U2<float, ResizeArray<float>>  with get, set
-    abstract member ``type``: U2<string, ResizeArray<string>>  with get, set
+    abstract member colors: array<obj>  with get, set
+    abstract member opacity: U2<float, array<float>>  with get, set
+    abstract member ``type``: U2<string, array<string>>  with get, set
     abstract member gradient: ApexFill.gradient  with get, set
     abstract member image: ApexFill.image  with get, set
     abstract member pattern: ApexFill.pattern  with get, set
@@ -386,7 +386,7 @@ type ApexLegend =
     abstract member offsetY: float  with get, set
     abstract member formatter: legendName: string * ?opts: obj -> string
     abstract member tooltipHoverFormatter: legendName: string * ?opts: obj -> string
-    abstract member customLegendItems: ResizeArray<string>  with get, set
+    abstract member customLegendItems: array<string>  with get, set
     abstract member clusterGroupedSeries: bool  with get, set
     abstract member clusterGroupedSeriesOrientation: string  with get, set
     abstract member labels: ApexLegend.labels  with get, set
@@ -436,14 +436,14 @@ type ApexDiscretePoint =
 [<AllowNullLiteral>]
 [<Interface>]
 type ApexMarkers =
-    abstract member size: U2<float, ResizeArray<float>>  with get, set
-    abstract member colors: U2<string, ResizeArray<string>>  with get, set
-    abstract member strokeColors: U2<string, ResizeArray<string>>  with get, set
-    abstract member strokeWidth: U2<float, ResizeArray<float>>  with get, set
-    abstract member strokeOpacity: U2<float, ResizeArray<float>>  with get, set
-    abstract member strokeDashArray: U2<float, ResizeArray<float>>  with get, set
-    abstract member fillOpacity: U2<float, ResizeArray<float>>  with get, set
-    abstract member discrete: ResizeArray<ApexDiscretePoint>  with get, set
+    abstract member size: U2<float, array<float>>  with get, set
+    abstract member colors: U2<string, array<string>>  with get, set
+    abstract member strokeColors: U2<string, array<string>>  with get, set
+    abstract member strokeWidth: U2<float, array<float>>  with get, set
+    abstract member strokeOpacity: U2<float, array<float>>  with get, set
+    abstract member strokeDashArray: U2<float, array<float>>  with get, set
+    abstract member fillOpacity: U2<float, array<float>>  with get, set
+    abstract member discrete: array<ApexDiscretePoint>  with get, set
     abstract member shape: ApexMarkerShape  with get, set
     abstract member offsetX: float  with get, set
     abstract member offsetY: float  with get, set
@@ -466,7 +466,7 @@ type ApexNoData =
 [<Interface>]
 type ApexDataLabels =
     abstract member enabled: bool  with get, set
-    abstract member enabledOnSeries: ResizeArray<float>  with get, set
+    abstract member enabledOnSeries: array<float>  with get, set
     abstract member textAnchor: ApexDataLabels.textAnchor  with get, set
     abstract member distributed: bool  with get, set
     abstract member offsetX: float  with get, set
@@ -474,7 +474,7 @@ type ApexDataLabels =
     abstract member style: ApexDataLabels.style  with get, set
     abstract member background: ApexDataLabels.background  with get, set
     abstract member dropShadow: ApexDropShadow  with get, set
-    abstract member formatter: ``val``: U3<string, float, ResizeArray<float>> * ?opts: obj -> U3<string, float, ResizeArray<U2<string, string>>>
+    abstract member formatter: ``val``: U3<string, float, array<float>> * ?opts: obj -> U3<string, float, array<U2<string, string>>>
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -492,12 +492,12 @@ type ApexTooltipY =
 [<Interface>]
 type ApexTooltip =
     abstract member enabled: bool  with get, set
-    abstract member enabledOnSeries: ResizeArray<float>  with get, set
+    abstract member enabledOnSeries: array<float>  with get, set
     abstract member shared: bool  with get, set
     abstract member followCursor: bool  with get, set
     abstract member intersect: bool  with get, set
     abstract member inverseOrder: bool  with get, set
-    abstract member custom: U2<(obj -> obj), ResizeArray<(obj -> obj)>>  with get, set
+    abstract member custom: U2<(obj -> obj), array<(obj -> obj)>>  with get, set
     abstract member fillSeriesColor: bool  with get, set
     abstract member theme: string  with get, set
     abstract member cssClass: string  with get, set
@@ -505,7 +505,7 @@ type ApexTooltip =
     abstract member style: ApexTooltip.style  with get, set
     abstract member onDatasetHover: ApexTooltip.onDatasetHover  with get, set
     abstract member x: ApexTooltip.x  with get, set
-    abstract member y: U2<ApexTooltipY, ResizeArray<ApexTooltipY>>  with get, set
+    abstract member y: U2<ApexTooltipY, array<ApexTooltipY>>  with get, set
     abstract member z: ApexTooltip.z  with get, set
     abstract member marker: ApexTooltip.marker  with get, set
     abstract member items: ApexTooltip.items  with get, set
@@ -516,7 +516,7 @@ type ApexTooltip =
 type ApexXAxis =
     abstract member ``type``: ApexXAxis.``type``  with get, set
     abstract member categories: obj  with get, set
-    abstract member overwriteCategories: U2<ResizeArray<float>, ResizeArray<string>>   with get, set
+    abstract member overwriteCategories: U2<array<float>, array<string>>   with get, set
     abstract member offsetX: float  with get, set
     abstract member offsetY: float  with get, set
     abstract member sorted: bool  with get, set
@@ -543,7 +543,7 @@ type ApexYAxis =
     abstract member show: bool  with get, set
     abstract member showAlways: bool  with get, set
     abstract member showForNullSeries: bool  with get, set
-    abstract member seriesName: U2<string, ResizeArray<string>>  with get, set
+    abstract member seriesName: U2<string, array<string>>  with get, set
     abstract member opposite: bool  with get, set
     abstract member reversed: bool  with get, set
     abstract member logarithmic: bool  with get, set
@@ -598,7 +598,7 @@ type ApexTheme =
 type ApexAxisChartSeries
     [<ParamObject; Emit("$0")>]
     (
-        data: U5<ResizeArray<float >, ResizeArray<ApexAxisChartSeries.data.U5.Case2>, ResizeArray<float * float >, ResizeArray<float * ResizeArray<float >>, ResizeArray<ResizeArray<float>>>,
+        data: U5<array<float >, array<ApexAxisChartSeries.data.U5.Case2>, array<float * float >, array<float * array<float >>, array<array<float>>>,
         ?name: string,
         ?``type``: string,
         ?color: string,
@@ -607,7 +607,7 @@ type ApexAxisChartSeries
         ?zIndex: float
     ) =
 
-    member val data : U5<ResizeArray<float >, ResizeArray<ApexAxisChartSeries.data.U5.Case2>, ResizeArray<float * float >, ResizeArray<float * ResizeArray<float >>, ResizeArray<ResizeArray<float>>> = nativeOnly with get, set
+    member val data : U5<array<float >, array<ApexAxisChartSeries.data.U5.Case2>, array<float * float >, array<float * array<float >>, array<array<float>>> = nativeOnly with get, set
     member val name : string  = nativeOnly with get, set
     member val ``type`` : string  = nativeOnly with get, set
     member val color : string  = nativeOnly with get, set
@@ -691,13 +691,13 @@ module ApexChart =
             ?enabled: bool,
             ?autoScaleYaxis: bool,
             ?target: string,
-            ?targets: ResizeArray<string>
+            ?targets: array<string>
         ) =
 
         member val enabled : bool  = nativeOnly with get, set
         member val autoScaleYaxis : bool  = nativeOnly with get, set
         member val target : string  = nativeOnly with get, set
-        member val targets : ResizeArray<string>  = nativeOnly with get, set
+        member val targets : array<string>  = nativeOnly with get, set
 
     [<Global>]
     [<AllowNullLiteral>]
@@ -803,7 +803,7 @@ module ApexChart =
                 ?zoomout: U2<bool, string>,
                 ?pan: U2<bool, string>,
                 ?reset: U2<bool, string>,
-                ?customIcons: ResizeArray<ApexChart.toolbar.tools.customIcons>
+                ?customIcons: array<ApexChart.toolbar.tools.customIcons>
             ) =
 
             member val download : U2<bool, string>  = nativeOnly with get, set
@@ -813,7 +813,7 @@ module ApexChart =
             member val zoomout : U2<bool, string>  = nativeOnly with get, set
             member val pan : U2<bool, string>  = nativeOnly with get, set
             member val reset : U2<bool, string>  = nativeOnly with get, set
-            member val customIcons : ResizeArray<ApexChart.toolbar.tools.customIcons>  = nativeOnly with get, set
+            member val customIcons : array<ApexChart.toolbar.tools.customIcons>  = nativeOnly with get, set
 
         [<Global>]
         [<AllowNullLiteral>]
@@ -1121,7 +1121,7 @@ module ApexAxisChartSeries =
                     ?fillColor: string,
                     ?strokeColor: string,
                     ?meta: obj,
-                    ?goals: ResizeArray<ApexAxisChartSeries.data.U5.Case2.goals>,
+                    ?goals: array<ApexAxisChartSeries.data.U5.Case2.goals>,
                     ?barHeightOffset: float,
                     ?columnWidthOffset: float
                 ) =
@@ -1132,7 +1132,7 @@ module ApexAxisChartSeries =
                 member val fillColor : string  = nativeOnly with get, set
                 member val strokeColor : string  = nativeOnly with get, set
                 member val meta : obj  = nativeOnly with get, set
-                member val goals : ResizeArray<ApexAxisChartSeries.data.U5.Case2.goals>  = nativeOnly with get, set
+                member val goals : array<ApexAxisChartSeries.data.U5.Case2.goals>  = nativeOnly with get, set
                 member val barHeightOffset : float  = nativeOnly with get, set
                 member val columnWidthOffset : float  = nativeOnly with get, set
 
@@ -1256,17 +1256,17 @@ module ApexLocale =
     type options
         [<ParamObject; Emit("$0")>]
         (
-            ?months: ResizeArray<string>,
-            ?shortMonths: ResizeArray<string>,
-            ?days: ResizeArray<string>,
-            ?shortDays: ResizeArray<string>,
+            ?months: array<string>,
+            ?shortMonths: array<string>,
+            ?days: array<string>,
+            ?shortDays: array<string>,
             ?toolbar: ApexLocale.options.toolbar
         ) =
 
-        member val months : ResizeArray<string>  = nativeOnly with get, set
-        member val shortMonths : ResizeArray<string>  = nativeOnly with get, set
-        member val days : ResizeArray<string>  = nativeOnly with get, set
-        member val shortDays : ResizeArray<string>  = nativeOnly with get, set
+        member val months : array<string>  = nativeOnly with get, set
+        member val shortMonths : array<string>  = nativeOnly with get, set
+        member val days : array<string>  = nativeOnly with get, set
+        member val shortDays : array<string>  = nativeOnly with get, set
         member val toolbar : ApexLocale.options.toolbar  = nativeOnly with get, set
 
     module options =
@@ -1339,7 +1339,7 @@ module ApexPlotOptions =
             ?rangeBarOverlap: bool,
             ?rangeBarGroupRows: bool,
             ?isDumbbell: bool,
-            ?dumbbellColors: ResizeArray<ResizeArray<string>>,
+            ?dumbbellColors: array<array<string>>,
             ?isFunnel: bool,
             ?isFunnel3d: bool,
             ?colors: ApexPlotOptions.bar.colors,
@@ -1357,7 +1357,7 @@ module ApexPlotOptions =
         member val rangeBarOverlap : bool  = nativeOnly with get, set
         member val rangeBarGroupRows : bool  = nativeOnly with get, set
         member val isDumbbell : bool  = nativeOnly with get, set
-        member val dumbbellColors : ResizeArray<ResizeArray<string>>  = nativeOnly with get, set
+        member val dumbbellColors : array<array<string>>  = nativeOnly with get, set
         member val isFunnel : bool  = nativeOnly with get, set
         member val isFunnel3d : bool  = nativeOnly with get, set
         member val colors : ApexPlotOptions.bar.colors  = nativeOnly with get, set
@@ -1568,14 +1568,14 @@ module ApexPlotOptions =
         type colors
             [<ParamObject; Emit("$0")>]
             (
-                ?ranges: ResizeArray<ApexPlotOptions.bar.colors.ranges>,
-                ?backgroundBarColors: ResizeArray<string>,
+                ?ranges: array<ApexPlotOptions.bar.colors.ranges>,
+                ?backgroundBarColors: array<string>,
                 ?backgroundBarOpacity: float,
                 ?backgroundBarRadius: float
             ) =
 
-            member val ranges : ResizeArray<ApexPlotOptions.bar.colors.ranges>  = nativeOnly with get, set
-            member val backgroundBarColors : ResizeArray<string>  = nativeOnly with get, set
+            member val ranges : array<ApexPlotOptions.bar.colors.ranges>  = nativeOnly with get, set
+            member val backgroundBarColors : array<string>  = nativeOnly with get, set
             member val backgroundBarOpacity : float  = nativeOnly with get, set
             member val backgroundBarRadius : float  = nativeOnly with get, set
 
@@ -1664,12 +1664,12 @@ module ApexPlotOptions =
         type colors
             [<ParamObject; Emit("$0")>]
             (
-                ?upward: U2<string, ResizeArray<string>>,
-                ?downward: U2<string, ResizeArray<string>>
+                ?upward: U2<string, array<string>>,
+                ?downward: U2<string, array<string>>
             ) =
 
-            member val upward : U2<string, ResizeArray<string>>  = nativeOnly with get, set
-            member val downward : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val upward : U2<string, array<string>>  = nativeOnly with get, set
+            member val downward : U2<string, array<string>>  = nativeOnly with get, set
 
         [<Global>]
         [<AllowNullLiteral>]
@@ -1688,12 +1688,12 @@ module ApexPlotOptions =
         type colors
             [<ParamObject; Emit("$0")>]
             (
-                ?upper: U2<string, ResizeArray<string>>,
-                ?lower: U2<string, ResizeArray<string>>
+                ?upper: U2<string, array<string>>,
+                ?lower: U2<string, array<string>>
             ) =
 
-            member val upper : U2<string, ResizeArray<string>>  = nativeOnly with get, set
-            member val lower : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val upper : U2<string, array<string>>  = nativeOnly with get, set
+            member val lower : U2<string, array<string>>  = nativeOnly with get, set
 
     module heatmap =
 
@@ -1702,13 +1702,13 @@ module ApexPlotOptions =
         type colorScale
             [<ParamObject; Emit("$0")>]
             (
-                ?ranges: ResizeArray<ApexPlotOptions.heatmap.colorScale.ranges>,
+                ?ranges: array<ApexPlotOptions.heatmap.colorScale.ranges>,
                 ?inverse: bool,
                 ?min: float,
                 ?max: float
             ) =
 
-            member val ranges : ResizeArray<ApexPlotOptions.heatmap.colorScale.ranges>  = nativeOnly with get, set
+            member val ranges : array<ApexPlotOptions.heatmap.colorScale.ranges>  = nativeOnly with get, set
             member val inverse : bool  = nativeOnly with get, set
             member val min : float  = nativeOnly with get, set
             member val max : float  = nativeOnly with get, set
@@ -1751,13 +1751,13 @@ module ApexPlotOptions =
             [<ParamObject; Emit("$0")>]
             (
                 ?inverse: bool,
-                ?ranges: ResizeArray<ApexPlotOptions.treemap.colorScale.ranges>,
+                ?ranges: array<ApexPlotOptions.treemap.colorScale.ranges>,
                 ?min: float,
                 ?max: float
             ) =
 
             member val inverse : bool  = nativeOnly with get, set
-            member val ranges : ResizeArray<ApexPlotOptions.treemap.colorScale.ranges>  = nativeOnly with get, set
+            member val ranges : array<ApexPlotOptions.treemap.colorScale.ranges>  = nativeOnly with get, set
             member val min : float  = nativeOnly with get, set
             member val max : float  = nativeOnly with get, set
 
@@ -1989,11 +1989,11 @@ module ApexPlotOptions =
             [<ParamObject; Emit("$0")>]
             (
                 ?strokeWidth: float,
-                ?connectorColors: U2<string, ResizeArray<string>>
+                ?connectorColors: U2<string, array<string>>
             ) =
 
             member val strokeWidth : float  = nativeOnly with get, set
-            member val connectorColors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val connectorColors : U2<string, array<string>>  = nativeOnly with get, set
 
     module radar =
 
@@ -2002,15 +2002,15 @@ module ApexPlotOptions =
         type polygons
             [<ParamObject; Emit("$0")>]
             (
-                ?strokeColors: U2<string, ResizeArray<string>>,
-                ?strokeWidth: U2<string, ResizeArray<string>>,
-                ?connectorColors: U2<string, ResizeArray<string>>,
+                ?strokeColors: U2<string, array<string>>,
+                ?strokeWidth: U2<string, array<string>>,
+                ?connectorColors: U2<string, array<string>>,
                 ?fill: ApexPlotOptions.radar.polygons.fill
             ) =
 
-            member val strokeColors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
-            member val strokeWidth : U2<string, ResizeArray<string>>  = nativeOnly with get, set
-            member val connectorColors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val strokeColors : U2<string, array<string>>  = nativeOnly with get, set
+            member val strokeWidth : U2<string, array<string>>  = nativeOnly with get, set
+            member val connectorColors : U2<string, array<string>>  = nativeOnly with get, set
             member val fill : ApexPlotOptions.radar.polygons.fill  = nativeOnly with get, set
 
         module polygons =
@@ -2020,10 +2020,10 @@ module ApexPlotOptions =
             type fill
                 [<ParamObject; Emit("$0")>]
                 (
-                    ?colors: ResizeArray<string>
+                    ?colors: array<string>
                 ) =
 
-                member val colors : ResizeArray<string>  = nativeOnly with get, set
+                member val colors : array<string>  = nativeOnly with get, set
 
     module radialBar =
 
@@ -2065,7 +2065,7 @@ module ApexPlotOptions =
                 ?show: bool,
                 ?startAngle: float,
                 ?endAngle: float,
-                ?background: U2<string, ResizeArray<string>>,
+                ?background: U2<string, array<string>>,
                 ?strokeWidth: string,
                 ?opacity: float,
                 ?margin: float,
@@ -2075,7 +2075,7 @@ module ApexPlotOptions =
             member val show : bool  = nativeOnly with get, set
             member val startAngle : float  = nativeOnly with get, set
             member val endAngle : float  = nativeOnly with get, set
-            member val background : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val background : U2<string, array<string>>  = nativeOnly with get, set
             member val strokeWidth : string  = nativeOnly with get, set
             member val opacity : float  = nativeOnly with get, set
             member val margin : float  = nativeOnly with get, set
@@ -2215,35 +2215,35 @@ module ApexFill =
             ?shade: string,
             ?``type``: string,
             ?shadeIntensity: float,
-            ?gradientToColors: ResizeArray<string>,
+            ?gradientToColors: array<string>,
             ?inverseColors: bool,
-            ?opacityFrom: U2<float, ResizeArray<float>>,
-            ?opacityTo: U2<float, ResizeArray<float>>,
-            ?stops: ResizeArray<float>,
-            ?colorStops: U2<ResizeArray<ResizeArray<ApexColorStop>>, ResizeArray<ApexColorStop>>
+            ?opacityFrom: U2<float, array<float>>,
+            ?opacityTo: U2<float, array<float>>,
+            ?stops: array<float>,
+            ?colorStops: U2<array<array<ApexColorStop>>, array<ApexColorStop>>
         ) =
 
         member val shade : string  = nativeOnly with get, set
         member val ``type`` : string  = nativeOnly with get, set
         member val shadeIntensity : float  = nativeOnly with get, set
-        member val gradientToColors : ResizeArray<string>  = nativeOnly with get, set
+        member val gradientToColors : array<string>  = nativeOnly with get, set
         member val inverseColors : bool  = nativeOnly with get, set
-        member val opacityFrom : U2<float, ResizeArray<float>>  = nativeOnly with get, set
-        member val opacityTo : U2<float, ResizeArray<float>>  = nativeOnly with get, set
-        member val stops : ResizeArray<float>  = nativeOnly with get, set
-        member val colorStops : U2<ResizeArray<ResizeArray<ApexColorStop>>, ResizeArray<ApexColorStop>>  = nativeOnly with get, set
+        member val opacityFrom : U2<float, array<float>>  = nativeOnly with get, set
+        member val opacityTo : U2<float, array<float>>  = nativeOnly with get, set
+        member val stops : array<float>  = nativeOnly with get, set
+        member val colorStops : U2<array<array<ApexColorStop>>, array<ApexColorStop>>  = nativeOnly with get, set
 
     [<Global>]
     [<AllowNullLiteral>]
     type image
         [<ParamObject; Emit("$0")>]
         (
-            ?src: U2<string, ResizeArray<string>>,
+            ?src: U2<string, array<string>>,
             ?width: float,
             ?height: float
         ) =
 
-        member val src : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+        member val src : U2<string, array<string>>  = nativeOnly with get, set
         member val width : float  = nativeOnly with get, set
         member val height : float  = nativeOnly with get, set
 
@@ -2252,13 +2252,13 @@ module ApexFill =
     type pattern
         [<ParamObject; Emit("$0")>]
         (
-            ?style: U2<string, ResizeArray<string>>,
+            ?style: U2<string, array<string>>,
             ?width: float,
             ?height: float,
             ?strokeWidth: float
         ) =
 
-        member val style : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+        member val style : U2<string, array<string>>  = nativeOnly with get, set
         member val width : float  = nativeOnly with get, set
         member val height : float  = nativeOnly with get, set
         member val strokeWidth : float  = nativeOnly with get, set
@@ -2285,11 +2285,11 @@ module ApexLegend =
     type labels
         [<ParamObject; Emit("$0")>]
         (
-            ?colors: U2<string, ResizeArray<string>>,
+            ?colors: U2<string, array<string>>,
             ?useSeriesColors: bool
         ) =
 
-        member val colors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+        member val colors : U2<string, array<string>>  = nativeOnly with get, set
         member val useSeriesColors : bool  = nativeOnly with get, set
 
     [<Global>]
@@ -2301,7 +2301,7 @@ module ApexLegend =
             onClick: unit,
             ?size: float,
             ?strokeWidth: float,
-            ?fillColors: ResizeArray<string>,
+            ?fillColors: array<string>,
             ?shape: ApexMarkerShape,
             ?offsetX: float,
             ?offsetY: float
@@ -2311,7 +2311,7 @@ module ApexLegend =
         member val onClick : unit = nativeOnly with get, set
         member val size : float  = nativeOnly with get, set
         member val strokeWidth : float  = nativeOnly with get, set
-        member val fillColors : ResizeArray<string>  = nativeOnly with get, set
+        member val fillColors : array<string>  = nativeOnly with get, set
         member val shape : ApexMarkerShape  = nativeOnly with get, set
         member val offsetX : float  = nativeOnly with get, set
         member val offsetY : float  = nativeOnly with get, set
@@ -2409,13 +2409,13 @@ module ApexDataLabels =
             ?fontSize: string,
             ?fontFamily: string,
             ?fontWeight: U2<string, float>,
-            ?colors: ResizeArray<obj>
+            ?colors: array<obj>
         ) =
 
         member val fontSize : string  = nativeOnly with get, set
         member val fontFamily : string  = nativeOnly with get, set
         member val fontWeight : U2<string, float>  = nativeOnly with get, set
-        member val colors : ResizeArray<obj>  = nativeOnly with get, set
+        member val colors : array<obj>  = nativeOnly with get, set
 
     [<Global>]
     [<AllowNullLiteral>]
@@ -2509,11 +2509,11 @@ module ApexTooltip =
         [<ParamObject; Emit("$0")>]
         (
             ?show: bool,
-            ?fillColors: ResizeArray<string>
+            ?fillColors: array<string>
         ) =
 
         member val show : bool  = nativeOnly with get, set
-        member val fillColors : ResizeArray<string>  = nativeOnly with get, set
+        member val fillColors : array<string>  = nativeOnly with get, set
 
     [<Global>]
     [<AllowNullLiteral>]
@@ -2555,7 +2555,7 @@ module ApexXAxis =
     type labels
         [<ParamObject; Emit("$0")>]
         (
-            formatter: U2<string, ResizeArray<string>>,
+            formatter: U2<string, array<string>>,
             ?show: bool,
             ?rotate: float,
             ?rotateAlways: bool,
@@ -2572,7 +2572,7 @@ module ApexXAxis =
             ?datetimeFormatter: ApexXAxis.labels.datetimeFormatter
         ) =
 
-        member val formatter : U2<string, ResizeArray<string>> = nativeOnly with get, set
+        member val formatter : U2<string, array<string>> = nativeOnly with get, set
         member val show : bool  = nativeOnly with get, set
         member val rotate : float  = nativeOnly with get, set
         member val rotateAlways : bool  = nativeOnly with get, set
@@ -2593,11 +2593,11 @@ module ApexXAxis =
     type group
         [<ParamObject; Emit("$0")>]
         (
-            ?groups: ResizeArray<ApexXAxis.group.groups>,
+            ?groups: array<ApexXAxis.group.groups>,
             ?style: ApexXAxis.group.style
         ) =
 
-        member val groups : ResizeArray<ApexXAxis.group.groups>  = nativeOnly with get, set
+        member val groups : array<ApexXAxis.group.groups>  = nativeOnly with get, set
         member val style : ApexXAxis.group.style  = nativeOnly with get, set
 
     [<Global>]
@@ -2704,14 +2704,14 @@ module ApexXAxis =
         type style
             [<ParamObject; Emit("$0")>]
             (
-                ?colors: U2<string, ResizeArray<string>>,
+                ?colors: U2<string, array<string>>,
                 ?fontSize: string,
                 ?fontFamily: string,
                 ?fontWeight: U2<string, float>,
                 ?cssClass: string
             ) =
 
-            member val colors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val colors : U2<string, array<string>>  = nativeOnly with get, set
             member val fontSize : string  = nativeOnly with get, set
             member val fontFamily : string  = nativeOnly with get, set
             member val fontWeight : U2<string, float>  = nativeOnly with get, set
@@ -2756,14 +2756,14 @@ module ApexXAxis =
         type style
             [<ParamObject; Emit("$0")>]
             (
-                ?colors: U2<string, ResizeArray<string>>,
+                ?colors: U2<string, array<string>>,
                 ?fontSize: string,
                 ?fontFamily: string,
                 ?fontWeight: U2<string, float>,
                 ?cssClass: string
             ) =
 
-            member val colors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val colors : U2<string, array<string>>  = nativeOnly with get, set
             member val fontSize : string  = nativeOnly with get, set
             member val fontFamily : string  = nativeOnly with get, set
             member val fontWeight : U2<string, float>  = nativeOnly with get, set
@@ -2828,14 +2828,14 @@ module ApexXAxis =
                 (
                     ?colorFrom: string,
                     ?colorTo: string,
-                    ?stops: ResizeArray<float>,
+                    ?stops: array<float>,
                     ?opacityFrom: float,
                     ?opacityTo: float
                 ) =
 
                 member val colorFrom : string  = nativeOnly with get, set
                 member val colorTo : string  = nativeOnly with get, set
-                member val stops : ResizeArray<float>  = nativeOnly with get, set
+                member val stops : array<float>  = nativeOnly with get, set
                 member val opacityFrom : float  = nativeOnly with get, set
                 member val opacityTo : float  = nativeOnly with get, set
 
@@ -2860,7 +2860,7 @@ module ApexYAxis =
     type labels
         [<ParamObject; Emit("$0")>]
         (
-            formatter: U2<string, ResizeArray<string>>,
+            formatter: U2<string, array<string>>,
             ?show: bool,
             ?showDuplicates: bool,
             ?minWidth: float,
@@ -2873,7 +2873,7 @@ module ApexYAxis =
             ?style: ApexYAxis.labels.style
         ) =
 
-        member val formatter : U2<string, ResizeArray<string>> = nativeOnly with get, set
+        member val formatter : U2<string, array<string>> = nativeOnly with get, set
         member val show : bool  = nativeOnly with get, set
         member val showDuplicates : bool  = nativeOnly with get, set
         member val minWidth : float  = nativeOnly with get, set
@@ -2979,14 +2979,14 @@ module ApexYAxis =
         type style
             [<ParamObject; Emit("$0")>]
             (
-                ?colors: U2<string, ResizeArray<string>>,
+                ?colors: U2<string, array<string>>,
                 ?fontSize: string,
                 ?fontWeight: U2<string, float>,
                 ?fontFamily: string,
                 ?cssClass: string
             ) =
 
-            member val colors : U2<string, ResizeArray<string>>  = nativeOnly with get, set
+            member val colors : U2<string, array<string>>  = nativeOnly with get, set
             member val fontSize : string  = nativeOnly with get, set
             member val fontWeight : U2<string, float>  = nativeOnly with get, set
             member val fontFamily : string  = nativeOnly with get, set
@@ -3061,11 +3061,11 @@ module ApexGrid =
     type row
         [<ParamObject; Emit("$0")>]
         (
-            ?colors: ResizeArray<string>,
+            ?colors: array<string>,
             ?opacity: float
         ) =
 
-        member val colors : ResizeArray<string>  = nativeOnly with get, set
+        member val colors : array<string>  = nativeOnly with get, set
         member val opacity : float  = nativeOnly with get, set
 
     [<Global>]
@@ -3073,11 +3073,11 @@ module ApexGrid =
     type column
         [<ParamObject; Emit("$0")>]
         (
-            ?colors: ResizeArray<string>,
+            ?colors: array<string>,
             ?opacity: float
         ) =
 
-        member val colors : ResizeArray<string>  = nativeOnly with get, set
+        member val colors : array<string>  = nativeOnly with get, set
         member val opacity : float  = nativeOnly with get, set
 
     [<Global>]

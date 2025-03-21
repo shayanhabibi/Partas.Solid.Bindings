@@ -35,6 +35,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.Motion", "Part
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Utilities.StructuredTypes", "Partas.Utilities.StructuredTypes\Partas.Utilities.StructuredTypes.fsproj", "{EE6DC8A1-28A1-4C09-8FFF-62ADD1A60974}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Partas.Solid.EmblaCarousel", "Partas.Solid.EmblaCarousel\Partas.Solid.EmblaCarousel.fsproj", "{CE94D8BC-05E3-4FB8-9309-BC06FE127C38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{EE6DC8A1-28A1-4C09-8FFF-62ADD1A60974}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE6DC8A1-28A1-4C09-8FFF-62ADD1A60974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE6DC8A1-28A1-4C09-8FFF-62ADD1A60974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE94D8BC-05E3-4FB8-9309-BC06FE127C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE94D8BC-05E3-4FB8-9309-BC06FE127C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE94D8BC-05E3-4FB8-9309-BC06FE127C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE94D8BC-05E3-4FB8-9309-BC06FE127C38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2AE17EDA-86D2-43F0-A2AE-95E4371E0968} = {ED6B8ED3-9197-4CE5-8D74-453054E2E857}
@@ -112,5 +118,6 @@ Global
 		{9446F5A2-CCCF-4118-9687-042862CF6B5D} = {ED6B8ED3-9197-4CE5-8D74-453054E2E857}
 		{786121B2-1A8D-4FB3-AE89-5658190D3D14} = {ED6B8ED3-9197-4CE5-8D74-453054E2E857}
 		{EE6DC8A1-28A1-4C09-8FFF-62ADD1A60974} = {ED6B8ED3-9197-4CE5-8D74-453054E2E857}
+		{CE94D8BC-05E3-4FB8-9309-BC06FE127C38} = {ED6B8ED3-9197-4CE5-8D74-453054E2E857}
 	EndGlobalSection
 EndGlobal

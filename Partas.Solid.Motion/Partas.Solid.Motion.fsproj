@@ -6,10 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="LibDom.fs" />
-        <Compile Include="Utils.fs" />
-        <Compile Include="Program.fs" />
+        <Compile Include="LibDom\LibDom.fs" />
+        <Compile Include="LibDom\CSSStyleDeclaration.fs" />
+        <Compile Include="LibDom\Types.fs" />
+        <Compile Include="LibDom\Utils.fs" />
         <Compile Include="Types.fs" />
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
