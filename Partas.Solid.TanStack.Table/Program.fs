@@ -566,10 +566,7 @@ module rec Types =
         type RowSelectionTableState = interface end
         type RowSelectionState = Map<string, bool>
         
-        
-        
-        [<AllowNullLiteral;Interface>]
-        type OnChangeFn<'State> = interface end
+        type OnChangeFn<'State> = Updater<'State> -> unit     
         
         [<StringEnum>]
         type ColumnPinningPosition =
