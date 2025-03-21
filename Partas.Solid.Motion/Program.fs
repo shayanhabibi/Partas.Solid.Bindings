@@ -42,7 +42,7 @@ module Context =
         member val exit: string = exit |> _.Value with get, set
 
 
-[<Erase>]
+[<Erase; AutoOpen>]
 module Extensions =
     type AttrKey with
         member _.tag
@@ -76,11 +76,18 @@ type Motion() =
     interface AttrKey
     // Enable polymorphism with the tag attribute name
     interface Polymorph
-    [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: TagValue = unbox null with get,set
+    [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: string = unbox null with get,set
     [<Erase>]
     member this.tag
-        with inline set(value: TagValue) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
-        and inline get(): TagValue = this.``__PARTAS_POLYMORPHIC__tag``
+        with inline set(value: string) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
+        and inline get(): string = this.``__PARTAS_POLYMORPHIC__tag``
+
+[<Import("Presence", "solid-motionone")>]
+type Presence() =
+    interface HtmlContainer
+    [<Erase>] member val exitBeforeEnter: bool = unbox null with get,set
+    [<Erase>] member val initial: bool = unbox null with get,set
+    
 
 // [<AbstractClass>]
 // [<Erase>]

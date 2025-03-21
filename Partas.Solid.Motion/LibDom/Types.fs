@@ -1,4 +1,4 @@
-﻿module rec Partas.Solid.Motion.Types
+﻿namespace rec Partas.Solid.Motion
 
 open Partas.Solid.Motion.LibDom
 open Fable.Core
