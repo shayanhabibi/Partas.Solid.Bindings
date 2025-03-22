@@ -385,7 +385,7 @@ type LucideLab =
     static member inline wineGlassBottle : LucideLab = unbox "wineGlassBottle" 
     static member inline yarnBall : LucideLab = unbox "yarnBall" 
     static member inline yinYang : LucideLab = unbox "yinYang" 
-[<Erase;Import("Icon",LucideIcons)>]
+[<Erase;Import("Icon","solid-lucide")>]
 type Icon() =
     inherit IconNode()
     member val iconNode : LucideLab = jsNative with get,set
