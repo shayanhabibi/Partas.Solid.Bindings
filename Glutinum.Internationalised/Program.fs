@@ -5,46 +5,77 @@ open Fable.Core.JsInterop
 open System
 
 module Intl =
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type ResolvedDateTimeFormatOptions =
-        abstract member locale: string with get, set
-        abstract member calendar: string with get, set
-        abstract member numberingSystem: string with get, set
-        abstract member timeZone: string with get, set
-        abstract member hour12: bool option with get, set
-        abstract member weekday: string option with get, set
-        abstract member era: string option with get, set
-        abstract member year: string option with get, set
-        abstract member month: string option with get, set
-        abstract member day: string option with get, set
-        abstract member hour: string option with get, set
-        abstract member minute: string option with get, set
-        abstract member second: string option with get, set
-        abstract member timeZoneName: string option with get, set
+    [<JS.Pojo>]
+    type ResolvedDateTimeFormatOptions
+        (
+            ?locale: string,
+            ?calendar: string,
+            ?numberingSystem: string,
+            ?timeZone: string,
+            ?hour12: bool option,
+            ?weekday: string option,
+            ?era: string option,
+            ?year: string option,
+            ?month: string option,
+            ?day: string option,
+            ?hour: string option,
+            ?minute: string option,
+            ?second: string option,
+            ?timeZoneName: string option
+        ) =
+        member val locale: string = JS.undefined with get, set
+        member val calendar: string = JS.undefined with get, set
+        member val numberingSystem: string = JS.undefined with get, set
+        member val timeZone: string = JS.undefined with get, set
+        member val hour12: bool option = JS.undefined with get, set
+        member val weekday: string option = JS.undefined with get, set
+        member val era: string option = JS.undefined with get, set
+        member val year: string option = JS.undefined with get, set
+        member val month: string option = JS.undefined with get, set
+        member val day: string option = JS.undefined with get, set
+        member val hour: string option = JS.undefined with get, set
+        member val minute: string option = JS.undefined with get, set
+        member val second: string option = JS.undefined with get, set
+        member val timeZoneName: string option = JS.undefined with get, set
 
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type DateTimeFormat =
-        abstract member format: ?date: U2<JS.Date, float> -> string
-        abstract member resolvedOptions: unit -> ResolvedDateTimeFormatOptions
+    [<JS.Pojo>]
+    type DateTimeFormat
+        (?format: U2<JS.Date, float> -> string, ?resolvedOptions: unit -> ResolvedDateTimeFormatOptions) =
+        member val format: U2<JS.Date, float> -> string = JS.undefined with get,set
+        member val resolvedOptions: unit -> ResolvedDateTimeFormatOptions = JS.undefined with get,set
 
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type DateTimeFormatOptions =
-        abstract member localeMatcher: DateTimeFormatOptions.localeMatcher option with get, set
-        abstract member weekday: DateTimeFormatOptions.weekday option with get, set
-        abstract member era: DateTimeFormatOptions.era option with get, set
-        abstract member year: DateTimeFormatOptions.year option with get, set
-        abstract member month: DateTimeFormatOptions.month option with get, set
-        abstract member day: DateTimeFormatOptions.day option with get, set
-        abstract member hour: DateTimeFormatOptions.hour option with get, set
-        abstract member minute: DateTimeFormatOptions.minute option with get, set
-        abstract member second: DateTimeFormatOptions.second option with get, set
-        abstract member timeZoneName: DateTimeFormatOptions.timeZoneName option with get, set
-        abstract member formatMatcher: DateTimeFormatOptions.formatMatcher option with get, set
-        abstract member hour12: bool option with get, set
-        abstract member timeZone: string option with get, set
+    [<JS.Pojo>]
+    type DateTimeFormatOptions
+        (
+            ?localeMatcher: DateTimeFormatOptions.localeMatcher option,
+            ?weekday: DateTimeFormatOptions.weekday option,
+            ?era: DateTimeFormatOptions.era option,
+            ?year: DateTimeFormatOptions.year option,
+            ?month: DateTimeFormatOptions.month option,
+            ?day: DateTimeFormatOptions.day option,
+            ?hour: DateTimeFormatOptions.hour option,
+            ?minute: DateTimeFormatOptions.minute option,
+            ?second: DateTimeFormatOptions.second option,
+            ?timeZoneName: DateTimeFormatOptions.timeZoneName option,
+            ?formatMatcher: DateTimeFormatOptions.formatMatcher option,
+            ?hour12: bool option,
+            ?timeZone: string option
+        ) =
+        member val localeMatcher: DateTimeFormatOptions.localeMatcher option = JS.undefined with get, set
+        member val weekday: DateTimeFormatOptions.weekday option = JS.undefined with get, set
+        member val era: DateTimeFormatOptions.era option = JS.undefined with get, set
+        member val year: DateTimeFormatOptions.year option = JS.undefined with get, set
+        member val month: DateTimeFormatOptions.month option = JS.undefined with get, set
+        member val day: DateTimeFormatOptions.day option = JS.undefined with get, set
+        member val hour: DateTimeFormatOptions.hour option = JS.undefined with get, set
+        member val minute: DateTimeFormatOptions.minute option = JS.undefined with get, set
+        member val second: DateTimeFormatOptions.second option = JS.undefined with get, set
+        member val timeZoneName: DateTimeFormatOptions.timeZoneName option = JS.undefined with get, set
+        member val formatMatcher: DateTimeFormatOptions.formatMatcher option = JS.undefined with get, set
+        member val hour12: bool option = JS.undefined with get, set
+        member val timeZone: string option = JS.undefined with get, set
+
+
 
     module DateTimeFormatOptions =
 
@@ -123,19 +154,31 @@ module Intl =
             | ``best fit``
             | basic
 
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type ResolvedNumberFormatOptions =
-        abstract member locale: string with get, set
-        abstract member numberingSystem: string with get, set
-        abstract member style: string with get, set
-        abstract member currency: string option with get, set
-        abstract member minimumIntegerDigits: float with get, set
-        abstract member minimumFractionDigits: float with get, set
-        abstract member maximumFractionDigits: float with get, set
-        abstract member minimumSignificantDigits: float option with get, set
-        abstract member maximumSignificantDigits: float option with get, set
-        abstract member useGrouping: bool with get, set
+    [<JS.Pojo>]
+    type ResolvedNumberFormatOptions
+        (
+            ?locale: string,
+            ?numberingSystem: string,
+            ?style: string,
+            ?currency: string,
+            ?minimumIntegerDigits: float,
+            ?minimumFractionDigits: float,
+            ?maximumFractionDigits: float,
+            ?minimumSignificantDigits: float,
+            ?maximumSignificantDigits: float,
+            ?useGrouping: bool
+        ) =
+        member val locale: string = JS.undefined with get, set
+        member val numberingSystem: string = JS.undefined with get, set
+        member val style: string = JS.undefined with get, set
+        member val currency: string = JS.undefined with get, set
+        member val minimumIntegerDigits: float = JS.undefined with get, set
+        member val minimumFractionDigits: float = JS.undefined with get, set
+        member val maximumFractionDigits: float = JS.undefined with get, set
+        member val minimumSignificantDigits: float = JS.undefined with get, set
+        member val maximumSignificantDigits: float = JS.undefined with get, set
+        member val useGrouping: bool = JS.undefined with get, set
+
 
     [<AllowNullLiteral>]
     [<Interface>]
@@ -143,37 +186,42 @@ module Intl =
         abstract member format: value: float -> string
         abstract member resolvedOptions: unit -> ResolvedNumberFormatOptions
 
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type NumberFormatOptions =
-        abstract member localeMatcher: string option with get, set
-        abstract member style: string option with get, set
-        abstract member currency: string option with get, set
-        abstract member currencySign: string option with get, set
-        abstract member useGrouping: bool option with get, set
-        abstract member minimumIntegerDigits: float option with get, set
-        abstract member minimumFractionDigits: float option with get, set
-        abstract member maximumFractionDigits: float option with get, set
-        abstract member minimumSignificantDigits: float option with get, set
-        abstract member maximumSignificantDigits: float option with get, set
+[<JS.Pojo>]
+type NumberFormatOptions
+    (
+        ?localeMatcher: string,
+        ?style: string,
+        ?currency: string,
+        ?currencySign: string,
+        ?useGrouping: bool,
+        ?minimumIntegerDigits: float,
+        ?minimumFractionDigits: float,
+        ?maximumFractionDigits: float,
+        ?minimumSignificantDigits: float,
+        ?maximumSignificantDigits: float,
+        ?numberingSystem: string
+    ) =
+    member val localeMatcher: string option = JS.undefined with get, set
+    member val style: string option = JS.undefined with get, set
+    member val currency: string option = JS.undefined with get, set
+    member val currencySign: string option = JS.undefined with get, set
+    member val useGrouping: bool option = JS.undefined with get, set
+    member val minimumIntegerDigits: float option = JS.undefined with get, set
+    member val minimumFractionDigits: float option = JS.undefined with get, set
+    member val maximumFractionDigits: float option = JS.undefined with get, set
+    member val minimumSignificantDigits: float option = JS.undefined with get, set
+    member val maximumSignificantDigits: float option = JS.undefined with get, set
+    member val numberingSystem: string option = JS.undefined with get,set
+
 
 
 [<AbstractClass>]
 [<Erase>]
 type Exports =
-    [<Import("NumberFormatter", "REPLACE_ME_WITH_MODULE_NAME"); EmitConstructor>]
+    [<Import("NumberFormatter", "@internationalized/date"); EmitConstructor>]
     static member NumberFormatter (locale: string, ?options: NumberFormatOptions) : NumberFormatter = nativeOnly
-    [<Import("NumberParser", "REPLACE_ME_WITH_MODULE_NAME"); EmitConstructor>]
-    static member NumberParser (locale: string, ?options: Intl.NumberFormatOptions) : NumberParser = nativeOnly
-
-[<AllowNullLiteral>]
-[<Interface>]
-type NumberFormatOptions =
-    inherit Intl.NumberFormatOptions
-    /// <summary>
-    /// Overrides default numbering system for the current locale.
-    /// </summary>
-    abstract member numberingSystem: string option with get, set
+    [<Import("NumberParser", "@internationalized/date"); EmitConstructor>]
+    static member NumberParser (locale: string, ?options: NumberFormatOptions) : NumberParser = nativeOnly
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -649,7 +697,7 @@ type CalendarDateTime =
     abstract member copy: unit -> CalendarDateTime
     abstract member add: duration: DateTimeDuration -> CalendarDateTime
     abstract member subtract: duration: DateTimeDuration -> CalendarDateTime
-    abstract member set: fields: CalendarDateTime.set.fields -> CalendarDateTime
+    abstract member set: fields: DateTimeConstructor -> CalendarDateTime
     abstract member cycle: field: U2<DateField, TimeField> * amount: float * ?options: CycleTimeOptions -> CalendarDateTime
     abstract member toDate: timeZone: string * ?disambiguation: Disambiguation -> JS.Date
     abstract member toString: unit -> string
@@ -707,7 +755,7 @@ type ZonedDateTime =
     abstract member copy: unit -> ZonedDateTime
     abstract member add: duration: DateTimeDuration -> ZonedDateTime
     abstract member subtract: duration: DateTimeDuration -> ZonedDateTime
-    abstract member set: fields: ZonedDateTime.set.fields * ?disambiguation: Disambiguation -> ZonedDateTime
+    abstract member set: fields: DateTimeConstructor * ?disambiguation: Disambiguation -> ZonedDateTime
     abstract member cycle: field: U2<DateField, TimeField> * amount: float * ?options: CycleTimeOptions -> ZonedDateTime
     abstract member toDate: unit -> JS.Date
     abstract member toString: unit -> string
@@ -787,67 +835,96 @@ type Calendar =
     abstract member constrainDate: date: AnyCalendarDate -> unit
     abstract member isInverseEra: date: AnyCalendarDate -> bool
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DateDuration =
+[<JS.Pojo>]
+type DateDuration(?years: int, ?months: int, ?weeks: int, ?days: int) =
     /// <summary>
     /// The number of years to add or subtract.
     /// </summary>
-    abstract member years: float option with get, set
+    member val years: int = JS.undefined with get, set
     /// <summary>
     /// The number of months to add or subtract.
     /// </summary>
-    abstract member months: float option with get, set
+    member val months: int = JS.undefined with get, set
     /// <summary>
     /// The number of weeks to add or subtract.
     /// </summary>
-    abstract member weeks: float option with get, set
+    member val weeks: int = JS.undefined with get, set
     /// <summary>
     /// The number of days to add or subtract.
     /// </summary>
-    abstract member days: float option with get, set
+    member val days: int = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TimeDuration =
+
+
+[<JS.Pojo>]
+type TimeDuration(?hours: int, ?minutes: int, ?seconds: int, ?milliseconds: int) =
     /// <summary>
     /// The number of hours to add or subtract.
     /// </summary>
-    abstract member hours: float option with get, set
+    member val hours: int = JS.undefined with get, set
     /// <summary>
     /// The number of minutes to add or subtract.
     /// </summary>
-    abstract member minutes: float option with get, set
+    member val minutes: int = JS.undefined with get, set
     /// <summary>
     /// The number of seconds to add or subtract.
     /// </summary>
-    abstract member seconds: float option with get, set
+    member val seconds: int = JS.undefined with get, set
     /// <summary>
     /// The number of milliseconds to add or subtract.
     /// </summary>
-    abstract member milliseconds: float option with get, set
+    member val milliseconds: int = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DateTimeDuration =
-    inherit DateDuration
-    inherit TimeDuration
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DateFields =
-    abstract member era: string option with get, set
-    abstract member year: float option with get, set
-    abstract member month: float option with get, set
-    abstract member day: float option with get, set
+[<JS.Pojo>]
+type DateTimeDuration(?years: int, ?months: int, ?weeks: int, ?days: int, ?hours: int, ?minutes: int, ?seconds: int, ?milliseconds: int) =
+    /// <summary>
+    /// The number of years to add or subtract.
+    /// </summary>
+    member val years: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of months to add or subtract.
+    /// </summary>
+    member val months: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of weeks to add or subtract.
+    /// </summary>
+    member val weeks: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of days to add or subtract.
+    /// </summary>
+    member val days: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of hours to add or subtract.
+    /// </summary>
+    member val hours: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of minutes to add or subtract.
+    /// </summary>
+    member val minutes: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of seconds to add or subtract.
+    /// </summary>
+    member val seconds: int = JS.undefined with get, set
+    /// <summary>
+    /// The number of milliseconds to add or subtract.
+    /// </summary>
+    member val milliseconds: int = JS.undefined with get, set
+    
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TimeFields =
-    abstract member hour: float option with get, set
-    abstract member minute: float option with get, set
-    abstract member second: float option with get, set
-    abstract member millisecond: float option with get, set
+[<JS.Pojo>]
+type DateFields(?era: string, ?year: int, ?month: int, ?day: int) =
+    member val era: string option = JS.undefined with get, set
+    member val year: int option = JS.undefined with get, set
+    member val month: int option = JS.undefined with get, set
+    member val day: int option = JS.undefined with get, set
+
+[<JS.Pojo>]
+type TimeFields(?hour: int, ?minute: int, ?second: int, ?millisecond: int) =
+    member val hour: int option = JS.undefined with get, set
+    member val minute: int option = JS.undefined with get, set
+    member val second: int option = JS.undefined with get, set
+    member val millisecond: int option = JS.undefined with get, set
 
 [<RequireQualifiedAccess>]
 [<StringEnum(CaseRules.None)>]
@@ -1077,47 +1154,41 @@ type DateRangeFormatPart =
     // inherit Intl.DateTimeFormatPart
     abstract member source: DateRangeFormatPart.source with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DateFormatter =
-    inherit Intl.DateTimeFormat
-    abstract member format: value: JS.Date -> string
-    // abstract member formatToParts: value: JS.Date -> ResizeArray<Intl.DateTimeFormatPart>
-    abstract member formatRange: start: JS.Date * ``end``: JS.Date -> string
-    abstract member formatRangeToParts: start: JS.Date * ``end``: JS.Date -> ResizeArray<DateRangeFormatPart>
-    abstract member resolvedOptions: unit -> Intl.ResolvedDateTimeFormatOptions
+[<JS.Pojo>]
+type DateFormatter
+    (
+        ?format: JS.Date -> string,
+        ?formatRange: JS.Date * JS.Date -> string,
+        ?formatRangeToParts: JS.Date * JS.Date -> ResizeArray<DateRangeFormatPart>,
+        ?resolvedOptions: unit -> Intl.ResolvedDateTimeFormatOptions
+    ) =
+    inherit Intl.DateTimeFormat()
+    member val format: JS.Date -> string = JS.undefined with get,set
+    member val formatRange: JS.Date * JS.Date -> string = JS.undefined with get,set
+    member val formatRangeToParts: JS.Date * JS.Date -> ResizeArray<DateRangeFormatPart> = JS.undefined with get,set
+    member val resolvedOptions: unit -> Intl.ResolvedDateTimeFormatOptions = JS.undefined with get,set
 
-module CalendarDateTime =
 
-    module set =
-
-        [<AllowNullLiteral>]
-        [<Interface>]
-        type fields =
-            abstract member era: string option with get, set
-            abstract member year: float option with get, set
-            abstract member month: float option with get, set
-            abstract member day: float option with get, set
-            abstract member hour: float option with get, set
-            abstract member minute: float option with get, set
-            abstract member second: float option with get, set
-            abstract member millisecond: float option with get, set
-
-module ZonedDateTime =
-
-    module set =
-
-        [<AllowNullLiteral>]
-        [<Interface>]
-        type fields =
-            abstract member era: string option with get, set
-            abstract member year: float option with get, set
-            abstract member month: float option with get, set
-            abstract member day: float option with get, set
-            abstract member hour: float option with get, set
-            abstract member minute: float option with get, set
-            abstract member second: float option with get, set
-            abstract member millisecond: float option with get, set
+[<JS.Pojo>]
+type DateTimeConstructor
+    (
+        ?era: string,
+        ?year: int,
+        ?month: int,
+        ?day: int,
+        ?hour: int,
+        ?minute: int,
+        ?second: int,
+        ?millisecond: int
+    ) =
+    member val era: string = JS.undefined with get, set
+    member val year: int = JS.undefined with get, set
+    member val month: int = JS.undefined with get, set
+    member val day: int = JS.undefined with get, set
+    member val hour: int = JS.undefined with get, set
+    member val minute: int = JS.undefined with get, set
+    member val second: int = JS.undefined with get, set
+    member val millisecond: int = JS.undefined with get, set
 
 module CycleTimeOptions =
 

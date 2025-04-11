@@ -1880,3 +1880,994 @@ type CSSStyleDeclaration =
     abstract member setProperty: property: string * value: string option * ?priority: string -> unit
     [<EmitIndexer>]
     abstract member Item: index: float -> string with get, set
+
+[<JS.Pojo>]
+type CssStyleDeclaration(
+        ?accentColor: string,
+        ?alignContent: string,
+        ?alignItems: string,
+        ?alignSelf: string,
+        ?alignmentBaseline: string,
+        ?all: string,
+        ?animation: string,
+        ?animationComposition: string,
+        ?animationDelay: string,
+        ?animationDirection: string,
+        ?animationDuration: string,
+        ?animationFillMode: string,
+        ?animationIterationCount: string,
+        ?animationName: string,
+        ?animationPlayState: string,
+        ?animationTimingFunction: string,
+        ?appearance: string,
+        ?aspectRatio: string,
+        ?backdropFilter: string,
+        ?backfaceVisibility: string,
+        ?background: string,
+        ?backgroundAttachment: string,
+        ?backgroundBlendMode: string,
+        ?backgroundClip: string,
+        ?backgroundColor: string,
+        ?backgroundImage: string,
+        ?backgroundOrigin: string,
+        ?backgroundPosition: string,
+        ?backgroundPositionX: string,
+        ?backgroundPositionY: string,
+        ?backgroundRepeat: string,
+        ?backgroundSize: string,
+        ?baselineShift: string,
+        ?baselineSource: string,
+        ?blockSize: string,
+        ?border: string,
+        ?borderBlock: string,
+        ?borderBlockColor: string,
+        ?borderBlockEnd: string,
+        ?borderBlockEndColor: string,
+        ?borderBlockEndStyle: string,
+        ?borderBlockEndWidth: string,
+        ?borderBlockStart: string,
+        ?borderBlockStartColor: string,
+        ?borderBlockStartStyle: string,
+        ?borderBlockStartWidth: string,
+        ?borderBlockStyle: string,
+        ?borderBlockWidth: string,
+        ?borderBottom: string,
+        ?borderBottomColor: string,
+        ?borderBottomLeftRadius: string,
+        ?borderBottomRightRadius: string,
+        ?borderBottomStyle: string,
+        ?borderBottomWidth: string,
+        ?borderCollapse: string,
+        ?borderColor: string,
+        ?borderEndEndRadius: string,
+        ?borderEndStartRadius: string,
+        ?borderImage: string,
+        ?borderImageOutset: string,
+        ?borderImageRepeat: string,
+        ?borderImageSlice: string,
+        ?borderImageSource: string,
+        ?borderImageWidth: string,
+        ?borderInline: string,
+        ?borderInlineColor: string,
+        ?borderInlineEnd: string,
+        ?borderInlineEndColor: string,
+        ?borderInlineEndStyle: string,
+        ?borderInlineEndWidth: string,
+        ?borderInlineStart: string,
+        ?borderInlineStartColor: string,
+        ?borderInlineStartStyle: string,
+        ?borderInlineStartWidth: string,
+        ?borderInlineStyle: string,
+        ?borderInlineWidth: string,
+        ?borderLeft: string,
+        ?borderLeftColor: string,
+        ?borderLeftStyle: string,
+        ?borderLeftWidth: string,
+        ?borderRadius: string,
+        ?borderRight: string,
+        ?borderRightColor: string,
+        ?borderRightStyle: string,
+        ?borderRightWidth: string,
+        ?borderSpacing: string,
+        ?borderStartEndRadius: string,
+        ?borderStartStartRadius: string,
+        ?borderStyle: string,
+        ?borderTop: string,
+        ?borderTopColor: string,
+        ?borderTopLeftRadius: string,
+        ?borderTopRightRadius: string,
+        ?borderTopStyle: string,
+        ?borderTopWidth: string,
+        ?borderWidth: string,
+        ?bottom: string,
+        ?boxShadow: string,
+        ?boxSizing: string,
+        ?breakAfter: string,
+        ?breakBefore: string,
+        ?breakInside: string,
+        ?captionSide: string,
+        ?caretColor: string,
+        ?clear: string,
+        ?clip: string,
+        ?clipPath: string,
+        ?clipRule: string,
+        ?color: string,
+        ?colorInterpolation: string,
+        ?colorInterpolationFilters: string,
+        ?colorScheme: string,
+        ?columnCount: string,
+        ?columnFill: string,
+        ?columnGap: string,
+        ?columnRule: string,
+        ?columnRuleColor: string,
+        ?columnRuleStyle: string,
+        ?columnRuleWidth: string,
+        ?columnSpan: string,
+        ?columnWidth: string,
+        ?columns: string,
+        ?contain: string,
+        ?containIntrinsicBlockSize: string,
+        ?containIntrinsicHeight: string,
+        ?containIntrinsicInlineSize: string,
+        ?containIntrinsicSize: string,
+        ?containIntrinsicWidth: string,
+        ?container: string,
+        ?containerName: string,
+        ?containerType: string,
+        ?content: string,
+        ?counterIncrement: string,
+        ?counterReset: string,
+        ?counterSet: string,
+        ?cssFloat: string,
+        ?cssText: string,
+        ?cursor: string,
+        ?cx: string,
+        ?cy: string,
+        ?d: string,
+        ?direction: string,
+        ?display: string,
+        ?dominantBaseline: string,
+        ?emptyCells: string,
+        ?fill: string,
+        ?fillOpacity: string,
+        ?fillRule: string,
+        ?filter: string,
+        ?flex: string,
+        ?flexBasis: string,
+        ?flexDirection: string,
+        ?flexFlow: string,
+        ?flexGrow: string,
+        ?flexShrink: string,
+        ?flexWrap: string,
+        ?float: string,
+        ?floodColor: string,
+        ?floodOpacity: string,
+        ?font: string,
+        ?fontFamily: string,
+        ?fontFeatureSettings: string,
+        ?fontKerning: string,
+        ?fontOpticalSizing: string,
+        ?fontPalette: string,
+        ?fontSize: string,
+        ?fontSizeAdjust: string,
+        ?fontStretch: string,
+        ?fontStyle: string,
+        ?fontSynthesis: string,
+        ?fontSynthesisSmallCaps: string,
+        ?fontSynthesisStyle: string,
+        ?fontSynthesisWeight: string,
+        ?fontVariant: string,
+        ?fontVariantAlternates: string,
+        ?fontVariantCaps: string,
+        ?fontVariantEastAsian: string,
+        ?fontVariantLigatures: string,
+        ?fontVariantNumeric: string,
+        ?fontVariantPosition: string,
+        ?fontVariationSettings: string,
+        ?fontWeight: string,
+        ?forcedColorAdjust: string,
+        ?gap: string,
+        ?grid: string,
+        ?gridArea: string,
+        ?gridAutoColumns: string,
+        ?gridAutoFlow: string,
+        ?gridAutoRows: string,
+        ?gridColumn: string,
+        ?gridColumnEnd: string,
+        ?gridColumnGap: string,
+        ?gridColumnStart: string,
+        ?gridGap: string,
+        ?gridRow: string,
+        ?gridRowEnd: string,
+        ?gridRowGap: string,
+        ?gridRowStart: string,
+        ?gridTemplate: string,
+        ?gridTemplateAreas: string,
+        ?gridTemplateColumns: string,
+        ?gridTemplateRows: string,
+        ?height: string,
+        ?hyphenateCharacter: string,
+        ?hyphens: string,
+        ?imageOrientation: string,
+        ?imageRendering: string,
+        ?inlineSize: string,
+        ?inset: string,
+        ?insetBlock: string,
+        ?insetBlockEnd: string,
+        ?insetBlockStart: string,
+        ?insetInline: string,
+        ?insetInlineEnd: string,
+        ?insetInlineStart: string,
+        ?isolation: string,
+        ?justifyContent: string,
+        ?justifyItems: string,
+        ?justifySelf: string,
+        ?left: string,
+        ?length: float,
+        ?letterSpacing: string,
+        ?lightingColor: string,
+        ?lineBreak: string,
+        ?lineHeight: string,
+        ?listStyle: string,
+        ?listStyleImage: string,
+        ?listStylePosition: string,
+        ?listStyleType: string,
+        ?margin: string,
+        ?marginBlock: string,
+        ?marginBlockEnd: string,
+        ?marginBlockStart: string,
+        ?marginBottom: string,
+        ?marginInline: string,
+        ?marginInlineEnd: string,
+        ?marginInlineStart: string,
+        ?marginLeft: string,
+        ?marginRight: string,
+        ?marginTop: string,
+        ?marker: string,
+        ?markerEnd: string,
+        ?markerMid: string,
+        ?markerStart: string,
+        ?mask: string,
+        ?maskClip: string,
+        ?maskComposite: string,
+        ?maskImage: string,
+        ?maskMode: string,
+        ?maskOrigin: string,
+        ?maskPosition: string,
+        ?maskRepeat: string,
+        ?maskSize: string,
+        ?maskType: string,
+        ?mathDepth: string,
+        ?mathStyle: string,
+        ?maxBlockSize: string,
+        ?maxHeight: string,
+        ?maxInlineSize: string,
+        ?maxWidth: string,
+        ?minBlockSize: string,
+        ?minHeight: string,
+        ?minInlineSize: string,
+        ?minWidth: string,
+        ?mixBlendMode: string,
+        ?objectFit: string,
+        ?objectPosition: string,
+        ?offset: string,
+        ?offsetAnchor: string,
+        ?offsetDistance: string,
+        ?offsetPath: string,
+        ?offsetPosition: string,
+        ?offsetRotate: string,
+        ?opacity: string,
+        ?order: string,
+        ?orphans: string,
+        ?outline: string,
+        ?outlineColor: string,
+        ?outlineOffset: string,
+        ?outlineStyle: string,
+        ?outlineWidth: string,
+        ?overflow: string,
+        ?overflowAnchor: string,
+        ?overflowClipMargin: string,
+        ?overflowWrap: string,
+        ?overflowX: string,
+        ?overflowY: string,
+        ?overscrollBehavior: string,
+        ?overscrollBehaviorBlock: string,
+        ?overscrollBehaviorInline: string,
+        ?overscrollBehaviorX: string,
+        ?overscrollBehaviorY: string,
+        ?padding: string,
+        ?paddingBlock: string,
+        ?paddingBlockEnd: string,
+        ?paddingBlockStart: string,
+        ?paddingBottom: string,
+        ?paddingInline: string,
+        ?paddingInlineEnd: string,
+        ?paddingInlineStart: string,
+        ?paddingLeft: string,
+        ?paddingRight: string,
+        ?paddingTop: string,
+        ?page: string,
+        ?pageBreakAfter: string,
+        ?pageBreakBefore: string,
+        ?pageBreakInside: string,
+        ?paintOrder: string,
+        ?perspective: string,
+        ?perspectiveOrigin: string,
+        ?placeContent: string,
+        ?placeItems: string,
+        ?placeSelf: string,
+        ?pointerEvents: string,
+        ?position: string,
+        ?printColorAdjust: string,
+        ?quotes: string,
+        ?r: string,
+        ?resize: string,
+        ?right: string,
+        ?rotate: string,
+        ?rowGap: string,
+        ?rubyPosition: string,
+        ?rx: string,
+        ?ry: string,
+        ?scale: string,
+        ?scrollBehavior: string,
+        ?scrollMargin: string,
+        ?scrollMarginBlock: string,
+        ?scrollMarginBlockEnd: string,
+        ?scrollMarginBlockStart: string,
+        ?scrollMarginBottom: string,
+        ?scrollMarginInline: string,
+        ?scrollMarginInlineEnd: string,
+        ?scrollMarginInlineStart: string,
+        ?scrollMarginLeft: string,
+        ?scrollMarginRight: string,
+        ?scrollMarginTop: string,
+        ?scrollPadding: string,
+        ?scrollPaddingBlock: string,
+        ?scrollPaddingBlockEnd: string,
+        ?scrollPaddingBlockStart: string,
+        ?scrollPaddingBottom: string,
+        ?scrollPaddingInline: string,
+        ?scrollPaddingInlineEnd: string,
+        ?scrollPaddingInlineStart: string,
+        ?scrollPaddingLeft: string,
+        ?scrollPaddingRight: string,
+        ?scrollPaddingTop: string,
+        ?scrollSnapAlign: string,
+        ?scrollSnapStop: string,
+        ?scrollSnapType: string,
+        ?scrollbarColor: string,
+        ?scrollbarGutter: string,
+        ?scrollbarWidth: string,
+        ?shapeImageThreshold: string,
+        ?shapeMargin: string,
+        ?shapeOutside: string,
+        ?shapeRendering: string,
+        ?stopColor: string,
+        ?stopOpacity: string,
+        ?stroke: string,
+        ?strokeDasharray: string,
+        ?strokeDashoffset: string,
+        ?strokeLinecap: string,
+        ?strokeLinejoin: string,
+        ?strokeMiterlimit: string,
+        ?strokeOpacity: string,
+        ?strokeWidth: string,
+        ?tabSize: string,
+        ?tableLayout: string,
+        ?textAlign: string,
+        ?textAlignLast: string,
+        ?textAnchor: string,
+        ?textCombineUpright: string,
+        ?textDecoration: string,
+        ?textDecorationColor: string,
+        ?textDecorationLine: string,
+        ?textDecorationSkipInk: string,
+        ?textDecorationStyle: string,
+        ?textDecorationThickness: string,
+        ?textEmphasis: string,
+        ?textEmphasisColor: string,
+        ?textEmphasisPosition: string,
+        ?textEmphasisStyle: string,
+        ?textIndent: string,
+        ?textOrientation: string,
+        ?textOverflow: string,
+        ?textRendering: string,
+        ?textShadow: string,
+        ?textTransform: string,
+        ?textUnderlineOffset: string,
+        ?textUnderlinePosition: string,
+        ?textWrap: string,
+        ?top: string,
+        ?touchAction: string,
+        ?transform: string,
+        ?transformBox: string,
+        ?transformOrigin: string,
+        ?transformStyle: string,
+        ?transition: string,
+        ?transitionDelay: string,
+        ?transitionDuration: string,
+        ?transitionProperty: string,
+        ?transitionTimingFunction: string,
+        ?translate: string,
+        ?unicodeBidi: string,
+        ?userSelect: string,
+        ?vectorEffect: string,
+        ?verticalAlign: string,
+        ?visibility: string,
+        ?webkitAlignContent: string,
+        ?webkitAlignItems: string,
+        ?webkitAlignSelf: string,
+        ?webkitAnimation: string,
+        ?webkitAnimationDelay: string,
+        ?webkitAnimationDirection: string,
+        ?webkitAnimationDuration: string,
+        ?webkitAnimationFillMode: string,
+        ?webkitAnimationIterationCount: string,
+        ?webkitAnimationName: string,
+        ?webkitAnimationPlayState: string,
+        ?webkitAnimationTimingFunction: string,
+        ?webkitAppearance: string,
+        ?webkitBackfaceVisibility: string,
+        ?webkitBackgroundClip: string,
+        ?webkitBackgroundOrigin: string,
+        ?webkitBackgroundSize: string,
+        ?webkitBorderBottomLeftRadius: string,
+        ?webkitBorderBottomRightRadius: string,
+        ?webkitBorderRadius: string,
+        ?webkitBorderTopLeftRadius: string,
+        ?webkitBorderTopRightRadius: string,
+        ?webkitBoxAlign: string,
+        ?webkitBoxFlex: string,
+        ?webkitBoxOrdinalGroup: string,
+        ?webkitBoxOrient: string,
+        ?webkitBoxPack: string,
+        ?webkitBoxShadow: string,
+        ?webkitBoxSizing: string,
+        ?webkitFilter: string,
+        ?webkitFlex: string,
+        ?webkitFlexBasis: string,
+        ?webkitFlexDirection: string,
+        ?webkitFlexFlow: string,
+        ?webkitFlexGrow: string,
+        ?webkitFlexShrink: string,
+        ?webkitFlexWrap: string,
+        ?webkitJustifyContent: string,
+        ?webkitLineClamp: string,
+        ?webkitMask: string,
+        ?webkitMaskBoxImage: string,
+        ?webkitMaskBoxImageOutset: string,
+        ?webkitMaskBoxImageRepeat: string,
+        ?webkitMaskBoxImageSlice: string,
+        ?webkitMaskBoxImageSource: string,
+        ?webkitMaskBoxImageWidth: string,
+        ?webkitMaskClip: string,
+        ?webkitMaskComposite: string,
+        ?webkitMaskImage: string,
+        ?webkitMaskOrigin: string,
+        ?webkitMaskPosition: string,
+        ?webkitMaskRepeat: string,
+        ?webkitMaskSize: string,
+        ?webkitOrder: string,
+        ?webkitPerspective: string,
+        ?webkitPerspectiveOrigin: string,
+        ?webkitTextFillColor: string,
+        ?webkitTextSizeAdjust: string,
+        ?webkitTextStroke: string,
+        ?webkitTextStrokeColor: string,
+        ?webkitTextStrokeWidth: string,
+        ?webkitTransform: string,
+        ?webkitTransformOrigin: string,
+        ?webkitTransformStyle: string,
+        ?webkitTransition: string,
+        ?webkitTransitionDelay: string,
+        ?webkitTransitionDuration: string,
+        ?webkitTransitionProperty: string,
+        ?webkitTransitionTimingFunction: string,
+        ?webkitUserSelect: string,
+        ?whiteSpace: string,
+        ?widows: string,
+        ?width: string,
+        ?willChange: string,
+        ?wordBreak: string,
+        ?wordSpacing: string,
+        ?wordWrap: string,
+        ?writingMode: string,
+        ?x: string,
+        ?y: string,
+        ?zIndex: string
+    ) = class end
+
+[<RequireQualifiedAccess; Global>]
+type Style =
+    | accentColor of string
+    | alignContent of string
+    | alignItems of string
+    | alignSelf of string
+    | alignmentBaseline of string
+    | all of string
+    | animation of string
+    | animationComposition of string
+    | animationDelay of string
+    | animationDirection of string
+    | animationDuration of string
+    | animationFillMode of string
+    | animationIterationCount of string
+    | animationName of string
+    | animationPlayState of string
+    | animationTimingFunction of string
+    | appearance of string
+    | aspectRatio of string
+    | backdropFilter of string
+    | backfaceVisibility of string
+    | background of string
+    | backgroundAttachment of string
+    | backgroundBlendMode of string
+    | backgroundClip of string
+    | backgroundColor of string
+    | backgroundImage of string
+    | backgroundOrigin of string
+    | backgroundPosition of string
+    | backgroundPositionX of string
+    | backgroundPositionY of string
+    | backgroundRepeat of string
+    | backgroundSize of string
+    | baselineShift of string
+    | baselineSource of string
+    | blockSize of string
+    | border of string
+    | borderBlock of string
+    | borderBlockColor of string
+    | borderBlockEnd of string
+    | borderBlockEndColor of string
+    | borderBlockEndStyle of string
+    | borderBlockEndWidth of string
+    | borderBlockStart of string
+    | borderBlockStartColor of string
+    | borderBlockStartStyle of string
+    | borderBlockStartWidth of string
+    | borderBlockStyle of string
+    | borderBlockWidth of string
+    | borderBottom of string
+    | borderBottomColor of string
+    | borderBottomLeftRadius of string
+    | borderBottomRightRadius of string
+    | borderBottomStyle of string
+    | borderBottomWidth of string
+    | borderCollapse of string
+    | borderColor of string
+    | borderEndEndRadius of string
+    | borderEndStartRadius of string
+    | borderImage of string
+    | borderImageOutset of string
+    | borderImageRepeat of string
+    | borderImageSlice of string
+    | borderImageSource of string
+    | borderImageWidth of string
+    | borderInline of string
+    | borderInlineColor of string
+    | borderInlineEnd of string
+    | borderInlineEndColor of string
+    | borderInlineEndStyle of string
+    | borderInlineEndWidth of string
+    | borderInlineStart of string
+    | borderInlineStartColor of string
+    | borderInlineStartStyle of string
+    | borderInlineStartWidth of string
+    | borderInlineStyle of string
+    | borderInlineWidth of string
+    | borderLeft of string
+    | borderLeftColor of string
+    | borderLeftStyle of string
+    | borderLeftWidth of string
+    | borderRadius of string
+    | borderRight of string
+    | borderRightColor of string
+    | borderRightStyle of string
+    | borderRightWidth of string
+    | borderSpacing of string
+    | borderStartEndRadius of string
+    | borderStartStartRadius of string
+    | borderStyle of string
+    | borderTop of string
+    | borderTopColor of string
+    | borderTopLeftRadius of string
+    | borderTopRightRadius of string
+    | borderTopStyle of string
+    | borderTopWidth of string
+    | borderWidth of string
+    | bottom of string
+    | boxShadow of string
+    | boxSizing of string
+    | breakAfter of string
+    | breakBefore of string
+    | breakInside of string
+    | captionSide of string
+    | caretColor of string
+    | clear of string
+    | clip of string
+    | clipPath of string
+    | clipRule of string
+    | color of string
+    | colorInterpolation of string
+    | colorInterpolationFilters of string
+    | colorScheme of string
+    | columnCount of string
+    | columnFill of string
+    | columnGap of string
+    | columnRule of string
+    | columnRuleColor of string
+    | columnRuleStyle of string
+    | columnRuleWidth of string
+    | columnSpan of string
+    | columnWidth of string
+    | columns of string
+    | contain of string
+    | containIntrinsicBlockSize of string
+    | containIntrinsicHeight of string
+    | containIntrinsicInlineSize of string
+    | containIntrinsicSize of string
+    | containIntrinsicWidth of string
+    | container of string
+    | containerName of string
+    | containerType of string
+    | content of string
+    | counterIncrement of string
+    | counterReset of string
+    | counterSet of string
+    | cssFloat of string
+    | cssText of string
+    | cursor of string
+    | cx of string
+    | cy of string
+    | d of string
+    | direction of string
+    | display of string
+    | dominantBaseline of string
+    | emptyCells of string
+    | fill of string
+    | fillOpacity of string
+    | fillRule of string
+    | filter of string
+    | flex of string
+    | flexBasis of string
+    | flexDirection of string
+    | flexFlow of string
+    | flexGrow of string
+    | flexShrink of string
+    | flexWrap of string
+    | float of string
+    | floodColor of string
+    | floodOpacity of string
+    | font of string
+    | fontFamily of string
+    | fontFeatureSettings of string
+    | fontKerning of string
+    | fontOpticalSizing of string
+    | fontPalette of string
+    | fontSize of string
+    | fontSizeAdjust of string
+    | fontStretch of string
+    | fontStyle of string
+    | fontSynthesis of string
+    | fontSynthesisSmallCaps of string
+    | fontSynthesisStyle of string
+    | fontSynthesisWeight of string
+    | fontVariant of string
+    | fontVariantAlternates of string
+    | fontVariantCaps of string
+    | fontVariantEastAsian of string
+    | fontVariantLigatures of string
+    | fontVariantNumeric of string
+    | fontVariantPosition of string
+    | fontVariationSettings of string
+    | fontWeight of string
+    | forcedColorAdjust of string
+    | gap of string
+    | grid of string
+    | gridArea of string
+    | gridAutoColumns of string
+    | gridAutoFlow of string
+    | gridAutoRows of string
+    | gridColumn of string
+    | gridColumnEnd of string
+    | gridColumnGap of string
+    | gridColumnStart of string
+    | gridGap of string
+    | gridRow of string
+    | gridRowEnd of string
+    | gridRowGap of string
+    | gridRowStart of string
+    | gridTemplate of string
+    | gridTemplateAreas of string
+    | gridTemplateColumns of string
+    | gridTemplateRows of string
+    | height of string
+    | hyphenateCharacter of string
+    | hyphens of string
+    | imageOrientation of string
+    | imageRendering of string
+    | inlineSize of string
+    | inset of string
+    | insetBlock of string
+    | insetBlockEnd of string
+    | insetBlockStart of string
+    | insetInline of string
+    | insetInlineEnd of string
+    | insetInlineStart of string
+    | isolation of string
+    | justifyContent of string
+    | justifyItems of string
+    | justifySelf of string
+    | left of string
+    | length of float
+    | letterSpacing of string
+    | lightingColor of string
+    | lineBreak of string
+    | lineHeight of string
+    | listStyle of string
+    | listStyleImage of string
+    | listStylePosition of string
+    | listStyleType of string
+    | margin of string
+    | marginBlock of string
+    | marginBlockEnd of string
+    | marginBlockStart of string
+    | marginBottom of string
+    | marginInline of string
+    | marginInlineEnd of string
+    | marginInlineStart of string
+    | marginLeft of string
+    | marginRight of string
+    | marginTop of string
+    | marker of string
+    | markerEnd of string
+    | markerMid of string
+    | markerStart of string
+    | mask of string
+    | maskClip of string
+    | maskComposite of string
+    | maskImage of string
+    | maskMode of string
+    | maskOrigin of string
+    | maskPosition of string
+    | maskRepeat of string
+    | maskSize of string
+    | maskType of string
+    | mathDepth of string
+    | mathStyle of string
+    | maxBlockSize of string
+    | maxHeight of string
+    | maxInlineSize of string
+    | maxWidth of string
+    | minBlockSize of string
+    | minHeight of string
+    | minInlineSize of string
+    | minWidth of string
+    | mixBlendMode of string
+    | objectFit of string
+    | objectPosition of string
+    | offset of string
+    | offsetAnchor of string
+    | offsetDistance of string
+    | offsetPath of string
+    | offsetPosition of string
+    | offsetRotate of string
+    | opacity of string
+    | order of string
+    | orphans of string
+    | outline of string
+    | outlineColor of string
+    | outlineOffset of string
+    | outlineStyle of string
+    | outlineWidth of string
+    | overflow of string
+    | overflowAnchor of string
+    | overflowClipMargin of string
+    | overflowWrap of string
+    | overflowX of string
+    | overflowY of string
+    | overscrollBehavior of string
+    | overscrollBehaviorBlock of string
+    | overscrollBehaviorInline of string
+    | overscrollBehaviorX of string
+    | overscrollBehaviorY of string
+    | padding of string
+    | paddingBlock of string
+    | paddingBlockEnd of string
+    | paddingBlockStart of string
+    | paddingBottom of string
+    | paddingInline of string
+    | paddingInlineEnd of string
+    | paddingInlineStart of string
+    | paddingLeft of string
+    | paddingRight of string
+    | paddingTop of string
+    | page of string
+    | pageBreakAfter of string
+    | pageBreakBefore of string
+    | pageBreakInside of string
+    | paintOrder of string
+    | perspective of string
+    | perspectiveOrigin of string
+    | placeContent of string
+    | placeItems of string
+    | placeSelf of string
+    | pointerEvents of string
+    | position of string
+    | printColorAdjust of string
+    | quotes of string
+    | r of string
+    | resize of string
+    | right of string
+    | rotate of string
+    | rowGap of string
+    | rubyPosition of string
+    | rx of string
+    | ry of string
+    | scale of string
+    | scrollBehavior of string
+    | scrollMargin of string
+    | scrollMarginBlock of string
+    | scrollMarginBlockEnd of string
+    | scrollMarginBlockStart of string
+    | scrollMarginBottom of string
+    | scrollMarginInline of string
+    | scrollMarginInlineEnd of string
+    | scrollMarginInlineStart of string
+    | scrollMarginLeft of string
+    | scrollMarginRight of string
+    | scrollMarginTop of string
+    | scrollPadding of string
+    | scrollPaddingBlock of string
+    | scrollPaddingBlockEnd of string
+    | scrollPaddingBlockStart of string
+    | scrollPaddingBottom of string
+    | scrollPaddingInline of string
+    | scrollPaddingInlineEnd of string
+    | scrollPaddingInlineStart of string
+    | scrollPaddingLeft of string
+    | scrollPaddingRight of string
+    | scrollPaddingTop of string
+    | scrollSnapAlign of string
+    | scrollSnapStop of string
+    | scrollSnapType of string
+    | scrollbarColor of string
+    | scrollbarGutter of string
+    | scrollbarWidth of string
+    | shapeImageThreshold of string
+    | shapeMargin of string
+    | shapeOutside of string
+    | shapeRendering of string
+    | stopColor of string
+    | stopOpacity of string
+    | stroke of string
+    | strokeDasharray of string
+    | strokeDashoffset of string
+    | strokeLinecap of string
+    | strokeLinejoin of string
+    | strokeMiterlimit of string
+    | strokeOpacity of string
+    | strokeWidth of string
+    | tabSize of string
+    | tableLayout of string
+    | textAlign of string
+    | textAlignLast of string
+    | textAnchor of string
+    | textCombineUpright of string
+    | textDecoration of string
+    | textDecorationColor of string
+    | textDecorationLine of string
+    | textDecorationSkipInk of string
+    | textDecorationStyle of string
+    | textDecorationThickness of string
+    | textEmphasis of string
+    | textEmphasisColor of string
+    | textEmphasisPosition of string
+    | textEmphasisStyle of string
+    | textIndent of string
+    | textOrientation of string
+    | textOverflow of string
+    | textRendering of string
+    | textShadow of string
+    | textTransform of string
+    | textUnderlineOffset of string
+    | textUnderlinePosition of string
+    | textWrap of string
+    | top of string
+    | touchAction of string
+    | transform of string
+    | transformBox of string
+    | transformOrigin of string
+    | transformStyle of string
+    | transition of string
+    | transitionDelay of string
+    | transitionDuration of string
+    | transitionProperty of string
+    | transitionTimingFunction of string
+    | translate of string
+    | unicodeBidi of string
+    | userSelect of string
+    | vectorEffect of string
+    | verticalAlign of string
+    | visibility of string
+    | webkitAlignContent of string
+    | webkitAlignItems of string
+    | webkitAlignSelf of string
+    | webkitAnimation of string
+    | webkitAnimationDelay of string
+    | webkitAnimationDirection of string
+    | webkitAnimationDuration of string
+    | webkitAnimationFillMode of string
+    | webkitAnimationIterationCount of string
+    | webkitAnimationName of string
+    | webkitAnimationPlayState of string
+    | webkitAnimationTimingFunction of string
+    | webkitAppearance of string
+    | webkitBackfaceVisibility of string
+    | webkitBackgroundClip of string
+    | webkitBackgroundOrigin of string
+    | webkitBackgroundSize of string
+    | webkitBorderBottomLeftRadius of string
+    | webkitBorderBottomRightRadius of string
+    | webkitBorderRadius of string
+    | webkitBorderTopLeftRadius of string
+    | webkitBorderTopRightRadius of string
+    | webkitBoxAlign of string
+    | webkitBoxFlex of string
+    | webkitBoxOrdinalGroup of string
+    | webkitBoxOrient of string
+    | webkitBoxPack of string
+    | webkitBoxShadow of string
+    | webkitBoxSizing of string
+    | webkitFilter of string
+    | webkitFlex of string
+    | webkitFlexBasis of string
+    | webkitFlexDirection of string
+    | webkitFlexFlow of string
+    | webkitFlexGrow of string
+    | webkitFlexShrink of string
+    | webkitFlexWrap of string
+    | webkitJustifyContent of string
+    | webkitLineClamp of string
+    | webkitMask of string
+    | webkitMaskBoxImage of string
+    | webkitMaskBoxImageOutset of string
+    | webkitMaskBoxImageRepeat of string
+    | webkitMaskBoxImageSlice of string
+    | webkitMaskBoxImageSource of string
+    | webkitMaskBoxImageWidth of string
+    | webkitMaskClip of string
+    | webkitMaskComposite of string
+    | webkitMaskImage of string
+    | webkitMaskOrigin of string
+    | webkitMaskPosition of string
+    | webkitMaskRepeat of string
+    | webkitMaskSize of string
+    | webkitOrder of string
+    | webkitPerspective of string
+    | webkitPerspectiveOrigin of string
+    | webkitTextFillColor of string
+    | webkitTextSizeAdjust of string
+    | webkitTextStroke of string
+    | webkitTextStrokeColor of string
+    | webkitTextStrokeWidth of string
+    | webkitTransform of string
+    | webkitTransformOrigin of string
+    | webkitTransformStyle of string
+    | webkitTransition of string
+    | webkitTransitionDelay of string
+    | webkitTransitionDuration of string
+    | webkitTransitionProperty of string
+    | webkitTransitionTimingFunction of string
+    | webkitUserSelect of string
+    | whiteSpace of string
+    | widows of string
+    | width of string
+    | willChange of string
+    | wordBreak of string
+    | wordSpacing of string
+    | wordWrap of string
+    | writingMode of string
+    | x of string
+    | y of string
+    | zIndex of string

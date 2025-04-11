@@ -49,38 +49,59 @@ ApexCharts.initOnLoad()"""
     abstract member exports: ApexCharts.exports with get, set
 
 module ApexCharts =
+    [<JS.Pojo>]
+    type ApexOptions
+        (
+            ?annotations: ApexAnnotations,
+            ?chart: ApexChart,
+            ?colors: array<obj>,
+            ?dataLabels: ApexDataLabels,
+            ?fill: ApexFill,
+            ?forecastDataPoints: ApexForecastDataPoints,
+            ?grid: ApexGrid,
+            ?labels: array<string>,
+            ?legend: ApexLegend,
+            ?markers: ApexMarkers,
+            ?noData: ApexNoData,
+            ?plotOptions: ApexPlotOptions,
+            ?responsive: array<ApexResponsive>,
+            ?series: U2<ApexAxisChartSeries, ApexNonAxisChartSeries>,
+            ?states: ApexStates,
+            ?stroke: ApexStroke,
+            ?subtitle: ApexTitleSubtitle,
+            ?theme: ApexTheme,
+            ?title: ApexTitleSubtitle,
+            ?tooltip: ApexTooltip,
+            ?xaxis: ApexXAxis,
+            ?yaxis: U2<ApexYAxis, array<ApexYAxis>>
+        ) =
+        member val annotations: ApexAnnotations = JS.undefined with get, set
+        member val chart: ApexChart = JS.undefined with get, set
+        member val colors: array<obj> = JS.undefined with get, set
+        member val dataLabels: ApexDataLabels = JS.undefined with get, set
+        member val fill: ApexFill = JS.undefined with get, set
+        member val forecastDataPoints: ApexForecastDataPoints = JS.undefined with get, set
+        member val grid: ApexGrid = JS.undefined with get, set
+        member val labels: array<string> = JS.undefined with get, set
+        member val legend: ApexLegend = JS.undefined with get, set
+        member val markers: ApexMarkers = JS.undefined with get, set
+        member val noData: ApexNoData = JS.undefined with get, set
+        member val plotOptions: ApexPlotOptions = JS.undefined with get, set
+        member val responsive: array<ApexResponsive> = JS.undefined with get, set
+        member val series: U2<ApexAxisChartSeries, ApexNonAxisChartSeries> = JS.undefined with get, set
+        member val states: ApexStates = JS.undefined with get, set
+        member val stroke: ApexStroke = JS.undefined with get, set
+        member val subtitle: ApexTitleSubtitle = JS.undefined with get, set
+        member val theme: ApexTheme = JS.undefined with get, set
+        member val title: ApexTitleSubtitle = JS.undefined with get, set
+        member val tooltip: ApexTooltip = JS.undefined with get, set
+        member val xaxis: ApexXAxis = JS.undefined with get, set
+        member val yaxis: U2<ApexYAxis, array<ApexYAxis>> = JS.undefined with get, set
 
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type ApexOptions =
-        abstract member annotations: ApexAnnotations  with get, set
-        abstract member chart: ApexChart  with get, set
-        abstract member colors: array<obj>  with get, set
-        abstract member dataLabels: ApexDataLabels  with get, set
-        abstract member fill: ApexFill  with get, set
-        abstract member forecastDataPoints: ApexForecastDataPoints  with get, set
-        abstract member grid: ApexGrid  with get, set
-        abstract member labels: array<string>  with get, set
-        abstract member legend: ApexLegend  with get, set
-        abstract member markers: ApexMarkers  with get, set
-        abstract member noData: ApexNoData  with get, set
-        abstract member plotOptions: ApexPlotOptions  with get, set
-        abstract member responsive: array<ApexResponsive>  with get, set
-        abstract member series: U2<ApexAxisChartSeries, ApexNonAxisChartSeries>  with get, set
-        abstract member states: ApexStates  with get, set
-        abstract member stroke: ApexStroke  with get, set
-        abstract member subtitle: ApexTitleSubtitle  with get, set
-        abstract member theme: ApexTheme  with get, set
-        abstract member title: ApexTitleSubtitle  with get, set
-        abstract member tooltip: ApexTooltip  with get, set
-        abstract member xaxis: ApexXAxis  with get, set
-        abstract member yaxis: U2<ApexYAxis, array<ApexYAxis>>  with get, set
-
-    [<AllowNullLiteral>]
-    [<Interface>]
-    type dataURI =
-        abstract member imgURI: string with get, set
-        abstract member blob: obj with get, set
+    [<JS.Pojo>]
+    type dataURI(?imgURI: string, ?blob: obj) =
+        member val imgURI: string = JS.undefined with get, set
+        member val blob: obj = JS.undefined with get, set
 
     [<Global>]
     [<AllowNullLiteral>]
@@ -122,68 +143,102 @@ module ApexCharts =
 
     module exports =
 
-        [<AllowNullLiteral>]
-        [<Interface>]
-        type dataURI =
-            abstract member imgURI: string with get, set
-            abstract member blob: obj with get, set
+        [<JS.Pojo>]
+        type dataURI(?imgURI: string, ?blob: obj) =
+            member val imgURI: string = JS.undefined with get, set
+            member val blob: obj = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexDropShadow =
-    abstract member enabled: bool  with get, set
-    abstract member top: float  with get, set
-    abstract member left: float  with get, set
-    abstract member blur: float  with get, set
-    abstract member opacity: float  with get, set
-    abstract member color: string  with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexChart =
-    abstract member width: U2<string, float>  with get, set
-    abstract member height: U2<string, float>  with get, set
-    abstract member ``type``: ApexChart.``type``  with get, set
-    abstract member foreColor: string  with get, set
-    abstract member fontFamily: string  with get, set
-    abstract member background: string  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member dropShadow: obj  with get, set
-    abstract member events: ApexChart.events  with get, set
-    abstract member brush: ApexChart.brush  with get, set
-    abstract member id: string  with get, set
-    abstract member group: string  with get, set
-    abstract member locales: array<ApexLocale>  with get, set
-    abstract member defaultLocale: string  with get, set
-    abstract member parentHeightOffset: float  with get, set
-    abstract member redrawOnParentResize: bool  with get, set
-    abstract member redrawOnWindowResize: U2<bool, Action>  with get, set
-    abstract member sparkline: ApexChart.sparkline  with get, set
-    abstract member stacked: bool  with get, set
-    abstract member stackType: ApexChart.stackType  with get, set
-    abstract member stackOnlyBar: bool  with get, set
-    abstract member toolbar: ApexChart.toolbar  with get, set
-    abstract member zoom: ApexChart.zoom  with get, set
-    abstract member selection: ApexChart.selection  with get, set
-    abstract member animations: ApexChart.animations  with get, set
+[<JS.Pojo>]
+type ApexDropShadow(?enabled: bool, ?top: float, ?left: float, ?blur: float, ?opacity: float, ?color: string) =
+    member val enabled: bool = JS.undefined with get, set
+    member val top: float = JS.undefined with get, set
+    member val left: float = JS.undefined with get, set
+    member val blur: float = JS.undefined with get, set
+    member val opacity: float = JS.undefined with get, set
+    member val color: string = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexStates =
-    abstract member hover: ApexStates.hover  with get, set
-    abstract member active: ApexStates.active  with get, set
+[<JS.Pojo>]
+type ApexChart
+    (
+        ?width: U2<string, float>,
+        ?height: U2<string, float>,
+        ?``type``: ApexChart.``type``,
+        ?foreColor: string,
+        ?fontFamily: string,
+        ?background: string,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?dropShadow: obj,
+        ?events: ApexChart.events,
+        ?brush: ApexChart.brush,
+        ?id: string,
+        ?group: string,
+        ?locales: array<ApexLocale>,
+        ?defaultLocale: string,
+        ?parentHeightOffset: float,
+        ?redrawOnParentResize: bool,
+        ?redrawOnWindowResize: U2<bool, Action>,
+        ?sparkline: ApexChart.sparkline,
+        ?stacked: bool,
+        ?stackType: ApexChart.stackType,
+        ?stackOnlyBar: bool,
+        ?toolbar: ApexChart.toolbar,
+        ?zoom: ApexChart.zoom,
+        ?selection: ApexChart.selection,
+        ?animations: ApexChart.animations
+    ) =
+    member val width: U2<string, float> = JS.undefined with get, set
+    member val height: U2<string, float> = JS.undefined with get, set
+    member val ``type``: ApexChart.``type`` = JS.undefined with get, set
+    member val foreColor: string = JS.undefined with get, set
+    member val fontFamily: string = JS.undefined with get, set
+    member val background: string = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val dropShadow: obj = JS.undefined with get, set
+    member val events: ApexChart.events = JS.undefined with get, set
+    member val brush: ApexChart.brush = JS.undefined with get, set
+    member val id: string = JS.undefined with get, set
+    member val group: string = JS.undefined with get, set
+    member val locales: array<ApexLocale> = JS.undefined with get, set
+    member val defaultLocale: string = JS.undefined with get, set
+    member val parentHeightOffset: float = JS.undefined with get, set
+    member val redrawOnParentResize: bool = JS.undefined with get, set
+    member val redrawOnWindowResize: U2<bool, Action> = JS.undefined with get, set
+    member val sparkline: ApexChart.sparkline = JS.undefined with get, set
+    member val stacked: bool = JS.undefined with get, set
+    member val stackType: ApexChart.stackType = JS.undefined with get, set
+    member val stackOnlyBar: bool = JS.undefined with get, set
+    member val toolbar: ApexChart.toolbar = JS.undefined with get, set
+    member val zoom: ApexChart.zoom = JS.undefined with get, set
+    member val selection: ApexChart.selection = JS.undefined with get, set
+    member val animations: ApexChart.animations = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexTitleSubtitle =
-    abstract member text: string  with get, set
-    abstract member align: ApexTitleSubtitle.align  with get, set
-    abstract member margin: float  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member floating: bool  with get, set
-    abstract member style: ApexTitleSubtitle.style  with get, set
+[<JS.Pojo>]
+type ApexStates(?hover: ApexStates.hover, ?active: ApexStates.active) =
+    member val hover: ApexStates.hover = JS.undefined with get, set
+    member val active: ApexStates.active = JS.undefined with get, set
+
+[<JS.Pojo>]
+type ApexTitleSubtitle
+    (
+        ?text: string,
+        ?align: ApexTitleSubtitle.align,
+        ?margin: float,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?floating: bool,
+        ?style: ApexTitleSubtitle.style
+    ) =
+    member val text: string = JS.undefined with get, set
+    member val align: ApexTitleSubtitle.align = JS.undefined with get, set
+    member val margin: float = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val floating: bool = JS.undefined with get, set
+    member val style: ApexTitleSubtitle.style = JS.undefined with get, set
+
 
 /// <summary>
 /// Chart Series options.
@@ -203,197 +258,331 @@ type ApexTitleSubtitle =
 type ApexNonAxisChartSeries =
     array<float>
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexStroke =
-    abstract member show: bool  with get, set
-    abstract member curve: ApexStroke.curve  with get, set
-    abstract member lineCap: ApexStroke.lineCap  with get, set
-    abstract member colors: U2<array<obj>, array<string>>  with get, set
-    abstract member width: U2<float, array<float>>  with get, set
-    abstract member dashArray: U2<float, array<float>>  with get, set
-    abstract member fill: ApexFill  with get, set
+[<JS.Pojo>]
+type ApexStroke
+    (
+        ?show: bool,
+        ?curve: ApexStroke.curve,
+        ?lineCap: ApexStroke.lineCap,
+        ?colors: U2<array<obj>, array<string>>,
+        ?width: U2<float, array<float>>,
+        ?dashArray: U2<float, array<float>>,
+        ?fill: ApexFill
+    ) =
+    member val show: bool = JS.undefined with get, set
+    member val curve: ApexStroke.curve = JS.undefined with get, set
+    member val lineCap: ApexStroke.lineCap = JS.undefined with get, set
+    member val colors: U2<array<obj>, array<string>> = JS.undefined with get, set
+    member val width: U2<float, array<float>> = JS.undefined with get, set
+    member val dashArray: U2<float, array<float>> = JS.undefined with get, set
+    member val fill: ApexFill = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexAnnotations =
-    abstract member yaxis: array<YAxisAnnotations>  with get, set
-    abstract member xaxis: array<XAxisAnnotations>  with get, set
-    abstract member points: array<PointAnnotations>  with get, set
-    abstract member texts: array<TextAnnotations>  with get, set
-    abstract member images: array<ImageAnnotations>  with get, set
+[<JS.Pojo>]
+type ApexAnnotations
+    (
+        ?yaxis: array<YAxisAnnotations>,
+        ?xaxis: array<XAxisAnnotations>,
+        ?points: array<PointAnnotations>,
+        ?texts: array<TextAnnotations>,
+        ?images: array<ImageAnnotations>
+    ) =
+    member val yaxis: array<YAxisAnnotations> = JS.undefined with get, set
+    member val xaxis: array<XAxisAnnotations> = JS.undefined with get, set
+    member val points: array<PointAnnotations> = JS.undefined with get, set
+    member val texts: array<TextAnnotations> = JS.undefined with get, set
+    member val images: array<ImageAnnotations> = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type AnnotationLabel =
-    abstract member borderColor: string  with get, set
-    abstract member borderWidth: float  with get, set
-    abstract member borderRadius: float  with get, set
-    abstract member text: string  with get, set
-    abstract member textAnchor: string  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member style: AnnotationStyle  with get, set
-    abstract member position: string  with get, set
-    abstract member orientation: string  with get, set
-    abstract member mouseEnter: Action  with get, set
-    abstract member mouseLeave: Action  with get, set
-    abstract member click: Action  with get, set
+[<JS.Pojo>]
+type AnnotationLabel
+    (
+        ?borderColor: string,
+        ?borderWidth: float,
+        ?borderRadius: float,
+        ?text: string,
+        ?textAnchor: string,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?style: AnnotationStyle,
+        ?position: string,
+        ?orientation: string,
+        ?mouseEnter: Action,
+        ?mouseLeave: Action,
+        ?click: Action
+    ) =
+    member val borderColor: string = JS.undefined with get, set
+    member val borderWidth: float = JS.undefined with get, set
+    member val borderRadius: float = JS.undefined with get, set
+    member val text: string = JS.undefined with get, set
+    member val textAnchor: string = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val style: AnnotationStyle = JS.undefined with get, set
+    member val position: string = JS.undefined with get, set
+    member val orientation: string = JS.undefined with get, set
+    member val mouseEnter: Action = JS.undefined with get, set
+    member val mouseLeave: Action = JS.undefined with get, set
+    member val click: Action = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type AnnotationStyle =
-    abstract member background: string  with get, set
-    abstract member color: string  with get, set
-    abstract member fontFamily: string  with get, set
-    abstract member fontWeight: U2<string, float>  with get, set
-    abstract member fontSize: string  with get, set
-    abstract member cssClass: string  with get, set
-    abstract member padding: AnnotationStyle.padding  with get, set
+[<JS.Pojo>]
+type AnnotationStyle
+    (
+        ?background: string,
+        ?color: string,
+        ?fontFamily: string,
+        ?fontWeight: U2<string, float>,
+        ?fontSize: string,
+        ?cssClass: string,
+        ?padding: AnnotationStyle.padding
+    ) =
+    member val background: string = JS.undefined with get, set
+    member val color: string = JS.undefined with get, set
+    member val fontFamily: string = JS.undefined with get, set
+    member val fontWeight: U2<string, float> = JS.undefined with get, set
+    member val fontSize: string = JS.undefined with get, set
+    member val cssClass: string = JS.undefined with get, set
+    member val padding: AnnotationStyle.padding = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type XAxisAnnotations =
-    abstract member id: U2<float, string>  with get, set
-    abstract member x: U2<float, string>   with get, set
-    abstract member x2: U2<float, string>   with get, set
-    abstract member strokeDashArray: float  with get, set
-    abstract member fillColor: string  with get, set
-    abstract member borderColor: string  with get, set
-    abstract member borderWidth: float  with get, set
-    abstract member opacity: float  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member label: AnnotationLabel  with get, set
+[<JS.Pojo>]
+type XAxisAnnotations
+    (
+        ?id: U2<float, string>,
+        ?x: U2<float, string>,
+        ?x2: U2<float, string>,
+        ?strokeDashArray: float,
+        ?fillColor: string,
+        ?borderColor: string,
+        ?borderWidth: float,
+        ?opacity: float,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?label: AnnotationLabel
+    ) =
+    member val id: U2<float, string> = JS.undefined with get, set
+    member val x: U2<float, string> = JS.undefined with get, set
+    member val x2: U2<float, string> = JS.undefined with get, set
+    member val strokeDashArray: float = JS.undefined with get, set
+    member val fillColor: string = JS.undefined with get, set
+    member val borderColor: string = JS.undefined with get, set
+    member val borderWidth: float = JS.undefined with get, set
+    member val opacity: float = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val label: AnnotationLabel = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type YAxisAnnotations =
-    abstract member id: U2<float, string>  with get, set
-    abstract member y: U2<float, string>   with get, set
-    abstract member y2: U2<float, string>   with get, set
-    abstract member strokeDashArray: float  with get, set
-    abstract member fillColor: string  with get, set
-    abstract member borderColor: string  with get, set
-    abstract member borderWidth: float  with get, set
-    abstract member opacity: float  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member width: U2<float, string>  with get, set
-    abstract member yAxisIndex: float  with get, set
-    abstract member label: AnnotationLabel  with get, set
+[<JS.Pojo>]
+type YAxisAnnotations
+    (
+        ?id: U2<float, string>,
+        ?y: U2<float, string>,
+        ?y2: U2<float, string>,
+        ?strokeDashArray: float,
+        ?fillColor: string,
+        ?borderColor: string,
+        ?borderWidth: float,
+        ?opacity: float,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?width: U2<float, string>,
+        ?yAxisIndex: float,
+        ?label: AnnotationLabel
+    ) =
+    member val id: U2<float, string> = JS.undefined with get, set
+    member val y: U2<float, string> = JS.undefined with get, set
+    member val y2: U2<float, string> = JS.undefined with get, set
+    member val strokeDashArray: float = JS.undefined with get, set
+    member val fillColor: string = JS.undefined with get, set
+    member val borderColor: string = JS.undefined with get, set
+    member val borderWidth: float = JS.undefined with get, set
+    member val opacity: float = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val width: U2<float, string> = JS.undefined with get, set
+    member val yAxisIndex: float = JS.undefined with get, set
+    member val label: AnnotationLabel = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type PointAnnotations =
-    abstract member id: U2<float, string>  with get, set
-    abstract member x: U2<float, string>  with get, set
-    abstract member y: float  with get, set
-    abstract member yAxisIndex: float  with get, set
-    abstract member seriesIndex: float  with get, set
-    abstract member mouseEnter: Action  with get, set
-    abstract member mouseLeave: Action  with get, set
-    abstract member click: Action  with get, set
-    abstract member marker: PointAnnotations.marker  with get, set
-    abstract member label: AnnotationLabel  with get, set
-    abstract member image: PointAnnotations.image  with get, set
+[<JS.Pojo>]
+type PointAnnotations
+    (
+        ?id: U2<float, string>,
+        ?x: U2<float, string>,
+        ?y: float,
+        ?yAxisIndex: float,
+        ?seriesIndex: float,
+        ?mouseEnter: Action,
+        ?mouseLeave: Action,
+        ?click: Action,
+        ?marker: PointAnnotations.marker,
+        ?label: AnnotationLabel,
+        ?image: PointAnnotations.image
+    ) =
+    member val id: U2<float, string> = JS.undefined with get, set
+    member val x: U2<float, string> = JS.undefined with get, set
+    member val y: float = JS.undefined with get, set
+    member val yAxisIndex: float = JS.undefined with get, set
+    member val seriesIndex: float = JS.undefined with get, set
+    member val mouseEnter: Action = JS.undefined with get, set
+    member val mouseLeave: Action = JS.undefined with get, set
+    member val click: Action = JS.undefined with get, set
+    member val marker: PointAnnotations.marker = JS.undefined with get, set
+    member val label: AnnotationLabel = JS.undefined with get, set
+    member val image: PointAnnotations.image = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TextAnnotations =
-    abstract member x: float  with get, set
-    abstract member y: float  with get, set
-    abstract member text: string  with get, set
-    abstract member textAnchor: string  with get, set
-    abstract member foreColor: string  with get, set
-    abstract member fontSize: U2<string, float>  with get, set
-    abstract member fontFamily: string  with get, set
-    abstract member fontWeight: U2<string, float>  with get, set
-    abstract member backgroundColor: string  with get, set
-    abstract member borderColor: string  with get, set
-    abstract member borderRadius: float  with get, set
-    abstract member borderWidth: float  with get, set
-    abstract member paddingLeft: float  with get, set
-    abstract member paddingRight: float  with get, set
-    abstract member paddingTop: float  with get, set
-    abstract member paddingBottom: float  with get, set
+[<JS.Pojo>]
+type TextAnnotations
+    (
+        ?x: float,
+        ?y: float,
+        ?text: string,
+        ?textAnchor: string,
+        ?foreColor: string,
+        ?fontSize: U2<string, float>,
+        ?fontFamily: string,
+        ?fontWeight: U2<string, float>,
+        ?backgroundColor: string,
+        ?borderColor: string,
+        ?borderRadius: float,
+        ?borderWidth: float,
+        ?paddingLeft: float,
+        ?paddingRight: float,
+        ?paddingTop: float,
+        ?paddingBottom: float
+    ) =
+    member val x: float = JS.undefined with get, set
+    member val y: float = JS.undefined with get, set
+    member val text: string = JS.undefined with get, set
+    member val textAnchor: string = JS.undefined with get, set
+    member val foreColor: string = JS.undefined with get, set
+    member val fontSize: U2<string, float> = JS.undefined with get, set
+    member val fontFamily: string = JS.undefined with get, set
+    member val fontWeight: U2<string, float> = JS.undefined with get, set
+    member val backgroundColor: string = JS.undefined with get, set
+    member val borderColor: string = JS.undefined with get, set
+    member val borderRadius: float = JS.undefined with get, set
+    member val borderWidth: float = JS.undefined with get, set
+    member val paddingLeft: float = JS.undefined with get, set
+    member val paddingRight: float = JS.undefined with get, set
+    member val paddingTop: float = JS.undefined with get, set
+    member val paddingBottom: float = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ImageAnnotations =
-    abstract member path: string  with get, set
-    abstract member x: float  with get, set
-    abstract member y: float  with get, set
-    abstract member width: float  with get, set
-    abstract member height: float  with get, set
+[<JS.Pojo>]
+type ImageAnnotations(?path: string, ?x: float, ?y: float, ?width: float, ?height: float) =
+    member val path: string = JS.undefined with get, set
+    member val x: float = JS.undefined with get, set
+    member val y: float = JS.undefined with get, set
+    member val width: float = JS.undefined with get, set
+    member val height: float = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexLocale =
-    abstract member name: string  with get, set
-    abstract member options: ApexLocale.options  with get, set
+[<JS.Pojo>]
+type ApexLocale(?name: string, ?options: ApexLocale.options) =
+    member val name: string = JS.undefined with get, set
+    member val options: ApexLocale.options = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexPlotOptions =
-    abstract member line: ApexPlotOptions.line  with get, set
-    abstract member area: ApexPlotOptions.area  with get, set
-    abstract member bar: ApexPlotOptions.bar  with get, set
-    abstract member bubble: ApexPlotOptions.bubble  with get, set
-    abstract member candlestick: ApexPlotOptions.candlestick  with get, set
-    abstract member boxPlot: ApexPlotOptions.boxPlot  with get, set
-    abstract member heatmap: ApexPlotOptions.heatmap  with get, set
-    abstract member treemap: ApexPlotOptions.treemap  with get, set
-    abstract member pie: ApexPlotOptions.pie  with get, set
-    abstract member polarArea: ApexPlotOptions.polarArea  with get, set
-    abstract member radar: ApexPlotOptions.radar  with get, set
-    abstract member radialBar: ApexPlotOptions.radialBar  with get, set
+[<JS.Pojo>]
+type ApexPlotOptions
+    (
+        ?line: ApexPlotOptions.line,
+        ?area: ApexPlotOptions.area,
+        ?bar: ApexPlotOptions.bar,
+        ?bubble: ApexPlotOptions.bubble,
+        ?candlestick: ApexPlotOptions.candlestick,
+        ?boxPlot: ApexPlotOptions.boxPlot,
+        ?heatmap: ApexPlotOptions.heatmap,
+        ?treemap: ApexPlotOptions.treemap,
+        ?pie: ApexPlotOptions.pie,
+        ?polarArea: ApexPlotOptions.polarArea,
+        ?radar: ApexPlotOptions.radar,
+        ?radialBar: ApexPlotOptions.radialBar
+    ) =
+    member val line: ApexPlotOptions.line = JS.undefined with get, set
+    member val area: ApexPlotOptions.area = JS.undefined with get, set
+    member val bar: ApexPlotOptions.bar = JS.undefined with get, set
+    member val bubble: ApexPlotOptions.bubble = JS.undefined with get, set
+    member val candlestick: ApexPlotOptions.candlestick = JS.undefined with get, set
+    member val boxPlot: ApexPlotOptions.boxPlot = JS.undefined with get, set
+    member val heatmap: ApexPlotOptions.heatmap = JS.undefined with get, set
+    member val treemap: ApexPlotOptions.treemap = JS.undefined with get, set
+    member val pie: ApexPlotOptions.pie = JS.undefined with get, set
+    member val polarArea: ApexPlotOptions.polarArea = JS.undefined with get, set
+    member val radar: ApexPlotOptions.radar = JS.undefined with get, set
+    member val radialBar: ApexPlotOptions.radialBar = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexColorStop =
-    abstract member offset: float with get, set
-    abstract member color: string with get, set
-    abstract member opacity: float with get, set
+[<JS.Pojo>]
+type ApexColorStop(?offset: float, ?color: string, ?opacity: float) =
+    member val offset: float = JS.undefined with get, set
+    member val color: string = JS.undefined with get, set
+    member val opacity: float = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexFill =
-    abstract member colors: array<obj>  with get, set
-    abstract member opacity: U2<float, array<float>>  with get, set
-    abstract member ``type``: U2<string, array<string>>  with get, set
-    abstract member gradient: ApexFill.gradient  with get, set
-    abstract member image: ApexFill.image  with get, set
-    abstract member pattern: ApexFill.pattern  with get, set
+[<JS.Pojo>]
+type ApexFill
+    (
+        ?colors: array<obj>,
+        ?opacity: U2<float, array<float>>,
+        ?``type``: U2<string, array<string>>,
+        ?gradient: ApexFill.gradient,
+        ?image: ApexFill.image,
+        ?pattern: ApexFill.pattern
+    ) =
+    member val colors: array<obj> = JS.undefined with get, set
+    member val opacity: U2<float, array<float>> = JS.undefined with get, set
+    member val ``type``: U2<string, array<string>> = JS.undefined with get, set
+    member val gradient: ApexFill.gradient = JS.undefined with get, set
+    member val image: ApexFill.image = JS.undefined with get, set
+    member val pattern: ApexFill.pattern = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexLegend =
-    abstract member show: bool  with get, set
-    abstract member showForSingleSeries: bool  with get, set
-    abstract member showForNullSeries: bool  with get, set
-    abstract member showForZeroSeries: bool  with get, set
-    abstract member floating: bool  with get, set
-    abstract member inverseOrder: bool  with get, set
-    abstract member position: ApexLegend.position  with get, set
-    abstract member horizontalAlign: ApexLegend.horizontalAlign  with get, set
-    abstract member fontSize: string  with get, set
-    abstract member fontFamily: string  with get, set
-    abstract member fontWeight: U2<string, float>  with get, set
-    abstract member width: float  with get, set
-    abstract member height: float  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member formatter: legendName: string * ?opts: obj -> string
-    abstract member tooltipHoverFormatter: legendName: string * ?opts: obj -> string
-    abstract member customLegendItems: array<string>  with get, set
-    abstract member clusterGroupedSeries: bool  with get, set
-    abstract member clusterGroupedSeriesOrientation: string  with get, set
-    abstract member labels: ApexLegend.labels  with get, set
-    abstract member markers: ApexLegend.markers  with get, set
-    abstract member itemMargin: ApexLegend.itemMargin  with get, set
-    abstract member onItemClick: ApexLegend.onItemClick  with get, set
-    abstract member onItemHover: ApexLegend.onItemHover  with get, set
+[<JS.Pojo>]
+type ApexLegend
+    (
+        ?show: bool,
+        ?showForSingleSeries: bool,
+        ?showForNullSeries: bool,
+        ?showForZeroSeries: bool,
+        ?floating: bool,
+        ?inverseOrder: bool,
+        ?position: ApexLegend.position,
+        ?horizontalAlign: ApexLegend.horizontalAlign,
+        ?fontSize: string,
+        ?fontFamily: string,
+        ?fontWeight: U2<string, float>,
+        ?width: float,
+        ?height: float,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?formatter: U2<string, string * obj> -> string,
+        ?tooltipHoverFormatter: U2<string, string * obj> -> string,
+        ?customLegendItems: array<string>,
+        ?clusterGroupedSeries: bool,
+        ?clusterGroupedSeriesOrientation: string,
+        ?labels: ApexLegend.labels,
+        ?markers: ApexLegend.markers,
+        ?itemMargin: ApexLegend.itemMargin,
+        ?onItemClick: ApexLegend.onItemClick,
+        ?onItemHover: ApexLegend.onItemHover
+    ) =
+    member val show: bool = JS.undefined with get, set
+    member val showForSingleSeries: bool = JS.undefined with get, set
+    member val showForNullSeries: bool = JS.undefined with get, set
+    member val showForZeroSeries: bool = JS.undefined with get, set
+    member val floating: bool = JS.undefined with get, set
+    member val inverseOrder: bool = JS.undefined with get, set
+    member val position: ApexLegend.position = JS.undefined with get, set
+    member val horizontalAlign: ApexLegend.horizontalAlign = JS.undefined with get, set
+    member val fontSize: string = JS.undefined with get, set
+    member val fontFamily: string = JS.undefined with get, set
+    member val fontWeight: U2<string, float> = JS.undefined with get, set
+    member val width: float = JS.undefined with get, set
+    member val height: float = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val formatter: U2<string, string * obj> -> string = JS.undefined
+    member val tooltipHoverFormatter: U2<string, string * obj> -> string = JS.undefined
+    member val customLegendItems: array<string> = JS.undefined with get, set
+    member val clusterGroupedSeries: bool = JS.undefined with get, set
+    member val clusterGroupedSeriesOrientation: string = JS.undefined with get, set
+    member val labels: ApexLegend.labels = JS.undefined with get, set
+    member val markers: ApexLegend.markers = JS.undefined with get, set
+    member val itemMargin: ApexLegend.itemMargin = JS.undefined with get, set
+    member val onItemClick: ApexLegend.onItemClick = JS.undefined with get, set
+    member val onItemHover: ApexLegend.onItemHover = JS.undefined with get, set
 
 [<RequireQualifiedAccess>]
 [<StringEnum(CaseRules.None)>]
@@ -423,172 +612,286 @@ type ApexMarkerShape =
     | diamond
     | triangle
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexDiscretePoint =
-    abstract member seriesIndex: float  with get, set
-    abstract member dataPointIndex: float  with get, set
-    abstract member fillColor: string  with get, set
-    abstract member strokeColor: string  with get, set
-    abstract member size: float  with get, set
-    abstract member shape: ApexMarkerShape  with get, set
+[<JS.Pojo>]
+type ApexDiscretePoint
+    (
+        ?seriesIndex: float,
+        ?dataPointIndex: float,
+        ?fillColor: string,
+        ?strokeColor: string,
+        ?size: float,
+        ?shape: ApexMarkerShape
+    ) =
+    member val seriesIndex: float = JS.undefined with get, set
+    member val dataPointIndex: float = JS.undefined with get, set
+    member val fillColor: string = JS.undefined with get, set
+    member val strokeColor: string = JS.undefined with get, set
+    member val size: float = JS.undefined with get, set
+    member val shape: ApexMarkerShape = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexMarkers =
-    abstract member size: U2<float, array<float>>  with get, set
-    abstract member colors: U2<string, array<string>>  with get, set
-    abstract member strokeColors: U2<string, array<string>>  with get, set
-    abstract member strokeWidth: U2<float, array<float>>  with get, set
-    abstract member strokeOpacity: U2<float, array<float>>  with get, set
-    abstract member strokeDashArray: U2<float, array<float>>  with get, set
-    abstract member fillOpacity: U2<float, array<float>>  with get, set
-    abstract member discrete: array<ApexDiscretePoint>  with get, set
-    abstract member shape: ApexMarkerShape  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member showNullDataPoints: bool  with get, set
-    abstract member onClick: ?e: obj -> unit
-    abstract member onDblClick: ?e: obj -> unit
-    abstract member hover: ApexMarkers.hover  with get, set
+[<JS.Pojo>]
+type ApexMarkers
+    (
+        ?size: U2<float, array<float>>,
+        ?colors: U2<string, array<string>>,
+        ?strokeColors: U2<string, array<string>>,
+        ?strokeWidth: U2<float, array<float>>,
+        ?strokeOpacity: U2<float, array<float>>,
+        ?strokeDashArray: U2<float, array<float>>,
+        ?fillOpacity: U2<float, array<float>>,
+        ?discrete: array<ApexDiscretePoint>,
+        ?shape: ApexMarkerShape,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?showNullDataPoints: bool,
+        ?onClick: obj -> unit,
+        ?onDblClick: obj -> unit,
+        ?hover: ApexMarkers.hover
+    ) =
+    member val size: U2<float, array<float>> = JS.undefined with get, set
+    member val colors: U2<string, array<string>> = JS.undefined with get, set
+    member val strokeColors: U2<string, array<string>> = JS.undefined with get, set
+    member val strokeWidth: U2<float, array<float>> = JS.undefined with get, set
+    member val strokeOpacity: U2<float, array<float>> = JS.undefined with get, set
+    member val strokeDashArray: U2<float, array<float>> = JS.undefined with get, set
+    member val fillOpacity: U2<float, array<float>> = JS.undefined with get, set
+    member val discrete: array<ApexDiscretePoint> = JS.undefined with get, set
+    member val shape: ApexMarkerShape = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val showNullDataPoints: bool = JS.undefined with get, set
+    member val onClick: obj -> unit = JS.undefined
+    member val onDblClick: obj -> unit = JS.undefined
+    member val hover: ApexMarkers.hover = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexNoData =
-    abstract member text: string  with get, set
-    abstract member align: ApexNoData.align  with get, set
-    abstract member verticalAlign: ApexNoData.verticalAlign  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member style: ApexNoData.style  with get, set
+[<JS.Pojo>]
+type ApexNoData
+    (
+        ?text: string,
+        ?align: ApexNoData.align,
+        ?verticalAlign: ApexNoData.verticalAlign,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?style: ApexNoData.style
+    ) =
+    member val text: string = JS.undefined with get, set
+    member val align: ApexNoData.align = JS.undefined with get, set
+    member val verticalAlign: ApexNoData.verticalAlign = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val style: ApexNoData.style = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexDataLabels =
-    abstract member enabled: bool  with get, set
-    abstract member enabledOnSeries: array<float>  with get, set
-    abstract member textAnchor: ApexDataLabels.textAnchor  with get, set
-    abstract member distributed: bool  with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member style: ApexDataLabels.style  with get, set
-    abstract member background: ApexDataLabels.background  with get, set
-    abstract member dropShadow: ApexDropShadow  with get, set
-    abstract member formatter: ``val``: U3<string, float, array<float>> * ?opts: obj -> U3<string, float, array<U2<string, string>>>
+[<JS.Pojo>]
+type ApexDataLabels
+    (
+        ?enabled: bool,
+        ?enabledOnSeries: array<float>,
+        ?textAnchor: ApexDataLabels.textAnchor,
+        ?distributed: bool,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?style: ApexDataLabels.style,
+        ?background: ApexDataLabels.background,
+        ?dropShadow: ApexDropShadow,
+        ?formatter: U3<string, float, array<float>> * obj option -> U3<string, float, array<U2<string, string>>>
+    ) =
+    member val enabled: bool = JS.undefined with get, set
+    member val enabledOnSeries: array<float> = JS.undefined with get, set
+    member val textAnchor: ApexDataLabels.textAnchor = JS.undefined with get, set
+    member val distributed: bool = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val style: ApexDataLabels.style = JS.undefined with get, set
+    member val background: ApexDataLabels.background = JS.undefined with get, set
+    member val dropShadow: ApexDropShadow = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexResponsive =
-    abstract member breakpoint: float  with get, set
-    abstract member options: obj  with get, set
+    member val formatter: U3<string, float, array<float>> * obj option -> U3<string, float, array<U2<string, string>>> = JS.undefined
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexTooltipY =
-    abstract member title: ApexTooltipY.title  with get, set
-    abstract member formatter: ``val``: float * ?opts: obj -> string
+[<JS.Pojo>]
+type ApexResponsive(?breakpoint: float, ?options: obj) =
+    member val breakpoint: float = JS.undefined with get, set
+    member val options: obj = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexTooltip =
-    abstract member enabled: bool  with get, set
-    abstract member enabledOnSeries: array<float>  with get, set
-    abstract member shared: bool  with get, set
-    abstract member followCursor: bool  with get, set
-    abstract member intersect: bool  with get, set
-    abstract member inverseOrder: bool  with get, set
-    abstract member custom: U2<(obj -> obj), array<(obj -> obj)>>  with get, set
-    abstract member fillSeriesColor: bool  with get, set
-    abstract member theme: string  with get, set
-    abstract member cssClass: string  with get, set
-    abstract member hideEmptySeries: bool  with get, set
-    abstract member style: ApexTooltip.style  with get, set
-    abstract member onDatasetHover: ApexTooltip.onDatasetHover  with get, set
-    abstract member x: ApexTooltip.x  with get, set
-    abstract member y: U2<ApexTooltipY, array<ApexTooltipY>>  with get, set
-    abstract member z: ApexTooltip.z  with get, set
-    abstract member marker: ApexTooltip.marker  with get, set
-    abstract member items: ApexTooltip.items  with get, set
-    abstract member ``fixed``: ApexTooltip.``fixed``  with get, set
+[<JS.Pojo>]
+type ApexTooltipY(?title: ApexTooltipY.title, ?formatter: float * obj option -> string) =
+    member val title: ApexTooltipY.title = JS.undefined with get, set
+    member val formatter: float * obj option -> string = JS.undefined
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexXAxis =
-    abstract member ``type``: ApexXAxis.``type``  with get, set
-    abstract member categories: obj  with get, set
-    abstract member overwriteCategories: U2<array<float>, array<string>>   with get, set
-    abstract member offsetX: float  with get, set
-    abstract member offsetY: float  with get, set
-    abstract member sorted: bool  with get, set
-    abstract member labels: ApexXAxis.labels  with get, set
-    abstract member group: ApexXAxis.group  with get, set
-    abstract member axisBorder: ApexXAxis.axisBorder  with get, set
-    abstract member axisTicks: ApexXAxis.axisTicks  with get, set
-    abstract member tickPlacement: string  with get, set
-    abstract member tickAmount: ApexXAxis.tickAmount  with get, set
-    abstract member stepSize: float  with get, set
-    abstract member min: float  with get, set
-    abstract member max: float  with get, set
-    abstract member range: float  with get, set
-    abstract member floating: bool  with get, set
-    abstract member decimalsInFloat: float  with get, set
-    abstract member position: string  with get, set
-    abstract member title: ApexXAxis.title  with get, set
-    abstract member crosshairs: ApexXAxis.crosshairs  with get, set
-    abstract member tooltip: ApexXAxis.tooltip  with get, set
+[<JS.Pojo>]
+type ApexTooltip
+    (
+        ?enabled: bool,
+        ?enabledOnSeries: array<float>,
+        ?shared: bool,
+        ?followCursor: bool,
+        ?intersect: bool,
+        ?inverseOrder: bool,
+        ?custom: U2<(obj -> obj), array<(obj -> obj)>>,
+        ?fillSeriesColor: bool,
+        ?theme: string,
+        ?cssClass: string,
+        ?hideEmptySeries: bool,
+        ?style: ApexTooltip.style,
+        ?onDatasetHover: ApexTooltip.onDatasetHover,
+        ?x: ApexTooltip.x,
+        ?y: U2<ApexTooltipY, array<ApexTooltipY>>,
+        ?z: ApexTooltip.z,
+        ?marker: ApexTooltip.marker,
+        ?items: ApexTooltip.items,
+        ?``fixed``: ApexTooltip.``fixed``
+    ) =
+    member val enabled: bool = JS.undefined with get, set
+    member val enabledOnSeries: array<float> = JS.undefined with get, set
+    member val shared: bool = JS.undefined with get, set
+    member val followCursor: bool = JS.undefined with get, set
+    member val intersect: bool = JS.undefined with get, set
+    member val inverseOrder: bool = JS.undefined with get, set
+    member val custom: U2<(obj -> obj), array<(obj -> obj)>> = JS.undefined with get, set
+    member val fillSeriesColor: bool = JS.undefined with get, set
+    member val theme: string = JS.undefined with get, set
+    member val cssClass: string = JS.undefined with get, set
+    member val hideEmptySeries: bool = JS.undefined with get, set
+    member val style: ApexTooltip.style = JS.undefined with get, set
+    member val onDatasetHover: ApexTooltip.onDatasetHover = JS.undefined with get, set
+    member val x: ApexTooltip.x = JS.undefined with get, set
+    member val y: U2<ApexTooltipY, array<ApexTooltipY>> = JS.undefined with get, set
+    member val z: ApexTooltip.z = JS.undefined with get, set
+    member val marker: ApexTooltip.marker = JS.undefined with get, set
+    member val items: ApexTooltip.items = JS.undefined with get, set
+    member val ``fixed``: ApexTooltip.``fixed`` = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexYAxis =
-    abstract member show: bool  with get, set
-    abstract member showAlways: bool  with get, set
-    abstract member showForNullSeries: bool  with get, set
-    abstract member seriesName: U2<string, array<string>>  with get, set
-    abstract member opposite: bool  with get, set
-    abstract member reversed: bool  with get, set
-    abstract member logarithmic: bool  with get, set
-    abstract member logBase: float  with get, set
-    abstract member tickAmount: float  with get, set
-    abstract member stepSize: float  with get, set
-    abstract member forceNiceScale: bool  with get, set
-    abstract member min: U2<float, (float -> float)>  with get, set
-    abstract member max: U2<float, (float -> float)>  with get, set
-    abstract member floating: bool  with get, set
-    abstract member decimalsInFloat: float  with get, set
-    abstract member labels: ApexYAxis.labels  with get, set
-    abstract member axisBorder: ApexYAxis.axisBorder  with get, set
-    abstract member axisTicks: ApexYAxis.axisTicks  with get, set
-    abstract member title: ApexYAxis.title  with get, set
-    abstract member crosshairs: ApexYAxis.crosshairs  with get, set
-    abstract member tooltip: ApexYAxis.tooltip  with get, set
+[<JS.Pojo>]
+type ApexXAxis
+    (
+        ?``type``: ApexXAxis.``type``,
+        ?categories: obj,
+        ?overwriteCategories: U2<array<float>, array<string>>,
+        ?offsetX: float,
+        ?offsetY: float,
+        ?sorted: bool,
+        ?labels: ApexXAxis.labels,
+        ?group: ApexXAxis.group,
+        ?axisBorder: ApexXAxis.axisBorder,
+        ?axisTicks: ApexXAxis.axisTicks,
+        ?tickPlacement: string,
+        ?tickAmount: ApexXAxis.tickAmount,
+        ?stepSize: float,
+        ?min: float,
+        ?max: float,
+        ?range: float,
+        ?floating: bool,
+        ?decimalsInFloat: float,
+        ?position: string,
+        ?title: ApexXAxis.title,
+        ?crosshairs: ApexXAxis.crosshairs,
+        ?tooltip: ApexXAxis.tooltip
+    ) =
+    member val ``type``: ApexXAxis.``type`` = JS.undefined with get, set
+    member val categories: obj = JS.undefined with get, set
+    member val overwriteCategories: U2<array<float>, array<string>> = JS.undefined with get, set
+    member val offsetX: float = JS.undefined with get, set
+    member val offsetY: float = JS.undefined with get, set
+    member val sorted: bool = JS.undefined with get, set
+    member val labels: ApexXAxis.labels = JS.undefined with get, set
+    member val group: ApexXAxis.group = JS.undefined with get, set
+    member val axisBorder: ApexXAxis.axisBorder = JS.undefined with get, set
+    member val axisTicks: ApexXAxis.axisTicks = JS.undefined with get, set
+    member val tickPlacement: string = JS.undefined with get, set
+    member val tickAmount: ApexXAxis.tickAmount = JS.undefined with get, set
+    member val stepSize: float = JS.undefined with get, set
+    member val min: float = JS.undefined with get, set
+    member val max: float = JS.undefined with get, set
+    member val range: float = JS.undefined with get, set
+    member val floating: bool = JS.undefined with get, set
+    member val decimalsInFloat: float = JS.undefined with get, set
+    member val position: string = JS.undefined with get, set
+    member val title: ApexXAxis.title = JS.undefined with get, set
+    member val crosshairs: ApexXAxis.crosshairs = JS.undefined with get, set
+    member val tooltip: ApexXAxis.tooltip = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexForecastDataPoints =
-    abstract member count: float  with get, set
-    abstract member fillOpacity: float  with get, set
-    abstract member strokeWidth: float  with get, set
-    abstract member dashArray: float  with get, set
+[<JS.Pojo>]
+type ApexYAxis
+    (
+        ?show: bool,
+        ?showAlways: bool,
+        ?showForNullSeries: bool,
+        ?seriesName: U2<string, array<string>>,
+        ?opposite: bool,
+        ?reversed: bool,
+        ?logarithmic: bool,
+        ?logBase: float,
+        ?tickAmount: float,
+        ?stepSize: float,
+        ?forceNiceScale: bool,
+        ?min: U2<float, (float -> float)>,
+        ?max: U2<float, (float -> float)>,
+        ?floating: bool,
+        ?decimalsInFloat: float,
+        ?labels: ApexYAxis.labels,
+        ?axisBorder: ApexYAxis.axisBorder,
+        ?axisTicks: ApexYAxis.axisTicks,
+        ?title: ApexYAxis.title,
+        ?crosshairs: ApexYAxis.crosshairs,
+        ?tooltip: ApexYAxis.tooltip
+    ) =
+    member val show: bool = JS.undefined with get, set
+    member val showAlways: bool = JS.undefined with get, set
+    member val showForNullSeries: bool = JS.undefined with get, set
+    member val seriesName: U2<string, array<string>> = JS.undefined with get, set
+    member val opposite: bool = JS.undefined with get, set
+    member val reversed: bool = JS.undefined with get, set
+    member val logarithmic: bool = JS.undefined with get, set
+    member val logBase: float = JS.undefined with get, set
+    member val tickAmount: float = JS.undefined with get, set
+    member val stepSize: float = JS.undefined with get, set
+    member val forceNiceScale: bool = JS.undefined with get, set
+    member val min: U2<float, (float -> float)> = JS.undefined with get, set
+    member val max: U2<float, (float -> float)> = JS.undefined with get, set
+    member val floating: bool = JS.undefined with get, set
+    member val decimalsInFloat: float = JS.undefined with get, set
+    member val labels: ApexYAxis.labels = JS.undefined with get, set
+    member val axisBorder: ApexYAxis.axisBorder = JS.undefined with get, set
+    member val axisTicks: ApexYAxis.axisTicks = JS.undefined with get, set
+    member val title: ApexYAxis.title = JS.undefined with get, set
+    member val crosshairs: ApexYAxis.crosshairs = JS.undefined with get, set
+    member val tooltip: ApexYAxis.tooltip = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexGrid =
-    abstract member show: bool  with get, set
-    abstract member borderColor: string  with get, set
-    abstract member strokeDashArray: float  with get, set
-    abstract member position: ApexGrid.position  with get, set
-    abstract member xaxis: ApexGrid.xaxis  with get, set
-    abstract member yaxis: ApexGrid.yaxis  with get, set
-    abstract member row: ApexGrid.row  with get, set
-    abstract member column: ApexGrid.column  with get, set
-    abstract member padding: ApexGrid.padding  with get, set
+[<JS.Pojo>]
+type ApexForecastDataPoints(?count: float, ?fillOpacity: float, ?strokeWidth: float, ?dashArray: float) =
+    member val count: float = JS.undefined with get, set
+    member val fillOpacity: float = JS.undefined with get, set
+    member val strokeWidth: float = JS.undefined with get, set
+    member val dashArray: float = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ApexTheme =
-    abstract member mode: ApexTheme.mode  with get, set
-    abstract member palette: string  with get, set
-    abstract member monochrome: ApexTheme.monochrome  with get, set
+[<JS.Pojo>]
+type ApexGrid
+    (
+        ?show: bool,
+        ?borderColor: string,
+        ?strokeDashArray: float,
+        ?position: ApexGrid.position,
+        ?xaxis: ApexGrid.xaxis,
+        ?yaxis: ApexGrid.yaxis,
+        ?row: ApexGrid.row,
+        ?column: ApexGrid.column,
+        ?padding: ApexGrid.padding
+    ) =
+    member val show: bool = JS.undefined with get, set
+    member val borderColor: string = JS.undefined with get, set
+    member val strokeDashArray: float = JS.undefined with get, set
+    member val position: ApexGrid.position = JS.undefined with get, set
+    member val xaxis: ApexGrid.xaxis = JS.undefined with get, set
+    member val yaxis: ApexGrid.yaxis = JS.undefined with get, set
+    member val row: ApexGrid.row = JS.undefined with get, set
+    member val column: ApexGrid.column = JS.undefined with get, set
+    member val padding: ApexGrid.padding = JS.undefined with get, set
+
+[<JS.Pojo>]
+type ApexTheme(?mode: ApexTheme.mode, ?palette: string, ?monochrome: ApexTheme.monochrome) =
+    member val mode: ApexTheme.mode = JS.undefined with get, set
+    member val palette: string = JS.undefined with get, set
+    member val monochrome: ApexTheme.monochrome = JS.undefined with get, set
+
 
 // module apexcharts =
 
