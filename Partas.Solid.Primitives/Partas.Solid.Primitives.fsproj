@@ -23,6 +23,7 @@
 
     <ItemGroup>
         <Compile Include="Primitives.fs" />
+        <Compile Include="Mouse.fs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -451,119 +451,193 @@ type DateValueOffset =
     abstract member weeks: array<array<DateValue>> with get, set
     abstract member visibleRangeText: DateValueOffset.visibleRangeText with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TableCellProps =
-    abstract member disabled: bool with get, set
-    abstract member value: float with get, set
-    abstract member columns: float with get, set
+[<JS.Pojo>]
+type TableCellProps(?disabled: bool, ?value: float, ?columns: float) =
+    [<DefaultValue>]
+    val mutable disabled: bool
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TableCellState =
-    abstract member focused: bool with get, set
-    abstract member selectable: bool with get, set
-    abstract member selected: bool with get, set
-    abstract member valueText: string with get, set
-    abstract member disabled: bool with get
+    [<DefaultValue>]
+    val mutable value: float
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DayTableCellProps =
-    abstract member value: DateValue with get, set
-    abstract member disabled: bool with get, set
-    abstract member visibleRange: VisibleRange with get, set
+    [<DefaultValue>]
+    val mutable columns: float
 
-[<AllowNullLiteral>]
-[<Interface>]
-type DayTableCellState =
-    abstract member invalid: bool with get, set
-    abstract member disabled: bool with get, set
-    abstract member selected: bool with get, set
-    abstract member unavailable: bool with get, set
-    abstract member outsideRange: bool with get, set
-    abstract member inRange: bool with get, set
-    abstract member firstInRange: bool with get, set
-    abstract member lastInRange: bool with get, set
-    abstract member today: bool with get, set
-    abstract member weekend: bool with get, set
-    abstract member formattedDate: string with get, set
-    abstract member focused: bool with get
-    abstract member ariaLabel: string with get
-    abstract member selectable: bool with get
+[<JS.Pojo>]
+type TableCellState(?focused: bool, ?selectable: bool, ?selected: bool, ?valueText: string, ?disabled: bool) =
+    [<DefaultValue>]
+    val mutable focused: bool
 
-[<AllowNullLiteral>]
-[<Interface>]
-type TableProps =
-    abstract member view: DateView with get, set
-    abstract member columns: float with get, set
-    abstract member id: string with get, set
+    [<DefaultValue>]
+    val mutable selectable: bool
+
+    [<DefaultValue>]
+    val mutable selected: bool
+
+    [<DefaultValue>]
+    val mutable valueText: string
+
+    [<DefaultValue>]
+    val mutable disabled: bool
+
+[<JS.Pojo>]
+type DayTableCellProps(?value: DateValue, ?disabled: bool, ?visibleRange: VisibleRange) =
+    [<DefaultValue>]
+    val mutable value: DateValue
+
+    [<DefaultValue>]
+    val mutable disabled: bool
+
+    [<DefaultValue>]
+    val mutable visibleRange: VisibleRange
+
+[<JS.Pojo>]
+type DayTableCellState
+    (
+        ?invalid: bool,
+        ?disabled: bool,
+        ?selected: bool,
+        ?unavailable: bool,
+        ?outsideRange: bool,
+        ?inRange: bool,
+        ?firstInRange: bool,
+        ?lastInRange: bool,
+        ?today: bool,
+        ?weekend: bool,
+        ?formattedDate: string,
+        ?focused: bool,
+        ?ariaLabel: string,
+        ?selectable: bool
+    ) =
+    [<DefaultValue>]
+    val mutable invalid: bool
+
+    [<DefaultValue>]
+    val mutable disabled: bool
+
+    [<DefaultValue>]
+    val mutable selected: bool
+
+    [<DefaultValue>]
+    val mutable unavailable: bool
+
+    [<DefaultValue>]
+    val mutable outsideRange: bool
+
+    [<DefaultValue>]
+    val mutable inRange: bool
+
+    [<DefaultValue>]
+    val mutable firstInRange: bool
+
+    [<DefaultValue>]
+    val mutable lastInRange: bool
+
+    [<DefaultValue>]
+    val mutable today: bool
+
+    [<DefaultValue>]
+    val mutable weekend: bool
+
+    [<DefaultValue>]
+    val mutable formattedDate: string
+
+    [<DefaultValue>]
+    val mutable focused: bool
+
+    [<DefaultValue>]
+    val mutable ariaLabel: string
+
+    [<DefaultValue>]
+    val mutable selectable: bool
+
+[<JS.Pojo>]
+type TableProps(?view: DateView, ?columns: float, ?id: string) =
+    [<DefaultValue>]
+    val mutable view: DateView
+
+    [<DefaultValue>]
+    val mutable columns: float
+
+    [<DefaultValue>]
+    val mutable id: string
 
 type PresetTriggerValue =
     U2<array<DateValue>, DateRangePreset>
 
-[<AllowNullLiteral>]
-[<Interface>]
-type PresetTriggerProps =
-    abstract member value: PresetTriggerValue with get, set
+[<JS.Pojo>]
+type PresetTriggerProps(?value: PresetTriggerValue) =
+    [<DefaultValue>]
+    val mutable value: PresetTriggerValue
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ViewProps =
-    abstract member view: DateView with get, set
+[<JS.Pojo>]
+type ViewProps(?view: DateView) =
+    [<DefaultValue>]
+    val mutable view: DateView
 
-[<AllowNullLiteral>]
-[<Interface>]
-type InputProps =
+[<JS.Pojo>]
+type InputProps(?index: float, ?fixOnBlur: bool) =
     /// <summary>
     /// The index of the input to focus.
     /// </summary>
-    abstract member index: float with get, set
+    [<DefaultValue>]
+    val mutable index: float
+
     /// <summary>
     /// Whether to fix the input value on blur.
     /// </summary>
-    abstract member fixOnBlur: bool with get, set
+    [<DefaultValue>]
+    val mutable fixOnBlur: bool
 
-[<AllowNullLiteral>]
-[<Interface>]
-type LabelProps =
-    abstract member index: float with get, set
+[<JS.Pojo>]
+type LabelProps(?index: float) =
+    [<DefaultValue>]
+    val mutable index: float
 
-[<AllowNullLiteral>]
-[<Interface>]
-type MonthGridProps =
-    abstract member columns: float with get, set
-    abstract member format: MonthGridProps.format with get, set
+[<JS.Pojo>]
+type MonthGridProps(?columns: float, ?format: MonthGridProps.format) =
+    [<DefaultValue>]
+    val mutable columns: float
 
-[<AllowNullLiteral>]
-[<Interface>]
-type Cell =
-    abstract member label: string with get, set
-    abstract member value: float with get, set
+    [<DefaultValue>]
+    val mutable format: MonthGridProps.format
+
+[<JS.Pojo>]
+type Cell(?label: string, ?value: float) =
+    [<DefaultValue>]
+    val mutable label: string
+
+    [<DefaultValue>]
+    val mutable value: float
 
 type MonthGridValue =
     array<array<Cell>>
 
-[<AllowNullLiteral>]
-[<Interface>]
-type YearGridProps =
-    abstract member columns: float with get, set
+[<JS.Pojo>]
+type YearGridProps(?columns: float) =
+    [<DefaultValue>]
+    val mutable columns: float
 
 type YearGridValue =
     array<array<Cell>>
 
-[<AllowNullLiteral>]
-[<Interface>]
-type WeekDay =
-    abstract member value: DateValue with get, set
-    abstract member short: string with get, set
-    abstract member long: string with get, set
-    abstract member narrow: string with get, set
+[<JS.Pojo>]
+type WeekDay(?value: DateValue, ?short: string, ?long: string, ?narrow: string) =
+    [<DefaultValue>]
+    val mutable value: DateValue
 
-[<AllowNullLiteral>]
-[<Interface>]
-type MonthFormatOptions =
-    abstract member format: MonthFormatOptions.format with get, set
+    [<DefaultValue>]
+    val mutable short: string
+
+    [<DefaultValue>]
+    val mutable long: string
+
+    [<DefaultValue>]
+    val mutable narrow: string
+
+[<JS.Pojo>]
+type MonthFormatOptions(?format: MonthFormatOptions.format) =
+    [<DefaultValue>]
+    val mutable format: MonthFormatOptions.format
 
 [<AllowNullLiteral>]
 [<Interface>]

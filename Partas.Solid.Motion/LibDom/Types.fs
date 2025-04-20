@@ -164,12 +164,12 @@ type AnimationControls =
     /// </summary>
     // abstract member playState: AnimationPlayState with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type CustomAnimationSettings =
-    abstract member easing: Easing with get, set
-    abstract member keyframes: ResizeArray<U2<float, string>> option with get, set
-    abstract member duration: float option with get, set
+[<JS.Pojo>]
+type CustomAnimationSettings
+    (?easing: Easing, ?keyframes: ResizeArray<U2<float, string>> option, ?duration: float option) =
+    member val easing: Easing = JS.undefined with get, set
+    member val keyframes: ResizeArray<U2<float, string>> option = JS.undefined with get, set
+    member val duration: float option = JS.undefined with get, set
 
 type ValueKeyframe =
     U2<string, float>
@@ -188,20 +188,19 @@ type Easing =
     | ``step-start``
     | ``step-end``
 
-[<AllowNullLiteral>]
-[<Interface>]
-type EasingGenerator =
-    abstract member createAnimation: EasingGenerator.createAnimation with get, set
+[<JS.Pojo>]
+type EasingGenerator(?createAnimation: EasingGenerator.createAnimation) =
+    member val createAnimation: EasingGenerator.createAnimation = JS.undefined with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type KeyframeOptions =
+[<JS.Pojo>]
+type KeyframeOptions
+    (?duration: float option, ?easing: KeyframeOptions.easing option, ?offset: ResizeArray<float> option) =
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    abstract member duration: float option with get, set
+    member val duration: float option = JS.undefined with get, set
     /// <summary>
     /// An easing to use for the whole animation, or list of easings to use between individual keyframes.
     ///
@@ -214,7 +213,7 @@ type KeyframeOptions =
     ///
     /// <c>"ease"</c>
     /// </summary>
-    abstract member easing: KeyframeOptions.easing option with get, set
+    member val easing: KeyframeOptions.easing option = JS.undefined with get, set
     /// <summary>
     /// The offset of each keyframe, as a number between 0 and 1.
     ///
@@ -222,7 +221,7 @@ type KeyframeOptions =
     ///
     /// <c>[0, 1]</c>
     /// </summary>
-    abstract member offset: ResizeArray<float> option with get, set
+    member val offset: ResizeArray<float> option = JS.undefined with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -230,55 +229,74 @@ type OptionResolver<'T> =
     [<Emit("$0($1...)")>]
     abstract member Invoke: i: float * total: float -> 'T
 
-[<AllowNullLiteral>]
-[<Interface>]
-type PlaybackOptions =
+[<JS.Pojo>]
+type PlaybackOptions
+    (
+        ?delay: float option,
+        ?endDelay: float option,
+        ?repeat: float option,
+        ?direction: PlaybackDirection option,
+        ?persist: bool option,
+        ?autoplay: bool option
+    ) =
     /// <summary>
     /// A duration, in seconds, that the animation will be delayed before starting.
     ///
     /// <c>0</c>
     /// </summary>
-    abstract member delay: float option with get, set
+    member val delay: float option = JS.undefined with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will wait at the end before ending.
     ///
     /// <c>0</c>
     /// </summary>
-    abstract member endDelay: float option with get, set
+    member val endDelay: float option = JS.undefined with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    abstract member repeat: float option with get, set
+    member val repeat: float option = JS.undefined with get, set
     /// <summary>
     /// The direction of animation playback. <c>"normal"</c>, <c>"reverse"</c>, <c>"alternate"</c>, or <c>"alternate-reverse"</c>.
     ///
     /// <c>"normal"</c>
     /// </summary>
-    abstract member direction: PlaybackDirection option with get, set
-    abstract member persist: bool option with get, set
+    member val direction: PlaybackDirection option = JS.undefined with get, set
+    member val persist: bool option = JS.undefined with get, set
     /// <summary>
     /// Whether the animation should start automatically.
     ///
     /// <c>true</c>
     /// </summary>
-    abstract member autoplay: bool option with get, set
+    member val autoplay: bool option = JS.undefined with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
 type DevToolsOptions =
     abstract member record: bool option with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type AnimationOptions =
+[<JS.Pojo>]
+type AnimationOptions
+    (
+        ?duration: float option,
+        ?easing: AnimationOptions.easing option,
+        ?offset: ResizeArray<float> option,
+        ?delay: float option,
+        ?endDelay: float option,
+        ?repeat: float option,
+        ?direction: PlaybackDirection option,
+        ?persist: bool option,
+        ?autoplay: bool option,
+        ?record: bool option,
+        ?allowWebkitAcceleration: bool option
+    ) =
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    abstract member duration: float option with get, set
+    member val duration: float option = JS.undefined with get, set
     /// <summary>
     /// An easing to use for the whole animation, or list of easings to use between individual keyframes.
     ///
@@ -291,7 +309,7 @@ type AnimationOptions =
     ///
     /// <c>"ease"</c>
     /// </summary>
-    abstract member easing: AnimationOptions.easing option with get, set
+    member val easing: AnimationOptions.easing option = JS.undefined with get, set
     /// <summary>
     /// The offset of each keyframe, as a number between 0 and 1.
     ///
@@ -299,39 +317,39 @@ type AnimationOptions =
     ///
     /// <c>[0, 1]</c>
     /// </summary>
-    abstract member offset: ResizeArray<float> option with get, set
+    member val offset: ResizeArray<float> option = JS.undefined with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will be delayed before starting.
     ///
     /// <c>0</c>
     /// </summary>
-    abstract member delay: float option with get, set
+    member val delay: float option = JS.undefined with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will wait at the end before ending.
     ///
     /// <c>0</c>
     /// </summary>
-    abstract member endDelay: float option with get, set
+    member val endDelay: float option = JS.undefined with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    abstract member repeat: float option with get, set
+    member val repeat: float option = JS.undefined with get, set
     /// <summary>
     /// The direction of animation playback. <c>"normal"</c>, <c>"reverse"</c>, <c>"alternate"</c>, or <c>"alternate-reverse"</c>.
     ///
     /// <c>"normal"</c>
     /// </summary>
-    abstract member direction: PlaybackDirection option with get, set
-    abstract member persist: bool option with get, set
+    member val direction: PlaybackDirection option = JS.undefined with get, set
+    member val persist: bool option = JS.undefined with get, set
     /// <summary>
     /// Whether the animation should start automatically.
     ///
     /// <c>true</c>
     /// </summary>
-    abstract member autoplay: bool option with get, set
-    abstract member record: bool option with get, set
+    member val autoplay: bool option = JS.undefined with get, set
+    member val record: bool option = JS.undefined with get, set
     /// <summary>
     /// Because of numerous timing bugs in Webkit's accelerated animations, these are disabled by default in Webkit-powered browsers.
     ///
@@ -340,7 +358,7 @@ type AnimationOptions =
     ///
     /// <c>false</c>
     /// </summary>
-    abstract member allowWebkitAcceleration: bool option with get, set
+    member val allowWebkitAcceleration: bool option = JS.undefined with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]

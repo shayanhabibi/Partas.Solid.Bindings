@@ -4,87 +4,122 @@ open Fable.Core
 open Fable.Core.JsInterop
 open System
 
-[<AllowNullLiteral>]
-[<Interface>]
-type PositioningOptions =
+[<JS.Pojo>]
+type PositioningOptions
+    (
+        ?hideWhenDetached: bool,
+        ?strategy: PositioningOptions.strategy,
+        ?placement: obj,
+        ?offset: PositioningOptions.offset,
+        ?gutter: float,
+        ?shift: float,
+        ?overflowPadding: float,
+        ?arrowPadding: float,
+        ?slide: bool,
+        ?overlap: bool,
+        ?sameWidth: bool,
+        ?fitViewport: bool,
+        ?listeners: U2<bool, obj>,
+        ?onPositioned: (PositioningOptions.onPositioned.data -> unit),
+        ?getAnchorRect: (obj -> obj),
+        ?updatePosition: (PositioningOptions.updatePosition.data -> U2<unit, JS.Promise<unit>>)
+    ) =
     /// <summary>
     /// Whether the popover should be hidden when the reference element is detached
     /// </summary>
-    abstract member hideWhenDetached: bool option with get, set
+    [<DefaultValue>]
+    val mutable hideWhenDetached: bool option
+
     /// <summary>
     /// The strategy to use for positioning
     /// </summary>
-    abstract member strategy: PositioningOptions.strategy option with get, set
+    [<DefaultValue>]
+    val mutable strategy: PositioningOptions.strategy option
+
     /// <summary>
     /// The initial placement of the floating element
     /// </summary>
-    abstract member placement: obj option with get, set
+    [<DefaultValue>]
+    val mutable placement: obj option
+
     /// <summary>
     /// The offset of the floating element
     /// </summary>
-    abstract member offset: PositioningOptions.offset option with get, set
+    [<DefaultValue>]
+    val mutable offset: PositioningOptions.offset option
+
     /// <summary>
     /// The main axis offset or gap between the reference and floating elements
     /// </summary>
-    abstract member gutter: float option with get, set
+    [<DefaultValue>]
+    val mutable gutter: float option
+
     /// <summary>
     /// The secondary axis offset or gap between the reference and floating elements
     /// </summary>
-    abstract member shift: float option with get, set
+    [<DefaultValue>]
+    val mutable shift: float option
+
     /// <summary>
     /// The virtual padding around the viewport edges to check for overflow
     /// </summary>
-    abstract member overflowPadding: float option with get, set
+    [<DefaultValue>]
+    val mutable overflowPadding: float option
+
     /// <summary>
     /// The minimum padding between the arrow and the floating element's corner.
     /// </summary>
-    abstract member arrowPadding: float option with get, set
-    /// <summary>
-    /// Whether to flip the placement
-    /// </summary>
-    // abstract member flip: U2<bool, ResizeArray<Placement>> option option with get, set
+    [<DefaultValue>]
+    val mutable arrowPadding: float option
+
     /// <summary>
     /// Whether the popover should slide when it overflows.
     /// </summary>
-    abstract member slide: bool option with get, set
+    [<DefaultValue>]
+    val mutable slide: bool option
+
     /// <summary>
     /// Whether the floating element can overlap the reference element
     /// </summary>
-    abstract member overlap: bool option with get, set
+    [<DefaultValue>]
+    val mutable overlap: bool option
+
     /// <summary>
     /// Whether to make the floating element same width as the reference element
     /// </summary>
-    abstract member sameWidth: bool option with get, set
+    [<DefaultValue>]
+    val mutable sameWidth: bool option
+
     /// <summary>
     /// Whether the popover should fit the viewport.
     /// </summary>
-    abstract member fitViewport: bool option with get, set
-    /// <summary>
-    /// The overflow boundary of the reference element
-    /// </summary>
-    // abstract member boundary: (unit -> Boundary) option with get, set
+    [<DefaultValue>]
+    val mutable fitViewport: bool option
+
     /// <summary>
     /// Options to activate auto-update listeners
     /// </summary>
-    abstract member listeners: U2<bool, obj> option option with get, set
-    /// <summary>
-    /// Function called when the placement is computed
-    /// </summary>
-    // abstract member onComplete: (ComputePositionReturn -> unit) option with get, set
+    [<DefaultValue>]
+    val mutable listeners: U2<bool, obj> option
+
     /// <summary>
     /// Function called when the floating element is positioned or not
     /// </summary>
-    abstract member onPositioned: (PositioningOptions.onPositioned.data -> unit) option with get, set
+    [<DefaultValue>]
+    val mutable onPositioned: (PositioningOptions.onPositioned.data -> unit) option
+
     /// <summary>
     /// Function that returns the anchor rect
     /// </summary>
-    abstract member getAnchorRect: (obj option -> obj option) option with get, set
+    [<DefaultValue>]
+    val mutable getAnchorRect: (obj option -> obj option) option
+
     /// <summary>
     /// A callback that will be called when the popover needs to calculate its
     /// position.
     /// </summary>
-    abstract member updatePosition: (PositioningOptions.updatePosition.data -> U2<unit, JS.Promise<unit>>) option with get, set
-
+    [<DefaultValue>]
+    val mutable updatePosition: (PositioningOptions.updatePosition.data -> U2<unit, JS.Promise<unit>>) option
 module PositioningOptions =
 
     [<RequireQualifiedAccess>]

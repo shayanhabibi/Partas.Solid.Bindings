@@ -1503,14 +1503,3 @@ type XMLHttpRequestResponseType =
     | json
     | text
 
-module HeadersInit =
-
-    module U3 =
-
-        [<AllowNullLiteral>]
-        [<Interface>]
-        type Case2 =
-            [<EmitIndexer>]
-            abstract member Item: key: string -> string with get, set
-
-

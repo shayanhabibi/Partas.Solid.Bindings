@@ -86,6 +86,51 @@ module Enums =
         | Automatic
         | Manual
 
+    [<StringEnum>]
+    type CollectionType =
+        | Item
+        | Section
+// ================================================== Interfaces
+[<JS.Pojo>]
+type CollectionItem(?``type``: CollectionType, ?key: string, ?textValue: string, ?disabled: bool) =
+    [<DefaultValue>]
+    val mutable ``type``: CollectionType
+    [<DefaultValue>]
+    val mutable key: string
+    [<DefaultValue>]
+    val mutable textValue: string
+    [<DefaultValue>]
+    val mutable disabled: bool
+
+[<Interface; AllowNullLiteral>]
+type CollectionNode<'T> =
+    abstract ``type``: CollectionType
+    abstract key: string
+    abstract rawValue: 'T
+    abstract textValue: string
+    abstract disabled: bool
+    abstract level: int
+    abstract index: int
+    abstract prevKey: string option
+    abstract nextKey: string option
+
+[<Interface; AllowNullLiteral>]
+type ItemComponentProps<'T> =
+    abstract item: CollectionNode<'T>
+[<Interface; AllowNullLiteral>]
+type SectionComponentProps<'T> =
+    abstract section: CollectionNode<'T>
+
+/// This interface provides the interfacer a yield function for a state object
+[<Interface; AllowNullLiteral>]
+type KobalteStateProvider<'T> = interface end
+
+[<AutoOpen>]
+module Bindings =
+    type KobalteStateProvider<'T> with
+        [<Erase>]
+        member inline _.Yield(PARTAS_VALUE: 'T -> #HtmlElement): HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_VALUE
+
 // =================================================== Button
 /// <summary>
 /// data-disabled: present when the button is disabled
@@ -1869,21 +1914,27 @@ module RadioGroup =
         interface Polymorph
 
 [<Erase; Import("Root", select)>]
-type Select() =
+type Select<'T>() =
     inherit div()
     interface Polymorph
-    member val options : obj[] = jsNative with get,set
-    member val optionValue : obj -> int = jsNative with get,set
-    member val optionTextValue : obj -> string = jsNative with get,set
-    member val optionDisabled : obj -> bool = jsNative with get,set
+    member val options : 'T[] = jsNative with get,set
+    member val optionValue : 'T -> U3<string, float, int> = jsNative with get,set
+    member val optionTextValue : 'T -> string = jsNative with get,set
+    member val optionDisabled : 'T -> bool = jsNative with get,set
     member val optionGroupChildren : string = jsNative with get,set
-    member val itemComponent : obj = jsNative with get,set
-    member val sectionComponent : obj = jsNative with get,set
+    member val itemComponent : ItemComponentProps<'T> -> HtmlElement = jsNative with get,set
+    member val sectionComponent : SectionComponentProps<'T> -> HtmlElement = jsNative with get,set
     member val multiple : bool = jsNative with get,set
-    member val placeholder : JSX.Element = jsNative with get,set
-    member val value : obj[] = jsNative with get,set
-    member val defaultValue : obj[] = jsNative with get,set
-    member val onChange : obj[] -> unit = jsNative with get,set
+    member val placeholder : HtmlElement = jsNative with get,set
+    member val value : 'T = jsNative with get,set
+    member this.values
+        with inline set(values: 'T[]) = this.value <- !!values 
+    member val defaultValue : 'T = jsNative with get,set
+    member this.defaultValues
+        with inline set(values: 'T[]) = this.defaultValue <- !!values
+    member val onChange : 'T -> unit = jsNative with get,set
+    member this.onChanges
+        with inline set(handler: 'T[] -> unit) = this.onChange <- !!handler
     member val open' : bool = jsNative with get,set
     member val defaultOpen : bool = jsNative with get,set
     member val onOpenChange : (bool -> unit) = jsNative with get,set
@@ -1917,17 +1968,24 @@ type Select() =
 
 [<RequireQualifiedAccess; Erase>]
 module Select =
+    [<Interface; Erase>]
+    type ValueState<'T> =
+        abstract selectedOption: Accessor<'T>
+        abstract selectedOptions: Accessor<'T[]>
+        abstract remove: ('T -> unit)
+        abstract clear: (unit -> unit)
     [<Erase; Import("Trigger", select)>]
     type Trigger() =
         inherit Button()
         interface Polymorph
     [<Erase; Import("Value", select)>]
-    type Value() =
+    type Value<'T>() =
         inherit div()
         interface Polymorph
-        member val selectedOption : obj = jsNative with get,set
-        member val selectedOptions : obj[] = jsNative with get,set
-        member val remove : obj -> unit = jsNative with get,set
+        interface KobalteStateProvider<ValueState<'T>>
+        member val selectedOption : 'T Accessor = jsNative with get,set
+        member val selectedOptions : 'T[] Accessor = jsNative with get,set
+        member val remove : 'T -> unit = jsNative with get,set
         member val clear : unit -> unit = jsNative with get,set
     [<Erase; Import("Icon", select)>]
     type Icon() =
@@ -1953,12 +2011,13 @@ module Select =
         interface Polymorph
         member val scrollRef : unit -> HtmlElement = jsNative with get,set
         member val scrollToItem : string -> unit = jsNative with get,set
-        member val children : obj[] -> JSX.Element = jsNative with get,set
+        member val children : obj[] -> HtmlElement = jsNative with get,set
     [<Erase; Import("Item", select)>]
-    type Item() =
+    type Item'<'T>() =
         inherit div()
         interface Polymorph
-        member val item : obj = jsNative with get,set
+        member val item : 'T = jsNative with get,set
+    type Item = Item'<obj>
     [<Erase; Import("ItemIndicator", select)>]
     type ItemIndicator() =
         inherit div()
@@ -2194,8 +2253,8 @@ module TextField =
 
 // [<Erase; Import("toaster", toast)>]
 // type toaster =
-//     static member show : JSX.Element -> int = jsNative
-//     static member update : int -> JSX.Element -> unit = jsNative
+//     static member show : HtmlElement -> int = jsNative
+//     static member update : int -> HtmlElement -> unit = jsNative
 //     // static member promise : Promise<'T>
 
 [<Erase; Import("Root", toggleButton)>]

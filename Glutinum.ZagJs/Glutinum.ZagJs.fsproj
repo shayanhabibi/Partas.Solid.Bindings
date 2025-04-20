@@ -8,6 +8,8 @@
     <ItemGroup>
         <Compile Include="Popper.fs" />
         <Compile Include="DatePicker.fs" />
+        <Compile Include="Accordion.fs" />
+        <Compile Include="Avatar.fs" />
     </ItemGroup>
 
     <ItemGroup>

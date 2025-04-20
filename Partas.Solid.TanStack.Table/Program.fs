@@ -4,6 +4,7 @@ open Fable.Core.JS
 open Microsoft.FSharp.Core
 open Partas.Solid
 open Fable.Core
+open Fable.Core.JsInterop
 open System
 
 [<AutoOpen; Erase>]
@@ -52,7 +53,7 @@ module rec Types =
         (
             ?id: string,
             ?accessorKey: string,
-            ?accessorFn: ('Data * int -> obj),
+            ?accessorFn: ('Data -> int -> obj),
             ?columns: 'Data[],
             ?header: HeaderRenderProps<'Data> -> obj,
             ?footer: FooterRenderProps<'Data> -> obj,
@@ -74,7 +75,7 @@ module rec Types =
         member val accessorKey: string = accessorKey.Value with get,set
         
         /// The accessor function to use when extracting the value for the column from each row.
-        member val accessorFn: ('Data * int -> obj) = accessorFn.Value with get,set
+        member val accessorFn: ('Data -> int -> obj) = accessorFn.Value with get,set
         
         /// The child column defs to include in a group column.
         member val columns: 'Data[] = columns.Value with get,set
@@ -166,12 +167,12 @@ module rec Types =
             ?getSubRows: 'Data * int -> 'Data[],
             ?getRowId: 'Data * int * Row<'Data> -> string
         ) =
-        
         /// <summary>
         /// The data for the table to display. This array should match the type you provided to <c>table.setRowType[...]</c>, but in theory could be an array of anything. It's common for each item in the array to be an object of key/values but this is not required. Columns can access this data via string/index or a functional accessor to return anything they want.<br/><br/>
         /// When the data option changes reference (compared via Object.is), the table will reprocess the data. Any other data processing that relies on the core data model (such as grouping, sorting, filtering, etc) will also be reprocessed.<br/><br/>
         /// 🧠 Make sure your <c>data</c> option is only changing when you want the table to reprocess. Providing an inline [] or constructing the data array as a new object every time you want to render the table will result in a lot of unnecessary re-processing. This can easily go unnoticed in smaller tables, but you will likely notice it in larger tables.
         /// </summary>
+        /// <remarks>For reactivity, you should use the helper function <c>TableOptions.dataGetter</c> to set a `get` property</remarks>
         member val data: 'Data[] option = data with get,set
         
         /// The array of column defs to use for the table. See the Column Defs Guide for more information on creating column definitions.
@@ -259,7 +260,13 @@ module rec Types =
         /// This optional function is used to derive a unique ID for any given row. If not provided the rows index is used (nested rows join together with <c>.</c> using their grandparents' index eg. <c>index.index.index</c>). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity eg. a userId, taskId, database ID field, etc.
         /// </summary>
         member val getRowId: ('Data * int * Row<'Data> -> string) option = getRowId with get,set
-
+    [<RequireQualifiedAccess>]
+    module TableOptions =
+        /// Properly provides reactivity by making the data key a property
+        let inline dataGetter (value: unit -> 'Data[]) (this: TableOptions<'Data>) =
+            let propertyDescriptor: PropertyDescriptor = !!createObj [ "get" ==> value ] 
+            Constructors.Object.defineProperty(this, "data", propertyDescriptor) |> ignore
+            this
     [<AllowNullLiteral; Interface>]
     type RowModel<'Data> =
         abstract member rows: Row<'Data>[] with get,set
