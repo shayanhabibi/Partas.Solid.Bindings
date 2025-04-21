@@ -1,11 +1,13 @@
 ﻿namespace Partas.Solid.ModularForms
 
+open System.Runtime.CompilerServices
 open System.Text.RegularExpressions
 open Browser.Types
 open Partas.Solid
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Core.JS
+open System.Collections.Generic
 open System
 
 #nowarn 49
@@ -14,6 +16,7 @@ open System
 module private Helpers =
     [<Literal>]
     let path = "@modular-forms/solid"
+    let inline lambdaPath map = Experimental.namesofLambda map |> String.concat "."
 
 [<StringEnum; RequireQualifiedAccess>]
 type FormResponseStatus =
@@ -36,7 +39,7 @@ type FormError() =
     [<Erase>] new(message: string, errors: FormErrors) = FormError()
     [<Erase>] new(errors: FormErrors) = FormError()
 [<Interface; AllowNullLiteral>]
-type FormStore<'ValueType, 'Response> =
+type FormStore<'Form, 'Response> =
     abstract element: HTMLFormElement option
     abstract submitCount: int
     abstract submitting: bool
@@ -47,7 +50,7 @@ type FormStore<'ValueType, 'Response> =
     abstract invalid: bool
     abstract response: FormResponse<'Response>
 [<Interface; AllowNullLiteral>]
-type FieldStore<'ValueType> =
+type FieldStore<'Form, 'ValueType> =
     abstract name: string
     abstract value: 'ValueType option
     abstract error: string
@@ -98,79 +101,6 @@ type ModularFormsType =
 
 type private DV = DefaultValueAttribute
 
-[<JS.Pojo>]
-type FormOptions<'T>
-    (
-        initialValues: 'T
-        ,?validate: ValidateForm<'T>
-        ,?validateOn: ValidateOn
-        ,?revalidateOn: ValidateOn
-    ) = class end
-
-[<Erase>]
-type Field<'ValueType, 'Response>() =
-    interface HtmlElement
-    [<DV>] val mutable of': FormStore<'ValueType, 'Response>
-    [<DV>] val mutable name: string
-    [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: U2<Validator<'ValueType>, Validator<'ValueType>[]>
-    [<DV>] val mutable validateOn: ValidateOn
-    [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable transform: TransformField<'ValueType>
-    [<DV>] val mutable keepActive: bool
-    [<DV>] val mutable keepState: bool
-    [<Erase>]
-    member this.children with get(): HtmlElement = JS.undefined
-    [<Erase>]
-    member inline _.Combine
-        ([<InlineIfLambda>] PARTAS_FIRST: HtmlContainerFun, [<InlineIfLambda>] PARTAS_SECOND: HtmlContainerFun)
-        : HtmlContainerFun =
-        fun PARTAS_BUILDER ->
-            PARTAS_FIRST PARTAS_BUILDER
-            PARTAS_SECOND PARTAS_BUILDER
-    [<Erase>]
-    member inline _.Delay([<InlineIfLambda>] PARTAS_DELAY: unit -> HtmlContainerFun) : HtmlContainerFun = PARTAS_DELAY()
-    [<Erase>]
-    member inline _.Zero() : HtmlContainerFun = ignore
-    [<Erase>]
-    member inline _.Yield(PARTAS_ELEMENT: FieldStore<'ValueType> -> FieldElementProps -> HtmlContainerFun) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
-[<Erase>]
-type Form<'T, 'R>() =
-    inherit RegularNode()
-    [<DV>] val mutable of': FormStore<'T, 'R>
-    [<DV>] val mutable onSubmit: SubmitHandler<'T, 'R>
-    [<DV>] val mutable keepResponse: bool
-    [<DV>] val mutable shouldActive: bool
-    [<DV>] val mutable shouldTouched: bool
-    [<DV>] val mutable shouldDirty: bool
-    [<DV>] val mutable shouldFocus: bool
-[<Erase>]
-type FieldArray<'ValueType, 'Response>() =
-    interface HtmlElement
-    [<DV>] val mutable of': FormStore<'ValueType, 'Response>
-    [<DV>] val mutable name: string
-    [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: U2<ValidateFieldArray, ValidateFieldArray[]>
-    [<DV>] val mutable validateOn: ValidateOn
-    [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable keepActive: bool
-    [<DV>] val mutable keepState: bool
-    [<Erase>]
-    member this.children with get(): HtmlElement = JS.undefined
-    [<Erase>]
-    member inline _.Combine
-        ([<InlineIfLambda>] PARTAS_FIRST: HtmlContainerFun, [<InlineIfLambda>] PARTAS_SECOND: HtmlContainerFun)
-        : HtmlContainerFun =
-        fun PARTAS_BUILDER ->
-            PARTAS_FIRST PARTAS_BUILDER
-            PARTAS_SECOND PARTAS_BUILDER
-    [<Erase>]
-    member inline _.Delay([<InlineIfLambda>] PARTAS_DELAY: unit -> HtmlContainerFun) : HtmlContainerFun = PARTAS_DELAY()
-    [<Erase>]
-    member inline _.Zero() : HtmlContainerFun = ignore
-    [<Erase>]
-    member inline _.Yield(PARTAS_ELEMENT: FieldArrayStore -> HtmlContainerFun) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
-
 [<Erase>]
 module FormErrors =
     let toArray (formErrors: FormErrors) =
@@ -187,113 +117,269 @@ type OnCustomAction =
     | Change
     | Blur
 
-[<Interface; AllowNullLiteral>]
-type ModularFormComponents<'Data, 'Response> =
-    abstract Form: Form<'Data, 'Response> with get
-    abstract Field: Field<'Data, 'Response> with get
-    abstract FieldArray: FieldArray<'Data, 'Response> with get
+[<JS.Pojo>]
+type FormOptions<'Form>
+    (
+        initialValues: 'Form
+        ,?validate: ValidateForm<'Form>
+        ,?validateOn: ValidateOn
+        ,?revalidateOn: ValidateOn
+    ) =
+    member val initialValues = initialValues
+    member val validate = validate
+    member val validateOn = validateOn
+    member val revalidateOn = revalidateOn
+    
+[<Import("Form", path)>]
+type Form<'Form, 'Response>() =    
+    inherit RegularNode()
+    [<DV>] val mutable of': FormStore<'Form, 'Response>
+    [<DV>] val mutable onSubmit: SubmitHandler<'Form, 'Response>
+    [<DV>] val mutable keepResponse: bool
+    [<DV>] val mutable shouldActive: bool
+    [<DV>] val mutable shouldTouched: bool
+    [<DV>] val mutable shouldDirty: bool
+    [<DV>] val mutable shouldFocus: bool
+[<PartasImport("Field", path)>]
+type Field<'Form, 'ValueType, 'Response>() =
+    inherit RegularNode()
+    [<DV>] val mutable of': FormStore<'ValueType, 'Response>
+    [<DV>] val mutable name: string
+    [<DV>] val mutable type': ModularFormsType
+    [<DV>] val mutable validate: U2<Validator<'ValueType>, Validator<'ValueType>[]>
+    [<DV>] val mutable validateOn: ValidateOn
+    [<DV>] val mutable revalidateOn: ValidateOn
+    [<DV>] val mutable transform: TransformField<'ValueType>
+    [<DV>] val mutable keepActive: bool
+    [<DV>] val mutable keepState: bool
+    member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
+    member inline this.map(
+        path: 'Form -> 'ValueType[],
+        index: int) = this.attr("name", $"{lambdaPath path}.{index}")
+    member inline this.map<'U>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{secondPath}")
+    member inline this.map<'U>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'ValueType,
+        secondIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}")
+    member inline this.map<'U, 'G>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'G[],
+        secondIndex: int,
+        thirdPath: 'G -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}")
+    member inline this.map<'U, 'G>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'G[],
+        secondIndex: int,
+        thirdPath: 'G -> 'ValueType[],
+        thirdIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}.{thirdIndex}")
+    [<Erase>]
+    member inline _.Yield(PARTAS_ELEMENT: FieldStore<'Form, 'ValueType> -> FieldElementProps -> #HtmlElement) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
+[<PartasImport("FieldArray", path)>]
+type FieldArray<'Form, 'ValueType, 'Response>() =
+    inherit RegularNode()
+    [<DV>] val mutable of': FormStore<'Form, 'Response>
+    [<DV>] val mutable name: string
+    [<DV>] val mutable type': ModularFormsType
+    [<DV>] val mutable validate: U2<ValidateFieldArray, ValidateFieldArray[]>
+    [<DV>] val mutable validateOn: ValidateOn
+    [<DV>] val mutable revalidateOn: ValidateOn
+    [<DV>] val mutable keepActive: bool
+    [<DV>] val mutable keepState: bool
+    member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
+    member inline this.map(
+        path: 'Form -> 'ValueType[],
+        index: int) = this.attr("name", $"{lambdaPath path}.{index}")
+    member inline this.map<'U>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{secondPath}")
+    member inline this.map<'U>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'ValueType,
+        secondIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}")
+    member inline this.map<'U, 'G>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'G[],
+        secondIndex: int,
+        thirdPath: 'G -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}")
+    member inline this.map<'U, 'G>(
+        path: 'Form -> 'U[],
+        index: int,
+        secondPath: 'U -> 'G[],
+        secondIndex: int,
+        thirdPath: 'G -> 'ValueType[],
+        thirdIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}.{thirdIndex}")
+    [<Erase>]
+    member inline _.Yield(PARTAS_ELEMENT: FieldArrayStore -> #HtmlElement) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
 
-type SolidModularForm<'Data, 'Response> = FormStore<'Data, 'Response> * ModularFormComponents<'Data, 'Response> 
 
 [<AutoOpen; Erase>]
 type ModularFormsBindings =
+    /// <summary>
+    /// Cannot support createForm easily. Simply pass form to the of' parameter
+    /// </summary>
     [<ImportMember(path)>]
-    static member createForm<'Data, 'Response>(): SolidModularForm<'Data, 'Response> = jsNative
+    static member createFormStore<'Form, 'Response>(): FormStore<'Form, 'Response> = jsNative
     [<ImportMember(path)>]
-    static member clearError(form: FormStore<'ValueType, 'Response>, name: string): unit = jsNative
+    static member clearError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): unit = jsNative
+    static member inline clearError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType) = clearError(form, lambdaPath path)
     [<ImportMember(path)>]
-    static member clearResponse(form: FormStore<'ValueType, 'Response>): unit = jsNative
+    static member clearResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>): unit = jsNative
     [<ImportMember(path)>]
-    static member focus(form: FormStore<'ValueType, 'Response>, name: string): unit = jsNative
+    static member focus<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): unit = jsNative
+    static member inline focus<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): unit = focus(form, lambdaPath path)
     [<ImportMember(path); ParamObject(2)>]
-    static member getError(form: FormStore<'ValueType, 'Response>, name: string,
+    static member getError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string,
                            ?shouldActive: bool (*true*),
                            ?shouldTouched: bool (*false*),
                            ?shouldDirty: bool (*false*)): string option = jsNative
+    [<ParamObject(2)>]
+    static member inline getError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType,
+                           ?shouldActive: bool (*true*),
+                           ?shouldTouched: bool (*false*),
+                           ?shouldDirty: bool (*false*)): string option = getError(form, lambdaPath path, ?shouldActive = shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty)
     [<ImportMember(path)>]
-    static member getError(form: FormStore<'ValueType, 'Response>, name: string): string option = jsNative
+    static member getError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): string option = jsNative
+    static member inline getError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): string option = getError(form, lambdaPath path)
     [<ImportMember(path); ParamObject(2)>]
-    static member getErrors(form: FormStore<'ValueType, 'Response>, names: string,
+    static member getErrors<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string,
                             ?shouldActive: bool,
                             ?shouldTouched: bool,
                             ?shouldDirty: bool): FormErrors = jsNative
+    [<ParamObject(2)>]
+    static member inline getErrors<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType,
+                            ?shouldActive: bool,
+                            ?shouldTouched: bool,
+                            ?shouldDirty: bool): FormErrors = getErrors(form, lambdaPath path, ?shouldActive = shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty)
     [<ImportMember(path); ParamObject(2)>]
-    static member getErrors(form: FormStore<'ValueType, 'Response>, names: string[],
+    static member getErrors<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[],
                             ?shouldActive: bool,
                             ?shouldTouched: bool,
                             ?shouldDirty: bool): FormErrors = jsNative
     [<ImportMember(path)>]
-    static member getErrors(form: FormStore<'ValueType, 'Response>, names: string): FormErrors = jsNative
+    static member getErrors<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string): FormErrors = jsNative
     [<ImportMember(path)>]
-    static member getErrors(form: FormStore<'ValueType, 'Response>, names: string[]): FormErrors = jsNative
-    // TODO - return types
+    static member getErrors<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[]): FormErrors = jsNative
+    static member inline getErrors<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): FormErrors = getErrors(form, lambdaPath path)
     [<ImportMember(path); ParamObject(2)>]
-    static member getValue(form: FormStore<'ValueType, 'Response>, name: string,
+    static member getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string,
                            ?shouldActive: bool,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
-                           ?shouldValid: bool): obj option = jsNative
-    [<ImportMember(path)>]
-    static member getValue(form: FormStore<'ValueType, 'Response>, name: string): obj option = jsNative
-    [<ImportMember(path); ParamObject(2)>]
-    static member getValues(form: FormStore<'ValueType, 'Response>, names: string,
+                           ?shouldValid: bool): 'ValueType option = jsNative
+    [<ParamObject(2)>]
+    static member inline getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType,
                            ?shouldActive: bool,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
-                           ?shouldValid: bool): obj option = jsNative
+                           ?shouldValid: bool): 'ValueType option = getValue(form, lambdaPath path, ?shouldActive=shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty, ?shouldValid = shouldValid)
     [<ImportMember(path)>]
-    static member getValues(form: FormStore<'ValueType, 'Response>, names: string): obj option = jsNative
+    static member getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string): 'ValueType option = jsNative
+    static member inline getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): 'ValueType option = getValue(form, lambdaPath path)
     [<ImportMember(path); ParamObject(2)>]
-    static member getValues(form: FormStore<'ValueType, 'Response>, names: string[],
+    static member getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, names: string,
                            ?shouldActive: bool,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
-                           ?shouldValid: bool): obj option = jsNative
+                           ?shouldValid: bool): 'ValueType option = jsNative
+    [<ParamObject(2)>]
+    static member inline getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType,
+                           ?shouldActive: bool,
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValid: bool): 'ValueType option = getValues(form, lambdaPath path, ?shouldActive=shouldActive,?shouldTouched=shouldTouched,?shouldDirty=shouldDirty,?shouldValid=shouldValid)
     [<ImportMember(path)>]
-    static member getValues(form: FormStore<'ValueType, 'Response>, names: string[]): obj option = jsNative
+    static member getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, names: string): 'ValueType option = jsNative
+    static member inline getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, names: 'Form -> 'ValueType): 'ValueType[] option = getValues(form, lambdaPath names)
     [<ImportMember(path); ParamObject(2)>]
-    static member hasField(form: FormStore<'ValueType, 'Response>, name: string,
+    static member getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, names: string[],
+                           ?shouldActive: bool,
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValid: bool): 'ValueType option = jsNative
+    [<ImportMember(path)>]
+    static member getValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, names: string[]): 'ValueType[] option = jsNative
+    [<ImportMember(path); ParamObject(2)>]
+    static member hasField<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string,
                            ?shouldActive: bool,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
                            ?shouldValid: bool): bool = jsNative
+    [<ParamObject(2)>]
+    static member inline hasField<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType,
+                           ?shouldActive: bool,
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValid: bool): bool = hasField(form, lambdaPath name, ?shouldActive=shouldActive,?shouldTouched=shouldTouched,?shouldDirty=shouldDirty,?shouldValid=shouldValid)
     [<ImportMember(path)>]
-    static member hasField(form: FormStore<'ValueType, 'Response>, name: string): bool = jsNative
+    static member hasField<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string): bool = jsNative
+    static member inline hasField<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType): bool = hasField(form, lambdaPath name)
     [<ImportMember(path); ParamObject(2)>]
-    static member hasFieldArray(form: FormStore<'ValueType, 'Response>, name: string,
+    static member hasFieldArray<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string,
                            ?shouldActive: bool,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
                            ?shouldValid: bool): bool = jsNative
+    [<ParamObject(2)>]
+    static member inline hasFieldArray<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType,
+                           ?shouldActive: bool,
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValid: bool): bool = hasFieldArray(form, lambdaPath name, ?shouldActive=shouldActive,?shouldTouched=shouldTouched,?shouldDirty=shouldDirty,?shouldValid=shouldValid)
     [<ImportMember(path)>]
-    static member hasFieldArray(form: FormStore<'ValueType, 'Response>, name: string): bool = jsNative
+    static member hasFieldArray<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string): bool = jsNative
+    static member inline hasFieldArray<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType): bool = hasFieldArray(form, lambdaPath name)
     [<ImportMember(path); ParamObject(2)>]
-    static member insert(form: FormStore<'ValueType, 'Response>, name:string,
-                         ?at: int, //TODO value
-                         ?value: obj): unit = jsNative
+    static member insert<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:string,
+                         ?at: int,
+                         ?value: 'ValueType): unit = jsNative
+    [<ParamObject(2)>]
+    static member inline insert<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType,
+                         ?at: int,
+                         ?value: 'ValueType): unit = insert(form, lambdaPath name, ?at=at, ?value=value)
     [<ImportMember(path)>]
-    static member insert(form: FormStore<'ValueType, 'Response>, name:string): unit = jsNative
+    static member insert<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:string): unit = jsNative
+    static member inline insert<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType): unit = insert(form, lambdaPath name)
     [<ImportMember(path); ParamObject(2)>]
-    static member move(form: FormStore<'ValueType, 'Response>, name:string,
+    static member move<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string,
                          ?from': int,
                          ?to': int): unit = jsNative
+    [<ParamObject(2)>]
+    static member inline move<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType,
+                         ?from': int,
+                         ?to': int): unit = move(form, lambdaPath name, ?from'=from', ?to'=to')
     [<ImportMember(path)>]
-    static member move(form: FormStore<'ValueType, 'Response>, name:string): unit = jsNative
+    static member move<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string): unit = jsNative
+    static member inline move<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType): unit = move(form, lambdaPath name)
     [<ImportMember(path); ParamObject(2)>]
-    static member remove(form: FormStore<'ValueType, 'Response>, name:string,
+    static member remove<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string,
                          ?at: int): unit = jsNative
+    [<ParamObject(2)>]
+    static member inline remove<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType,
+                         ?at: int): unit = remove(form, lambdaPath name, ?at=at)
     [<ImportMember(path)>]
-    static member remove(form: FormStore<'ValueType, 'Response>, name:string): unit = jsNative
+    static member remove<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string): unit = jsNative
+    static member inline remove<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType): unit = remove(form, lambdaPath name)
     [<ImportMember(path); ParamObject(2)>]
-    static member replace(form: FormStore<'ValueType, 'Response>, name:string,
-                         ?at: int, // TODO value type
-                         ?value: obj): unit = jsNative
-    [<ImportMember(path)>]
-    static member replace(form: FormStore<'ValueType, 'Response>, name:string): unit = jsNative
+    static member replace<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:string,
+                         ?at: int,
+                         ?value: 'ValueType): unit = jsNative
+    [<ParamObject(2)>]
+    static member inline replace<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType,
+                         ?at: int,
+                         ?value: 'ValueType): unit = replace(form, lambdaPath name, ?at=at, ?value=value)
     [<ImportMember(path); ParamObject(2)>]
-    static member reset(form: FormStore<'ValueType, 'Response>, name:string,
-                         ?initialValues: obj[],
-                         ?initialValue: obj,
+    static member reset<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:string,
+                         ?initialValues: 'ValueType[],
+                         ?initialValue: 'ValueType,
                          ?keepResponse: bool,
                          ?keepSubmitCount: bool,
                          ?keepSubmitted: bool,
@@ -304,10 +390,43 @@ type ModularFormsBindings =
                          ?keepErrors: bool,
                          ?keepTouched: bool,
                          ?keepDirty: bool): unit = jsNative
+    [<ParamObject(2)>]
+    static member inline reset<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType,
+                         ?initialValues: 'ValueType[],
+                         ?initialValue: 'ValueType,
+                         ?keepResponse: bool,
+                         ?keepSubmitCount: bool,
+                         ?keepSubmitted: bool,
+                         ?keepValues: bool,
+                         ?keepDirtyValues: bool,
+                         ?keepItems: bool,
+                         ?keepDirtyItems: bool,
+                         ?keepErrors: bool,
+                         ?keepTouched: bool,
+                         ?keepDirty: bool): unit = reset(form, lambdaPath name, ?initialValues=initialValues, ?initialValue=initialValue, ?keepResponse=keepResponse,?keepSubmitCount=keepSubmitCount
+                                                         ,?keepSubmitted=keepSubmitted,?keepValues=keepValues,?keepDirtyValues=keepDirtyValues,?keepItems=keepItems,?keepDirtyItems=keepDirtyItems,?keepErrors=keepErrors
+                                                         ,?keepTouched=keepTouched,?keepDirty=keepDirty)
     [<ImportMember(path)>]
-    static member reset(form: FormStore<'ValueType, 'Response>, name:string): unit = jsNative
+    static member reset<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string): unit = jsNative
+    static member inline reset<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType): unit = reset(form, lambdaPath name)
     [<ImportMember(path); ParamObject(1)>]
-    static member reset(form: FormStore<'ValueType, 'Response>,
+    static member reset<'Form, 'Response>(form: FormStore<'Form, 'Response>,
+                         ?initialValues: 'Form[],
+                         ?initialValue: 'Form,
+                         ?keepResponse: bool,
+                         ?keepSubmitCount: bool,
+                         ?keepSubmitted: bool,
+                         ?keepValues: bool,
+                         ?keepDirtyValues: bool,
+                         ?keepItems: bool,
+                         ?keepDirtyItems: bool,
+                         ?keepErrors: bool,
+                         ?keepTouched: bool,
+                         ?keepDirty: bool): unit = jsNative
+    [<ImportMember(path)>]
+    static member reset<'Form, 'Response>(form: FormStore<'Form, 'Response>): unit = jsNative
+    [<ImportMember(path); ParamObject(2)>]
+    static member reset(form: FormStore<'Form, 'Response>, names: string[],
                          ?initialValues: obj[],
                          ?initialValue: obj,
                          ?keepResponse: bool,
@@ -321,67 +440,68 @@ type ModularFormsBindings =
                          ?keepTouched: bool,
                          ?keepDirty: bool): unit = jsNative
     [<ImportMember(path)>]
-    static member reset(form: FormStore<'ValueType, 'Response>): unit = jsNative
-    [<ImportMember(path); ParamObject(2)>]
-    static member reset(form: FormStore<'ValueType, 'Response>, names: string[],
-                         ?initialValues: obj[],
-                         ?initialValue: obj,
-                         ?keepResponse: bool,
-                         ?keepSubmitCount: bool,
-                         ?keepSubmitted: bool,
-                         ?keepValues: bool,
-                         ?keepDirtyValues: bool,
-                         ?keepItems: bool,
-                         ?keepDirtyItems: bool,
-                         ?keepErrors: bool,
-                         ?keepTouched: bool,
-                         ?keepDirty: bool): unit = jsNative
+    static member reset(form: FormStore<'Form, 'Response>, names: string[]): unit = jsNative
     [<ImportMember(path)>]
-    static member reset(form: FormStore<'ValueType, 'Response>, names: string[]): unit = jsNative
-    [<ImportMember(path)>]
-    static member setError(form: FormStore<'ValueType, 'Response>, name: string, error: string): unit = jsNative
+    static member setError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string, error: string): unit = jsNative
+    static member inline setError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, error: string): unit = setError(form, lambdaPath name, error)
     [<ImportMember(path); ParamObject(3)>]
-    static member setError(form: FormStore<'ValueType, 'Response>, name: string, error: string, ?shouldFocus: bool): unit = jsNative
+    static member setError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string, error: string, ?shouldFocus: bool): unit = jsNative
+    static member inline setError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, error: string, ?shouldFocus: bool): unit = setError(form, lambdaPath name, error, ?shouldFocus=shouldFocus)
     [<ImportMember(path); ParamObject(2)>]
-    static member setResponse(form: FormStore<'ValueType, 'Response>, response: obj (*TODO type*), ?duration: int): unit = jsNative
+    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: 'Response, ?duration: int): unit = jsNative
     [<ImportMember(path)>]
-    static member setResponse(form: FormStore<'ValueType, 'Response>, response: obj (*TODO type*)): unit = jsNative
+    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: 'Response): unit = jsNative
     [<ImportMember(path); ParamObject(3)>]
-    static member setValue(form: FormStore<'ValueType, 'Response>, name: string, value: obj (*TODO type*),
+    static member setValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string, value: 'ValueType,
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
                            ?shouldValidate: bool,
                            ?shouldFocus: bool): unit = jsNative
+    static member inline setValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, value: 'ValueType,
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValidate: bool,
+                           ?shouldFocus: bool): unit = setValue(form, lambdaPath name, value, ?shouldTouched=shouldTouched, ?shouldDirty=shouldDirty, ?shouldValidate=shouldValidate,?shouldFocus=shouldFocus)
     [<ImportMember(path)>]
-    static member setValue(form: FormStore<'ValueType, 'Response>, name: string, value: obj (*TODO type*)): unit = jsNative
+    static member setValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string, value: 'ValueType): unit = jsNative
+    static member inline setValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, value: 'ValueType): unit = setValue(form, lambdaPath name, value)
     [<ImportMember(path); ParamObject(3)>]
-    static member setValues(form: FormStore<'ValueType, 'Response>, name: string, values: obj[] (*TODO type*),
+    static member setValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string, values: 'ValueType[],
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
                            ?shouldValidate: bool,
                            ?shouldFocus: bool): unit = jsNative
+    static member inline setValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType[], values: 'ValueType[],
+                           ?shouldTouched: bool,
+                           ?shouldDirty: bool,
+                           ?shouldValidate: bool,
+                           ?shouldFocus: bool): unit = setValues(form,lambdaPath name,values,?shouldTouched=shouldTouched,?shouldDirty=shouldDirty,?shouldValidate=shouldValidate,?shouldFocus=shouldFocus)
     [<ImportMember(path)>]
-    static member setValues(form: FormStore<'ValueType, 'Response>, name: string, values: obj[] (*TODO type*)): unit = jsNative
+    static member setValues<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string, values: 'ValueType[]): unit = jsNative
     [<ImportMember(path)>]
-    static member submit(form: FormStore<'ValueType, 'Response>): unit = jsNative
+    static member submit<'Form, 'Response>(form: FormStore<'Form, 'Response>): unit = jsNative
     [<ImportMember(path)>]
-    static member swap(form: FormStore<'ValueType, 'Response>, name: string,
+    static member swap<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string,
                        ?at: int,
                        ?and': int): unit = jsNative
+    static member inline swap<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType,
+                       ?at: int,
+                       ?and': int): unit = swap(form, lambdaPath name, ?at=at, ?and'=and')
     [<ImportMember(path)>]
-    static member swap(form: FormStore<'ValueType, 'Response>, name: string): unit = jsNative
+    static member swap<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): unit = jsNative
     [<ImportMember(path)>]
-    static member validate(form: FormStore<'ValueType, 'Response>): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>): unit = jsNative
     [<ImportMember(path); ParamObject(1)>]
-    static member validate(form: FormStore<'ValueType, 'Response>, ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
     [<ImportMember(path)>]
-    static member validate(form: FormStore<'ValueType, 'Response>, name: string): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): unit = jsNative
     [<ImportMember(path); ParamObject(1)>]
-    static member validate(form: FormStore<'ValueType, 'Response>, name: string, ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string, ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
+    static member inline validate<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, ?shouldActive: bool, ?shouldFocus: bool): unit = validate(form,lambdaPath name, ?shouldActive=shouldActive,?shouldFocus=shouldFocus)
     [<ImportMember(path)>]
-    static member validate(form: FormStore<'ValueType, 'Response>, names: string[]): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[]): unit = jsNative
     [<ImportMember(path); ParamObject(1)>]
-    static member validate(form: FormStore<'ValueType, 'Response>, names: string[], ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
+    static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[], ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
     [<ImportMember(path)>] // todo type
     static member custom(requirement: (obj option -> bool), error: string): CustomValidator<obj> = jsNative
     [<ImportMember(path)>]
