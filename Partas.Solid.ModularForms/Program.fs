@@ -1,13 +1,11 @@
 ﻿namespace Partas.Solid.ModularForms
-
-open System.Runtime.CompilerServices
+// @modular-forms/solid
+// v0.29.1
 open System.Text.RegularExpressions
 open Browser.Types
 open Partas.Solid
 open Fable.Core
-open Fable.Core.JsInterop
 open Fable.Core.JS
-open System.Collections.Generic
 open System
 
 #nowarn 49
@@ -23,12 +21,23 @@ type FormResponseStatus =
     | Info
     | Error
     | Success
-[<Interface>]
-type FormResponse<'Response> =
-    abstract status: FormResponseStatus option
-    abstract message: string option
-    abstract data: 'Response option
-type SubmitHandler<'T, 'R> = 'T -> SubmitEvent -> U2<Promise<'R>, 'R>
+[<Pojo>]
+type FormResponse<'Response>(
+        ?status: FormResponseStatus,
+        ?data: 'Response,
+        ?message: string
+    ) =
+    member val status = status
+    member val message = message
+    member val data = data
+
+type AsyncSubmitHandler<'Form, 'R> = 'Form -> SubmitEvent -> Promise<'R>
+type SyncSubmitHandler<'Form, 'R> = 'Form -> SubmitEvent -> 'R
+/// <summary>
+/// Type that defines the submission handler function of the form.
+/// </summary>
+/// <seealso cref="M:Partas.Solid.ModularForms.Form.onSubmit"/>
+type SubmitHandler<'Form, 'R> = delegate of 'Form * SubmitEvent -> U2<Promise<'R>, 'R>
 /// Type that defines the errors of a form. It is an object that contains an entry for each field or field array with
 /// an error. The key of an entry is the name of a field or a field array, and thhe value is the error message
 [<Erase>]
@@ -74,9 +83,9 @@ type FieldArrayStore =
     abstract active: bool
     abstract touched: bool
     abstract dirty: bool
-type TransformField<'ValueType> = 'ValueType option -> Event -> 'ValueType option 
+type TransformField<'ValueType, 'ResultType> = 'ValueType option -> Event -> 'ResultType 
 type CustomValidator<'T> = 'T option  -> Promise<string>
-type Validator<'T> = 'T option -> string
+type Validator<'T> = ('T option -> string)[]
 type ValidateFieldArray = float[] -> U2<Promise<string>, string>
 type ValidateForm<'T> = 'T -> U2<FormErrors, Promise<FormErrors>>
 
@@ -116,25 +125,22 @@ type OnCustomAction =
     | Input
     | Change
     | Blur
-
-[<JS.Pojo>]
-type FormOptions<'Form>
-    (
-        initialValues: 'Form
-        ,?validate: ValidateForm<'Form>
-        ,?validateOn: ValidateOn
-        ,?revalidateOn: ValidateOn
-    ) =
-    member val initialValues = initialValues
-    member val validate = validate
-    member val validateOn = validateOn
-    member val revalidateOn = revalidateOn
     
 [<Import("Form", path)>]
 type Form<'Form, 'Response>() =    
     inherit RegularNode()
     [<DV>] val mutable of': FormStore<'Form, 'Response>
-    [<DV>] val mutable onSubmit: SubmitHandler<'Form, 'Response>
+    /// <summary>
+    /// Use the stronger typed overloads which avoid explicit delegate construction:<br/>
+    /// _.onAsyncSubmit<br/>
+    /// _.onSyncSubmit<br/>
+    /// <br/>
+    /// The delegate signature is of:
+    /// <code lang="fsharp">
+    /// type SubmitHandler:'Form, 'R: = delegate of 'Form * SubmitEvent -> U2:Promise:'R:, 'R:
+    /// </code>
+    /// </summary>
+    [<DV>] val mutable onSubmit: ('Form -> SubmitEvent -> Promise<'Response>)
     [<DV>] val mutable keepResponse: bool
     [<DV>] val mutable shouldActive: bool
     [<DV>] val mutable shouldTouched: bool
@@ -143,13 +149,13 @@ type Form<'Form, 'Response>() =
 [<PartasImport("Field", path)>]
 type Field<'Form, 'ValueType, 'Response>() =
     inherit RegularNode()
-    [<DV>] val mutable of': FormStore<'ValueType, 'Response>
+    [<DV>] val mutable of': FormStore<'Form, 'Response>
     [<DV>] val mutable name: string
     [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: U2<Validator<'ValueType>, Validator<'ValueType>[]>
+    [<DV>] val mutable validate: Validator<'ValueType>
     [<DV>] val mutable validateOn: ValidateOn
     [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable transform: TransformField<'ValueType>
+    [<DV>] val mutable transform: TransformField<'ValueType, obj>
     [<DV>] val mutable keepActive: bool
     [<DV>] val mutable keepState: bool
     member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
@@ -159,7 +165,7 @@ type Field<'Form, 'ValueType, 'Response>() =
     member inline this.map<'U>(
         path: 'Form -> 'U[],
         index: int,
-        secondPath: 'U -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{secondPath}")
+        secondPath: 'U -> 'ValueType) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}")
     member inline this.map<'U>(
         path: 'Form -> 'U[],
         index: int,
@@ -186,7 +192,7 @@ type FieldArray<'Form, 'ValueType, 'Response>() =
     [<DV>] val mutable of': FormStore<'Form, 'Response>
     [<DV>] val mutable name: string
     [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: U2<ValidateFieldArray, ValidateFieldArray[]>
+    [<DV>] val mutable validate: ValidateFieldArray
     [<DV>] val mutable validateOn: ValidateOn
     [<DV>] val mutable revalidateOn: ValidateOn
     [<DV>] val mutable keepActive: bool
@@ -228,6 +234,8 @@ type ModularFormsBindings =
     /// </summary>
     [<ImportMember(path)>]
     static member createFormStore<'Form, 'Response>(): FormStore<'Form, 'Response> = jsNative
+    [<ImportMember(path); ParamObject>]
+    static member createFormStore<'Form, 'Response>(?initialValues:'Form, ?validate: ValidateForm<'Form>, ?validateOn: ValidateOn, ?revalidateOn: ValidateOn ): FormStore<'Form, 'Response> = jsNative
     [<ImportMember(path)>]
     static member clearError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): unit = jsNative
     static member inline clearError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType) = clearError(form, lambdaPath path)
@@ -448,9 +456,9 @@ type ModularFormsBindings =
     static member setError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string, error: string, ?shouldFocus: bool): unit = jsNative
     static member inline setError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: 'Form -> 'ValueType, error: string, ?shouldFocus: bool): unit = setError(form, lambdaPath name, error, ?shouldFocus=shouldFocus)
     [<ImportMember(path); ParamObject(2)>]
-    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: 'Response, ?duration: int): unit = jsNative
+    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: FormResponse<'Response>, ?duration: int): unit = jsNative
     [<ImportMember(path)>]
-    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: 'Response): unit = jsNative
+    static member setResponse<'Form, 'Response>(form: FormStore<'Form, 'Response>, response: FormResponse<'Response>): unit = jsNative
     [<ImportMember(path); ParamObject(3)>]
     static member setValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string, value: 'ValueType,
                            ?shouldTouched: bool,
