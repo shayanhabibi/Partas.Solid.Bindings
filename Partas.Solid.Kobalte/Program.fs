@@ -74,7 +74,7 @@ module Enums =
         | Toggle
         | Replace
     
-    [<StringEnum>]
+    [<StringEnum; RequireQualifiedAccess>]
     type LoadingStatus =
         | Idle
         | Loading
