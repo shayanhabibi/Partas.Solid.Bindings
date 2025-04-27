@@ -7,58 +7,338 @@ open Fable.Core
 open Fable.Core.JsInterop
 open System
 
+[<StringEnum; RequireQualifiedAccess>]
+type ColumnResizingMode =
+    | OnChange
+    | OnEnd
+[<StringEnum; RequireQualifiedAccess>]
+type ColumnResizingDirection =
+    | Ltr
+    | Rtl
+[<StringEnum; RequireQualifiedAccess>]
+type SortUndefined =
+    | First
+    | Last
+    | [<CompiledValue(false)>] False
+    | [<CompiledValue(-1)>] Negative
+    | [<CompiledValue(1)>] Positive
+[<StringEnum; RequireQualifiedAccess>]
+type GroupedColumnMode =
+    | [<CompiledValue(false)>] False
+    | Reorder
+    | Remove
+
+
 [<AutoOpen; Erase>]
-module rec Types =
-    type CoreRowModel<'Data> = ((TableOptions<'Data> -> unit) -> RowModel<'Data>)
-
-    [<AllowNullLiteral; Interface>]
-    type HeaderRenderProp<'Data> = interface end
-
-    [<AllowNullLiteral; Interface>]
-    type TableRenderProp<'Data> = interface end
+module rec Table =
+    [<AutoOpen>]
+    module TanStack =
+        [<Import("createSolidTable", "@tanstack/solid-table")>]
+        let createTable<'Data>(options: TableOptions<'Data>): Table<'Data> = jsNative
+        [<Import("getCoreRowModel", "@tanstack/solid-table")>]
+        let getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        [<Import("getPaginationRowModel", "@tanstack/solid-table")>]
+        let getPaginationRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        [<Import("flexRender", "@tanstack/solid-table")>]
+        let flexRender<'Data>(x, y): HtmlElement = jsNative
+    
+    type Updater<'T> =
+        U2<('T -> 'T), 'T>
         
-    [<AllowNullLiteral; Interface>]
-    type ColumnRenderProp<'Data> = interface end
+    [<AllowNullLiteral;Interface>]
+    type TableFeature = interface end
+    
+    [<AutoOpen; Erase>]
+    module ColumnFeatures =
+        [<AutoOpen; Erase>]
+        module Filter =
+            [<AllowNullLiteral; Interface>]
+            type ColumnFilter =
+                abstract member id: string with get
+                abstract member value: obj with get
+            type FilterFn = interface end
+            type BuiltInFilterFn = FilterFn
+            /// <summary>
+            /// Every filter function receives:
+            /// <ul>
+            /// <li>The row to filter</li>
+            /// <li>The columnId to use to retrieve the row's value</li>
+            /// <li>The filter value</li>
+            /// </ul><br/>
+            /// and should return true if the row should be included in the filtered rows, and false if it should be removed.
+            /// </summary>
+            [<Import("filterFns", "@tanstack/table-core")>]
+            [<AllowNullLiteral; Interface>]
+            type FilterFns =
+                /// Case-insensitive string inclusion
+                abstract member includesString: BuiltInFilterFn with get
+                /// Case-sensitive string inclusion
+                abstract member includesStringSensitive: BuiltInFilterFn with get
+                /// Case-insensitive string equality
+                abstract member equalsString: BuiltInFilterFn with get
+                /// Case-sensitive string equality
+                abstract member equalsStringSensitive: BuiltInFilterFn with get
+                /// Item inclusion within an array
+                abstract member arrIncludes: BuiltInFilterFn with get
+                /// All items included in an array
+                abstract member arrIncludesAll: BuiltInFilterFn with get
+                /// Some items included in an array
+                abstract member arrIncludesSome: BuiltInFilterFn with get
+                /// <summary>Object/referential equality <c>Object.is</c>/<c>===</c></summary>
+                abstract member equals: BuiltInFilterFn with get
+                /// <summary>Weak object/referential equality <c>==</c></summary>
+                abstract member weakEquals: BuiltInFilterFn with get
+                /// Number range inclusion
+                abstract member inNumberRange: BuiltInFilterFn with get
 
-    [<AllowNullLiteral; Interface>]
-    type RowRenderProp<'Data> = interface end
+  
+    [<AutoOpen; Erase>]
+    module Models =
+        [<AllowNullLiteral; Interface>]
+        type RowModel<'Data> =
+            abstract member rows: Row<'Data>[] with get,set
+            abstract member flatRows: Row<'Data>[] with get,set
+            abstract member rowsById: System.Collections.Generic.IDictionary<string, Row<'Data>> with get,set
+            
+        type CoreRowModel<'Data> = ((Table<'Data> -> unit) -> RowModel<'Data>)
+    
+    [<AutoOpen; Erase>]
+    module RenderProps =
+        [<Pojo>]
+        type Renderable<'Data>(
+                table: Table<'Data>,
+                row: Row<'Data>,
+                column: Column<'Data>,
+                cell: Cell<'Data>,
+                getValue: (unit -> obj),
+                renderValue: (unit -> obj)
+            ) =
+            member val table = table with get,set
+            member val row = row with get,set
+            member val column = column with get,set
+            member val cell = cell with get,set
+            member val getValue = getValue with get,set
+            member val renderValue = renderValue with get,set
+        [<AllowNullLiteral; Interface>]
+        type HeaderRenderProp<'Data> = interface end
+    
+        [<AllowNullLiteral; Interface>]
+        type TableRenderProp<'Data> = interface end
+            
+        [<AllowNullLiteral; Interface>]
+        type ColumnRenderProp<'Data> = interface end
+    
+        [<AllowNullLiteral; Interface>]
+        type RowRenderProp<'Data> = interface end
+    
+        [<AllowNullLiteral; Interface>]
+        type CellRenderProp<'Data> = interface end
+    
+    
+        [<AllowNullLiteral; Interface>]
+        type HeaderRenderProps<'Data> =
+            inherit HeaderRenderProp<'Data>
+            inherit TableRenderProp<'Data>
+            inherit ColumnRenderProp<'Data>
 
-    [<AllowNullLiteral; Interface>]
-    type CellRenderProp<'Data> = interface end
+        [<AllowNullLiteral; Interface>]
+        type FooterRenderProps<'Data> =
+            inherit HeaderRenderProp<'Data>
+            inherit TableRenderProp<'Data>
+            inherit ColumnRenderProp<'Data>
 
-
-    [<AllowNullLiteral; Interface>]
-    type HeaderRenderProps<'Data> =
-        inherit HeaderRenderProp<'Data>
-        inherit TableRenderProp<'Data>
-        inherit ColumnRenderProp<'Data>
-
-    [<AllowNullLiteral; Interface>]
-    type FooterRenderProps<'Data> =
-        inherit HeaderRenderProp<'Data>
-        inherit TableRenderProp<'Data>
-        inherit ColumnRenderProp<'Data>
-
-    [<AllowNullLiteral; Interface>]
-    type CellRenderProps<'Data> = 
-        inherit TableRenderProp<'Data>
-        inherit RowRenderProp<'Data>
-        inherit ColumnRenderProp<'Data>
-        inherit CellRenderProp<'Data>
-        abstract member getValue: ((unit -> obj)) with get
-        abstract member renderValue: ((unit -> obj)) with get
+        [<AllowNullLiteral; Interface>]
+        type CellRenderProps<'Data> = 
+            inherit TableRenderProp<'Data>
+            inherit RowRenderProp<'Data>
+            inherit ColumnRenderProp<'Data>
+            inherit CellRenderProp<'Data>
+            abstract member getValue: ((unit -> obj)) with get
+            abstract member renderValue: ((unit -> obj)) with get
         
+    [<AutoOpen; Erase>]
+    module States =
+        [<AllowNullLiteral; Interface>]
+        type ColumnOrderTableState = interface end
+        type ColumnOrderState = string[]
+        [<AllowNullLiteral; Interface>]
+        type ColumnFiltersTableState =
+            abstract member columnFilters: ColumnFiltersState with get,set
+        
+        type ColumnFiltersState = ColumnFilter[]
+        
+        [<AllowNullLiteral;Interface>]
+        type TableState =
+            inherit VisibilityTableState
+            inherit ColumnOrderTableState
+            inherit ColumnPinningTableState
+            inherit FiltersTableState
+            inherit SortingTableState
+            inherit ExpandedTableState
+            inherit GroupingTableState
+            inherit ColumnSizingTableState
+            inherit PaginationTableState
+            inherit RowSelectionTableState
+        
+        [<AllowNullLiteral; Interface>]
+        type VisibilityTableState = interface end
+        type VisibilityState = Map<string, bool>
+        
+        
+
+        [<AllowNullLiteral; Erase>]
+        type ColumnPinningTableState = interface end
+        [<AllowNullLiteral;Interface>]
+        type FiltersTableState = interface end
+        
+        [<StringEnum>]
+        type SortDirection =
+            | Asc
+            | Desc
+        [<Interface; AllowNullLiteral>]
+        type SortingTableState = interface end
+            
+        [<Pojo>]
+        type ColumnSort(id: string, desc: bool) =
+            member val id = id with get,set
+            member val desc = desc with get,set
+        type SortingState = ColumnSort[]
+        
+        
+        [<Interface; AllowNullLiteral>]
+        type ExpandedTableState = interface end
+        
+        [<StringEnum>]
+        type ExpandedState = U2<bool, Map<string, bool>>
+        
+        
+        
+        [<AllowNullLiteral; Interface>]
+        type GroupingTableState = interface end
+        
+        type GroupingState = string[]
+        
+        
+        [<AllowNullLiteral; Interface>]
+        type PaginationTableState = interface end
+        
+        [<Pojo>]
+        type PaginationState(pageIndex: int, pageSize: int) =
+            member val pageIndex = pageIndex with get,set
+            member val pageSize = pageSize with get,set
+        
+        [<AllowNullLiteral; Interface>]
+        type PaginationInitialTableState = interface end
+        
+        
+        [<AllowNullLiteral; Interface>]
+        type RowSelectionTableState = interface end
+        type RowSelectionState = Map<string, bool>
+        
+        type OnChangeFn<'State> = Updater<'State> -> unit     
+        
+        [<StringEnum>]
+        type ColumnPinningPosition =
+            | [<CompiledValue(false)>] False
+            | Left
+            | Right
+        [<JS.Pojo>]
+        type ColumnPinningState(?left: string[], ?right: string[]) =
+            member val left = left with get,set
+            member val right = right with get,set
+        
+        [<AllowNullLiteral; Interface>]
+        type ColumnSizingTableState = interface end
+        type ColumnSizingState = Map<string, int>
+        
+        [<Pojo>]
+        type ColumnSizingInfoState(
+                ?startOffset: int,
+                ?startSize: int,
+                ?deltaOffset: int,
+                ?deltaPercentage: int,
+                ?isResizingColumn: string,
+                ?columnSizingStart: (string * int)[]
+            ) =
+            member val startOffset = startOffset with get,set
+            member val startSize = startSize with get,set
+            member val deltaOffset = deltaOffset with get,set
+            member val deltaPercentage = deltaPercentage with get,set
+            member val isResizingColumn = isResizingColumn with get,set
+            member val columnSizingStart = columnSizingStart with get,set
+            
+        [<Pojo>]
+        type GlobalFilterTableState(globalFilter: obj) = member val globalFilter = globalFilter with get,set
+        [<AllowNullLiteral; Interface>]
+        type GlobalFilterState = interface end
+        
+        [<Pojo>]
+        type RowPinningRowState(rowPinning: RowPinningState) = member val rowPinning = rowPinning with get,set
+        [<Pojo>]
+        type RowPinningState(
+                ?top: string[],
+                ?bottom: string[]
+            ) =
+            member val top = top with get,set
+            member val bottom = bottom with get,set
+        
+        [<StringEnum>]
+        type RowPinningPosition =
+            | [<CompiledValue(false)>] False
+            | Top
+            | Bottom        
     [<AllowNullLiteral; JS.Pojo>]
     type ColumnDef<'Data>
         (
-            ?id: string,
-            ?accessorKey: string,
-            ?accessorFn: ('Data -> int -> obj),
-            ?columns: 'Data[],
-            ?header: HeaderRenderProps<'Data> -> obj,
-            ?footer: FooterRenderProps<'Data> -> obj,
-            ?cell: CellRenderProps<'Data> -> obj,
-            ?meta: obj
+            ?id: string
+            ,?accessorKey: string
+            ,?accessorFn: ('Data -> int -> obj)
+            ,?columns: 'Data[]
+            ,?header: HeaderRenderProps<'Data> -> obj
+            ,?footer: FooterRenderProps<'Data> -> obj
+            ,?cell: CellRenderProps<'Data> -> obj
+            ,?meta: obj
+            
+            // Feature
+            // ColumnFiltering
+            ,?filterFn: FilterFn
+            ,?enableColumnFilter: bool
+            
+            // Feature
+            // ColumnPinning
+            ,?onColumnPinningChange: OnChangeFn<ColumnPinningState>
+            
+            // Feature
+            // ColumnSizing
+            ,?enableResizing: bool
+            ,?size: int
+            ,?minSize: int
+            ,?maxSize: int
+            
+            // Feature
+            // ColumnVisibility
+            ,?enableHiding: bool
+            
+            // Feature
+            // GlobalFiltering
+            ,?enableGlobalFilter: bool
+            
+            // Feature
+            // Sorting
+            ,?sortingFn: SortingFn
+            ,?sortDescFirst: bool
+            ,?enableSorting: bool
+            ,?enableMultiSort: bool
+            ,?invertSorting: bool
+            ,?sortUndefined: SortUndefined
+            
+            // Feature
+            // Grouping
+            ,?aggregationFn: AggregationFn
+            ,?aggregatedCell: Renderable<'Data>
+            ,?enableGrouping: bool
+            ,?getGroupingValue: 'Data -> obj
+
         ) =
         
         /// <summary>
@@ -126,46 +406,160 @@ module rec Types =
         member val cell: CellRenderProps<'Data> -> obj = cell.Value with get,set
         
         member val meta: obj = meta.Value with get,set
-
-
-    [<AllowNullLiteral;Interface>]
-    type TableState =
-        inherit VisibilityTableState
-        inherit ColumnOrderTableState
-        inherit ColumnPinningTableState
-        inherit FiltersTableState
-        inherit SortingTableState
-        inherit ExpandedTableState
-        inherit GroupingTableState
-        inherit ColumnSizingTableState
-        inherit PaginationTableState
-        inherit RowSelectionTableState
-    
-    type Updater<'T> = U2<('T -> 'T), 'T> // TODO? what is this // its either a oldState -> newState or just a state object
-
-    [<AllowNullLiteral;Interface>]
-    type TableFeature = interface end
+        /// <summary>
+        /// The filter function to use with this column.<br/>
+        /// Options:
+        /// <ul>
+        /// <li>A string referencing a built-in filter function)</li>
+        /// <li>A custom filter function</li>
+        /// </ul>
+        /// </summary>
+        member _.filterFn with set(value: FilterFn) = () and get(): FilterFn = unbox null
+        /// Enables/disables the column filter for this column.
+        member _.enableColumnFilter with set(value: bool) = () and get(): bool = unbox null
+        
+        // Feature
+        // ColumnPinning
+        member _.onColumnPinningChange with set(value: OnChangeFn<ColumnPinningState>) = ()
+        
+        // Feature
+        // ColumnSizing
+        member _.enableResizing with set(value: bool) = ()
+        member _.size with set(value: int) = ()
+        member _.minSize with set(value: int) = ()
+        member _.maxSize with set(value: int) = ()
+        
+        // Feature
+        // ColumnVisibility
+        member _.enableHiding with set(value: bool) = ()
+        
+        // Feature
+        // GlobalFiltering
+        member _.enableGlobalFilter with set(value: bool) = ()
+        
+        // Feature
+        // Grouping
+        member _.aggregationFn with set(value: AggregationFn) = ()
+        member _.aggregatedCell with set(value: Renderable<'Data>) = ()
+        member _.enableGrouping with set(value: bool) = ()
+        member _.getGroupingValue with set(value: 'Data -> obj) = ()
         
     [<JS.Pojo>]
     type TableOptions<'Data>
         (
-            ?data: 'Data[],
-            ?columns: ColumnDef<'Data>[],
-            ?defaultColumn: ColumnDef<'Data>,
-            ?initialState: TableState,
-            ?autoResetAll: bool,
-            ?meta: obj,
-            ?state: TableState,
-            ?onStateChange: Updater<'Data> -> unit,
-            ?debugAll: bool,
-            ?debugTable: bool,
-            ?debugHeaders: bool,
-            ?debugColumns: bool,
-            ?debugRows: bool,
-            ?_features: TableFeature[],
-            ?getCoreRowModel: ((TableOptions<'Data> -> unit) -> RowModel<'Data>),
-            ?getSubRows: 'Data * int -> 'Data[],
-            ?getRowId: 'Data * int * Row<'Data> -> string
+            ?data: 'Data[]
+            ,?columns: ColumnDef<'Data>[]
+            ,?defaultColumn: ColumnDef<'Data>
+            ,?initialState: TableState
+            ,?autoResetAll: bool
+            ,?meta: obj
+            ,?state: TableState
+            ,?onStateChange: Updater<'Data> -> unit
+            ,?debugAll: bool
+            ,?debugTable: bool
+            ,?debugHeaders: bool
+            ,?debugColumns: bool
+            ,?debugRows: bool
+            ,?_features: TableFeature[]
+            ,?getCoreRowModel: CoreRowModel<'Data>
+            ,?getSubRows: 'Data * int -> 'Data[]
+            ,?getRowId: 'Data * int * Row<'Data> -> string
+            
+            // Feature
+            // ColumnFiltering
+            ,?filterFns: Map<string, FilterFn>
+            ,?filterFromLeafRows: bool
+            ,?maxLeafRowFilterDepth: int
+            ,?enableFilters: bool
+            ,?manualFiltering: bool
+            ,?onColumnFiltersChange: OnChangeFn<ColumnFiltersState>
+            ,?enableColumnFilters: bool
+            ,?getFilteredRowModel: CoreRowModel<'Data>
+            
+            // Feature
+            // ColumnOrdering
+            ,?onColumnOrderChange: OnChangeFn<ColumnOrderState>
+            
+            // Feature
+            // ColumnPinning
+            ,?enableColumnPinning: bool
+            ,?onColumnPinningChange: OnChangeFn<ColumnPinningState>
+            
+            // Feature
+            // ColumnSizing
+            ,?enableColumnResizing: bool
+            ,?columnResizeMode: ColumnResizingMode
+            ,?columnResizeDirection: ColumnResizingDirection
+            ,?onColumnSizingChange: OnChangeFn<ColumnSizingState>
+            ,?onColumnSizingInfoChange: OnChangeFn<ColumnSizingInfoState>
+            
+            // Feature
+            // ColumnVisibility
+            ,?onColumnVisibilityChange: OnChangeFn<VisibilityState>
+            ,?enableHiding: bool
+            
+            // Feature
+            // GlobalFiltering
+            ,?globalFilterFn: FilterFn
+            ,?onGlobalFilterChange: OnChangeFn<GlobalFilterState>
+            ,?enableGlobalFilter: bool
+            ,?getColumnCanGlobalFilter: Column<'Data> -> bool
+            
+            // Feature
+            // Sorting
+            ,?sortingFns: Map<string, SortingFn>
+            ,?manualSorting: bool
+            ,?onSortingChange: OnChangeFn<SortingState>
+            ,?enableSorting: bool
+            ,?enableSortingRemoval: bool
+            ,?enableMultiRemove: bool
+            ,?enableMultiSort: bool
+            ,?sortDescFirst: bool
+            ,?getSortedRowModel: CoreRowModel<'Data>
+            ,?maxMultiSortColCount: int
+            ,?isMultiSortEvent: Browser.Types.Event -> bool
+            
+            // Feature
+            // Grouping
+            ,?aggregationFns: Map<string, AggregationFn>
+            ,?manualGrouping: bool
+            ,?onGroupingChange: OnChangeFn<GroupingState>
+            ,?enableGrouping: bool
+            ,?getGroupedRowModel: CoreRowModel<'Data>
+            ,?groupedColumnMode: GroupedColumnMode
+            
+            // Feature
+            // Expanding
+            ,?manualExpanding: bool
+            ,?onExpandedChange: OnChangeFn<ExpandedState>
+            ,?autoResetExpanded: bool
+            ,?enableExpanding: bool
+            ,?getExpandedRowModel: CoreRowModel<'Data>
+            ,?getIsRowExpanded: Row<'Data> -> bool
+            ,?getRowCanExpand: Row<'Data> -> bool
+            ,?paginateExpandedRows: bool
+            
+            // Feature
+            // Pagination
+            ,?manualPagination: bool
+            ,?pageCount: int
+            ,?rowCount: int
+            ,?autoResetPageIndex: bool
+            ,?onPaginationChange: OnChangeFn<PaginationState>
+            ,?getPaginationRowModel: CoreRowModel<'Data>
+            
+            // Feature
+            // RowPinning
+            ,?enableRowPinning: Row<'Data> -> bool
+            ,?keepPinnedRows: bool
+            ,?onRowPinningChanged: OnChangeFn<RowPinningState>
+            
+            // Feature
+            // RowSelection
+            ,?enableRowSelection: Row<'Data> -> bool
+            ,?enableMultiRowSelection: Row<'Data> -> bool
+            ,?enableSubRowSelection: Row<'Data> -> bool
+            ,?onRowSelectionChange: OnChangeFn<RowSelectionState>
         ) =
         /// <summary>
         /// The data for the table to display. This array should match the type you provided to <c>table.setRowType[...]</c>, but in theory could be an array of anything. It's common for each item in the array to be an object of key/values but this is not required. Columns can access this data via string/index or a functional accessor to return anything they want.<br/><br/>
@@ -251,11 +645,99 @@ module rec Types =
         /// This required option is a factory for a function that computes and returns the core row model for the table. It is called once per table and should return a new function which will calculate and return the row model for the table. <br/><br/>
         /// A default implementation is provided via any table adapter's <c>{ getCoreRowModel }</c> export.
         /// </summary>
-        member val getCoreRowModel: ((TableOptions<'Data> -> unit) -> RowModel<'Data>) option = getCoreRowModel with get,set 
+        member val getCoreRowModel: CoreRowModel<'Data> option = getCoreRowModel with get,set 
         
         /// This optional function is used to access the sub rows for any given row. If you are using nested rows, you will need to use this function to return the sub rows object (or undefined) from the row.
         member val getSubRows: ('Data * int -> 'Data[]) option = getSubRows with get,set
         
+        // Feature
+        // ColumnFiltering
+        member val filterFns: obj = filterFns with get,set 
+        member val filterFromLeafRows: bool option = filterFromLeafRows with get,set 
+        member val maxLeafRowFilterDepth: int option = maxLeafRowFilterDepth with get,set 
+        member val enableFilters: bool option = enableFilters with get,set 
+        member val manualFiltering: bool option = manualFiltering with get,set 
+        member val onColumnFiltersChange: OnChangeFn<ColumnFiltersState> option = onColumnFiltersChange with get,set 
+        member val enableColumnFilters: bool option = enableColumnFilters with get,set 
+        member val getFilteredRowModel: CoreRowModel<'Data > option = getFilteredRowModel with get,set 
+        // Feature
+        // ColumnOrdering
+        member val onColumnOrderChange: OnChangeFn<ColumnOrderState> option = onColumnOrderChange with get,set
+        // Feature
+        // ColumnPinning
+        member val enableColumnPinning: bool option = enableColumnPinning with get,set
+        member val onColumnPinningChange: OnChangeFn<ColumnPinningState> option = onColumnPinningChange with get,set
+        // Feature
+        // ColumnSizing
+        member val enableColumnResizing: bool option = enableColumnResizing with get,set
+        member val columnResizeMode: ColumnResizingMode option = columnResizeMode with get,set
+        member val columnResizeDirection: ColumnResizingDirection option = columnResizeDirection with get,set
+        member val onColumnSizingChange: OnChangeFn<ColumnSizingState> option = onColumnSizingChange with get,set
+        member val onColumnSizingInfoChange: OnChangeFn<ColumnSizingInfoState> option = onColumnSizingInfoChange with get,set
+        // Feature
+        // ColumnVisibility
+        member val onColumnVisibilityChange: OnChangeFn<VisibilityState> option = onColumnVisibilityChange with get,set
+        member val enableHiding: bool option = enableHiding with get,set
+        // Feature
+        // GlobalFiltering
+        member val globalFilterFn: FilterFn option = globalFilterFn with get,set
+        member val onGlobalFilterChange: OnChangeFn<GlobalFilterState> option = onGlobalFilterChange with get,set
+        member val enableGlobalFilter: bool option = enableGlobalFilter with get,set
+        member val getColumnCanGlobalFilter: (Column<'Data> -> bool) option = getColumnCanGlobalFilter with get,set
+        // Feature
+        // Sorting
+        member val sortingFns: Map<string, SortingFn> option = sortingFns with get,set
+        member val manualSorting: bool option = manualSorting with get,set
+        member val onSortingChange: OnChangeFn<SortingState> option = onSortingChange with get,set
+        member val enableSorting: bool option = enableSorting with get,set
+        member val enableSortingRemoval: bool option = enableSortingRemoval with get,set
+        member val enableMultiRemove: bool option = enableMultiRemove with get,set
+        member val enableMultiSort: bool option = enableMultiSort with get,set
+        member val sortDescFirst: bool option = sortDescFirst with get,set
+        member val getSortedRowModel: CoreRowModel<'Data> option = getSortedRowModel with get,set
+        member val maxMultiSortColCount: int option = maxMultiSortColCount with get,set
+        member val isMultiSortEvent: (Browser.Types.Event -> bool) option = isMultiSortEvent with get,set
+        // Feature
+        // Grouping
+        member val aggregationFns: Map<string, AggregationFn> option = aggregationFns with get,set
+        member val manualGrouping: bool option = manualGrouping with get,set
+        member val onGroupingChange: OnChangeFn<GroupingState> option = onGroupingChange with get,set
+        member val enableGrouping: bool option = enableGrouping with get,set
+        member val getGroupedRowModel: CoreRowModel<'Data> option = getGroupedRowModel with get,set
+        member val groupedColumnMode: GroupedColumnMode option = groupedColumnMode with get,set
+        // Feature
+        // Expanding
+        member val manualExpanding: bool option = manualExpanding with get,set
+        member val onExpandedChange: OnChangeFn<ExpandedState> option = onExpandedChange with get,set
+        member val autoResetExpanded: bool option = autoResetExpanded with get,set
+        member val enableExpanding: bool option = enableExpanding with get,set
+        member val getExpandedRowModel: CoreRowModel<'Data> option = getExpandedRowModel with get,set
+        member val getIsRowExpanded: (Row<'Data> -> bool) option = getIsRowExpanded with get,set
+        member val getRowCanExpand: (Row<'Data> -> bool) option = getRowCanExpand with get,set
+        member val paginateExpandedRows: bool option = paginateExpandedRows with get,set
+        
+        // Feature
+        // Pagination
+        member val manualPagination: bool option = manualPagination with get,set
+        member val pageCount: int option = pageCount with get,set
+        member val rowCount: int option = rowCount with get,set
+        member val autoResetPageIndex: bool option = autoResetPageIndex with get,set
+        member val onPaginationChange: OnChangeFn<PaginationState> option = onPaginationChange with get,set
+        member val getPaginationRowModel: CoreRowModel<'Data> option = getPaginationRowModel with get,set
+        
+        // Feature
+        // RowPinning
+        member val enableRowPinning: (Row<'Data> -> bool) option = enableRowPinning with get,set
+        member val keepPinnedRows: bool option = keepPinnedRows with get,set
+        member val onRowPinningChanged: OnChangeFn<RowPinningState> option = onRowPinningChanged with get,set
+    
+        // Feature
+        // RowSelection
+        member val enableRowSelection: (Row<'Data> -> bool) option = enableRowSelection with get,set
+        member val enableMultiRowSelection: (Row<'Data> -> bool) option = enableMultiRowSelection with get,set
+        member val enableSubRowSelection: (Row<'Data> -> bool) option = enableSubRowSelection with get,set
+        member val onRowSelectionChange: OnChangeFn<RowSelectionState> option = onRowSelectionChange with get,set
+    
         /// <summary>
         /// This optional function is used to derive a unique ID for any given row. If not provided the rows index is used (nested rows join together with <c>.</c> using their grandparents' index eg. <c>index.index.index</c>). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity eg. a userId, taskId, database ID field, etc.
         /// </summary>
@@ -267,12 +749,6 @@ module rec Types =
             let propertyDescriptor: PropertyDescriptor = !!createObj [ "get" ==> value ] 
             Constructors.Object.defineProperty(this, "data", propertyDescriptor) |> ignore
             this
-    [<AllowNullLiteral; Interface>]
-    type RowModel<'Data> =
-        abstract member rows: Row<'Data>[] with get,set
-        abstract member flatRows: Row<'Data>[] with get,set
-        abstract member rowsById: System.Collections.Generic.IDictionary<string, Row<'Data>> with get,set
-        
     [<AllowNullLiteral; Interface>]
     type Table<'Data> =
         /// This is the resolved initial state of the table.
@@ -514,127 +990,11 @@ module rec Types =
         abstract member columnId: string with get
         abstract member filterValue: obj with get
         abstract member addMeta: (obj -> unit) with get
-    [<AutoOpen; Erase>]
-    module States =
-        [<AllowNullLiteral; Interface>]
-        type VisibilityTableState = interface end
-        type VisibilityState = Map<string, bool>
-        
-        
 
-        [<AllowNullLiteral;Interface>]
-        type ColumnOrderTableState = interface end
-        [<AllowNullLiteral; Erase>]
-        type ColumnPinningTableState = interface end
-        [<AllowNullLiteral;Interface>]
-        type FiltersTableState = interface end
-        
-        [<StringEnum>]
-        type SortDirection =
-            | Asc
-            | Desc
-        [<Interface; AllowNullLiteral>]
-        type SortingTableState = interface end
-            
-        [<Pojo>]
-        type ColumnSort(id: string, desc: bool) =
-            member val id = id with get,set
-            member val desc = desc with get,set
-        type SortingState = ColumnSort[]
-        
-        
-        [<Interface; AllowNullLiteral>]
-        type ExpandedTableState = interface end
-        
-        [<StringEnum>]
-        type ExpandedState = U2<bool, Map<string, bool>>
-        
-        
-        
-        [<AllowNullLiteral; Interface>]
-        type GroupingTableState = interface end
-        
-        type GroupingState = string[]
-        
-        
-        [<AllowNullLiteral; Interface>]
-        type PaginationTableState = interface end
-        
-        [<Pojo>]
-        type PaginationState(pageIndex: int, pageSize: int) =
-            member val pageIndex = pageIndex with get,set
-            member val pageSize = pageSize with get,set
-        
-        [<AllowNullLiteral; Interface>]
-        type PaginationInitialTableState = interface end
-        
-        
-        [<AllowNullLiteral; Interface>]
-        type RowSelectionTableState = interface end
-        type RowSelectionState = Map<string, bool>
-        
-        type OnChangeFn<'State> = Updater<'State> -> unit     
-        
-        [<StringEnum>]
-        type ColumnPinningPosition =
-            | [<CompiledValue(false)>] False
-            | Left
-            | Right
-        [<JS.Pojo>]
-        type ColumnPinningState(?left: string[], ?right: string[]) =
-            member val left = left with get,set
-            member val right = right with get,set
-        
-        [<AllowNullLiteral; Interface>]
-        type ColumnSizingTableState = interface end
-        type ColumnSizingState = Map<string, int>
-        
-        [<Pojo>]
-        type ColumnSizingInfoState(
-                ?startOffset: int,
-                ?startSize: int,
-                ?deltaOffset: int,
-                ?deltaPercentage: int,
-                ?isResizingColumn: string,
-                ?columnSizingStart: (string * int)[]
-            ) =
-            member val startOffset = startOffset with get,set
-            member val startSize = startSize with get,set
-            member val deltaOffset = deltaOffset with get,set
-            member val deltaPercentage = deltaPercentage with get,set
-            member val isResizingColumn = isResizingColumn with get,set
-            member val columnSizingStart = columnSizingStart with get,set
-            
-        [<Pojo>]
-        type GlobalFilterTableState(globalFilter: obj) = member val globalFilter = globalFilter with get,set
-        [<AllowNullLiteral; Interface>]
-        type GlobalFilterState = interface end
-        
-        [<Pojo>]
-        type RowPinningRowState(rowPinning: RowPinningState) = member val rowPinning = rowPinning with get,set
-        [<Pojo>]
-        type RowPinningState(
-                ?top: string[],
-                ?bottom: string[]
-            ) =
-            member val top = top with get,set
-            member val bottom = bottom with get,set
-        
-        [<StringEnum>]
-        type RowPinningPosition =
-            | [<CompiledValue(false)>] False
-            | Top
-            | Bottom
+
             
             
-[<AutoOpen>]
-module TanStack =
-    [<Import("createSolidTable", "@tanstack/solid-table")>]
-    let createTable<'Data>(options: TableOptions<'Data>): Table<'Data> = jsNative
-    [<Import("getCoreRowModel", "@tanstack/solid-table")>]
-    let getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
-    [<Import("flexRender", "@tanstack/solid-table")>]
-    let flexRender<'Data>(x, y): HtmlElement = jsNative
+
 
 [<AutoOpen>]
 module Extensions =

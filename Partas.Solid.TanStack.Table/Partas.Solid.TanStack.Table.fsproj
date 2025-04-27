@@ -16,9 +16,9 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Table; TanStack</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.1.1</Version>
+        <Version>0.2.0</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
-        <PackageVersion>0.1.1</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
         <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
             <NpmPackage Name="@tanstack/solid-table" Version=">= 8.0.0" />
@@ -27,8 +27,8 @@
 
     <ItemGroup>
         <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
-        <Compile Include="Program.fs" />
         <Compile Include="Table.fs" />
+        <Compile Include="Program.fs" />
         <Compile Include="ColumnFiltering.fs" />
         <Compile Include="ColumnFaceting.fs" />
         <Compile Include="ColumnOrdering.fs" />

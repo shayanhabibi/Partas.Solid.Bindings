@@ -6,12 +6,7 @@ open Browser.Types
 
 [<AutoOpen; Erase>]
 module RowSelection =
-    type TableOptions<'Data> with
-        member _.enableRowSelection with set(value: Row<'Data> -> bool) = ()
-        member _.enableMultiRowSelection with set(value: Row<'Data> -> bool) = ()
-        member _.enableSubRowSelection with set(value: Row<'Data> -> bool) = ()
-        member _.onRowSelectionChange with set(value: OnChangeFn<RowSelectionState>) = ()
-    
+
     type Table<'Data> with
         member _.getToggleAllRowsSelectedHandler with get(): (unit -> (Event -> unit)) = unbox null
         member _.getToggleAllPageRowsSelectedHandler with get(): (unit -> (Event -> unit)) = unbox null

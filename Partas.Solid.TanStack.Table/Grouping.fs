@@ -5,29 +5,11 @@ open Fable.Core.JS
 open Fable.Core.JsInterop
 open Browser.Types
 
-[<Pojo>]
-type Renderable<'Data>(
-        table: Table<'Data>,
-        row: Row<'Data>,
-        column: Column<'Data>,
-        cell: Cell<'Data>,
-        getValue: (unit -> obj),
-        renderValue: (unit -> obj)
-    ) =
-    member val table = table with get,set
-    member val row = row with get,set
-    member val column = column with get,set
-    member val cell = cell with get,set
-    member val getValue = getValue with get,set
-    member val renderValue = renderValue with get,set
+
 
 [<Erase; AutoOpen>]
 module GroupingExtensions =
-    type ColumnDef<'Data> with
-        member _.aggregationFn with set(value: AggregationFn) = ()
-        member _.aggregatedCell with set(value: Renderable<'Data>) = ()
-        member _.enableGrouping with set(value: bool) = ()
-        member _.getGroupingValue with set(value: 'Data -> obj) = ()
+
     
     type Column<'Data> with
         member _.aggregationFn with get(): AggregationFn = unbox null
@@ -45,20 +27,9 @@ module GroupingExtensions =
         member _.getIsGrouped with get(): (unit -> bool) = unbox null
         member _.getGroupingValue with get(): (string -> obj) = unbox null
 
-    [<StringEnum>]
-    type GroupedColumnMode =
-        | [<CompiledValue(false)>] False
-        | Reorder
-        | Remove
+
     
-    type TableOptions<'Data> with
-        member _.aggregationFns with set(value: Map<string, AggregationFn>) = ()
-        member _.manualGrouping with set(value: bool) = ()
-        member _.onGroupingChange with set(value: OnChangeFn<GroupingState>) = ()
-        member _.enableGrouping with set(value: bool) = ()
-        member _.getGroupedRowModel with set(value: Table<'Data> -> (unit -> RowModel<'Data>)) = ()
-        member _.groupedColumnMode with set(value: GroupedColumnMode) = ()
-    
+
     type Table<'Data> with
         member _.setGrouping with get(): Updater<GroupingState> -> unit = unbox null
         member _.resetGrouping with get(): bool -> unit = unbox null

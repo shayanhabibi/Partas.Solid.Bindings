@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 
 [<AutoOpen; Erase>]
 module ColumnPinning =
-    type TableOptions<'Data> with
-        member _.enableColumnPinning with set(value: bool) = ()
-        member _.onColumnPinningChange with set(value: OnChangeFn<ColumnPinningState>) = ()
-    
     type Table<'Data> with
         member _.setColumnPinning with get(): Updater<ColumnPinningState> -> unit = unbox null
         member _.resetColumnPinning with get(): bool -> unit = unbox null
@@ -30,9 +26,6 @@ module ColumnPinning =
         member _.getCenterLeafColumns with get(): Column<'Data>[] = unbox null
         member _.getRightLeafColumns with get(): Column<'Data>[] = unbox null
 
-    type ColumnDef<'Data> with
-        member _.onColumnPinningChange with set(value: OnChangeFn<ColumnPinningState>) = ()
-    
     type Column<'Data> with
         member _.getCanPin with get(): (unit -> bool) = unbox null
         member _.getPinnedIndex with get(): (unit -> int) = unbox null

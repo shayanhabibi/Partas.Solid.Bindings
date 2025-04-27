@@ -638,7 +638,7 @@ module Bounds =
 [<AutoOpen; Erase>]
 module Tween =
     let [<Literal>] private path = "@solid-primitives/tween"
-    type Easing = float -> float
+    type Easing = (float -> float)
     /// <summary>
     /// Suggested to use easing functions that are already prepared:
     /// <code lang="fsharp">

@@ -7,11 +7,6 @@ open Browser.Types
 
 [<AutoOpen; Erase>]
 module RowPinning =
-    type TableOptions<'Data> with
-        member _.enableRowPinning with set(value: Row<'Data> -> bool) = ()
-        member _.keepPinnedRows with set(value: bool) = ()
-        member _.onRowPinningChanged with set(value: OnChangeFn<RowPinningState>) = ()
-    
     type Table<'Data> with
         member _.setRowPinning with get(): Updater<RowPinningState> -> unit = unbox null
         member _.resetRowPinning with get(): bool option -> unit = unbox null

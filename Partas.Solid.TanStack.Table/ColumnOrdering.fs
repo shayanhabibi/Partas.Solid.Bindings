@@ -4,18 +4,13 @@ open Fable.Core
 open Fable.Core.JS
 open Fable.Core.JsInterop
 
-[<AllowNullLiteral; Interface>]
-type ColumnOrderTableState = interface end
-type ColumnOrderState = string[]
+
 
 [<Erase; AutoOpen>]
 module ColumnOrdering =
     type ColumnOrderTableState with
         member _.columnOrder with set(columnOrder: ColumnOrderState) = () and get(): ColumnOrderState = unbox null
 
-    type TableOptions<'Data> with
-        member _.onColumnOrderChange with set(value: OnChangeFn<ColumnOrderState>) = () and get() = unbox null
-    
     type Table<'Data> with
         member _.setColumnOrder with get(): Updater<ColumnOrderState> -> unit = unbox null
         member _.resetColumnOrder with get(): bool -> unit = unbox null

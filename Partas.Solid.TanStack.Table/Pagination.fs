@@ -7,14 +7,7 @@ open Browser.Types
 
 [<AutoOpen; Erase>]
 module Pagination =
-    type TableOptions<'Data> with
-        member _.manualPagination with set(value: bool) = ()
-        member _.pageCount with set(value: int) = ()
-        member _.rowCount with set(value: int) = ()
-        member _.autoResetPageIndex with set(value: bool) = ()
-        member _.onPaginationChange with set(value: OnChangeFn<PaginationState>) = ()
-        member _.getPaginationRowModel with set(value: Table<'Data> -> (unit -> RowModel<'Data>)) = ()
-    
+ 
     type Table<'Data> with
         member _.setPagination with get(): Updater<PaginationState> -> unit = unbox null
         member _.resetPagination with get(): bool -> unit = unbox null

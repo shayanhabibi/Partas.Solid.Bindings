@@ -8,19 +8,13 @@ open Browser.Types
 
 [<AutoOpen;Erase>]
 module ColumnVisibility =
-    type ColumnDef<'Data> with
-        member _.enableHiding with set(value: bool) = ()
-    
+
     type Column<'Data> with
         member _.getCanHide with get(): (unit -> bool) = unbox null
         member _.getIsVisible with get(): (unit -> bool) = unbox null
         member _.toggleVisibility with get(): (bool -> unit) = unbox null
         member _.getToggleVisibilityHandler with get(): (unit -> (Event -> unit)) = unbox null
 
-    type TableOptions<'Data> with
-        member _.onColumnVisibilityChange with set(value: OnChangeFn<VisibilityState>) = ()
-        member _.enableHiding with set(value: bool) = ()
-    
     type Table<'Data> with
         member _.getVisibleFlatColumns with get(): (unit -> Column<'Data>[]) = unbox null
         member _.getVisibleLeafColumns with get(): (unit -> Column<'Data>[]) = unbox null
