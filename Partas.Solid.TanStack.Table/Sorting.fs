@@ -9,9 +9,9 @@ open Fable.Core.JsInterop
 [<AutoOpen; Erase>]
 module Sorting =
     type Column<'Data> with
-        member _.getAutoSortingFn with get(): (unit -> SortingFn) = unbox null
+        member _.getAutoSortingFn with get(): (unit -> SortingFn<'Data>) = unbox null
         member _.getAutoSortDir with get(): (unit -> SortDirection) = unbox null
-        member _.getSortingFn with get(): (unit -> SortingFn) = unbox null
+        member _.getSortingFn with get(): (unit -> SortingFn<'Data>) = unbox null
         member _.getNextSortingOrder with get(): (unit -> U2<bool, SortDirection>) = unbox null
         member _.getCanSort with get(): (unit -> bool) = unbox null
         member _.getCanMultiSort with get(): (unit -> bool) = unbox null

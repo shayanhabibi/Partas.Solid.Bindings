@@ -30,7 +30,7 @@ module RowSelection =
         member _.getCanSelect with get(): (unit -> bool) = unbox null
         member _.getCanMultiSelect with get(): (unit -> bool) = unbox null
         member _.getCanSelectSubRows with get(): (unit -> bool) = unbox null
-        member _.toggleSelect with get(): (bool -> unit) = unbox null
+        member _.toggleSelected with get(): (bool -> unit) = unbox null
         member _.getToggleSelectedHandler with get(): (unit -> (Event -> unit)) = unbox null
         
 

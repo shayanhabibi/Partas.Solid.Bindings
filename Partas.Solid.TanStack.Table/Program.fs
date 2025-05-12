@@ -1,11 +1,31 @@
 ﻿namespace Partas.Solid.TanStack.Table
 
+open System.Runtime.CompilerServices
 open Fable.Core.JS
-open Microsoft.FSharp.Core
+open FSharp.Core
 open Partas.Solid
 open Fable.Core
 open Fable.Core.JsInterop
 open System
+
+#if !FABLE_COMPILER
+type StringEnumAttribute() = inherit Attribute()
+type CompiledValueAttribute(value) =
+    inherit Attribute()
+    new (value: int) = CompiledValueAttribute(true)
+    new (value: string) = CompiledValueAttribute(true)
+type ImportAttribute(value,path) =
+    inherit Attribute()
+type EraseAttribute() =
+    inherit Attribute()
+type PojoAttribute() =
+    inherit Attribute()
+type IndexerAttribute() =
+    inherit Attribute()
+type EmitIndexerAttribute() =
+    inherit Attribute()
+#endif
+
 
 [<StringEnum; RequireQualifiedAccess>]
 type ColumnResizingMode =
@@ -27,24 +47,39 @@ type GroupedColumnMode =
     | [<CompiledValue(false)>] False
     | Reorder
     | Remove
-
+[<StringEnum; RequireQualifiedAccess>]
+type ColumnPinningPosition =
+    | [<CompiledValue(false)>] False
+    | Left
+    | Right
+[<Erase; AutoOpen>]
+module Helpers =
+    let [<Literal>] path = "@tanstack/solid-table"
 
 [<AutoOpen; Erase>]
 module rec Table =
     [<AutoOpen>]
-    module TanStack =
+    type Exports =
         [<Import("createSolidTable", "@tanstack/solid-table")>]
-        let createTable<'Data>(options: TableOptions<'Data>): Table<'Data> = jsNative
+        static member createTable<'Data>(options: TableOptions<'Data>): Table<'Data> = jsNative
         [<Import("getCoreRowModel", "@tanstack/solid-table")>]
-        let getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        static member getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
         [<Import("getPaginationRowModel", "@tanstack/solid-table")>]
-        let getPaginationRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        static member getPaginationRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        [<ImportMember(path)>]
+        static member getFilteredRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        [<ImportMember(path)>]
+        static member getSortedRowModel<'Data>(): CoreRowModel<'Data> = jsNative
+        [<ImportMember(path)>]
+        static member getFacetedRowModel<'Data>(): unit -> RowModel<'Data> = jsNative
+        [<ImportMember(path)>]
+        static member getFacetedUniqueValues<'Data>(): unit -> JS.Map<_,int> = jsNative
+        [<ImportMember(path)>]
+        static member getFacetedMinMaxValues<'Data>(): JS.Map<_,int> = jsNative
         [<Import("flexRender", "@tanstack/solid-table")>]
-        let flexRender<'Data>(x, y): HtmlElement = jsNative
+        static member flexRender<'Data>(x, y): HtmlElement = jsNative
     
-    type Updater<'T> =
-        U2<('T -> 'T), 'T>
-        
+
     [<AllowNullLiteral;Interface>]
     type TableFeature = interface end
     
@@ -56,8 +91,7 @@ module rec Table =
             type ColumnFilter =
                 abstract member id: string with get
                 abstract member value: obj with get
-            type FilterFn = interface end
-            type BuiltInFilterFn = FilterFn
+            type BuiltInFilterFn = FilterFn<obj>
             /// <summary>
             /// Every filter function receives:
             /// <ul>
@@ -120,19 +154,24 @@ module rec Table =
             member val getValue = getValue with get,set
             member val renderValue = renderValue with get,set
         [<AllowNullLiteral; Interface>]
-        type HeaderRenderProp<'Data> = interface end
+        type HeaderRenderProp<'Data> =
+            abstract member header: Header<'Data> with get
     
         [<AllowNullLiteral; Interface>]
-        type TableRenderProp<'Data> = interface end
+        type TableRenderProp<'Data> =
+            abstract member table: Table<'Data> with get
             
         [<AllowNullLiteral; Interface>]
-        type ColumnRenderProp<'Data> = interface end
+        type ColumnRenderProp<'Data> =
+            abstract member column: Column<'Data> with get
     
         [<AllowNullLiteral; Interface>]
-        type RowRenderProp<'Data> = interface end
+        type RowRenderProp<'Data> =
+            abstract member row: Row<'Data> with get
     
         [<AllowNullLiteral; Interface>]
-        type CellRenderProp<'Data> = interface end
+        type CellRenderProp<'Data> =
+            abstract member cell: Cell<'Data> with get
     
     
         [<AllowNullLiteral; Interface>]
@@ -153,20 +192,83 @@ module rec Table =
             inherit RowRenderProp<'Data>
             inherit ColumnRenderProp<'Data>
             inherit CellRenderProp<'Data>
-            abstract member getValue: ((unit -> obj)) with get
-            abstract member renderValue: ((unit -> obj)) with get
+            abstract member getValue: (unit -> obj) with get
+            abstract member renderValue: (unit -> obj) with get
         
     [<AutoOpen; Erase>]
     module States =
+        let inline private mkProperty this name getter =
+            Constructors.Object.defineProperty(this, name, unbox<PropertyDescriptor> (createObj [ "get" ==> getter ]))
+            |> ignore
+            this
+        
+        [<Erase>]
+        type TableStateExtensions =
+            [<Extension; Erase>]
+            static member inline columnOrder(this: #ColumnOrderTableState, value: unit -> ColumnOrderState): #ColumnOrderTableState =
+                mkProperty this "columnOrder" value
+            [<Extension; Erase>]
+            static member inline columnFilters(this: #ColumnFiltersTableState, value: unit -> ColumnFiltersState): #ColumnFiltersTableState =
+                mkProperty this "columnFilters" value
+            [<Extension;  Erase>]
+            static member inline columnVisibility(this: #VisibilityTableState, value: unit -> VisibilityState): #VisibilityTableState =
+                mkProperty this "columnVisibility" value
+            [<Extension; Erase>]
+            static member inline columnPinning(this: #ColumnPinningTableState, value: unit -> ColumnPinningState): #ColumnPinningTableState =
+                mkProperty this "columnPinning" value
+            [<Extension; Erase>]
+            static member inline sorting(this: #SortingTableState, value: unit -> SortingState): #SortingTableState =
+                mkProperty this "sorting" value
+            [<Extension; Erase>]
+            static member inline expanded(this: #ExpandedTableState, value: unit -> ExpandedState): #ExpandedTableState =
+                mkProperty this "expanded" value
+            [<Extension; Erase>]
+            static member inline grouping(this: #GroupingTableState, value: unit -> GroupingState): #GroupingTableState =
+                mkProperty this "grouping" value
+            [<Extension; Erase>]
+            static member inline pagination(this: #PaginationTableState, value: unit -> PaginationState): #PaginationTableState =
+                mkProperty this "pagination" value
+            [<Extension; Erase>]
+            static member inline rowSelection(this: #RowSelectionTableState, value: unit -> RowSelectionState): #RowSelectionTableState =
+                mkProperty this "rowSelection" value
+            [<Extension; Erase>]
+            static member inline columnSizing(this: #ColumnSizingTableState, value: unit -> ColumnSizingState): #ColumnSizingTableState =
+                mkProperty this "columnSizing" value
+            [<Extension; Erase>]
+            static member inline columnSizingInfo(this: #ColumnSizingTableState, value: unit -> ColumnSizingState): #ColumnSizingTableState =
+                mkProperty this "columnSizingInfo" value
+
         [<AllowNullLiteral; Interface>]
-        type ColumnOrderTableState = interface end
+        type ColumnOrderTableState =
+            abstract member columnOrder: ColumnOrderState with get,set
+                
         type ColumnOrderState = string[]
         [<AllowNullLiteral; Interface>]
         type ColumnFiltersTableState =
             abstract member columnFilters: ColumnFiltersState with get,set
         
         type ColumnFiltersState = ColumnFilter[]
-        
+        [<Erase; RequireQualifiedAccess>]
+        module ColumnFiltersState = let init (): ColumnFiltersState = [||]
+        /// <summary>
+        /// Interface to interact with table state.<br/>
+        /// When trying to instantiate a <c>TableState</c> (such as in the context of
+        /// defining the <c>state</c> field in your <c>TableOptions</c>) it is best
+        /// to use one of the defined helpers.<br/>
+        /// The helpers will assign the fields as <c>getter properties</c> within JS
+        /// which is important to maintain reactivity in Solid-js.<br/>
+        /// Instead of instantiating a pojo using a constructor, we instead initialise an
+        /// empty object and chain field assignment in fluent style. Alternatively, if instantiating
+        /// the object for <c>TableOptions</c>, you can use the <c>stateFn</c> member for <c>TableOptions</c>
+        /// </summary>
+        /// <example><code lang="fsharp">
+        /// let options =
+        ///     TableOptions()
+        ///         .stateFn(
+        ///         _.rowSelection( ... )
+        ///             .columnVisibility( ... )        
+        ///         )
+        /// </code></example>
         [<AllowNullLiteral;Interface>]
         type TableState =
             inherit VisibilityTableState
@@ -179,15 +281,31 @@ module rec Table =
             inherit ColumnSizingTableState
             inherit PaginationTableState
             inherit RowSelectionTableState
-        
+            inherit ColumnFiltersTableState
+            /// <summary>
+            /// Chain with fluent patterns to set fields
+            /// </summary>
+            static member inline init: TableState = createEmpty
         [<AllowNullLiteral; Interface>]
-        type VisibilityTableState = interface end
-        type VisibilityState = Map<string, bool>
+        type VisibilityTableState =
+            abstract member columnVisibility: VisibilityState with get
+        [<AllowNullLiteral; Interface>]
+        type VisibilityState =
+            [<EmitIndexer>]
+            abstract member Item: key: string -> bool with get,set
+            static member inline init (): VisibilityState = createEmpty
         
         
 
         [<AllowNullLiteral; Erase>]
-        type ColumnPinningTableState = interface end
+        type ColumnPinningTableState =
+            abstract member columnPinning: ColumnPinningState with get
+        [<JS.Pojo>]
+        type ColumnPinningState(?left: string[], ?right: string[]) =
+            member val left = left.Value with get,set
+            member val right = right.Value with get,set
+            static member inline init (): ColumnPinningState = ColumnPinningState([||], [||])
+            
         [<AllowNullLiteral;Interface>]
         type FiltersTableState = interface end
         
@@ -196,60 +314,74 @@ module rec Table =
             | Asc
             | Desc
         [<Interface; AllowNullLiteral>]
-        type SortingTableState = interface end
+        type SortingTableState =
+            abstract member sorting: SortingState with get
             
         [<Pojo>]
         type ColumnSort(id: string, desc: bool) =
             member val id = id with get,set
             member val desc = desc with get,set
         type SortingState = ColumnSort[]
+        [<Erase; RequireQualifiedAccess>]
+        module SortingState = let init (): SortingState = [||]
+
         
         
         [<Interface; AllowNullLiteral>]
-        type ExpandedTableState = interface end
+        type ExpandedTableState =
+            abstract member expanded: ExpandedState with get
         
-        [<StringEnum>]
-        type ExpandedState = U2<bool, Map<string, bool>>
+        [<Interface; AllowNullLiteral>]
+        type ExpandedState =
+            [<EmitIndexer>]
+            abstract member Item: key: string -> bool with get,set
+            static member inline init (): ExpandedState = createEmpty
         
         
         
         [<AllowNullLiteral; Interface>]
-        type GroupingTableState = interface end
+        type GroupingTableState =
+            abstract member grouping: GroupingState with get
         
         type GroupingState = string[]
-        
+        [<Erase; RequireQualifiedAccess>]
+        module GroupingState = let init (): GroupingState = [||]
+
         
         [<AllowNullLiteral; Interface>]
-        type PaginationTableState = interface end
+        type PaginationTableState =
+            abstract member pagination: PaginationState with get
         
         [<Pojo>]
         type PaginationState(pageIndex: int, pageSize: int) =
             member val pageIndex = pageIndex with get,set
             member val pageSize = pageSize with get,set
+            // static member inline init (): PaginationState = PaginationState(0, 10)
+        [<AllowNullLiteral; Interface>]
+        type PaginationInitialTableState =
+            abstract member pagination: PaginationState with get
+        
         
         [<AllowNullLiteral; Interface>]
-        type PaginationInitialTableState = interface end
-        
-        
+        type RowSelectionTableState =
+            abstract member rowSelection: RowSelectionState with get
         [<AllowNullLiteral; Interface>]
-        type RowSelectionTableState = interface end
-        type RowSelectionState = Map<string, bool>
-        
+        type RowSelectionState =
+            [<EmitIndexer>]
+            abstract member Item: key: string -> bool with get, set
+            static member inline init (): RowSelectionState = createEmpty
         type OnChangeFn<'State> = Updater<'State> -> unit     
         
-        [<StringEnum>]
-        type ColumnPinningPosition =
-            | [<CompiledValue(false)>] False
-            | Left
-            | Right
-        [<JS.Pojo>]
-        type ColumnPinningState(?left: string[], ?right: string[]) =
-            member val left = left with get,set
-            member val right = right with get,set
+ 
         
         [<AllowNullLiteral; Interface>]
-        type ColumnSizingTableState = interface end
-        type ColumnSizingState = Map<string, int>
+        type ColumnSizingTableState =
+            abstract member columnSizing: ColumnSizingState with get
+            abstract member columnSizingInfo: ColumnSizingInfoState with get
+        [<AllowNullLiteral; Interface>]
+        type ColumnSizingState =
+            [<EmitIndexer>]
+            abstract member Item: key: string -> bool with get,set
         
         [<Pojo>]
         type ColumnSizingInfoState(
@@ -301,7 +433,7 @@ module rec Table =
             
             // Feature
             // ColumnFiltering
-            ,?filterFn: FilterFn
+            ,?filterFn: FilterFn<'Data>
             ,?enableColumnFilter: bool
             
             // Feature
@@ -325,7 +457,7 @@ module rec Table =
             
             // Feature
             // Sorting
-            ,?sortingFn: SortingFn
+            ,?sortingFn: SortingFn<'Data>
             ,?sortDescFirst: bool
             ,?enableSorting: bool
             ,?enableMultiSort: bool
@@ -334,7 +466,7 @@ module rec Table =
             
             // Feature
             // Grouping
-            ,?aggregationFn: AggregationFn
+            ,?aggregationFn: AggregationFn<'Data>
             ,?aggregatedCell: Renderable<'Data>
             ,?enableGrouping: bool
             ,?getGroupingValue: 'Data -> obj
@@ -372,7 +504,7 @@ module rec Table =
         ///     }) => unknown)
         /// </code>
         /// </summary>
-        member val header: HeaderRenderProps<'Data> -> obj = header.Value with get,set
+        member val header: (HeaderRenderProps<'Data> -> obj) = header.Value with get,set
         
         /// <summary>
         /// The footer to display for the column. If a function is passed, it will be passed a props object for the footer and should return the rendered footer value (the exact type depends on the adapter being used).
@@ -386,7 +518,7 @@ module rec Table =
         ///     }) => unknown)
         /// </code>
         /// </summary>
-        member val footer: FooterRenderProps<'Data> -> obj = footer.Value with get,set
+        member val footer: (FooterRenderProps<'Data> -> obj) = footer.Value with get,set
         
         /// <summary>
         /// The cell to display each row for the column. If a function is passed, it will be passed a props object for the cell and should return the rendered cell value (the exact type depends on the adapter being used).
@@ -414,7 +546,7 @@ module rec Table =
         /// <li>A custom filter function</li>
         /// </ul>
         /// </summary>
-        member _.filterFn with set(value: FilterFn) = () and get(): FilterFn = unbox null
+        member _.filterFn with set(value: FilterFn<'Data>) = () and get(): FilterFn<'Data> = unbox null
         /// Enables/disables the column filter for this column.
         member _.enableColumnFilter with set(value: bool) = () and get(): bool = unbox null
         
@@ -439,7 +571,7 @@ module rec Table =
         
         // Feature
         // Grouping
-        member _.aggregationFn with set(value: AggregationFn) = ()
+        member _.aggregationFn with set(value: AggregationFn<'Data>) = ()
         member _.aggregatedCell with set(value: Renderable<'Data>) = ()
         member _.enableGrouping with set(value: bool) = ()
         member _.getGroupingValue with set(value: 'Data -> obj) = ()
@@ -467,7 +599,7 @@ module rec Table =
             
             // Feature
             // ColumnFiltering
-            ,?filterFns: Map<string, FilterFn>
+            ,?filterFns: Map<string, FilterFn<'Data>>
             ,?filterFromLeafRows: bool
             ,?maxLeafRowFilterDepth: int
             ,?enableFilters: bool
@@ -500,14 +632,14 @@ module rec Table =
             
             // Feature
             // GlobalFiltering
-            ,?globalFilterFn: FilterFn
+            ,?globalFilterFn: FilterFn<'Data>
             ,?onGlobalFilterChange: OnChangeFn<GlobalFilterState>
             ,?enableGlobalFilter: bool
             ,?getColumnCanGlobalFilter: Column<'Data> -> bool
             
             // Feature
             // Sorting
-            ,?sortingFns: Map<string, SortingFn>
+            ,?sortingFns: Map<string, SortingFn<'Data>>
             ,?manualSorting: bool
             ,?onSortingChange: OnChangeFn<SortingState>
             ,?enableSorting: bool
@@ -521,7 +653,7 @@ module rec Table =
             
             // Feature
             // Grouping
-            ,?aggregationFns: Map<string, AggregationFn>
+            ,?aggregationFns: Map<string, AggregationFn<'Data>>
             ,?manualGrouping: bool
             ,?onGroupingChange: OnChangeFn<GroupingState>
             ,?enableGrouping: bool
@@ -560,6 +692,13 @@ module rec Table =
             ,?enableMultiRowSelection: Row<'Data> -> bool
             ,?enableSubRowSelection: Row<'Data> -> bool
             ,?onRowSelectionChange: OnChangeFn<RowSelectionState>
+            
+            // Feature
+            // ColumnFaceting
+            /// columnId -> RowModel
+            ,?getColumnFacetedRowModel: (string -> RowModel<'Data>)
+            ,?getFacetedRowModel: (unit -> RowModel<'Data>)
+            ,?getFacetedUniqueValues: (unit -> JS.Map<_,int>)
         ) =
         /// <summary>
         /// The data for the table to display. This array should match the type you provided to <c>table.setRowType[...]</c>, but in theory could be an array of anything. It's common for each item in the array to be an object of key/values but this is not required. Columns can access this data via string/index or a functional accessor to return anything they want.<br/><br/>
@@ -680,13 +819,13 @@ module rec Table =
         member val enableHiding: bool option = enableHiding with get,set
         // Feature
         // GlobalFiltering
-        member val globalFilterFn: FilterFn option = globalFilterFn with get,set
+        member val globalFilterFn: FilterFn<'Data> option = globalFilterFn with get,set
         member val onGlobalFilterChange: OnChangeFn<GlobalFilterState> option = onGlobalFilterChange with get,set
         member val enableGlobalFilter: bool option = enableGlobalFilter with get,set
         member val getColumnCanGlobalFilter: (Column<'Data> -> bool) option = getColumnCanGlobalFilter with get,set
         // Feature
         // Sorting
-        member val sortingFns: Map<string, SortingFn> option = sortingFns with get,set
+        member val sortingFns: Map<string, SortingFn<'Data>> option = sortingFns with get,set
         member val manualSorting: bool option = manualSorting with get,set
         member val onSortingChange: OnChangeFn<SortingState> option = onSortingChange with get,set
         member val enableSorting: bool option = enableSorting with get,set
@@ -699,7 +838,7 @@ module rec Table =
         member val isMultiSortEvent: (Browser.Types.Event -> bool) option = isMultiSortEvent with get,set
         // Feature
         // Grouping
-        member val aggregationFns: Map<string, AggregationFn> option = aggregationFns with get,set
+        member val aggregationFns: Map<string, AggregationFn<'Data>> option = aggregationFns with get,set
         member val manualGrouping: bool option = manualGrouping with get,set
         member val onGroupingChange: OnChangeFn<GroupingState> option = onGroupingChange with get,set
         member val enableGrouping: bool option = enableGrouping with get,set
@@ -738,17 +877,34 @@ module rec Table =
         member val enableSubRowSelection: (Row<'Data> -> bool) option = enableSubRowSelection with get,set
         member val onRowSelectionChange: OnChangeFn<RowSelectionState> option = onRowSelectionChange with get,set
     
+        // Feature
+        // ColumnFaceting
+        member val getColumnFacetedRowModel: (string -> RowModel<'Data>) option = getColumnFacetedRowModel with get,set 
+        member val getFacetedRowModel = getFacetedRowModel with get,set 
+        member val getFacetedUniqueValues = getFacetedUniqueValues with get,set 
+        
         /// <summary>
         /// This optional function is used to derive a unique ID for any given row. If not provided the rows index is used (nested rows join together with <c>.</c> using their grandparents' index eg. <c>index.index.index</c>). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity eg. a userId, taskId, database ID field, etc.
         /// </summary>
         member val getRowId: ('Data * int * Row<'Data> -> string) option = getRowId with get,set
-    [<RequireQualifiedAccess>]
-    module TableOptions =
+    
+    let inline private mkProperty this name getter =
+        Constructors.Object.defineProperty(this, name, unbox<PropertyDescriptor> (createObj [ "get" ==> getter ]))
+        |> ignore
+        this
+    [<AutoOpen; Erase>]
+    type TableOptionsExtensions =
         /// Properly provides reactivity by making the data key a property
-        let inline dataGetter (value: unit -> 'Data[]) (this: TableOptions<'Data>) =
-            let propertyDescriptor: PropertyDescriptor = !!createObj [ "get" ==> value ] 
-            Constructors.Object.defineProperty(this, "data", propertyDescriptor) |> ignore
+        [<System.Runtime.CompilerServices.Extension; Erase>]
+        static member inline data (this: TableOptions<'Data>, value: unit -> 'Data[]) = mkProperty this "data" value
+        /// Properly provides reactivity by making the columns key a property
+        [<System.Runtime.CompilerServices.Extension; Erase>]
+        static member inline columns (this: TableOptions<'Data>, value: unit -> ColumnDef<'Data>[]) = mkProperty this "columns" value
+        [<Extension; Erase>]
+        static member inline stateFn(this: TableOptions<'Data>, handler: (TableState -> TableState)): TableOptions<'Data> =
+            this.state <- Some (TableState.init |> handler)
             this
+    
     [<AllowNullLiteral; Interface>]
     type Table<'Data> =
         /// This is the resolved initial state of the table.
@@ -787,7 +943,7 @@ module rec Table =
         /// Returns all leaf-node columns in the table flattened to a single level. This does not include parent columns.
         abstract member getAllLeafColumns: (unit -> Column<'Data>[]) with get
         /// Returns a single column by its ID.
-        abstract member getColumn: string -> Column<'Data> option with get
+        abstract member getColumn: (string -> Column<'Data> option) with get
         /// Returns the header groups for the table.
         abstract member getHeaderGroups: (unit -> HeaderGroup<'Data>[]) with get
         /// Returns the footer groups for the table.
@@ -915,37 +1071,6 @@ module rec Table =
             member _.getCenterLeafHeaders with get(): (unit -> Header<'Data, obj>[]) = unbox null
             /// If pinning, returns headers for all right pinned leaf columns in the table, (not including parent headers).
             member _.getRightLeafHeaders with get(): (unit -> Header<'Data, obj>[]) = unbox null
-    [<AllowNullLiteral;Interface>]
-    type Row<'Data> =
-        /// The resolved unique identifier for the row resolved via the options.getRowId option. Defaults to the row's index (or relative index if it is a subRow)
-        abstract member id: string with get
-        /// The depth of the row (if nested or grouped) relative to the root row array.
-        abstract member depth: int with get
-        /// The index of the row within its parent array (or the root data array)
-        abstract member index: int with get
-        /// The original row object provided to the table.<br/><br/>
-        /// 🧠 If the row is a grouped row, the original row object will be the first original in the group.
-        abstract member original: 'Data with get
-        /// If nested, this row's parent row id.
-        abstract member parentId: string with get
-        /// Returns the value from the row for a given columnId
-        abstract member getValue: string -> obj with get
-        /// <summary>Renders the value from the row for a given columnId, but will return the <c>renderFallbackValue</c> if no value is found.</summary>
-        abstract member renderValue: string -> obj with get
-        /// Returns a unique array of values from the row for a given columnId.
-        abstract member getUniqueValues: string -> obj[] with get
-        /// <summary>An array of subRows for the row as returned and created by the <c>options.getSubRows</c> option.</summary>
-        abstract member subRows: Row<'Data>[] with get
-        /// Returns the parent row for the row, if it exists.
-        abstract member getParentRow: (unit -> Row<'Data> option) with get
-        /// Returns the parent rows for the row, all the way up to a root row.
-        abstract member getParentRows: (unit -> Row<'Data>[] option) with get
-        /// Returns the leaf rows for the row, not including any parent rows.
-        abstract member getLeafRows: (unit -> Row<'Data>[]) with get
-        /// <summary>An array of the original subRows as returned by the <c>options.getSubRows</c> option.</summary>
-        abstract member originalSubRows: Row<'Data>[] with get
-        /// Returns all of the Cells for the row.
-        abstract member getAllCells: (unit -> Cell<'Data>[]) with get
 
     [<AllowNullLiteral;Interface>]
     type CellContext<'Data, 'Value> =
@@ -983,6 +1108,287 @@ module rec Table =
         /// </example> 
         abstract member getContext: (unit -> CellContext<'Data, obj>) with get
 
+    /// <summary>
+    /// An Updater denotes a parameter or argument which can either be the raw value,
+    /// or a function which acts on the previous value. <br/><br/>
+    /// You can use the extensions Updater.fromFun or Updater.fromValue helpers.
+    /// <br/> Otherwise, just use the Fable operator <c>!^</c>
+    /// </summary>
+    type Updater<'T> = U2<('T -> 'T), 'T>
+    [<Erase; RequireQualifiedAccess>]
+    module Updater =
+        /// <summary>
+        /// Auto lifts the handler into a <c>Updater</c> type
+        /// </summary>
+        /// <param name="handler">A handler which updates the previous value into a new value</param>
+        let inline fromFun (handler: 'T -> 'T): Updater<'T> = !^handler
+        /// <summary>
+        /// Auto lifts the value into a <c>Updater</c> type
+        /// </summary>
+        /// <param name="value">The new value</param>
+        let inline fromValue (value: 'T): Updater<'T> = !^value
+
+    [<AllowNullLiteral;Interface>]
+    type Row<'Data> =
+        [<EmitIndexer>]
+        abstract Item<'Value>: string -> 'Value
+        /// The resolved unique identifier for the row resolved via the options.getRowId option. Defaults to the row's index (or relative index if it is a subRow)
+        abstract member id: string with get
+        /// The depth of the row (if nested or grouped) relative to the root row array.
+        abstract member depth: int with get
+        /// The index of the row within its parent array (or the root data array)
+        abstract member index: int with get
+        /// The original row object provided to the table.<br/><br/>
+        /// 🧠 If the row is a grouped row, the original row object will be the first original in the group.
+        abstract member original: 'Data with get
+        /// If nested, this row's parent row id.
+        abstract member parentId: string with get
+        /// Returns the value from the row for a given columnId
+        abstract member getValue: string -> obj with get
+        /// <summary>Renders the value from the row for a given columnId, but will return the <c>renderFallbackValue</c> if no value is found.</summary>
+        abstract member renderValue: string -> obj with get
+        /// Returns a unique array of values from the row for a given columnId.
+        abstract member getUniqueValues: string -> obj[] with get
+        /// <summary>An array of subRows for the row as returned and created by the <c>options.getSubRows</c> option.</summary>
+        abstract member subRows: Row<'Data>[] with get
+        /// Returns the parent row for the row, if it exists.
+        abstract member getParentRow: (unit -> Row<'Data> option) with get
+        /// Returns the parent rows for the row, all the way up to a root row.
+        abstract member getParentRows: (unit -> Row<'Data>[] option) with get
+        /// Returns the leaf rows for the row, not including any parent rows.
+        abstract member getLeafRows: (unit -> Row<'Data>[]) with get
+        /// <summary>An array of the original subRows as returned by the <c>options.getSubRows</c> option.</summary>
+        abstract member originalSubRows: Row<'Data>[] with get
+        /// Returns all of the Cells for the row.
+        abstract member getAllCells: (unit -> Cell<'Data>[]) with get
+
+    /// <summary>
+    /// The first parameter passed to an AggregationFn. A function which provides the leaf values
+    /// of the groups rows.
+    /// </summary>
+    type LeafRowAccessor<'Data> = unit -> Row<'Data>[]
+    /// <summary>
+    /// The second parameter passed to an AggregationFn. A function which provides the immediate child values
+    /// of the groups rows.
+    /// </summary>
+    type ChildRowAccessor<'Data> = unit -> Row<'Data>[]
+    /// <summary>
+    /// A grouping function is a handler that is passed a function to retrieve
+    /// the leaf values of the groups rows and the immediate child values of the groups
+    /// rows and should return a value (usually a primitive) to build the aggregated row model.
+    /// </summary>
+    /// <remarks>The TanStack defined aggregation functions are included</remarks>
+    type AggregationFn<'Data> = LeafRowAccessor<'Data> -> ChildRowAccessor<'Data> -> obj
+
+    [<Erase; RequireQualifiedAccess>]
+    module AggregationFn =
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "sum"</remarks>
+        [<Emit("'sum'")>]
+        let sum<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "min"</remarks>
+        [<Emit("'min'")>]
+        let min<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "max"</remarks>
+        [<Emit("'max'")>]
+        let max<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "extent"</remarks>
+        [<Emit("'extent'")>]
+        let extent<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "mean"</remarks>
+        [<Emit("'mean'")>]
+        let mean<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "median"</remarks>
+        [<Emit("'median'")>]
+        let median<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "unique"</remarks>
+        [<Emit("'unique'")>]
+        let unique<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "uniqueCount"</remarks>
+        [<Emit("'uniqueCount'")>]
+        let uniqueCount<'Data>: AggregationFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined aggregation function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "count"</remarks>
+        [<Emit("'count'")>]
+        let count<'Data>: AggregationFn<'Data> = jsNative
+
+    /// <summary>
+    /// A Sorting function receives 2 rows, and a column ID, and are expected
+    /// to compare the two rows using the column ID to return <c>-1</c>, <c>0</c> or
+    /// <c>1</c> in ascending order.
+    /// </summary>
+    /// <remarks>Prebuilt SortingFns can be found in the SortingFn module.</remarks>
+    type SortingFn<'Data> = Row<'Data> -> Row<'Data> -> string -> int
+
+    #nowarn 3535
+    [<Import("sortingFns", tableCore)>]
+    type SortingFns<'Data> =
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "alphanumeric"</remarks>
+        static member alphanumeric: SortingFn<'Data> = unbox jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "alphanumericCaseSensitive"</remarks>
+        static member alphanumericCaseSensitive: SortingFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "text"</remarks>
+        static member text: SortingFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "textCaseSensitive"</remarks>
+        static member textCaseSensitive: SortingFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "datetime"</remarks>
+        static member datetime: SortingFn<'Data> = unbox jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "basic"</remarks>
+        static member basic: SortingFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined sorting function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "auto"</remarks>
+        static member auto: SortingFn<'Data> = jsNative
+        // let fromType<'Data, 'Value when 'Value: comparison>: SortingFn<'Data> =
+        //     fun rowA rowB columnId ->
+        //         if rowA[columnId] = rowB[columnId]
+        //         then 0
+        //         
+        //         elif rowA[columnId] > rowB[columnId]
+        //         then 1
+        //         
+        //         else -1
+        // let inline fromValueHandler<'Data, 'Value> (handler) = ()
+
+    /// <summary>
+    /// Pass a POJO to the meta function
+    /// </summary>
+    type AddMetaFn = obj -> unit
+
+    /// <summary>
+    /// Best type safety is provided when you directly supply a filter function to a column definition, as the type signature
+    /// will be mapped by the accessorFn. 
+    /// </summary>
+    /// <param name="row">The row to filter/include</param>
+    /// <param name="columnId">The column Id of the row</param>
+    /// <param name="filterValue">The filter value</param>
+    /// <param name="addMeta">Function to include metadata such as why an action occured</param>
+    /// <returns><c>true</c> to include the row and <c>false</c> to filter the row out</returns>
+    type FilterFn<'Data, 'Value> = Row<'Data> -> string -> 'Value -> AddMetaFn -> bool
+    /// <summary>
+    /// Best type safety is provided when you directly supply a filter function to a column definition, as the type signature
+    /// will be mapped by the accessorFn. 
+    /// </summary>
+    /// <param name="row">The row to filter/include</param>
+    /// <param name="columnId">The column Id of the row</param>
+    /// <param name="filterValue">The filter value</param>
+    /// <param name="addMeta">Function to include metadata such as why an action occured</param>
+    /// <returns><c>true</c> to include the row and <c>false</c> to filter the row out</returns>
+    type FilterFn<'Data> = FilterFn<'Data, obj>
+
+    [<RequireQualifiedAccess; Erase>]
+    module FilterFn =
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "includesString"</remarks>
+        [<Emit("'includesString'")>]
+        let includesString<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "includesStringSensitive"</remarks>
+        [<Emit("'includesStringSensitive'")>]
+        let includesStringSensitive<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "equalsString"</remarks>
+        [<Emit("'equalsString'")>]
+        let equalsString<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "equalsStringSensitive"</remarks>
+        [<Emit("'equalsStringSensitive'")>]
+        let equalsStringSensitive<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "arrIncludes"</remarks>
+        [<Emit("'arrIncludes'")>]
+        let arrIncludes<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "arrIncludesAll"</remarks>
+        [<Emit("'arrIncludesAll'")>]
+        let arrIncludesAll<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "arrIncludesSome"</remarks>
+        [<Emit("'arrIncludesSome'")>]
+        let arrIncludesSome<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "equals"</remarks>
+        [<Emit("'equals'")>]
+        let equals<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "weakEquals"</remarks>
+        [<Emit("'weakEquals'")>]
+        let weakEquals<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "inNumberRange"</remarks>
+        [<Emit("'inNumberRange'")>]
+        let inNumberRange<'Data>: FilterFn<'Data> = jsNative
+        /// <summary>
+        /// Predefined filter function for Partas.Solid.TanStack.Table
+        /// </summary>
+        /// <remarks>Compiles to the string "auto"</remarks>
+        [<Emit("'auto'")>]
+        let auto<'Data>: FilterFn<'Data> = jsNative
+
     
     [<AllowNullLiteral; Interface>]
     type FilterFnProps<'Data> =
@@ -991,74 +1397,35 @@ module rec Table =
         abstract member filterValue: obj with get
         abstract member addMeta: (obj -> unit) with get
 
+    [<AutoOpen; Erase>]
+    module ColumnGrouping =
+        type BuiltInAggregationFn = AggregationFn<obj>
+        
+        [<Import("aggregationFns", tableCore)>]
+        [<AllowNullLiteral; Interface>]
+        type aggregationFns =
+            abstract member sum: BuiltInAggregationFn with get
+            abstract member min: BuiltInAggregationFn with get
+            abstract member max: BuiltInAggregationFn with get
+            abstract member extent: BuiltInAggregationFn with get
+            abstract member mean: BuiltInAggregationFn with get
+            abstract member median: BuiltInAggregationFn with get
+            abstract member unique: BuiltInAggregationFn with get
+            abstract member uniqueCount: BuiltInAggregationFn with get
+            abstract member count: BuiltInAggregationFn with get
+        
 
-            
-            
-
-
-[<AutoOpen>]
-module Extensions =
-    type HeaderRenderProp<'Data> with
-        member _.header
-            with set(value: Header<'Data>) = ()
-            and get(): Header<'Data> = unbox null
-    type TableRenderProp<'Data> with
-        member _.table
-            with set(value: TableOptions<'Data>) = ()
-            and get(): TableOptions<'Data> = unbox null
-    type ColumnRenderProp<'Data> with
-        member _.column
-            with set(value: Column<'Data>) = ()
-            and get() = unbox null
-    type RowRenderProp<'Data> with
-        member _.row
-            with set(value: Row<'Data>) = ()
-            and get() = unbox null
-    type CellRenderProp<'Data> with
-        member _.cell
-            with set(value: Cell<'Data>) = ()
-            and get() = unbox null
-    type VisibilityTableState with
-        member _.columnVisibility
-            with set(value: VisibilityState) = ()
-            and get(): VisibilityState = unbox null
-    type ColumnPinningTableState with
-        member _.columnPinning
-            with set(value: ColumnPinningState) = ()
-            and get(): ColumnPinningState = unbox null
-    type SortingTableState with
-        member _.sorting
-            with set(value: SortingState) = ()
-            and get(): SortingState = unbox null
-    
-    type ExpandedTableState with
-        member _.expanded
-            with set(value: ExpandedState) = ()
-            and get(): ExpandedState = unbox null
-    
-    type GroupingTableState with
-        member _.grouping
-            with set(value: GroupingState) = ()
-            and get(): GroupingState = unbox null
-    
-    type PaginationTableState with
-        member _.pagination
-            with set(value: PaginationState) = ()
-            and get(): PaginationState = unbox null
-    
-    type PaginationInitialTableState with
-        member _.pagination
-            with set(value: PaginationState option) = ()
-            and get(): PaginationState option = unbox null
-    
-    type RowSelectionTableState with
-        member _.rowSelection
-            with set(value: RowSelectionState) = ()
-            and get(): RowSelectionState = unbox null
-    type ColumnSizingTableState with
-        member _.columnSizing
-            with set(value: ColumnSizingState) = ()
-            and get(): ColumnSizingState = unbox null
-        member _.columnSizingInfo
-            with set(value: ColumnSizingInfoState) = ()
-            and get(): ColumnSizingInfoState = unbox null
+    [<AutoOpen; Erase>]
+    module RowSorting =
+        type BuiltInSortingFn = SortingFn<obj>
+        
+        [<Import("sortingFns", tableCore)>]
+        [<AllowNullLiteral; Interface>]
+        type sortingFns =
+            abstract member alphanumeric: BuiltInSortingFn with get
+            abstract member alphanumericCaseSensitive: BuiltInSortingFn with get
+            abstract member text: BuiltInSortingFn with get
+            abstract member textCaseSensitive: BuiltInSortingFn with get
+            abstract member datetime: BuiltInSortingFn with get
+            abstract member basic: BuiltInSortingFn with get
+        
