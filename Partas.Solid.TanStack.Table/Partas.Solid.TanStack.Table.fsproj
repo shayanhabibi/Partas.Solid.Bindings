@@ -27,7 +27,7 @@
 
     <ItemGroup>
         <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
-        <Compile Include="Table.fs" />
+        <Compile Include="Spec.fs" />
         <Compile Include="Program.fs" />
         <Compile Include="ColumnFiltering.fs" />
         <Compile Include="ColumnFaceting.fs" />
@@ -44,6 +44,7 @@
         <Compile Include="RowPinning.fs" />
         <Compile Include="RowSelection.fs" />
         <Content Include="README.md" />
+        <Compile Include="KeyValueStyle.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -52,8 +53,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Partas.Solid" Version="0.2.32" />
-        <PackageReference Update="FSharp.Core" Version="9.0.300-beta.25181.1" />
+        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha3" />
+        <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ open Partas.Solid
 open Fable.Core
 open Fable.Core.JsInterop
 open System
+open Partas.Solid.Experimental.U
 
 #if !FABLE_COMPILER
 type StringEnumAttribute() = inherit Attribute()
@@ -26,36 +27,6 @@ type EmitIndexerAttribute() =
     inherit Attribute()
 #endif
 
-
-[<StringEnum; RequireQualifiedAccess>]
-type ColumnResizingMode =
-    | OnChange
-    | OnEnd
-[<StringEnum; RequireQualifiedAccess>]
-type ColumnResizingDirection =
-    | Ltr
-    | Rtl
-[<StringEnum; RequireQualifiedAccess>]
-type SortUndefined =
-    | First
-    | Last
-    | [<CompiledValue(false)>] False
-    | [<CompiledValue(-1)>] Negative
-    | [<CompiledValue(1)>] Positive
-[<StringEnum; RequireQualifiedAccess>]
-type GroupedColumnMode =
-    | [<CompiledValue(false)>] False
-    | Reorder
-    | Remove
-[<StringEnum; RequireQualifiedAccess>]
-type ColumnPinningPosition =
-    | [<CompiledValue(false)>] False
-    | Left
-    | Right
-[<Erase; AutoOpen>]
-module Helpers =
-    let [<Literal>] path = "@tanstack/solid-table"
-
 [<AutoOpen; Erase>]
 module rec Table =
     [<AutoOpen>]
@@ -66,15 +37,15 @@ module rec Table =
         static member getCoreRowModel<'Data>(): CoreRowModel<'Data> = jsNative
         [<Import("getPaginationRowModel", "@tanstack/solid-table")>]
         static member getPaginationRowModel<'Data>(): CoreRowModel<'Data> = jsNative
-        [<ImportMember(path)>]
+        [<ImportMember(solidTable)>]
         static member getFilteredRowModel<'Data>(): CoreRowModel<'Data> = jsNative
-        [<ImportMember(path)>]
+        [<ImportMember(solidTable)>]
         static member getSortedRowModel<'Data>(): CoreRowModel<'Data> = jsNative
-        [<ImportMember(path)>]
+        [<ImportMember(solidTable)>]
         static member getFacetedRowModel<'Data>(): unit -> RowModel<'Data> = jsNative
-        [<ImportMember(path)>]
+        [<ImportMember(solidTable)>]
         static member getFacetedUniqueValues<'Data>(): unit -> JS.Map<_,int> = jsNative
-        [<ImportMember(path)>]
+        [<ImportMember(solidTable)>]
         static member getFacetedMinMaxValues<'Data>(): JS.Map<_,int> = jsNative
         [<Import("flexRender", "@tanstack/solid-table")>]
         static member flexRender<'Data>(x, y): HtmlElement = jsNative
@@ -309,10 +280,7 @@ module rec Table =
         [<AllowNullLiteral;Interface>]
         type FiltersTableState = interface end
         
-        [<StringEnum>]
-        type SortDirection =
-            | Asc
-            | Desc
+
         [<Interface; AllowNullLiteral>]
         type SortingTableState =
             abstract member sorting: SortingState with get
@@ -425,7 +393,7 @@ module rec Table =
             ?id: string
             ,?accessorKey: string
             ,?accessorFn: ('Data -> int -> obj)
-            ,?columns: 'Data[]
+            ,?columns: ColumnDef<'Data>[]
             ,?header: HeaderRenderProps<'Data> -> obj
             ,?footer: FooterRenderProps<'Data> -> obj
             ,?cell: CellRenderProps<'Data> -> obj
@@ -490,7 +458,7 @@ module rec Table =
         member val accessorFn: ('Data -> int -> obj) = accessorFn.Value with get,set
         
         /// The child column defs to include in a group column.
-        member val columns: 'Data[] = columns.Value with get,set
+        member val columns: ColumnDef<'Data>[] = columns.Value with get,set
         
         /// <summary>
         /// The header to display for the column. If a string is passed, it can be used as a default for the column ID. If a function is passed, it will be passed a props object for the header and should return the rendered header value (the exact type depends on the adapter being used).
@@ -1246,7 +1214,7 @@ module rec Table =
     type SortingFn<'Data> = Row<'Data> -> Row<'Data> -> string -> int
 
     #nowarn 3535
-    [<Import("sortingFns", tableCore)>]
+    [<Import("sortingFns", coreTable)>]
     type SortingFns<'Data> =
         /// <summary>
         /// Predefined sorting function for Partas.Solid.TanStack.Table
@@ -1401,7 +1369,7 @@ module rec Table =
     module ColumnGrouping =
         type BuiltInAggregationFn = AggregationFn<obj>
         
-        [<Import("aggregationFns", tableCore)>]
+        [<Import("aggregationFns", coreTable)>]
         [<AllowNullLiteral; Interface>]
         type aggregationFns =
             abstract member sum: BuiltInAggregationFn with get
@@ -1419,7 +1387,7 @@ module rec Table =
     module RowSorting =
         type BuiltInSortingFn = SortingFn<obj>
         
-        [<Import("sortingFns", tableCore)>]
+        [<Import("sortingFns", coreTable)>]
         [<AllowNullLiteral; Interface>]
         type sortingFns =
             abstract member alphanumeric: BuiltInSortingFn with get

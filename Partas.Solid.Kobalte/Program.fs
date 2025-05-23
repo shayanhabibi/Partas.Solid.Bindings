@@ -583,7 +583,7 @@ type Combobox() =
     member val autoComplete : string = jsNative with get,set // v0.13.9
     member val noResetInputOnBlur : bool = jsNative with get,set // v0.13.9
 
-    member val placement : Placement = jsNative with get,set // v0.13.9
+    member val placement : KobaltePlacement = jsNative with get,set // v0.13.9
     member val gutter : int = jsNative with get,set // v0.13.9
     member val shift : int = jsNative with get,set // v0.13.9
     member val flip : bool = jsNative with get,set // v0.13.9
@@ -609,7 +609,7 @@ type ContextMenu() =
     member val preventScroll : bool = jsNative with get,set // v0.13.9
     member val forceMount : bool = jsNative with get,set // v0.13.9
 
-    member val placement : Placement = jsNative with get,set // v0.13.9
+    member val placement : KobaltePlacement = jsNative with get,set // v0.13.9
     member val gutter : int = jsNative with get,set // v0.13.9
     member val shift : int = jsNative with get,set // v0.13.9
     member val flip : bool = jsNative with get,set // v0.13.9
@@ -830,7 +830,7 @@ type DropdownMenu() =
     member val forceMount : bool = jsNative with get,set
 
     member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-    member val placement : Placement = jsNative with get,set
+    member val placement : KobaltePlacement = jsNative with get,set
     member val gutter : int = jsNative with get,set
     member val shift : int = jsNative with get,set
     member val flip : bool = jsNative with get,set
@@ -1056,7 +1056,7 @@ type HoverCard() =
     member val forceMount : bool = jsNative with get,set
 
     member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-    member val placement : Placement = jsNative with get,set
+    member val placement : KobaltePlacement = jsNative with get,set
     member val gutter : int = jsNative with get,set
     member val shift : int = jsNative with get,set
     member val flip : bool = jsNative with get,set
@@ -1131,7 +1131,7 @@ module Menubar =
         member val forceMount : bool = jsNative with get,set
         member val value : string = jsNative with get,set
 
-        member val placement : Placement = jsNative with get,set
+        member val placement : KobaltePlacement = jsNative with get,set
         member val gutter : int = jsNative with get,set
         member val shift : int = jsNative with get,set
         member val flip : bool = jsNative with get,set
@@ -1333,7 +1333,7 @@ module NavigationMenu =
         member val forceMount : bool = jsNative with get,set
         member val value : string = jsNative with get,set
 
-        member val placement : Placement = jsNative with get,set
+        member val placement : KobaltePlacement = jsNative with get,set
         member val gutter : int = jsNative with get,set
         member val shift : int = jsNative with get,set
         member val flip : bool = jsNative with get,set
@@ -1579,7 +1579,7 @@ type Popover() =
 
     member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
     member val anchorRef : unit -> HtmlElement = jsNative with get,set
-    member val placement : Placement = jsNative with get,set
+    member val placement : Popover.Placement = jsNative with get,set
     member val gutter : int = jsNative with get,set
     member val shift : int = jsNative with get,set
     member val flip : bool = jsNative with get,set
@@ -1762,7 +1762,7 @@ type Select<'T>() =
     member val readOnly : bool = jsNative with get,set
     member val autoComplete : string = jsNative with get,set
 
-    member val placement : Placement = jsNative with get,set
+    member val placement : KobaltePlacement = jsNative with get,set
     member val gutter : int = jsNative with get,set
     member val shift : int = jsNative with get,set
     member val flip : bool = jsNative with get,set
@@ -2116,7 +2116,7 @@ type Tooltip() =
     member val forceMount : bool = jsNative with get,set
 
     member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-    member val placement : Placement = jsNative with get,set
+    member val placement : KobaltePlacement = jsNative with get,set
     member val gutter : int = jsNative with get,set
     member val shift : int = jsNative with get,set
     member val flip : bool = jsNative with get,set

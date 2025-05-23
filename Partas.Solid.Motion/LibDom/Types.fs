@@ -19,7 +19,7 @@ type MotionValue =
     abstract member generatorStartTime: float option with get, set
     abstract member generator: AnimationGenerator option with get, set
     abstract member setAnimation: ?animation: BasicAnimationControls -> unit
-    abstract member clearAnimation: unit -> unit
+    abstract member clearAnimation: VoidFunction
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -29,26 +29,17 @@ type AnimationGeneratorState =
     abstract member current: float with get, set
     abstract member target: float with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type ProgressFunction =
-    [<Emit("$0($1...)")>]
-    abstract member Invoke: t: float -> unit
 
-[<AllowNullLiteral>]
-[<Interface>]
-type AnimationGeneratorFactory<'Options> =
-    [<Emit("$0($1...)")>]
-    abstract member Invoke: options: 'Options -> AnimationGenerator
+type ProgressFunction = float -> unit
 
-[<AllowNullLiteral>]
-[<Interface>]
-type AnimationGenerator =
-    [<Emit("$0($1...)")>]
-    abstract member Invoke: t: float -> AnimationGeneratorState
+type AnimationGeneratorFactory<'Options> = 'Options -> AnimationGenerator
+
+type AnimationGenerator = float -> AnimationGeneratorState
 
 type BezierDefinition =
     float * float * float * float
+
+type VoidFunction = (unit -> unit)
 
 [<RequireQualifiedAccess>]
 [<StringEnum(CaseRules.None)>]
@@ -68,7 +59,7 @@ type BasicAnimationControls =
     /// animation.play()
     /// </code>
     /// </summary>
-    // abstract member play: unit -> unit with get, set
+    abstract member play: VoidFunction with get, set
     // /// <summary>
     // /// Pause the animation.
     // ///
@@ -76,8 +67,8 @@ type BasicAnimationControls =
     // /// animation.pause()
     // /// </code>
     // /// </summary>
-    // abstract member pause: unit -> unit with get, set
-    // abstract member commitStyles: unit -> unit with get, set
+    abstract member pause: VoidFunction with get, set
+    abstract member commitStyles: VoidFunction with get, set
     // /// <summary>
     // /// Cancels the animation and reverts the element to its underlying styles.
     // ///
@@ -85,8 +76,8 @@ type BasicAnimationControls =
     // /// animation.cancel()
     // /// </code>
     // /// </summary>
-    // abstract member cancel: unit -> unit with get, set
-    // abstract member stop: unit -> unit with get, set
+    abstract member cancel: VoidFunction with get, set
+    abstract member stop: VoidFunction with get, set
     abstract member playState: PlayState with get, set
     abstract member finished: JS.Promise<obj> with get, set
     abstract member startTime: float option with get, set
@@ -111,7 +102,7 @@ type AnimationControls =
     /// animation.stop()
     /// </code>
     /// </summary>
-    // abstract member stop: unit -> unit with get, set
+    abstract member stop: VoidFunction with get, set
     /// <summary>
     /// Immediately completes the animation and commits the final keyframe to the element's styles.
     ///
@@ -119,7 +110,7 @@ type AnimationControls =
     /// animation.finish()
     /// </code>
     /// </summary>
-    // abstract member finish: unit -> unit with get, set
+    abstract member finish: VoidFunction with get, set
     /// <summary>
     /// Reverses the playback of the animation.
     ///
@@ -130,7 +121,7 @@ type AnimationControls =
     /// <remarks>
     /// Currently non-functional.
     /// </remarks>
-    // abstract member reverse: unit -> unit with get, set
+    abstract member reverse: VoidFunction with get, set
     /// <summary>
     /// A <c>Promise</c> that resolves when the animation has finished.
     ///
@@ -162,17 +153,16 @@ type AnimationControls =
     /// <summary>
     /// Returns the current state of the animation. Can be <c>idle</c>, <c>running</c>, <c>paused</c> or <c>finished</c>.
     /// </summary>
-    // abstract member playState: AnimationPlayState with get, set
+    abstract member playState: AnimationPlayState with get, set
 
 [<JS.Pojo>]
 type CustomAnimationSettings
-    (?easing: Easing, ?keyframes: ResizeArray<U2<float, string>> option, ?duration: float option) =
+    (?easing: Easing, ?keyframes: ResizeArray<U2<float, string>>, ?duration: float) =
     member val easing: Easing = JS.undefined with get, set
     member val keyframes: ResizeArray<U2<float, string>> option = JS.undefined with get, set
     member val duration: float option = JS.undefined with get, set
 
-type ValueKeyframe =
-    U2<string, float>
+type ValueKeyframe = U2<string, float>
 
 type UnresolvedValueKeyframe =
     ValueKeyframe option
@@ -232,44 +222,44 @@ type OptionResolver<'T> =
 [<JS.Pojo>]
 type PlaybackOptions
     (
-        ?delay: float option,
-        ?endDelay: float option,
-        ?repeat: float option,
-        ?direction: PlaybackDirection option,
-        ?persist: bool option,
-        ?autoplay: bool option
+        ?delay: float,
+        ?endDelay: float,
+        ?repeat: float,
+        ?direction: PlaybackDirection,
+        ?persist: bool,
+        ?autoplay: bool
     ) =
     /// <summary>
     /// A duration, in seconds, that the animation will be delayed before starting.
     ///
     /// <c>0</c>
     /// </summary>
-    member val delay: float option = JS.undefined with get, set
+    member val delay: float option = delay with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will wait at the end before ending.
     ///
     /// <c>0</c>
     /// </summary>
-    member val endDelay: float option = JS.undefined with get, set
+    member val endDelay: float option = endDelay with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    member val repeat: float option = JS.undefined with get, set
+    member val repeat: float option = repeat with get, set
     /// <summary>
     /// The direction of animation playback. <c>"normal"</c>, <c>"reverse"</c>, <c>"alternate"</c>, or <c>"alternate-reverse"</c>.
     ///
     /// <c>"normal"</c>
     /// </summary>
-    member val direction: PlaybackDirection option = JS.undefined with get, set
-    member val persist: bool option = JS.undefined with get, set
+    member val direction: PlaybackDirection option = direction with get, set
+    member val persist: bool option = persist with get, set
     /// <summary>
     /// Whether the animation should start automatically.
     ///
     /// <c>true</c>
     /// </summary>
-    member val autoplay: bool option = JS.undefined with get, set
+    member val autoplay: bool option = autoplay with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -279,24 +269,24 @@ type DevToolsOptions =
 [<JS.Pojo>]
 type AnimationOptions
     (
-        ?duration: float option,
-        ?easing: AnimationOptions.easing option,
-        ?offset: ResizeArray<float> option,
-        ?delay: float option,
-        ?endDelay: float option,
-        ?repeat: float option,
-        ?direction: PlaybackDirection option,
-        ?persist: bool option,
-        ?autoplay: bool option,
-        ?record: bool option,
-        ?allowWebkitAcceleration: bool option
+        ?duration: float,
+        ?easing: AnimationOptions.easing,
+        ?offset: ResizeArray<float>,
+        ?delay: float,
+        ?endDelay: float,
+        ?repeat: float,
+        ?direction: PlaybackDirection,
+        ?persist: bool,
+        ?autoplay: bool,
+        ?record: bool,
+        ?allowWebkitAcceleration: bool
     ) =
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    member val duration: float option = JS.undefined with get, set
+    member val duration: float option = duration with get, set
     /// <summary>
     /// An easing to use for the whole animation, or list of easings to use between individual keyframes.
     ///
@@ -309,7 +299,7 @@ type AnimationOptions
     ///
     /// <c>"ease"</c>
     /// </summary>
-    member val easing: AnimationOptions.easing option = JS.undefined with get, set
+    member val easing: AnimationOptions.easing option = easing with get, set
     /// <summary>
     /// The offset of each keyframe, as a number between 0 and 1.
     ///
@@ -317,39 +307,39 @@ type AnimationOptions
     ///
     /// <c>[0, 1]</c>
     /// </summary>
-    member val offset: ResizeArray<float> option = JS.undefined with get, set
+    member val offset: ResizeArray<float> option = offset with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will be delayed before starting.
     ///
     /// <c>0</c>
     /// </summary>
-    member val delay: float option = JS.undefined with get, set
+    member val delay: float option = delay with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will wait at the end before ending.
     ///
     /// <c>0</c>
     /// </summary>
-    member val endDelay: float option = JS.undefined with get, set
+    member val endDelay: float option = endDelay with get, set
     /// <summary>
     /// A duration, in seconds, that the animation will take to complete.
     ///
     /// <c>0.3</c>
     /// </summary>
-    member val repeat: float option = JS.undefined with get, set
+    member val repeat: float option = repeat with get, set
     /// <summary>
     /// The direction of animation playback. <c>"normal"</c>, <c>"reverse"</c>, <c>"alternate"</c>, or <c>"alternate-reverse"</c>.
     ///
     /// <c>"normal"</c>
     /// </summary>
-    member val direction: PlaybackDirection option = JS.undefined with get, set
-    member val persist: bool option = JS.undefined with get, set
+    member val direction: PlaybackDirection option = direction with get, set
+    member val persist: bool option = persist with get, set
     /// <summary>
     /// Whether the animation should start automatically.
     ///
     /// <c>true</c>
     /// </summary>
-    member val autoplay: bool option = JS.undefined with get, set
-    member val record: bool option = JS.undefined with get, set
+    member val autoplay: bool option = autoplay with get, set
+    member val record: bool option = record with get, set
     /// <summary>
     /// Because of numerous timing bugs in Webkit's accelerated animations, these are disabled by default in Webkit-powered browsers.
     ///
@@ -358,7 +348,7 @@ type AnimationOptions
     ///
     /// <c>false</c>
     /// </summary>
-    member val allowWebkitAcceleration: bool option = JS.undefined with get, set
+    member val allowWebkitAcceleration: bool option = allowWebkitAcceleration with get, set
 
 [<AllowNullLiteral>]
 [<Interface>]
@@ -366,11 +356,8 @@ type DevTools =
     abstract member record: DevTools.record with get, set
     abstract member isRecording: bool with get, set
 
-[<AllowNullLiteral>]
-[<Interface>]
-type EasingFunction =
-    [<Emit("$0($1...)")>]
-    abstract member Invoke: t: float -> float
+
+type EasingFunction = float -> float
 
 module EasingGenerator =
 
@@ -407,3 +394,147 @@ module DevTools =
 
     type record =
         delegate of element: HTMLElement * valueName: string * keyframes: obj * options: AnimationOptions -> unit
+
+
+[<AllowNullLiteral>]
+[<Interface>]
+type Target =
+    [<EmitIndexer>]
+    abstract member Item: key: string -> U2<string, float> with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type MotionState =
+    abstract member update: (Options -> unit) with get, set
+    abstract member getDepth: (unit -> float) with get, set
+    // abstract member getTarget: (unit -> MotionKeyframes) with get, set
+    abstract member getOptions: (unit -> Options) with get, set
+    abstract member getContext: (unit -> MotionStateContext) with get, set
+    abstract member setActive: MotionState.setActive with get, set
+    abstract member mount: (Element -> (unit -> unit)) with get, set
+    abstract member isMounted: (unit -> bool) with get, set
+    // abstract member animateUpdates: (unit -> Generator<unit>) with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type Options =
+    abstract member initial: VariantDefinition option with get, set
+    abstract member animate: VariantDefinition option with get, set
+    abstract member inView: VariantDefinition option with get, set
+    abstract member hover: VariantDefinition option with get, set
+    abstract member press: VariantDefinition option with get, set
+    abstract member variants: Variants option with get, set
+    // abstract member transition: AnimationOptionsWithOverrides option with get, set
+    abstract member inViewOptions: obj option with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type MotionStateContext =
+    abstract member initial: string option with get, set
+    abstract member animate: string option with get, set
+    abstract member inView: string option with get, set
+    abstract member hover: string option with get, set
+    abstract member press: string option with get, set
+    abstract member exit: string option with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type Variant =
+    interface end
+
+[<AllowNullLiteral>]
+[<Interface>]
+type Variants =
+    [<EmitIndexer>]
+    abstract member Item: key: string -> Variant with get, set
+
+type VariantDefinition =
+    U2<Variant, string>
+
+[<RequireQualifiedAccess>]
+[<StringEnum(CaseRules.None)>]
+type MotionEventNames =
+    | motionstart
+    | motioncomplete
+    | hoverstart
+    | hoverend
+    | pressstart
+    | pressend
+    | viewenter
+    | viewleave
+
+type MotionEvent =
+    CustomEvent<MotionEvent.CustomEvent>
+
+type CustomPointerEvent =
+    CustomEvent<CustomPointerEvent.CustomEvent>
+
+type ViewEvent =
+    CustomEvent<ViewEvent.CustomEvent>
+
+module ``global`` =
+
+    [<AllowNullLiteral>]
+    [<Interface>]
+    type GlobalEventHandlersEventMap =
+        abstract member motionstart: MotionEvent with get, set
+        abstract member motioncomplete: MotionEvent with get, set
+        abstract member hoverstart: CustomPointerEvent with get, set
+        abstract member hoverend: CustomPointerEvent with get, set
+        abstract member pressstart: CustomPointerEvent with get, set
+        abstract member pressend: CustomPointerEvent with get, set
+        abstract member viewenter: ViewEvent with get, set
+        abstract member viewleave: ViewEvent with get, set
+
+module MotionState =
+
+    type setActive =
+        delegate of ``type``: MotionState.setActive.``type`` * isActive: bool -> unit
+
+    module setActive =
+
+        [<RequireQualifiedAccess>]
+        [<StringEnum(CaseRules.None)>]
+        type ``type`` =
+            | initial
+            | animate
+            | inView
+            | hover
+            | press
+            | exit
+
+module MotionEvent =
+
+    [<Global>]
+    [<AllowNullLiteral>]
+    type CustomEvent
+        [<ParamObject; Emit("$0")>]
+        (
+            target: Variant
+        ) =
+
+        member val target : Variant = nativeOnly with get, set
+
+module CustomPointerEvent =
+
+    [<Global>]
+    [<AllowNullLiteral>]
+    type CustomEvent
+        [<ParamObject; Emit("$0")>]
+        (
+            originalEvent: PointerEvent
+        ) =
+
+        member val originalEvent : PointerEvent = nativeOnly with get, set
+
+module ViewEvent =
+
+    [<Global>]
+    [<AllowNullLiteral>]
+    type CustomEvent
+        [<ParamObject; Emit("$0")>]
+        (
+            originalEntry: IntersectionObserverEntry
+        ) =
+
+        member val originalEntry : IntersectionObserverEntry = nativeOnly with get, set

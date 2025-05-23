@@ -3,32 +3,32 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-                <WarningsAsErrors>3239;0025</WarningsAsErrors>
-        <PackageId>Partas.Solid.EmblaCarousel</PackageId>
-        <Title>Partas.Solid.EmblaCarousel</Title>
-        <RootNamespace>Partas.Solid.EmblaCarousel</RootNamespace>
-        <AssemblyName>Partas.Solid.EmblaCarousel</AssemblyName>
+        <WarningsAsErrors>3239;0025</WarningsAsErrors>
+        <PackageId>Partas.Solid.Cva</PackageId>
+        <Title>Partas.Solid.Cva</Title>
+        <RootNamespace>Partas.Solid.Cva</RootNamespace>
+        <AssemblyName>Partas.Solid.Cva</AssemblyName>
         <Company>F# Community</Company>
-        <Description>Bindings for Solid-EmblaCarousel in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <Description>Fable bindings for CVA</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-EmblaCarousel</PackageTags>
+        <PackageTags>F#;FSharp;Fable;fable-javascript;Web;Bindings;CVA;class-variance-authority</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.1.0</Version>
-<!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageVersion>0.1.0</PackageVersion>
         <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
-<!--            <NpmPackage Name="@kobalte" Version=">= 0.13.8" />-->
+                        <NpmPackage Name="class-variance-authority" Version=">= 0.7.1" />
         </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Compile Include="Program.fs" />
-<!--        <Content Include="README.md" />-->
+        <Content Include="README.md" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,7 +37,6 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha3" />
         <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 

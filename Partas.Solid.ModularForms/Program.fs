@@ -155,7 +155,7 @@ type Field<'Form, 'ValueType, 'Response>() =
     [<DV>] val mutable validate: Validator<'ValueType>
     [<DV>] val mutable validateOn: ValidateOn
     [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable transform: TransformField<'ValueType, obj>
+    [<DV>] val mutable transform: TransformField<'ValueType, 'ValueType>[]
     [<DV>] val mutable keepActive: bool
     [<DV>] val mutable keepState: bool
     member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
@@ -555,22 +555,16 @@ type ModularFormsBindings =
     static member value(requirement: int, error: string): Validator<int> = jsNative
     [<ImportMember(path)>]
     static member value(requirement: float, error: string): Validator<float> = jsNative
-    [<ImportMember(path); ParamObject(1)>] // TODO type
-    static member toCustom(action: obj, ?on: OnCustomAction ): obj = jsNative
-    [<ImportMember(path)>] // TODO type
-    static member toCustom(action: obj): obj = jsNative
-    [<ImportMember(path); ParamObject(0)>] // TODO type
-    static member toLowerCase(on: OnCustomAction): obj = jsNative
-    [<ImportMember(path)>] // TODO type
-    static member toLowerCase(): obj = jsNative
-    [<ImportMember(path); ParamObject(0)>] // TODO type
-    static member toTrimmed(on: OnCustomAction): obj = jsNative
-    [<ImportMember(path)>] // TODO type
-    static member toTrimmed(): obj = jsNative
-    [<ImportMember(path); ParamObject(0)>] // TODO type
-    static member toUpperCase(on: OnCustomAction): obj = jsNative
-    [<ImportMember(path)>] // TODO type
-    static member toUpperCase(): obj = jsNative
+    // [<ImportMember(path); ParamObject(1)>] 
+    // static member toCustom<'Input,'Output>(action: TransformField<'Input, 'Output>, on: OnCustomAction ): obj = jsNative
+    [<ImportMember(path); ParamObject(1)>] 
+    static member toCustom<'Type>(action: TransformField<'Type, 'Type>, on: OnCustomAction): obj = jsNative
+    [<ImportMember(path); ParamObject(0)>] 
+    static member toLowerCase(on: OnCustomAction): TransformField<string,string> = jsNative
+    [<ImportMember(path); ParamObject(0)>]
+    static member toTrimmed(on: OnCustomAction): TransformField<string,string> = jsNative
+    [<ImportMember(path); ParamObject(0)>]
+    static member toUpperCase(on: OnCustomAction): TransformField<string,string> = jsNative
     
     
 
