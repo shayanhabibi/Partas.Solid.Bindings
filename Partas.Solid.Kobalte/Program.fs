@@ -182,11 +182,11 @@ module AlertDialog =
     type Trigger() =
         inherit Button() //v0.13.9
         interface Polymorph
-    [<Erase; Import("Content", Spec.alertDialog)>]
     /// <summary>
     /// data-expanded: Present when the dialog is open<br/>
     /// data-closed: Present when the dialog is closed
     /// </summary>
+    [<Erase; Import("Content", Spec.alertDialog)>]
     type Content() =
         inherit div()
         interface Polymorph

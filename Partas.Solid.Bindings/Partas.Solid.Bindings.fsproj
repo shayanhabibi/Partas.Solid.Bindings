@@ -6,9 +6,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="Generator.fs" />
       <Content Include="package.json" />
       <Content Include="README.md" />
+      <None Include="GlutinumTransformer.fsx" />
     </ItemGroup>
 
     <ItemGroup>

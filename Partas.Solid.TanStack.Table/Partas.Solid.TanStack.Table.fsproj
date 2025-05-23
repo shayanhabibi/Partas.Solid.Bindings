@@ -44,7 +44,6 @@
         <Compile Include="RowPinning.fs" />
         <Compile Include="RowSelection.fs" />
         <Content Include="README.md" />
-        <Compile Include="KeyValueStyle.fs" />
     </ItemGroup>
 
     <ItemGroup>
