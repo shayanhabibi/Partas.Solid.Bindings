@@ -2,34 +2,23 @@
 
 open Partas.Solid.Motion.LibDom
 open Fable.Core
-open Fable.Core.JS
-open Fable.Core.JsInterop
-open Partas.Solid
 open Partas.Solid.Experimental.U
-open Partas.Solid.Style
 open Browser.Types
 
 [<AutoOpen>]
 module StyleExtensions =
-    type Style with
-        static member inline x (value: U2<int, string>) = "x" ==> value 
-        static member inline y (value: U2<int, string>) = "y" ==> value 
-        static member inline z (value: U2<int, string>) = "z" ==> value 
-        static member inline rotateX (value: U2<int, string>) = "rotateX" ==> value 
-        static member inline rotateY (value: U2<int, string>) = "rotateY" ==> value 
-        static member inline rotateZ (value: U2<int, string>) = "rotateZ" ==> value 
-        static member inline scaleX (value: float) = "scaleX" ==> value 
-        static member inline scaleY (value: float) = "scaleY" ==> value 
-        static member inline scaleZ (value: float) = "scaleZ" ==> value 
-        static member inline skewX (value: U2<string, int>) = "skewX" ==> value 
-        static member inline skewY (value: U2<string, int>) = "skewY" ==> value 
-
-[<Erase>]
-type MotionStyle = Style
-
-[<AutoOpen>]
-module MotionStyle =
-    let motionStyle: (string * obj) list -> MotionStyle = createObj >> unbox
+    type MotionStyle with
+        static member inline x (value: U6<string, string[], int, int[], float, float[]>) = "x" ==>! value 
+        static member inline y (value: U6<string, string[], int, int[], float, float[]>) = "y" ==>! value 
+        static member inline z (value: U6<string, string[], int, int[], float, float[]>) = "z" ==>! value 
+        static member inline rotateX (value: U6<string, string[], int, int[], float, float[]>) = "rotateX" ==>! value 
+        static member inline rotateY (value: U6<string, string[], int, int[], float, float[]>) = "rotateY" ==>! value 
+        static member inline rotateZ (value: U6<string, string[], int, int[], float, float[]>) = "rotateZ" ==>! value 
+        static member inline scaleX (value: U6<string, string[], int, int[], float, float[]>) = "scaleX" ==>! value 
+        static member inline scaleY (value: U6<string, string[], int, int[], float, float[]>) = "scaleY" ==>! value 
+        static member inline scaleZ (value: U6<string, string[], int, int[], float, float[]>) = "scaleZ" ==>! value 
+        static member inline skewX (value: U6<string, string[], int, int[], float, float[]>) = "skewX" ==>! value 
+        static member inline skewY (value: U6<string, string[], int, int[], float, float[]>) = "skewY" ==>! value 
 
 [<AllowNullLiteral>]
 [<Interface>]

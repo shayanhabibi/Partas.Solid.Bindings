@@ -55,3 +55,9 @@ buttonVariantsBuilder.compound(
     ,"border-ring"
 )                                                           // : Cva<Variant, Size>
 ```
+
+### Recommendations
+
+I would suggest against using this (despite my work on it). Why bring another dependency into your toolchain?
+
+F# provides fantastic primitives to manage this type of conditional construction via our powerful pattern matching constructs.
