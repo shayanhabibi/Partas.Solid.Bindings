@@ -3,32 +3,31 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-                <WarningsAsErrors>3239;0025</WarningsAsErrors>
-        <PackageId>Partas.Solid.EmblaCarousel</PackageId>
-        <Title>Partas.Solid.EmblaCarousel</Title>
-        <RootNamespace>Partas.Solid.EmblaCarousel</RootNamespace>
-        <AssemblyName>Partas.Solid.EmblaCarousel</AssemblyName>
+        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
+        <PackageId>Partas.Solid.TanStack.Virtual</PackageId>
+        <Title>Partas.Solid.TanStack.Virtual</Title>
+        <RootNamespace>Partas.Solid.TanStack.Virtual</RootNamespace>
+        <AssemblyName>Partas.Solid.TanStack.Virtual</AssemblyName>
         <Company>F# Community</Company>
-        <Description>Bindings for Solid-EmblaCarousel in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <Description>Bindings for TanStack.Virtual for Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-EmblaCarousel</PackageTags>
+        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Virtual;TanStack;Virtualizer</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.1.0</Version>
-<!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.1.0</PackageVersion>
-        <PackageReleaseNotes>Init</PackageReleaseNotes>
+        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
-<!--            <NpmPackage Name="@kobalte" Version=">= 0.13.8" />-->
+            <NpmPackage Name="@tanstack/solid-virtual" Version=">= 3.0.0" />
         </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
+        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="Program.fs" />
-<!--        <Content Include="README.md" />-->
     </ItemGroup>
 
     <ItemGroup>
@@ -38,7 +37,8 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
-        <PackageReference Update="FSharp.Core" Version="9.0.300" />
+        <PackageReference Update="FSharp.Core" Version="9.0.300-beta.25181.1" />
     </ItemGroup>
 
 </Project>
+

@@ -9,3 +9,7 @@
 [//]: # (</div>)
 
 Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
+
+
+> [!IMPORTANT]
+> Partas.Solid.Primitives is now in a independent repo.

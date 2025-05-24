@@ -18,6 +18,6 @@ module GlobalFiltering =
         member _.getFilteredRowModel with get(): (unit -> RowModel<'Data>) = unbox null
         member _.setGlobalFilter with get(): (Updater<obj> -> unit) = unbox null
         member _.resetGlobalFilter with get(): bool -> unit = unbox null
-        member _.getGlobalAutoFilterFn with get(): string -> FilterFn option = unbox null
-        member _.getGlobalFilterFn with get(): string -> FilterFn option = unbox null
+        member _.getGlobalAutoFilterFn with get(): string -> FilterFn<'Data> option = unbox null
+        member _.getGlobalFilterFn with get(): string -> FilterFn<'Data> option = unbox null
         

@@ -1,6 +1,7 @@
 ﻿namespace rec Partas.Solid.Motion.LibDom
 
 open Fable.Core
+open Partas.Solid
 
 [<RequireQualifiedAccess>]
 [<StringEnum(CaseRules.None)>]
@@ -1503,3 +1504,72 @@ type XMLHttpRequestResponseType =
     | json
     | text
 
+
+[<AllowNullLiteral>]
+[<Interface>]
+type IntersectionObserverEntry =
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/boundingClientRect)
+    /// </summary>
+    abstract member boundingClientRect: DOMRectReadOnly with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/intersectionRatio)
+    /// </summary>
+    abstract member intersectionRatio: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/intersectionRect)
+    /// </summary>
+    abstract member intersectionRect: DOMRectReadOnly with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/isIntersecting)
+    /// </summary>
+    abstract member isIntersecting: bool with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/rootBounds)
+    /// </summary>
+    abstract member rootBounds: DOMRectReadOnly option with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/target)
+    /// </summary>
+    abstract member target: HtmlElement with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/time)
+    /// </summary>
+    abstract member time: int with get
+
+[<AllowNullLiteral>]
+[<Interface>]
+type DOMRectReadOnly =
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/bottom)
+    /// </summary>
+    abstract member bottom: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/height)
+    /// </summary>
+    abstract member height: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/left)
+    /// </summary>
+    abstract member left: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/right)
+    /// </summary>
+    abstract member right: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/top)
+    /// </summary>
+    abstract member top: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/width)
+    /// </summary>
+    abstract member width: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/x)
+    /// </summary>
+    abstract member x: float with get
+    /// <summary>
+    /// [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/y)
+    /// </summary>
+    abstract member y: float with get
+    abstract member toJSON: unit -> obj

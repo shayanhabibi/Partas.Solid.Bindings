@@ -13,8 +13,8 @@ module rec ColumnFilteringTypes =
         member _.getIsFiltered with get(): (unit -> bool) = unbox null
         member _.getFilterValue with get(): (unit -> obj) = unbox null
         member _.setFilterValue with get(): (Updater<obj> -> unit) = unbox null
-        member _.getAutoFilterFn with get(): (string -> FilterFn) = unbox null
-        member _.getFilterFn with get(): (string -> FilterFn) = unbox null
+        member _.getAutoFilterFn with get(): (string -> FilterFn<'Data>) = unbox null
+        member _.getFilterFn with get(): (string -> FilterFn<'Data>) = unbox null
 
     type Row<'Data> with
         member _.columnFilters with get(): JS.Object = unbox null

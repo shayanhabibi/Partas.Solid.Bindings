@@ -3,6 +3,7 @@
 open Fable.Core.JS
 open Partas.Solid
 open Fable.Core
+open Fable.Core.JsInterop
 
 [<Erase>]
 type OptionKeys = interface end
@@ -47,40 +48,34 @@ module Extensions =
     type AttrKey with
         member _.tag
             with set(value: TagValue) = ()
+    
     type OptionKeys with
-        member _.initial
-            with set(value: obj) = ()
-        member _.animate
-            with set(value: obj) = ()
-        member _.inView
-            with set(value: obj) = ()
-        member _.inViewOptions
-            with set(value: obj) = ()
-        member _.hover
-            with set(value: obj) = ()
-        member _.press
-            with set(value: obj) = ()
-        member _.variants
-            with set(value: obj) = ()
+        member _.initial' with set(value: obj) = ()
+        member this.initial
+            with inline set(value: IMotionStyle list) = this.initial' <- createObj !!value
+        member _.animate' with set(value: obj) = ()
+        member this.animate
+            with inline set(value: IMotionStyle list) = this.animate' <- createObj !!value
+        member _.inView' with set(value: obj) = ()
+        member this.inView
+            with inline set(value: IMotionStyle list) = this.inView' <- createObj !!value
+        // member _.inViewOptions'
+        member _.inViewOptions with set(value: obj) = ()
+        member _.hover' with set(value: obj) = ()
+        member this.hover
+            with inline set(value: IMotionStyle list) = this.hover' <- createObj !!value
+        member _.press' with set(value: obj) = ()
+        member this.press
+            with inline set(value: IMotionStyle list) = this.press' <- createObj !!value
+        member _.variants' with set(value: obj) = ()
+        member this.variants
+            with inline set(value: IMotionStyle list) = this.variants' <- createObj !!value
+        // member _.transition'
         member _.transition
             with set(value: obj) = ()
-        member _.exit
-            with set(value: obj) = ()
-
-open Partas.Solid.Polymorphism
-
-[<Import("Motion", "solid-motionone")>]
-type Motion() =
-    inherit RegularNode()
-    interface OptionKeys
-    interface AttrKey
-    // Enable polymorphism with the tag attribute name
-    interface Polymorph
-    [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: string = unbox null with get,set
-    [<Erase>]
-    member this.tag
-        with inline set(value: string) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
-        and inline get(): string = this.``__PARTAS_POLYMORPHIC__tag``
+        member _.exit' with set(value: obj) = ()
+        member this.exit
+            with inline set(value: IMotionStyle list) = this.exit' <- createObj !!value
 
 [<Import("Presence", "solid-motionone")>]
 type Presence() =
@@ -88,35 +83,34 @@ type Presence() =
     [<Erase>] member val exitBeforeEnter: bool = unbox null with get,set
     [<Erase>] member val initial: bool = unbox null with get,set
     
-
-// [<AbstractClass>]
-// [<Erase>]
-// type Exports =
-//     /// <summary>
-//     /// createMotion provides MotionOne as a compact Solid primitive.
-//     /// </summary>
-//     /// <param name="target">
-//     /// Target Element to animate.
-//     /// </param>
-//     /// <param name="options">
-//     /// Options to effect the animation.
-//     /// </param>
-//     /// <param name="presenceState">
-//     /// Optional PresenceContext override, defaults to current parent.
-//     /// </param>
-//     /// <returns>
-//     /// Object to access MotionState
-//     /// </returns>
-//     [<Import("createMotion", "REPLACE_ME_WITH_MODULE_NAME")>]
-//     static member createMotion (target: Element, options: U2<Accessor<Options>, Options>, ?presenceState: PresenceContextState) : MotionState = nativeOnly
-//     /// <summary>
-//     /// motion is a Solid directive that makes binding to elements easier.
-//     /// </summary>
-//     /// <param name="el">
-//     /// Target Element to bind to.
-//     /// </param>
-//     /// <param name="props">
-//     /// Options to effect the animation.
-//     /// </param>
-//     [<Import("motion", "REPLACE_ME_WITH_MODULE_NAME")>]
-//     static member motion (el: Element, props: Accessor<Options>) : unit = nativeOnly
+[<AbstractClass>]
+[<Erase; AutoOpen>]
+type Exports =
+    /// <summary>
+    /// createMotion provides MotionOne as a compact Solid primitive.
+    /// </summary>
+    /// <param name="target">
+    /// Target Element to animate.
+    /// </param>
+    /// <param name="options">
+    /// Options to effect the animation.
+    /// </param>
+    /// <param name="presenceState">
+    /// Optional PresenceContext override, defaults to current parent.
+    /// </param>
+    /// <returns>
+    /// Object to access MotionState
+    /// </returns>
+    [<Import("createMotion", "solid-motionone")>]
+    static member createMotion (target: HtmlElement, options: U2<Accessor<Options>, Options>, ?presenceState: obj) : MotionState = nativeOnly
+    // /// <summary>
+    // /// motion is a Solid directive that makes binding to elements easier.
+    // /// </summary>
+    // /// <param name="el">
+    // /// Target Element to bind to.
+    // /// </param>
+    // /// <param name="props">
+    // /// Options to effect the animation.
+    // /// </param>
+    // [<Import("motion", "solid-motionone")>]
+    // static member motion (el: Element, props: Accessor<Options>) : unit = nativeOnly

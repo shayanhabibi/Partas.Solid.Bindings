@@ -12,14 +12,14 @@ module GroupingExtensions =
 
     
     type Column<'Data> with
-        member _.aggregationFn with get(): AggregationFn = unbox null
+        member _.aggregationFn with get(): AggregationFn<'Data> = unbox null
         member _.getCanGroup with get(): (unit -> bool) = unbox null
         member _.getIsGrouped with get(): (unit -> bool) = unbox null
         member _.getGroupedIndex with get(): (unit -> int) = unbox null
         member _.toggleGrouping with get(): (unit -> unit) = unbox null
         member _.getToggleGroupingHandler with get(): (unit -> (unit -> unit)) = unbox null
-        member _.getAutoAggregationFn with get(): (unit -> AggregationFn option) = unbox null
-        member _.getAggregationFn with get(): (unit -> AggregationFn option) = unbox null
+        member _.getAutoAggregationFn with get(): (unit -> AggregationFn<'Data> option) = unbox null
+        member _.getAggregationFn with get(): (unit -> AggregationFn<'Data> option) = unbox null
 
     type Row<'Data> with
         member _.groupingColumnId with get(): string = unbox null
