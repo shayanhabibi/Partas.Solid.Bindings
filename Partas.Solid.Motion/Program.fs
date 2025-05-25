@@ -51,29 +51,57 @@ module Extensions =
     
     type OptionKeys with
         member _.initial' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.initial
             with inline set(value: IMotionStyle list) = this.initial' <- createObj !!value
         member _.animate' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.animate
             with inline set(value: IMotionStyle list) = this.animate' <- createObj !!value
         member _.inView' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.inView
             with inline set(value: IMotionStyle list) = this.inView' <- createObj !!value
-        // member _.inViewOptions'
-        member _.inViewOptions with set(value: obj) = ()
+        member _.inViewOptions' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>InViewOption.</c>. Feliz style.
+        /// </summary>
+        member this.inViewOptions
+            with inline set(value: IInViewOption list) = this.inViewOptions' <- createObj !!value 
         member _.hover' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.hover
             with inline set(value: IMotionStyle list) = this.hover' <- createObj !!value
         member _.press' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.press
             with inline set(value: IMotionStyle list) = this.press' <- createObj !!value
         member _.variants' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.variants
             with inline set(value: IMotionStyle list) = this.variants' <- createObj !!value
-        // member _.transition'
-        member _.transition
-            with set(value: obj) = ()
+        member _.transition' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>IStyleAnimation.</c>. Feliz style.
+        /// </summary>
+        member this.transition
+            with inline set(value: IStyleAnimation list) = this.transition' <- createObj !!value
         member _.exit' with set(value: obj) = ()
+        /// <summary>
+        /// Provide a list of props via <c>MotionStyle.</c>. Feliz style.
+        /// </summary>
         member this.exit
             with inline set(value: IMotionStyle list) = this.exit' <- createObj !!value
 
