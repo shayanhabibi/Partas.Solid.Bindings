@@ -8,6 +8,7 @@ type Motion() =
     inherit RegularNode()
     interface OptionKeys
     interface AttrKey
+    interface MotionEventKeys
     // Enable polymorphism with the tag attribute name
     interface Polymorph
     [<Erase>] member val ``__PARTAS_POLYMORPHIC__tag``: string = unbox null with get,set
@@ -15,694 +16,699 @@ type Motion() =
     member this.tag
         with inline set(value: string) = this.``__PARTAS_POLYMORPHIC__tag`` <- value
         and inline get(): string = this.``__PARTAS_POLYMORPHIC__tag``
-        
+
 [<RequireQualifiedAccess; Erase>]
 module Motion =
-    [<PartasProxyImport("a", "Motion", "solid-motionone")>]
+    [<Erase; Interface>]
+    type internal MotionTagAttributes =
+        inherit OptionKeys
+        inherit MotionEventKeys
+        
+    [<Import("Motion.a", "solid-motionone")>]
     type a() =
         inherit Tags.a()
-        interface OptionKeys        
-    [<PartasProxyImport("abbr", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.abbr", "solid-motionone")>]
     type abbr() =
         inherit Tags.abbr()
-        interface OptionKeys        
-    [<PartasProxyImport("address", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.address", "solid-motionone")>]
     type address() =
         inherit Tags.address()
-        interface OptionKeys        
-    [<PartasProxyImport("area", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.area", "solid-motionone")>]
     type area() =
         inherit Tags.area()
-        interface OptionKeys        
-    [<PartasProxyImport("article", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.article", "solid-motionone")>]
     type article() =
         inherit Tags.article()
-        interface OptionKeys        
-    [<PartasProxyImport("aside", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.aside", "solid-motionone")>]
     type aside() =
         inherit Tags.aside()
-        interface OptionKeys        
-    [<PartasProxyImport("audio", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.audio", "solid-motionone")>]
     type audio() =
         inherit Tags.audio()
-        interface OptionKeys        
-    [<PartasProxyImport("b", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.b", "solid-motionone")>]
     type b() =
         inherit Tags.b()
-        interface OptionKeys        
-    [<PartasProxyImport("base", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.base", "solid-motionone")>]
     type base'() =
         inherit Tags.base'()
-        interface OptionKeys        
-    [<PartasProxyImport("bdi", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.bdi", "solid-motionone")>]
     type bdi() =
         inherit Tags.bdi()
-        interface OptionKeys        
-    [<PartasProxyImport("bdo", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.bdo", "solid-motionone")>]
     type bdo() =
         inherit Tags.bdo()
-        interface OptionKeys        
-    [<PartasProxyImport("blockquote", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.blockquote", "solid-motionone")>]
     type blockquote() =
         inherit Tags.blockquote()
-        interface OptionKeys        
-    [<PartasProxyImport("body", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.body", "solid-motionone")>]
     type body() =
         inherit Tags.body()
-        interface OptionKeys        
-    [<PartasProxyImport("br", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.br", "solid-motionone")>]
     type br() =
         inherit Tags.br()
-        interface OptionKeys        
-    [<PartasProxyImport("button", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.button", "solid-motionone")>]
     type button() =
         inherit Tags.button()
-        interface OptionKeys        
-    [<PartasProxyImport("canvas", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.canvas", "solid-motionone")>]
     type canvas() =
         inherit Tags.canvas()
-        interface OptionKeys        
-    [<PartasProxyImport("caption", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.caption", "solid-motionone")>]
     type caption() =
         inherit Tags.caption()
-        interface OptionKeys        
-    [<PartasProxyImport("cite", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.cite", "solid-motionone")>]
     type cite() =
         inherit Tags.cite()
-        interface OptionKeys        
-    [<PartasProxyImport("code", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.code", "solid-motionone")>]
     type code() =
         inherit Tags.code()
-        interface OptionKeys        
-    [<PartasProxyImport("col", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.col", "solid-motionone")>]
     type col() =
         inherit Tags.col()
-        interface OptionKeys        
-    [<PartasProxyImport("colgroup", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.colgroup", "solid-motionone")>]
     type colgroup() =
         inherit Tags.colgroup()
-        interface OptionKeys        
-    [<PartasProxyImport("data", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.data", "solid-motionone")>]
     type data() =
         inherit Tags.data()
-        interface OptionKeys        
-    [<PartasProxyImport("datalist", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.datalist", "solid-motionone")>]
     type datalist() =
         inherit Tags.datalist()
-        interface OptionKeys        
-    [<PartasProxyImport("dd", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.dd", "solid-motionone")>]
     type dd() =
         inherit Tags.dd()
-        interface OptionKeys        
-    [<PartasProxyImport("del", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.del", "solid-motionone")>]
     type del() =
         inherit Tags.del()
-        interface OptionKeys        
-    [<PartasProxyImport("details", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.details", "solid-motionone")>]
     type details() =
         inherit Tags.details()
-        interface OptionKeys        
-    [<PartasProxyImport("dfn", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.dfn", "solid-motionone")>]
     type dfn() =
         inherit Tags.dfn()
-        interface OptionKeys        
-    [<PartasProxyImport("dialog", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.dialog", "solid-motionone")>]
     type dialog() =
         inherit Tags.dialog()
-        interface OptionKeys        
-    [<PartasProxyImport("div", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.div", "solid-motionone")>]
     type div() =
         inherit Tags.div()
-        interface OptionKeys        
-    [<PartasProxyImport("dl", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.dl", "solid-motionone")>]
     type dl() =
         inherit Tags.dl()
-        interface OptionKeys        
-    [<PartasProxyImport("dt", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.dt", "solid-motionone")>]
     type dt() =
         inherit Tags.dt()
-        interface OptionKeys        
-    [<PartasProxyImport("em", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.em", "solid-motionone")>]
     type em() =
         inherit Tags.em()
-        interface OptionKeys        
-    [<PartasProxyImport("embed", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.embed", "solid-motionone")>]
     type embed() =
         inherit Tags.embed()
-        interface OptionKeys        
-    [<PartasProxyImport("fieldset", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.fieldset", "solid-motionone")>]
     type fieldset() =
         inherit Tags.fieldset()
-        interface OptionKeys        
-    [<PartasProxyImport("figcaption", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.figcaption", "solid-motionone")>]
     type figcaption() =
         inherit Tags.figcaption()
-        interface OptionKeys        
-    [<PartasProxyImport("figure", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.figure", "solid-motionone")>]
     type figure() =
         inherit Tags.figure()
-        interface OptionKeys        
-    [<PartasProxyImport("footer", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.footer", "solid-motionone")>]
     type footer() =
         inherit Tags.footer()
-        interface OptionKeys        
-    [<PartasProxyImport("form", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.form", "solid-motionone")>]
     type form() =
         inherit Tags.form()
-        interface OptionKeys        
-    [<PartasProxyImport("h1", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h1", "solid-motionone")>]
     type h1() =
         inherit Tags.h1()
-        interface OptionKeys        
-    [<PartasProxyImport("h2", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h2", "solid-motionone")>]
     type h2() =
         inherit Tags.h2()
-        interface OptionKeys        
-    [<PartasProxyImport("h3", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h3", "solid-motionone")>]
     type h3() =
         inherit Tags.h3()
-        interface OptionKeys        
-    [<PartasProxyImport("h4", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h4", "solid-motionone")>]
     type h4() =
         inherit Tags.h4()
-        interface OptionKeys        
-    [<PartasProxyImport("h5", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h5", "solid-motionone")>]
     type h5() =
         inherit Tags.h5()
-        interface OptionKeys        
-    [<PartasProxyImport("h6", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.h6", "solid-motionone")>]
     type h6() =
         inherit Tags.h6()
-        interface OptionKeys        
-    [<PartasProxyImport("head", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.head", "solid-motionone")>]
     type head() =
         inherit Tags.head()
-        interface OptionKeys        
-    [<PartasProxyImport("header", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.header", "solid-motionone")>]
     type header() =
         inherit Tags.header()
-        interface OptionKeys        
-    // [<PartasProxyImport("hgroup", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    // [<Import("Motion.hgroup", "solid-motionone")>]
     // type hgroup() =
     //     inherit Tags.hgroup()
-    //     interface OptionKeys    
-    [<PartasProxyImport("hr", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    [<Import("Motion.hr", "solid-motionone")>]
     type hr() =
         inherit Tags.hr()
-        interface OptionKeys        
-    [<PartasProxyImport("html", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.html", "solid-motionone")>]
     type html() =
         inherit Tags.html()
-        interface OptionKeys        
-    [<PartasProxyImport("i", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.i", "solid-motionone")>]
     type i() =
         inherit Tags.i()
-        interface OptionKeys        
-    [<PartasProxyImport("iframe", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.iframe", "solid-motionone")>]
     type iframe() =
         inherit Tags.iframe()
-        interface OptionKeys        
-    [<PartasProxyImport("img", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.img", "solid-motionone")>]
     type img() =
         inherit Tags.img()
-        interface OptionKeys        
-    [<PartasProxyImport("input", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.input", "solid-motionone")>]
     type input() =
         inherit Tags.input()
-        interface OptionKeys        
-    [<PartasProxyImport("ins", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.ins", "solid-motionone")>]
     type ins() =
         inherit Tags.ins()
-        interface OptionKeys        
-    [<PartasProxyImport("kbd", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.kbd", "solid-motionone")>]
     type kbd() =
         inherit Tags.kbd()
-        interface OptionKeys        
-    [<PartasProxyImport("label", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.label", "solid-motionone")>]
     type label() =
         inherit Tags.label()
-        interface OptionKeys        
-    [<PartasProxyImport("legend", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.legend", "solid-motionone")>]
     type legend() =
         inherit Tags.legend()
-        interface OptionKeys        
-    [<PartasProxyImport("li", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.li", "solid-motionone")>]
     type li() =
         inherit Tags.li()
-        interface OptionKeys        
-    [<PartasProxyImport("link", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.link", "solid-motionone")>]
     type link() =
         inherit Tags.link()
-        interface OptionKeys        
-    [<PartasProxyImport("main", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.main", "solid-motionone")>]
     type main() =
         inherit Tags.main()
-        interface OptionKeys        
-    [<PartasProxyImport("map", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.map", "solid-motionone")>]
     type map() =
         inherit Tags.map()
-        interface OptionKeys        
-    [<PartasProxyImport("mark", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.mark", "solid-motionone")>]
     type mark() =
         inherit Tags.mark()
-        interface OptionKeys        
-    [<PartasProxyImport("menu", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.menu", "solid-motionone")>]
     type menu() =
         inherit Tags.menu()
-        interface OptionKeys        
-    [<PartasProxyImport("meta", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.meta", "solid-motionone")>]
     type meta() =
         inherit Tags.meta()
-        interface OptionKeys        
-    [<PartasProxyImport("meter", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.meter", "solid-motionone")>]
     type meter() =
         inherit Tags.meter()
-        interface OptionKeys        
-    [<PartasProxyImport("nav", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.nav", "solid-motionone")>]
     type nav() =
         inherit Tags.nav()
-        interface OptionKeys        
-    [<PartasProxyImport("noscript", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.noscript", "solid-motionone")>]
     type noscript() =
         inherit Tags.noscript()
-        interface OptionKeys        
-    [<PartasProxyImport("object", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.object", "solid-motionone")>]
     type object'() =
         inherit Tags.object'()
-        interface OptionKeys        
-    [<PartasProxyImport("ol", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.ol", "solid-motionone")>]
     type ol() =
         inherit Tags.ol()
-        interface OptionKeys        
-    [<PartasProxyImport("optgroup", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.optgroup", "solid-motionone")>]
     type optgroup() =
         inherit Tags.optgroup()
-        interface OptionKeys        
-    [<PartasProxyImport("option", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.option", "solid-motionone")>]
     type option() =
         inherit Tags.option()
-        interface OptionKeys        
-    [<PartasProxyImport("output", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.output", "solid-motionone")>]
     type output() =
         inherit Tags.output()
-        interface OptionKeys        
-    [<PartasProxyImport("p", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.p", "solid-motionone")>]
     type p() =
         inherit Tags.p()
-        interface OptionKeys        
-    [<PartasProxyImport("picture", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.picture", "solid-motionone")>]
     type picture() =
         inherit Tags.picture()
-        interface OptionKeys        
-    [<PartasProxyImport("pre", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.pre", "solid-motionone")>]
     type pre() =
         inherit Tags.pre()
-        interface OptionKeys        
-    [<PartasProxyImport("progress", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.progress", "solid-motionone")>]
     type progress() =
         inherit Tags.progress()
-        interface OptionKeys        
-    [<PartasProxyImport("q", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.q", "solid-motionone")>]
     type q() =
         inherit Tags.q()
-        interface OptionKeys        
-    [<PartasProxyImport("s", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.s", "solid-motionone")>]
     type s() =
         inherit Tags.s()
-        interface OptionKeys        
-    [<PartasProxyImport("samp", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.samp", "solid-motionone")>]
     type samp() =
         inherit Tags.samp()
-        interface OptionKeys        
-    [<PartasProxyImport("script", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.script", "solid-motionone")>]
     type script() =
         inherit Tags.script()
-        interface OptionKeys        
-    [<PartasProxyImport("search", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.search", "solid-motionone")>]
     type search() =
         inherit Tags.search()
-        interface OptionKeys        
-    [<PartasProxyImport("section", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.section", "solid-motionone")>]
     type section() =
         inherit Tags.section()
-        interface OptionKeys        
-    [<PartasProxyImport("select", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.select", "solid-motionone")>]
     type select() =
         inherit Tags.select()
-        interface OptionKeys        
-    // [<PartasProxyImport("slot", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    // [<Import("Motion.slot", "solid-motionone")>]
     // type slot() =
     //     inherit Tags.slot()
-    //     interface OptionKeys    
-    [<PartasProxyImport("small", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    [<Import("Motion.small", "solid-motionone")>]
     type small() =
         inherit Tags.small()
-        interface OptionKeys        
-    [<PartasProxyImport("source", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.source", "solid-motionone")>]
     type source() =
         inherit Tags.source()
-        interface OptionKeys        
-    [<PartasProxyImport("span", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.span", "solid-motionone")>]
     type span() =
         inherit Tags.span()
-        interface OptionKeys        
-    [<PartasProxyImport("strong", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.strong", "solid-motionone")>]
     type strong() =
         inherit Tags.strong()
-        interface OptionKeys        
-    [<PartasProxyImport("style", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.style", "solid-motionone")>]
     type style() =
         inherit Tags.style()
-        interface OptionKeys        
-    [<PartasProxyImport("sub", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.sub", "solid-motionone")>]
     type sub() =
         inherit Tags.sub()
-        interface OptionKeys        
-    [<PartasProxyImport("summary", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.summary", "solid-motionone")>]
     type summary() =
         inherit Tags.summary()
-        interface OptionKeys        
-    [<PartasProxyImport("sup", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.sup", "solid-motionone")>]
     type sup() =
         inherit Tags.sup()
-        interface OptionKeys        
-    [<PartasProxyImport("table", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.table", "solid-motionone")>]
     type table() =
         inherit Tags.table()
-        interface OptionKeys        
-    [<PartasProxyImport("tbody", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.tbody", "solid-motionone")>]
     type tbody() =
         inherit Tags.tbody()
-        interface OptionKeys        
-    [<PartasProxyImport("td", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.td", "solid-motionone")>]
     type td() =
         inherit Tags.td()
-        interface OptionKeys        
-    [<PartasProxyImport("template", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.template", "solid-motionone")>]
     type template() =
         inherit Tags.template()
-        interface OptionKeys        
-    [<PartasProxyImport("textarea", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.textarea", "solid-motionone")>]
     type textarea() =
         inherit Tags.textarea()
-        interface OptionKeys        
-    [<PartasProxyImport("tfoot", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.tfoot", "solid-motionone")>]
     type tfoot() =
         inherit Tags.tfoot()
-        interface OptionKeys        
-    [<PartasProxyImport("th", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.th", "solid-motionone")>]
     type th() =
         inherit Tags.th()
-        interface OptionKeys        
-    [<PartasProxyImport("thead", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.thead", "solid-motionone")>]
     type thead() =
         inherit Tags.thead()
-        interface OptionKeys        
-    [<PartasProxyImport("time", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.time", "solid-motionone")>]
     type time() =
         inherit Tags.time()
-        interface OptionKeys        
-    [<PartasProxyImport("title", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.title", "solid-motionone")>]
     type title() =
         inherit Tags.title()
-        interface OptionKeys        
-    [<PartasProxyImport("tr", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.tr", "solid-motionone")>]
     type tr() =
         inherit Tags.tr()
-        interface OptionKeys        
-    // [<PartasProxyImport("track", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    // [<Import("Motion.track", "solid-motionone")>]
     // type track() =
     //     inherit Tags.track()
-    //     interface OptionKeys    
-    [<PartasProxyImport("u", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    [<Import("Motion.u", "solid-motionone")>]
     type u() =
         inherit Tags.u()
-        interface OptionKeys        
-    [<PartasProxyImport("ul", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.ul", "solid-motionone")>]
     type ul() =
         inherit Tags.ul()
-        interface OptionKeys        
-    [<PartasProxyImport("var", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.var", "solid-motionone")>]
     type var() =
         inherit Tags.var()
-        interface OptionKeys        
-    [<PartasProxyImport("video", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.video", "solid-motionone")>]
     type video() =
         inherit Tags.video()
-        interface OptionKeys        
-    [<PartasProxyImport("wbr", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    [<Import("Motion.wbr", "solid-motionone")>]
     type wbr() =
         inherit Tags.wbr()
-        interface OptionKeys        
-    // [<PartasProxyImport("a", "Motion", "solid-motionone")>]
+        interface MotionTagAttributes        
+    // [<Import("Motion.a", "solid-motionone")>]
     // type a() =
     //     inherit Tags.a()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("animate", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.animate", "solid-motionone")>]
     // type animate() =
     //     inherit Tags.animate()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("animateMotion", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.animateMotion", "solid-motionone")>]
     // type animateMotion() =
     //     inherit Tags.animateMotion()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("animateTransform", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.animateTransform", "solid-motionone")>]
     // type animateTransform() =
     //     inherit Tags.animateTransform()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("circle", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.circle", "solid-motionone")>]
     // type circle() =
     //     inherit Tags.circle()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("clipPath", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.clipPath", "solid-motionone")>]
     // type clipPath() =
     //     inherit Tags.clipPath()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("defs", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.defs", "solid-motionone")>]
     // type defs() =
     //     inherit Tags.defs()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("desc", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.desc", "solid-motionone")>]
     // type desc() =
     //     inherit Tags.desc()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("ellipse", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.ellipse", "solid-motionone")>]
     // type ellipse() =
     //     inherit Tags.ellipse()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feBlend", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feBlend", "solid-motionone")>]
     // type feBlend() =
     //     inherit Tags.feBlend()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feColorMatrix", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feColorMatrix", "solid-motionone")>]
     // type feColorMatrix() =
     //     inherit Tags.feColorMatrix()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feComponentTransfer", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feComponentTransfer", "solid-motionone")>]
     // type feComponentTransfer() =
     //     inherit Tags.feComponentTransfer()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feComposite", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feComposite", "solid-motionone")>]
     // type feComposite() =
     //     inherit Tags.feComposite()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feConvolveMatrix", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feConvolveMatrix", "solid-motionone")>]
     // type feConvolveMatrix() =
     //     inherit Tags.feConvolveMatrix()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feDiffuseLighting", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feDiffuseLighting", "solid-motionone")>]
     // type feDiffuseLighting() =
     //     inherit Tags.feDiffuseLighting()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feDisplacementMap", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feDisplacementMap", "solid-motionone")>]
     // type feDisplacementMap() =
     //     inherit Tags.feDisplacementMap()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feDistantLight", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feDistantLight", "solid-motionone")>]
     // type feDistantLight() =
     //     inherit Tags.feDistantLight()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feDropShadow", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feDropShadow", "solid-motionone")>]
     // type feDropShadow() =
     //     inherit Tags.feDropShadow()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feFlood", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feFlood", "solid-motionone")>]
     // type feFlood() =
     //     inherit Tags.feFlood()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feFuncA", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feFuncA", "solid-motionone")>]
     // type feFuncA() =
     //     inherit Tags.feFuncA()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feFuncB", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feFuncB", "solid-motionone")>]
     // type feFuncB() =
     //     inherit Tags.feFuncB()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feFuncG", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feFuncG", "solid-motionone")>]
     // type feFuncG() =
     //     inherit Tags.feFuncG()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feFuncR", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feFuncR", "solid-motionone")>]
     // type feFuncR() =
     //     inherit Tags.feFuncR()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feGaussianBlur", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feGaussianBlur", "solid-motionone")>]
     // type feGaussianBlur() =
     //     inherit Tags.feGaussianBlur()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feImage", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feImage", "solid-motionone")>]
     // type feImage() =
     //     inherit Tags.feImage()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feMerge", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feMerge", "solid-motionone")>]
     // type feMerge() =
     //     inherit Tags.feMerge()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feMergeNode", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feMergeNode", "solid-motionone")>]
     // type feMergeNode() =
     //     inherit Tags.feMergeNode()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feMorphology", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feMorphology", "solid-motionone")>]
     // type feMorphology() =
     //     inherit Tags.feMorphology()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feOffset", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feOffset", "solid-motionone")>]
     // type feOffset() =
     //     inherit Tags.feOffset()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("fePointLight", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.fePointLight", "solid-motionone")>]
     // type fePointLight() =
     //     inherit Tags.fePointLight()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feSpecularLighting", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feSpecularLighting", "solid-motionone")>]
     // type feSpecularLighting() =
     //     inherit Tags.feSpecularLighting()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feSpotLight", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feSpotLight", "solid-motionone")>]
     // type feSpotLight() =
     //     inherit Tags.feSpotLight()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feTile", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feTile", "solid-motionone")>]
     // type feTile() =
     //     inherit Tags.feTile()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("feTurbulence", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.feTurbulence", "solid-motionone")>]
     // type feTurbulence() =
     //     inherit Tags.feTurbulence()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("filter", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.filter", "solid-motionone")>]
     // type filter() =
     //     inherit Tags.filter()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("foreignObject", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.foreignObject", "solid-motionone")>]
     // type foreignObject() =
     //     inherit Tags.foreignObject()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("g", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.g", "solid-motionone")>]
     // type g() =
     //     inherit Tags.g()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("image", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.image", "solid-motionone")>]
     // type image() =
     //     inherit Tags.image()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("line", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.line", "solid-motionone")>]
     // type line() =
     //     inherit Tags.line()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("linearGradient", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.linearGradient", "solid-motionone")>]
     // type linearGradient() =
     //     inherit Tags.linearGradient()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("marker", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.marker", "solid-motionone")>]
     // type marker() =
     //     inherit Tags.marker()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("mask", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.mask", "solid-motionone")>]
     // type mask() =
     //     inherit Tags.mask()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("metadata", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.metadata", "solid-motionone")>]
     // type metadata() =
     //     inherit Tags.metadata()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("mpath", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.mpath", "solid-motionone")>]
     // type mpath() =
     //     inherit Tags.mpath()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("path", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.path", "solid-motionone")>]
     // type path() =
     //     inherit Tags.path()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("pattern", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.pattern", "solid-motionone")>]
     // type pattern() =
     //     inherit Tags.pattern()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("polygon", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.polygon", "solid-motionone")>]
     // type polygon() =
     //     inherit Tags.polygon()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("polyline", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.polyline", "solid-motionone")>]
     // type polyline() =
     //     inherit Tags.polyline()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("radialGradient", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.radialGradient", "solid-motionone")>]
     // type radialGradient() =
     //     inherit Tags.radialGradient()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("rect", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.rect", "solid-motionone")>]
     // type rect() =
     //     inherit Tags.rect()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("script", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.script", "solid-motionone")>]
     // type script() =
     //     inherit Tags.script()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("set", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.set", "solid-motionone")>]
     // type set() =
     //     inherit Tags.set()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("stop", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.stop", "solid-motionone")>]
     // type stop() =
     //     inherit Tags.stop()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("style", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.style", "solid-motionone")>]
     // type style() =
     //     inherit Tags.style()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("svg", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.svg", "solid-motionone")>]
     // type svg() =
     //     inherit Tags.svg()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("switch", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.switch", "solid-motionone")>]
     // type switch() =
     //     inherit Tags.switch()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("symbol", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.symbol", "solid-motionone")>]
     // type symbol() =
     //     inherit Tags.symbol()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("text", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.text", "solid-motionone")>]
     // type text() =
     //     inherit Tags.text()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("textPath", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.textPath", "solid-motionone")>]
     // type textPath() =
     //     inherit Tags.textPath()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("title", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.title", "solid-motionone")>]
     // type title() =
     //     inherit Tags.title()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("tspan", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.tspan", "solid-motionone")>]
     // type tspan() =
     //     inherit Tags.tspan()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("use", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.use", "solid-motionone")>]
     // type use() =
     //     inherit Tags.use()
-    //     interface OptionKeys    
-    // [<PartasProxyImport("view", "Motion", "solid-motionone")>]
+    //     interface MotionTagAttributes    
+    // [<Import("Motion.view", "solid-motionone")>]
     // type view() =
     //     inherit Tags.view()
-    //     interface OptionKeys    
+    //     interface MotionTagAttributes    

@@ -27,8 +27,8 @@
 
 <ItemGroup>
     <None Include="../README.md" Pack="true" PackagePath="\" />
-    <Compile Include="LibDom\LibDom.fs" />
-    <Compile Include="LibDom\Utils.fs" />
+    <Compile Include="IdeTweaks.fs" />
+    <Compile Include="LibDom.fs" />
     <Compile Include="Style.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="Program.fs" />
