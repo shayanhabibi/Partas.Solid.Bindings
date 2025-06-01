@@ -74,7 +74,7 @@ module Select =
     type Value<'T>() =
         inherit div()
         interface Polymorph
-        interface KobalteStateProvider<ValueState<'T>>
+        interface ChildLambdaProvider<ValueState<'T>>
         member val selectedOption : 'T Accessor = jsNative with get,set
         member val selectedOptions : 'T[] Accessor = jsNative with get,set
         member val remove : 'T -> unit = jsNative with get,set
