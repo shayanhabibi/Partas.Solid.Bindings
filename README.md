@@ -10,6 +10,47 @@
 
 Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 
-
 > [!IMPORTANT]
 > Partas.Solid.Primitives is now in a independent repo.
+
+| **Library**       | **Status**     | **NuGet** |
+|-------------------|----------------|-----------|
+| Kobalte           | Stable         | 0.2.0     |
+| Lucide            | Stable         | 0.2.0     |
+| ModularForms      | Stable-ish     | 0.2.0     |
+| TanStack.Table    | Stable-ish     | 0.2.0     |
+| Solid-MotionOne   | Stable-ish     | 0.2.0     |
+| CVA               | Stable         | 0.1.0     |
+| Cmdk              | Stable         | 0.2.0     |
+| ArkUI             | Partial-Stable | 0.2.0     |
+| Corvu             | Partial-Beta   | 0.2.0     |
+| Sonner            | Beta           | 0.2.0     |
+| ApexCharts        | Beta-ish       | 0.2.0     |
+| NeoDrag           | Alpha          | 0.2.0     |
+| ZagJs             | Partial-Alpha  | 0.1.0     |
+| ChartJs           | _Incomplete_   |           |
+| Dnd               | _Incomplete_   |           |
+| DndKit            | _Incomplete_   |           |
+| EmblaCarousel     | _Incomplete_   |           |
+| TanStack.Virtual  | _Incomplete_   |           |
+| Internationalised | _Dependency_   | 0.1.0     |
+
+> - Stable
+> 
+> This binding has been used and has a stable api with Nuget packages available.
+> 
+> - Beta
+> 
+> This binding has been used and is nearing stability. Nuget packages should be published.
+> 
+> - Alpha
+>
+> This binding is ready to be used and tested.
+> 
+> - Incomplete
+> 
+> This binding is not ready to be used. Whether it will be completed or not is to be seen.
+> 
+> - Partial Prefix
+> 
+> This binding only implements parts of its source.

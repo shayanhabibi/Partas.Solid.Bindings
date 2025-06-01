@@ -148,6 +148,16 @@ module Enums =
         | LeftEnd
         | RightEnd        
     
+    [<StringEnum; RequireQualifiedAccess>]
+    type KobalteColorMode =
+        | Light | Dark
+    [<StringEnum; RequireQualifiedAccess>]
+    type KobalteConfigColorMode =
+        | Light | Dark | System
+    [<StringEnum;RequireQualifiedAccess>]
+    type KobalteColorModeStorageType =
+        | Cookie | LocalStorage
+    
     [<Erase>]
     module Popover =
         type Placement = KobaltePopperPlacement
@@ -164,3 +174,10 @@ module Enums =
         [<Erase>]
         module ToString =
             type Format = ColorToStringFormat
+    [<Erase>]
+    module Theme =
+        type Mode = KobalteColorMode
+        [<Erase>]
+        module Config =
+            type Mode = KobalteConfigColorMode
+            type Storage = KobalteColorModeStorageType

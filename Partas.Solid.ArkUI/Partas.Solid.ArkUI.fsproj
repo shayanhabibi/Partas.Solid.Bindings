@@ -9,16 +9,16 @@
         <RootNamespace>Partas.Solid.ArkUI</RootNamespace>
         <AssemblyName>Partas.Solid.ArkUI</AssemblyName>
         <Company>F# Community</Company>
-        <Description>Bindings for ArkUI in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <Description>Bindings for ArkUI in Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ArkUI</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
-        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
         <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
             <NpmPackage Name="@ark-ui/solid" Version=">= 5.0.0" />
@@ -38,7 +38,6 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
-        <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 
     <ItemGroup>

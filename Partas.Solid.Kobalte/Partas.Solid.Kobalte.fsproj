@@ -9,16 +9,16 @@
         <RootNamespace>Partas.Solid.Kobalte</RootNamespace>
         <AssemblyName>Partas.Solid.Kobalte</AssemblyName>
         <Company>F# Community</Company>
-        <Description>Bindings for Solid-Kobalte in Oxpecker.Solid Style compatible with Partas.Solid</Description>
+        <Description>Bindings for Kobalte for Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Kobalte</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.1.1</Version>
+        <Version>0.2.0</Version>
                 <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>0.1.1</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
                 <PackageReleaseNotes>Dependency update</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@kobalte" Version=">= 0.13.10" />
@@ -79,7 +79,6 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
-        <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 
 </Project>

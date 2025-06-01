@@ -1,17 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
+        <WarningsAsErrors>3239;0025</WarningsAsErrors>
+        <PackageId>Glutinum.Internationalised</PackageId>
+        <Title>Glutinum.Internationalised</Title>
+        <RootNamespace>Glutinum.Internationalised</RootNamespace>
+        <AssemblyName>Glutinum.Internationalised</AssemblyName>
+        <Company>F# Community</Company>
+        <Description>Bindings for Internationalised with Glutinum</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Glutinum;F#;FSharp;Fable;fable-javascript;Web;Internationalised</PackageTags>
+        <Authors>Shayan Habibi</Authors>
+        <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
+        <Version>0.1.0</Version>
+        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <PackageVersion>0.1.0</PackageVersion>
+        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
+        <!--    <NpmDependencies>-->
+        <!--        <NpmPackage Name="solid-apexcharts" Version=">= 0.4.0" />-->
+        <!--    </NpmDependencies>-->
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Fable.Core" Version="4.5.0" />
+        <PackageReference Include="Fable.Package.SDK" Version="1.3.1">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Include="Program.fs" />
     </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Update="FSharp.Core" Version="9.0.300" />
-    </ItemGroup>
-
 </Project>
