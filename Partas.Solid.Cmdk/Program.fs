@@ -25,7 +25,7 @@ type Command() =
 module Command =
     [<Erase; Import("CommandSeparator", cmdk)>]
     type Separator() =
-        inherit VoidNode()
+        interface VoidNode
         member val alwaysRender:bool = jsNative with get,set
     [<Erase; Import("CommandDialog", cmdk)>]
     type Dialog() =
@@ -44,7 +44,7 @@ module Command =
         member val container: #HtmlElement = jsNative with get,set
     [<Erase; Import("CommandEmpty", cmdk)>]
     type Empty() =
-        inherit RegularNode()
+        interface RegularNode
     [<Erase; Import("CommandGroup", cmdk)>]
     type Group() =
         inherit div()

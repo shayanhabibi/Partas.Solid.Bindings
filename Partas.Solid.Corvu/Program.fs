@@ -35,19 +35,19 @@ type [<StringEnum>] CollapseBehavior =
 module Disclosure =
     [<Erase; Import("Trigger", disclosure)>]
     type Trigger() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Content", disclosure)>]
     type Content() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val forceMount : bool = jsNative with get,set
         member val contextId : string = jsNative with get,set
 
 [<Erase; Import("Root", disclosure)>]
 type Disclosure() =
-    inherit RegularNode()
+    interface RegularNode
     member val expanded : bool = jsNative with get,set
     member val onExpandedChange : bool -> unit = jsNative with get,set
     member val intialExpanded : bool = jsNative with get,set
@@ -75,7 +75,7 @@ module [<Erase>] Accordion =
 
 [<Erase; Import("Root", accordion)>]
 type Accordion() =
-    inherit RegularNode()
+    interface RegularNode
     member val multiple : bool = jsNative with get,set
     member val value : U2<string, string[]> = jsNative with get,set
     member val onValueChange : U2<string, string[]> -> unit = jsNative with get,set
@@ -105,7 +105,7 @@ type [<Erase>] day =
 
 [<Erase; Import("Root", calendar)>]
 type Calendar() =
-    inherit RegularNode()
+    interface RegularNode
     member val mode : CalendarMode = jsNative with get,set
     member val value : U3<DateTime, DateTime[], {| from:DateTime; ``to``:DateTime |}> = jsNative with get,set
     member val onValueChange : U3<DateTime, DateTime[], {|from:DateTime;``to``:DateTime|}> -> unit = jsNative with get,set
@@ -139,33 +139,33 @@ module Calendar =
         | NextYear
     [<Erase; Import("Label", calendar)>]
     type Label() =
-        inherit RegularNode()
+        interface RegularNode
         member val index : int = jsNative with get,set
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Nav", calendar)>]
     type Nav() =
-        inherit RegularNode()
+        interface RegularNode
         member val action : Action = jsNative with get,set
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Table", calendar)>]
     type Table() =
-        inherit RegularNode()
+        interface RegularNode
         member val index : int = jsNative with get,set
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("HeadCell", calendar)>]
     type HeadCell() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
     [<Erase; Import("Cell", calendar)>]
     type Cell() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
     [<Erase; Import("CellTrigger", calendar)>]
     type CellTrigger() =
-        inherit RegularNode()
+        interface RegularNode
         member val day : DateTime = jsNative with get,set
         member val month : DateTime = jsNative with get,set
         member val contextId : string = jsNative with get,set
@@ -185,7 +185,7 @@ type [<StringEnum>] ScrollbarShiftMode =
 
 [<Erase; Import("Root", dialog)>]
 type Dialog() =
-    inherit RegularNode()
+    interface RegularNode
     member val role : DialogRole = jsNative with get,set
     member val open' : bool = jsNative with get,set
     member val onOpenChange : bool -> unit = jsNative with get,set
@@ -221,45 +221,45 @@ type Dialog() =
 module Dialog =
     [<Erase; Import("Trigger", dialog)>]
     type Trigger() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
         
     [<Erase ; Import("Portal", dialog)>]
     type Portal() =
-        inherit RegularNode()
+        interface RegularNode
         member val forceMount : bool = jsNative with get,set
         member val contextId : string = jsNative with get,set
     
     [<Erase; Import("Overlay", dialog)>]
     type Overlay() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val forceMount : bool = jsNative with get,set
         member val contextId : string = jsNative with get,set
     
     [<Erase; Import("Content", dialog)>]
     type Content() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val forceMount : bool = jsNative with get,set
         member val contextId : string = jsNative with get,set
     
     [<Erase; Import("Close", dialog)>]
     type Close() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId: string = jsNative with get,set
     
     [<Erase; Import("Label", dialog)>]
     type Label() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     
     [<Erase; Import("Description", dialog)>]
     type Description() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
 
@@ -274,7 +274,7 @@ type Side =
 
 [<Erase; Import("Root", drawer)>]
 type Drawer() =
-    inherit RegularNode()
+    interface RegularNode
     member val snapPoints : float[] = jsNative with get,set
     member val breakPoints : float[] = jsNative with get,set
     member val defaultSnapPoint : float = jsNative with get,set
@@ -333,7 +333,7 @@ type OtpFieldContext
 
 [<Erase; Import("Root", otpField)>]
 type OtpField() =
-    inherit RegularNode()
+    interface RegularNode
     member val maxLength : int = jsNative with get,set
     member val value : string = jsNative with get,set
     member val onValueChange : string -> unit = jsNative with get,set
@@ -348,7 +348,7 @@ type OtpField() =
 module OtpField =
     [<Erase; Import("Input", otpField)>]
     type Input() =
-        inherit RegularNode()
+        interface RegularNode
         member val pattern : string = jsNative with get,set
         member val noScriptCSSFallback : string = jsNative with get,set
         member val contextId : string = jsNative with get,set
@@ -370,7 +370,7 @@ type Popover() =
 module Popover =
     [<Erase; Import("Anchor", popover)>]
     type Anchor() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Trigger", popover)>]
@@ -397,14 +397,14 @@ module Popover =
     
     [<Erase; Import("Arrow", popover)>]
     type Arrow() =
-        inherit RegularNode()
+        interface RegularNode
         member val size : int = jsNative with get,set
         member val as' : JSX.ElementType = jsNative with get,set
         member val contextId : string = jsNative with get,set
     
 [<Erase; Import("Root", resizable)>]
 type Resizable() =
-    inherit RegularNode()
+    interface RegularNode
     member val orientation : Orientation = jsNative with get,set
     member val sizes : float[] = jsNative with get,set
     member val onSizesChange : float[] -> unit = jsNative with get,set
@@ -423,7 +423,7 @@ type [<Erase>] DefaultTruth =
 module Resizable =
     [<Erase; Import("Panel", resizable)>]
     type Panel() =
-        inherit RegularNode()
+        interface RegularNode
         member val initialSize : float = jsNative with get,set
         member val minSize : float = jsNative with get,set
         member val maxSize : float = jsNative with get,set
@@ -439,7 +439,7 @@ module Resizable =
     
     [<Erase; Import("Handle", resizable)>]
     type Handle() =
-        inherit RegularNode()
+        interface RegularNode
         member val startIntersection : bool = jsNative with get,set
         member val endIntersection : bool = jsNative with get,set
         member val altKey : DefaultTruth = jsNative with get,set
@@ -451,7 +451,7 @@ module Resizable =
 
 [<Erase; Import("Root", tooltip)>]
 type Tooltip() =
-    inherit RegularNode()
+    interface RegularNode
     member val open' : bool = jsNative with get,set
     member val onOpenChange : bool -> unit = jsNative with get,set
     member val initialOpen : bool = jsNative with get,set
@@ -483,28 +483,28 @@ type Tooltip() =
 module Tooltip =
     [<Erase; Import("Anchor", tooltip)>]
     type Anchor() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Trigger", tooltip)>]
     type Trigger() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Portal", tooltip)>]
     type Portal() =
-        inherit RegularNode()
+        interface RegularNode
         member val forceMount: bool = jsNative with get,set
         member val contextId : string = jsNative with get,set
     [<Erase; Import("Content", tooltip)>]
     type Content() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
         member val forceMount: bool = jsNative with get,set
     [<Erase; Import("Arrow", tooltip)>]
     type Arrow() =
-        inherit RegularNode()
+        interface RegularNode
         member val as' : JSX.Element = jsNative with get,set
         member val contextId : string = jsNative with get,set
         member val size: int = jsNative with get,set
@@ -528,7 +528,7 @@ module Utilities =
     
     [<Erase; Import("Dismissible", dismissible)>]
     type Dismissible() =
-        inherit RegularNode()
+        interface RegularNode
         member val enabled : bool = jsNative with get,set
         member val dismissibleId : string = jsNative with get,set
         member val element : HtmlElement = jsNative with get,set

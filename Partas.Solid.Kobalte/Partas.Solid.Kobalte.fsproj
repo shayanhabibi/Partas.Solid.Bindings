@@ -16,12 +16,12 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Kobalte</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
                 <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>0.1.0</PackageVersion>
-                <PackageReleaseNotes>Init</PackageReleaseNotes>
+        <PackageVersion>0.1.1</PackageVersion>
+                <PackageReleaseNotes>Dependency update</PackageReleaseNotes>
         <NpmDependencies>
-            <NpmPackage Name="@kobalte" Version=">= 0.13.8" />
+            <NpmPackage Name="@kobalte" Version=">= 0.13.10" />
         </NpmDependencies>
     </PropertyGroup>
 
@@ -30,6 +30,46 @@
                 <Compile Include="Spec.fs" />
         <Compile Include="Program.fs" />
         <Content Include="README.md" />
+        <Compile Include="Collapsible.fs" />
+        <Compile Include="Button.fs" />
+        <Compile Include="Link.fs" />
+        <Compile Include="Accordion.fs" />
+        <Compile Include="Alert.fs" />
+        <Compile Include="AlertDialog.fs" />
+        <Compile Include="Badge.fs" />
+        <Compile Include="Breadcrumbs.fs" />
+        <Compile Include="Checkbox.fs" />
+        <Compile Include="Combobox.fs" />
+        <Compile Include="ContextMenu.fs" />
+        <Compile Include="Dialog.fs" />
+        <Compile Include="DropdownMenu.fs" />
+        <Compile Include="FileField.fs" />
+        <Compile Include="HoverCard.fs" />
+        <Compile Include="Image.fs" />
+        <Compile Include="Menubar.fs" />
+        <Compile Include="Meter.fs" />
+        <Compile Include="NavigationMenu.fs" />
+        <Compile Include="NumberField.fs" />
+        <Compile Include="Pagination.fs" />
+        <Compile Include="Popover.fs" />
+        <Compile Include="Progress.fs" />
+        <Compile Include="RadioGroup.fs" />
+        <Compile Include="Select.fs" />
+        <Compile Include="SeparatorSkeleton.fs" />
+        <Compile Include="Slider.fs" />
+        <Compile Include="Switch.fs" />
+        <Compile Include="Tabs.fs" />
+        <Compile Include="TextField.fs" />
+        <Compile Include="ToggleButton.fs" />
+        <Compile Include="Tooltip.fs" />
+        <Compile Include="ToggleGroup.fs" />
+        <Compile Include="SegmentedControl.fs" />
+        <Compile Include="ColorArea.fs" />
+        <Compile Include="ColorChannelField.fs" />
+        <Compile Include="ColorField.fs" />
+        <Compile Include="ColorSlider.fs" />
+        <Compile Include="ColorSwatch.fs" />
+        <Compile Include="ColorMode.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -38,7 +78,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
         <PackageReference Update="FSharp.Core" Version="9.0.300" />
     </ItemGroup>
 

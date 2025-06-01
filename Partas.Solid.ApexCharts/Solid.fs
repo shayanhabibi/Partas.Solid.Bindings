@@ -9,7 +9,7 @@ open Partas.Solid.Experimental.U
 
 [<Import("SolidApexCharts", "solid-apexcharts")>]
 type SolidApexCharts() =
-    inherit VoidNode()
+    interface VoidNode
 
     [<Erase>]
     member val type': ApexChartType = jsNative with get, set

@@ -34,6 +34,7 @@
     <Compile Include="Program.fs" />
     <Compile Include="Tags.fs" />
     <Content Include="README.md" />
+    <Compile Include="Motion.fs" />
 </ItemGroup>
 
 <ItemGroup>
@@ -42,7 +43,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+    <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
     <PackageReference Update="FSharp.Core" Version="9.0.300" />
 </ItemGroup>
 

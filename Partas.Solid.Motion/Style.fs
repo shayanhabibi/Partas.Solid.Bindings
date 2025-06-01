@@ -1,4 +1,4 @@
-﻿namespace Partas.Solid.Motion
+﻿namespace Partas.Solid.Motion.Style
 
 open Fable.Core
 open Fable.Core.JsInterop

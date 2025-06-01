@@ -1,12 +1,15 @@
 ﻿namespace rec Partas.Solid.Motion
 
 open Partas.Solid.Motion.LibDom
+open Partas.Solid.Motion.Style
 open Fable.Core
 open Partas.Solid.Experimental.U
 open Browser.Types
 open Partas.Solid
 
+[<System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>]
 type IInViewOption = interface end
+[<System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>]
 type IMotionStyle = interface end
 
 [<StringEnum; RequireQualifiedAccess>]
@@ -65,20 +68,6 @@ type CustomPointerEvent =
 type ViewEvent =
     inherit CustomEvent
     abstract originalEntry: LibDom.IntersectionObserverEntry with get
-
-module MotionState =
-    [<RequireQualifiedAccess>]
-    [<StringEnum>]
-    type Type =
-        | Initial
-        | Animate
-        | InView
-        | Hover
-        | Press
-        | Exit
-
-    type setActive =
-        delegate of ``type``: Type * isActive: bool -> unit
 
 
 [<RequireQualifiedAccess>]
@@ -176,6 +165,7 @@ type AnimationOptions
     /// </summary>
     member val allowWebkitAcceleration: bool option = allowWebkitAcceleration with get, set
 
+[<System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)>]
 type IMotionTransition = interface end
 
 [<Interface>]

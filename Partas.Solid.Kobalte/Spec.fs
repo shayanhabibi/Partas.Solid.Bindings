@@ -4,7 +4,7 @@ open Fable.Core
 
 [<RequireQualifiedAccess; Erase>]
 module internal Spec =
-    let [<Erase; Literal>] version = "v0.13.9"
+    let [<Erase; Literal>] version = "v0.13.10"
     let [<Erase; Literal>] kobalte = "@kobalte/core"
     let [<Erase; Literal>] collapsible = kobalte + "/collapsible"
     let [<Erase; Literal>] accordion = kobalte + "/accordion"
@@ -17,6 +17,9 @@ module internal Spec =
     let [<Erase; Literal>] checkbox = kobalte + "/checkbox"
     let [<Erase; Literal>] colorArea = kobalte + "/color-area"
     let [<Erase; Literal>] colorChannelField = kobalte + "/color-channel-field"
+    let [<Erase; Literal>] colorField = kobalte + "/color-field"
+    let [<Erase; Literal>] colorSlider = kobalte + "/color-slider"
+    let [<Erase; Literal>] colorSwatch = kobalte + "/color-swatch"
     let [<Erase; Literal>] combobox = kobalte + "/combobox"
     let [<Erase; Literal>] contextMenu = kobalte + "/context-menu"
     let [<Erase; Literal>] dialog = kobalte + "/dialog"
@@ -44,6 +47,7 @@ module internal Spec =
     let [<Erase; Literal>] toggleButton = kobalte + "/toggle-button"
     let [<Erase; Literal>] toggleGroup = kobalte + "/toggle-group"
     let [<Erase; Literal>] I18nProvider = kobalte + "/i18n-provider"
+    let [<Erase; Literal>] segmentedControl = kobalte + "/segmented-control"
 
 [<Erase; AutoOpen>]
 module Enums =
@@ -84,7 +88,30 @@ module Enums =
     type CollectionType =
         | Item
         | Section
-        
+    
+    [<StringEnum(CaseRules.KebabCase); RequireQualifiedAccess>]
+    type PaginationFixedItems =
+        | [<CompiledValue(true)>] True
+        | [<CompiledValue(false)>] False
+        | NoEllipsis
+    [<StringEnum; RequireQualifiedAccess>]
+    type ColorToStringFormat =
+        | Hex | Hexa | Rgb | Rgba
+        | Hsl | Hsla | Hsb | Hsba
+        | Css
+    [<StringEnum; RequireQualifiedAccess>]
+    type ColorChannel =
+        | Hue | Saturation
+        | Brightness | Lightness
+        | Red | Green | Blue | Alpha
+    [<StringEnum; RequireQualifiedAccess>]
+    type ColorSpace = | Rgb | Hsl | Hsb
+    [<StringEnum; RequireQualifiedAccess>]
+    type ColorFormat =
+        | Hex | Hexa | Rgb | Rgba
+        | Hsl | Hsla | Hsb | Hsba
+    
+    
     /// <summary>
     /// Values for the <c>defaultFilter</c> prop of the Combobox
     /// </summary>
@@ -125,3 +152,15 @@ module Enums =
     module Popover =
         type Placement = KobaltePopperPlacement
     
+    [<Erase>]
+    module Pagination =
+        type FixedItems = PaginationFixedItems
+    
+    [<Erase>]
+    module Color =
+        type Space = ColorSpace
+        type Format = ColorFormat
+        type Channel = ColorChannel
+        [<Erase>]
+        module ToString =
+            type Format = ColorToStringFormat

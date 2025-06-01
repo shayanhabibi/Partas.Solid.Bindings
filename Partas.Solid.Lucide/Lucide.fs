@@ -9,7 +9,7 @@ open Fable.Core.JsInterop
 
 [<Erase>]
 type IconNode() =
-    inherit VoidNode()
+    interface VoidNode
     [<Erase>] member inline this.className with get (value : string) = this.class' <- value
     [<Erase>] member val size : int = unbox null with get,set
     [<Erase>] member val color : string = unbox null with get,set

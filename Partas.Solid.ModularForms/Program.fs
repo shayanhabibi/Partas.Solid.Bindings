@@ -109,8 +109,6 @@ type ModularFormsType =
     | [<CompiledName("File[]")>] FileArray
     | Date
 
-type private DV = DefaultValueAttribute
-
 [<Erase>]
 module FormErrors =
     let toArray (formErrors: FormErrors) =
@@ -129,8 +127,8 @@ type OnCustomAction =
     
 [<Import("Form", path)>]
 type Form<'Form, 'Response>() =    
-    inherit RegularNode()
-    [<DV>] val mutable of': FormStore<'Form, 'Response>
+    interface RegularNode
+    [<Erase>] member val of': FormStore<'Form, 'Response> = undefined with get,set
     /// <summary>
     /// Use the stronger typed overloads which avoid explicit delegate construction:<br/>
     /// _.onAsyncSubmit<br/>
@@ -141,24 +139,24 @@ type Form<'Form, 'Response>() =
     /// type SubmitHandler:'Form, 'R: = delegate of 'Form * SubmitEvent -> U2:Promise:'R:, 'R:
     /// </code>
     /// </summary>
-    [<DV>] val mutable onSubmit: ('Form -> SubmitEvent -> Promise<'Response>)
-    [<DV>] val mutable keepResponse: bool
-    [<DV>] val mutable shouldActive: bool
-    [<DV>] val mutable shouldTouched: bool
-    [<DV>] val mutable shouldDirty: bool
-    [<DV>] val mutable shouldFocus: bool
+    [<Erase>] member val onSubmit: ('Form -> SubmitEvent -> Promise<'Response>) = undefined with get,set
+    [<Erase>] member val keepResponse: bool = undefined with get,set
+    [<Erase>] member val shouldActive: bool = undefined with get,set
+    [<Erase>] member val shouldTouched: bool = undefined with get,set
+    [<Erase>] member val shouldDirty: bool = undefined with get,set
+    [<Erase>] member val shouldFocus: bool = undefined with get,set
 [<PartasImport("Field", path)>]
 type Field<'Form, 'ValueType, 'Response>() =
-    inherit RegularNode()
-    [<DV>] val mutable of': FormStore<'Form, 'Response>
-    [<DV>] val mutable name: string
-    [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: Validator<'ValueType>
-    [<DV>] val mutable validateOn: ValidateOn
-    [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable transform: TransformField<'ValueType, 'ValueType>[]
-    [<DV>] val mutable keepActive: bool
-    [<DV>] val mutable keepState: bool
+    interface RegularNode
+    [<Erase>] member val of': FormStore<'Form, 'Response> = undefined with get,set
+    [<Erase>] member val name: string = undefined with get,set
+    [<Erase>] member val type': ModularFormsType = undefined with get,set
+    [<Erase>] member val validate: Validator<'ValueType> = undefined with get,set
+    [<Erase>] member val validateOn: ValidateOn = undefined with get,set
+    [<Erase>] member val revalidateOn: ValidateOn = undefined with get,set
+    [<Erase>] member val transform: TransformField<'ValueType, 'ValueType>[] = undefined with get,set
+    [<Erase>] member val keepActive: bool = undefined with get,set
+    [<Erase>] member val keepState: bool = undefined with get,set
     member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
     member inline this.map(
         path: 'Form -> 'ValueType[],
@@ -189,15 +187,15 @@ type Field<'Form, 'ValueType, 'Response>() =
     member inline _.Yield(PARTAS_ELEMENT: FieldStore<'Form, 'ValueType> -> FieldElementProps -> #HtmlElement) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
 [<PartasImport("FieldArray", path)>]
 type FieldArray<'Form, 'ValueType, 'Response>() =
-    inherit RegularNode()
-    [<DV>] val mutable of': FormStore<'Form, 'Response>
-    [<DV>] val mutable name: string
-    [<DV>] val mutable type': ModularFormsType
-    [<DV>] val mutable validate: ValidateFieldArray
-    [<DV>] val mutable validateOn: ValidateOn
-    [<DV>] val mutable revalidateOn: ValidateOn
-    [<DV>] val mutable keepActive: bool
-    [<DV>] val mutable keepState: bool
+    interface RegularNode
+    [<Erase>] member val of': FormStore<'Form, 'Response> = undefined with get,set
+    [<Erase>] member val name: string = undefined with get,set
+    [<Erase>] member val type': ModularFormsType = undefined with get,set
+    [<Erase>] member val validate: ValidateFieldArray = undefined with get,set
+    [<Erase>] member val validateOn: ValidateOn = undefined with get,set
+    [<Erase>] member val revalidateOn: ValidateOn = undefined with get,set
+    [<Erase>] member val keepActive: bool = undefined with get,set
+    [<Erase>] member val keepState: bool = undefined with get,set
     member inline this.map(path: 'Form -> 'ValueType) = this.attr("name", lambdaPath path)
     member inline this.map(
         path: 'Form -> 'ValueType[],

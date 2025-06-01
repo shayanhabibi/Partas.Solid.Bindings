@@ -11,7 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="Fable.Core" Version="4.5.0" />
-      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha4" />
+      <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
     </ItemGroup>
 
 </Project>

@@ -1,11 +1,12 @@
-﻿namespace Partas.Solid.Motion
+﻿[<AutoOpen>]
+module Partas.Solid.Motion.Tags
 
 open Partas.Solid
 open Fable.Core
 
 [<Import("Motion", "solid-motionone")>]
 type Motion() =
-    inherit RegularNode()
+    interface RegularNode
     interface OptionKeys
     interface AttrKey
     interface MotionEventKeys
@@ -20,7 +21,7 @@ type Motion() =
 [<RequireQualifiedAccess; Erase>]
 module Motion =
     [<Erase; Interface>]
-    type internal MotionTagAttributes =
+    type MotionTagAttributes =
         inherit OptionKeys
         inherit MotionEventKeys
         
@@ -306,7 +307,7 @@ module Motion =
         interface MotionTagAttributes        
     [<Import("Motion.option", "solid-motionone")>]
     type option() =
-        inherit Tags.option()
+        inherit Tags.option'()
         interface MotionTagAttributes        
     [<Import("Motion.output", "solid-motionone")>]
     type output() =
@@ -406,7 +407,7 @@ module Motion =
         interface MotionTagAttributes        
     [<Import("Motion.template", "solid-motionone")>]
     type template() =
-        inherit Tags.template()
+        interface RegularNode
         interface MotionTagAttributes        
     [<Import("Motion.textarea", "solid-motionone")>]
     type textarea() =
@@ -459,256 +460,240 @@ module Motion =
     [<Import("Motion.wbr", "solid-motionone")>]
     type wbr() =
         inherit Tags.wbr()
-        interface MotionTagAttributes        
-    // [<Import("Motion.a", "solid-motionone")>]
-    // type a() =
-    //     inherit Tags.a()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.animate", "solid-motionone")>]
-    // type animate() =
-    //     inherit Tags.animate()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.animateMotion", "solid-motionone")>]
-    // type animateMotion() =
-    //     inherit Tags.animateMotion()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.animateTransform", "solid-motionone")>]
-    // type animateTransform() =
-    //     inherit Tags.animateTransform()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.circle", "solid-motionone")>]
-    // type circle() =
-    //     inherit Tags.circle()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.clipPath", "solid-motionone")>]
-    // type clipPath() =
-    //     inherit Tags.clipPath()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.defs", "solid-motionone")>]
-    // type defs() =
-    //     inherit Tags.defs()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.desc", "solid-motionone")>]
-    // type desc() =
-    //     inherit Tags.desc()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.ellipse", "solid-motionone")>]
-    // type ellipse() =
-    //     inherit Tags.ellipse()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feBlend", "solid-motionone")>]
-    // type feBlend() =
-    //     inherit Tags.feBlend()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feColorMatrix", "solid-motionone")>]
-    // type feColorMatrix() =
-    //     inherit Tags.feColorMatrix()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feComponentTransfer", "solid-motionone")>]
-    // type feComponentTransfer() =
-    //     inherit Tags.feComponentTransfer()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feComposite", "solid-motionone")>]
-    // type feComposite() =
-    //     inherit Tags.feComposite()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feConvolveMatrix", "solid-motionone")>]
-    // type feConvolveMatrix() =
-    //     inherit Tags.feConvolveMatrix()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feDiffuseLighting", "solid-motionone")>]
-    // type feDiffuseLighting() =
-    //     inherit Tags.feDiffuseLighting()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feDisplacementMap", "solid-motionone")>]
-    // type feDisplacementMap() =
-    //     inherit Tags.feDisplacementMap()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feDistantLight", "solid-motionone")>]
-    // type feDistantLight() =
-    //     inherit Tags.feDistantLight()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feDropShadow", "solid-motionone")>]
-    // type feDropShadow() =
-    //     inherit Tags.feDropShadow()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feFlood", "solid-motionone")>]
-    // type feFlood() =
-    //     inherit Tags.feFlood()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feFuncA", "solid-motionone")>]
-    // type feFuncA() =
-    //     inherit Tags.feFuncA()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feFuncB", "solid-motionone")>]
-    // type feFuncB() =
-    //     inherit Tags.feFuncB()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feFuncG", "solid-motionone")>]
-    // type feFuncG() =
-    //     inherit Tags.feFuncG()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feFuncR", "solid-motionone")>]
-    // type feFuncR() =
-    //     inherit Tags.feFuncR()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feGaussianBlur", "solid-motionone")>]
-    // type feGaussianBlur() =
-    //     inherit Tags.feGaussianBlur()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feImage", "solid-motionone")>]
-    // type feImage() =
-    //     inherit Tags.feImage()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feMerge", "solid-motionone")>]
-    // type feMerge() =
-    //     inherit Tags.feMerge()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feMergeNode", "solid-motionone")>]
-    // type feMergeNode() =
-    //     inherit Tags.feMergeNode()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feMorphology", "solid-motionone")>]
-    // type feMorphology() =
-    //     inherit Tags.feMorphology()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feOffset", "solid-motionone")>]
-    // type feOffset() =
-    //     inherit Tags.feOffset()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.fePointLight", "solid-motionone")>]
-    // type fePointLight() =
-    //     inherit Tags.fePointLight()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feSpecularLighting", "solid-motionone")>]
-    // type feSpecularLighting() =
-    //     inherit Tags.feSpecularLighting()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feSpotLight", "solid-motionone")>]
-    // type feSpotLight() =
-    //     inherit Tags.feSpotLight()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feTile", "solid-motionone")>]
-    // type feTile() =
-    //     inherit Tags.feTile()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.feTurbulence", "solid-motionone")>]
-    // type feTurbulence() =
-    //     inherit Tags.feTurbulence()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.filter", "solid-motionone")>]
-    // type filter() =
-    //     inherit Tags.filter()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.foreignObject", "solid-motionone")>]
-    // type foreignObject() =
-    //     inherit Tags.foreignObject()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.g", "solid-motionone")>]
-    // type g() =
-    //     inherit Tags.g()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.image", "solid-motionone")>]
-    // type image() =
-    //     inherit Tags.image()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.line", "solid-motionone")>]
-    // type line() =
-    //     inherit Tags.line()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.linearGradient", "solid-motionone")>]
-    // type linearGradient() =
-    //     inherit Tags.linearGradient()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.marker", "solid-motionone")>]
-    // type marker() =
-    //     inherit Tags.marker()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.mask", "solid-motionone")>]
-    // type mask() =
-    //     inherit Tags.mask()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.metadata", "solid-motionone")>]
-    // type metadata() =
-    //     inherit Tags.metadata()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.mpath", "solid-motionone")>]
-    // type mpath() =
-    //     inherit Tags.mpath()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.path", "solid-motionone")>]
-    // type path() =
-    //     inherit Tags.path()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.pattern", "solid-motionone")>]
-    // type pattern() =
-    //     inherit Tags.pattern()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.polygon", "solid-motionone")>]
-    // type polygon() =
-    //     inherit Tags.polygon()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.polyline", "solid-motionone")>]
-    // type polyline() =
-    //     inherit Tags.polyline()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.radialGradient", "solid-motionone")>]
-    // type radialGradient() =
-    //     inherit Tags.radialGradient()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.rect", "solid-motionone")>]
-    // type rect() =
-    //     inherit Tags.rect()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.script", "solid-motionone")>]
-    // type script() =
-    //     inherit Tags.script()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.set", "solid-motionone")>]
-    // type set() =
-    //     inherit Tags.set()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.stop", "solid-motionone")>]
-    // type stop() =
-    //     inherit Tags.stop()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.style", "solid-motionone")>]
-    // type style() =
-    //     inherit Tags.style()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.svg", "solid-motionone")>]
-    // type svg() =
-    //     inherit Tags.svg()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.switch", "solid-motionone")>]
-    // type switch() =
-    //     inherit Tags.switch()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.symbol", "solid-motionone")>]
-    // type symbol() =
-    //     inherit Tags.symbol()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.text", "solid-motionone")>]
-    // type text() =
-    //     inherit Tags.text()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.textPath", "solid-motionone")>]
-    // type textPath() =
-    //     inherit Tags.textPath()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.title", "solid-motionone")>]
-    // type title() =
-    //     inherit Tags.title()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.tspan", "solid-motionone")>]
-    // type tspan() =
-    //     inherit Tags.tspan()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.use", "solid-motionone")>]
-    // type use() =
-    //     inherit Tags.use()
-    //     interface MotionTagAttributes    
-    // [<Import("Motion.view", "solid-motionone")>]
-    // type view() =
-    //     inherit Tags.view()
-    //     interface MotionTagAttributes    
+        interface MotionTagAttributes           
+    [<Import("Motion.animate", "solid-motionone")>]
+    type animate() =
+        inherit Svg.animate()
+        interface MotionTagAttributes    
+    [<Import("Motion.animateMotion", "solid-motionone")>]
+    type animateMotion() =
+        inherit Svg.animateMotion()
+        interface MotionTagAttributes    
+    [<Import("Motion.animateTransform", "solid-motionone")>]
+    type animateTransform() =
+        inherit Svg.animateTransform()
+        interface MotionTagAttributes    
+    [<Import("Motion.circle", "solid-motionone")>]
+    type circle() =
+        inherit Svg.circle()
+        interface MotionTagAttributes    
+    [<Import("Motion.clipPath", "solid-motionone")>]
+    type clipPath() =
+        inherit Svg.clipPath()
+        interface MotionTagAttributes    
+    [<Import("Motion.defs", "solid-motionone")>]
+    type defs() =
+        inherit Svg.defs()
+        interface MotionTagAttributes    
+    [<Import("Motion.desc", "solid-motionone")>]
+    type desc() =
+        inherit Svg.desc()
+        interface MotionTagAttributes    
+    [<Import("Motion.ellipse", "solid-motionone")>]
+    type ellipse() =
+        inherit Svg.ellipse()
+        interface MotionTagAttributes    
+    [<Import("Motion.feBlend", "solid-motionone")>]
+    type feBlend() =
+        inherit Svg.feBlend()
+        interface MotionTagAttributes    
+    [<Import("Motion.feColorMatrix", "solid-motionone")>]
+    type feColorMatrix() =
+        inherit Svg.feColorMatrix()
+        interface MotionTagAttributes    
+    [<Import("Motion.feComponentTransfer", "solid-motionone")>]
+    type feComponentTransfer() =
+        inherit Svg.feComponentTransfer()
+        interface MotionTagAttributes    
+    [<Import("Motion.feComposite", "solid-motionone")>]
+    type feComposite() =
+        inherit Svg.feComposite()
+        interface MotionTagAttributes    
+    [<Import("Motion.feConvolveMatrix", "solid-motionone")>]
+    type feConvolveMatrix() =
+        inherit Svg.feConvolveMatrix()
+        interface MotionTagAttributes    
+    [<Import("Motion.feDiffuseLighting", "solid-motionone")>]
+    type feDiffuseLighting() =
+        inherit Svg.feDiffuseLighting()
+        interface MotionTagAttributes    
+    [<Import("Motion.feDisplacementMap", "solid-motionone")>]
+    type feDisplacementMap() =
+        inherit Svg.feDisplacementMap()
+        interface MotionTagAttributes    
+    [<Import("Motion.feDistantLight", "solid-motionone")>]
+    type feDistantLight() =
+        inherit Svg.feDistantLight()
+        interface MotionTagAttributes    
+    [<Import("Motion.feDropShadow", "solid-motionone")>]
+    type feDropShadow() =
+        inherit Svg.feDropShadow()
+        interface MotionTagAttributes    
+    [<Import("Motion.feFlood", "solid-motionone")>]
+    type feFlood() =
+        inherit Svg.feFlood()
+        interface MotionTagAttributes    
+    [<Import("Motion.feFuncA", "solid-motionone")>]
+    type feFuncA() =
+        inherit Svg.feFuncA()
+        interface MotionTagAttributes    
+    [<Import("Motion.feFuncB", "solid-motionone")>]
+    type feFuncB() =
+        inherit Svg.feFuncB()
+        interface MotionTagAttributes    
+    [<Import("Motion.feFuncG", "solid-motionone")>]
+    type feFuncG() =
+        inherit Svg.feFuncG()
+        interface MotionTagAttributes    
+    [<Import("Motion.feFuncR", "solid-motionone")>]
+    type feFuncR() =
+        inherit Svg.feFuncR()
+        interface MotionTagAttributes    
+    [<Import("Motion.feGaussianBlur", "solid-motionone")>]
+    type feGaussianBlur() =
+        inherit Svg.feGaussianBlur()
+        interface MotionTagAttributes    
+    [<Import("Motion.feImage", "solid-motionone")>]
+    type feImage() =
+        inherit Svg.feImage()
+        interface MotionTagAttributes    
+    [<Import("Motion.feMerge", "solid-motionone")>]
+    type feMerge() =
+        inherit Svg.feMerge()
+        interface MotionTagAttributes    
+    [<Import("Motion.feMergeNode", "solid-motionone")>]
+    type feMergeNode() =
+        inherit Svg.feMergeNode()
+        interface MotionTagAttributes    
+    [<Import("Motion.feMorphology", "solid-motionone")>]
+    type feMorphology() =
+        inherit Svg.feMorphology()
+        interface MotionTagAttributes    
+    [<Import("Motion.feOffset", "solid-motionone")>]
+    type feOffset() =
+        inherit Svg.feOffset()
+        interface MotionTagAttributes    
+    [<Import("Motion.fePointLight", "solid-motionone")>]
+    type fePointLight() =
+        inherit Svg.fePointLight()
+        interface MotionTagAttributes    
+    [<Import("Motion.feSpecularLighting", "solid-motionone")>]
+    type feSpecularLighting() =
+        inherit Svg.feSpecularLighting()
+        interface MotionTagAttributes    
+    [<Import("Motion.feSpotLight", "solid-motionone")>]
+    type feSpotLight() =
+        inherit Svg.feSpotLight()
+        interface MotionTagAttributes    
+    [<Import("Motion.feTile", "solid-motionone")>]
+    type feTile() =
+        inherit Svg.feTile()
+        interface MotionTagAttributes    
+    [<Import("Motion.feTurbulence", "solid-motionone")>]
+    type feTurbulence() =
+        inherit Svg.feTurbulence()
+        interface MotionTagAttributes    
+    [<Import("Motion.filter", "solid-motionone")>]
+    type filter() =
+        inherit Svg.filter()
+        interface MotionTagAttributes    
+    [<Import("Motion.foreignObject", "solid-motionone")>]
+    type foreignObject() =
+        inherit Svg.foreignObject()
+        interface MotionTagAttributes    
+    [<Import("Motion.g", "solid-motionone")>]
+    type g() =
+        inherit Svg.g()
+        interface MotionTagAttributes    
+    [<Import("Motion.image", "solid-motionone")>]
+    type image() =
+        inherit Svg.image()
+        interface MotionTagAttributes    
+    [<Import("Motion.line", "solid-motionone")>]
+    type line() =
+        inherit Svg.line()
+        interface MotionTagAttributes    
+    [<Import("Motion.linearGradient", "solid-motionone")>]
+    type linearGradient() =
+        inherit Svg.linearGradient()
+        interface MotionTagAttributes    
+    [<Import("Motion.marker", "solid-motionone")>]
+    type marker() =
+        inherit Svg.marker()
+        interface MotionTagAttributes    
+    [<Import("Motion.mask", "solid-motionone")>]
+    type mask() =
+        inherit Svg.mask()
+        interface MotionTagAttributes    
+    [<Import("Motion.metadata", "solid-motionone")>]
+    type metadata() =
+        inherit Svg.metadata()
+        interface MotionTagAttributes    
+    [<Import("Motion.mpath", "solid-motionone")>]
+    type mpath() =
+        inherit Svg.mpath()
+        interface MotionTagAttributes    
+    [<Import("Motion.path", "solid-motionone")>]
+    type path() =
+        inherit Svg.path()
+        interface MotionTagAttributes    
+    [<Import("Motion.pattern", "solid-motionone")>]
+    type pattern() =
+        inherit Svg.pattern()
+        interface MotionTagAttributes    
+    [<Import("Motion.polygon", "solid-motionone")>]
+    type polygon() =
+        inherit Svg.polygon()
+        interface MotionTagAttributes    
+    [<Import("Motion.polyline", "solid-motionone")>]
+    type polyline() =
+        inherit Svg.polyline()
+        interface MotionTagAttributes    
+    [<Import("Motion.radialGradient", "solid-motionone")>]
+    type radialGradient() =
+        inherit Svg.radialGradient()
+        interface MotionTagAttributes    
+    [<Import("Motion.rect", "solid-motionone")>]
+    type rect() =
+        inherit Svg.rect()
+        interface MotionTagAttributes      
+    [<Import("Motion.set", "solid-motionone")>]
+    type set() =
+        inherit Svg.set()
+        interface MotionTagAttributes    
+    [<Import("Motion.stop", "solid-motionone")>]
+    type stop() =
+        inherit Svg.stop()
+        interface MotionTagAttributes    
+    [<Import("Motion.svg", "solid-motionone")>]
+    type svg() =
+        inherit Svg.svg()
+        interface MotionTagAttributes    
+    [<Import("Motion.switch", "solid-motionone")>]
+    type switch() =
+        inherit Svg.switch()
+        interface MotionTagAttributes    
+    [<Import("Motion.symbol", "solid-motionone")>]
+    type symbol() =
+        inherit Svg.symbol()
+        interface MotionTagAttributes    
+    [<Import("Motion.text", "solid-motionone")>]
+    type text() =
+        inherit Svg.text()
+        interface MotionTagAttributes    
+    [<Import("Motion.textPath", "solid-motionone")>]
+    type textPath() =
+        inherit Svg.textPath()
+        interface MotionTagAttributes    
+    [<Import("Motion.tspan", "solid-motionone")>]
+    type tspan() =
+        inherit Svg.tspan()
+        interface MotionTagAttributes    
+    [<Import("Motion.use", "solid-motionone")>]
+    type use'() =
+        inherit Svg.use'()
+        interface MotionTagAttributes    
+    [<Import("Motion.view", "solid-motionone")>]
+    type view() =
+        inherit Svg.view()
+        interface MotionTagAttributes    

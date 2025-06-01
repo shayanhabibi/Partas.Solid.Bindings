@@ -220,7 +220,7 @@ module DatePicker =
     type DatePickerApi = Glutinum.ZagJs.DatePickerApi
     [<Import("DatePicker.Context", datePicker)>]
     type Context() =
-        inherit RegularNode()
+        interface RegularNode
         interface ArkUIContext<DatePickerApi>
         
 [<AutoOpen>]
