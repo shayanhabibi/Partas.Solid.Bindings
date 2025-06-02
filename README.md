@@ -19,7 +19,7 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 | Lucide            | Stable         | 0.2.0     |
 | ModularForms      | Stable-ish     | 0.2.0     |
 | TanStack.Table    | Stable-ish     | 0.2.0     |
-| Solid-MotionOne   | Stable-ish     | 0.2.0     |
+| Solid-MotionOne   | Stable-ish     | 0.2.1     |
 | CVA               | Stable         | 0.1.0     |
 | Cmdk              | Stable         | 0.2.0     |
 | ArkUI             | Partial-Stable | 0.2.0     |

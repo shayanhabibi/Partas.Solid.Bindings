@@ -192,7 +192,7 @@ type MotionTransition =
     ///
     /// <c>[0, 1]</c>
     /// </summary>
-    static member inline offset (value: ResizeArray<float>): IMotionTransition = "offset" ==>! value
+    static member inline offset (value: float array): IMotionTransition = "offset" ==>! value
     /// <summary>
     /// A duration, in seconds, that the animation will be delayed before starting.
     ///
