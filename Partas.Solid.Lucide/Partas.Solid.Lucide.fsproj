@@ -16,12 +16,12 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Lucide</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.2.0</Version>
+        <Version>0.513.0</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
-        <PackageVersion>0.2.0</PackageVersion>
+        <PackageVersion>0.513.0</PackageVersion>
         <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
-            <NpmPackage Name="lucide-solid" Version=">= 0.479.0" />
+            <NpmPackage Name="lucide-solid" Version=">= 0.513.0" />
         </NpmDependencies>
     </PropertyGroup>
 
@@ -37,7 +37,8 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha98" />
+        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha99" />
+        <PackageReference Include="Partas.Solid.FablePlugin" Version="1.0.0" />
     </ItemGroup>
 
 </Project>
