@@ -34,6 +34,8 @@ module Combobox =
         inherit div()
         interface Polymorph
         interface ChildLambdaProvider<ControlState<'T>>
+    [<Erase; Import("Control", Spec.combobox)>]
+    type Control = Control<obj>
     /// <summary>
     /// </summary>
     /// <param name="data-valid">Present when the combobox is valid</param>
@@ -110,6 +112,8 @@ module Combobox =
         interface ChildLambdaProvider<'T[]>
         [<Erase>] member val scrollRef : Accessor<HtmlElement> = jsNative with get,set // v0.13.9
         [<Erase>] member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
+    [<Erase; Import("Listbox", Spec.combobox)>]
+    type Listbox = Listbox<obj>
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -118,6 +122,8 @@ module Combobox =
         inherit li()
         interface Polymorph
         [<Erase>] member val item : 'Value = jsNative with get,set
+    [<Erase; Import("Item", Spec.combobox)>]
+    type Item = Item<obj>
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -262,6 +268,8 @@ type Combobox<'Value>() =
     [<Erase>] member val detachedPadding : int = jsNative with get,set // v0.13.9
     [<Erase>] member val arrowPadding : int = jsNative with get,set // v0.13.9
     [<Erase>] member val overflowPadding : int = jsNative with get,set // v0.13.9
+[<Erase; Import("Root", Spec.combobox)>]
+type Combobox = Combobox<obj>
 
 [<AutoOpen; Erase>]
 module ComboboxContext =

@@ -57,7 +57,7 @@ type Select<'T>() =
     member val detachedPadding : int = jsNative with get,set
     member val arrowPadding : int = jsNative with get,set
     member val overflowPadding : int = jsNative with get,set
-
+type Select = Select<obj>
 [<RequireQualifiedAccess; Erase>]
 module Select =
     [<Interface; Erase>]
@@ -79,6 +79,7 @@ module Select =
         member val selectedOptions : 'T[] Accessor = jsNative with get,set
         member val remove : 'T -> unit = jsNative with get,set
         member val clear : unit -> unit = jsNative with get,set
+    type Value = Value<obj>
     [<Erase; Import("Icon", Spec.select)>]
     type Icon() =
         inherit div()
@@ -105,11 +106,11 @@ module Select =
         member val scrollToItem : string -> unit = jsNative with get,set
         member val children : obj[] -> HtmlElement = jsNative with get,set
     [<Erase; Import("Item", Spec.select)>]
-    type Item'<'T>() =
+    type Item<'T>() =
         inherit div()
         interface Polymorph
         member val item : 'T = jsNative with get,set
-    type Item = Item'<obj>
+    type Item = Item<obj>
     [<Erase; Import("ItemIndicator", Spec.select)>]
     type ItemIndicator() =
         inherit div()

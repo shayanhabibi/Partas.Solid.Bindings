@@ -16,9 +16,9 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ApexCharts</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
-        <PackageVersion>0.2.0</PackageVersion>
+        <PackageVersion>0.2.1</PackageVersion>
         <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
             <NpmPackage Name="solid-apexcharts" Version=">= 0.4.0" />
@@ -38,7 +38,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Partas.Solid" Version="1.0.0-alpha99" />
+        <PackageReference Include="Partas.Solid" Version="1.0.0" />
         <PackageReference Include="Partas.Solid.FablePlugin" Version="1.0.0" />
     </ItemGroup>
 
