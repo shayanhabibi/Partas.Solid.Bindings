@@ -20,3 +20,15 @@ module Image =
     type Img() =
         inherit img()
         interface Polymorph
+
+[<Erase; AutoOpen>]
+module ImageContext =
+    [<AllowNullLiteral>]
+    [<Interface>]
+    type ImageContext =
+        abstract member fallbackDelay: Accessor<float option> with get, set
+        abstract member imageLoadingStatus: Accessor<LoadingStatus> with get, set
+        abstract member onImageLoadingStatusChange: (LoadingStatus -> unit) with get, set
+    
+    [<ImportMember(Spec.image)>]
+    let useImageContext (): ImageContext = jsNative

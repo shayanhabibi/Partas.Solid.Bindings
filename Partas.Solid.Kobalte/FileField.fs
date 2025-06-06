@@ -2,7 +2,18 @@
 
 open Partas.Solid
 open Fable.Core
+open Browser.Types
 
+[<AllowNullLiteral>]
+[<Interface>]
+type FileRejection =
+    abstract member file: File with get
+    abstract member errors: FileError[] with get
+[<AllowNullLiteral>]
+[<Interface>]
+type Details =
+    abstract member acceptedFiles: File array with get
+    abstract member rejectedFiles: FileRejection array with get
 
 [<Erase; Import("Root", Spec.fileField)>]
 type FileField() =
@@ -10,15 +21,40 @@ type FileField() =
     interface Polymorph
     member val multiple : bool = jsNative with get,set
     member val maxFiles : int = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
     member val accept : U2<string, string[]> = jsNative with get,set
     member val allowDragAndDrop : bool = jsNative with get,set
     member val maxFileSize : int = jsNative with get,set
     member val minFileSize : int = jsNative with get,set
-    member val onFileAccept : obj[] -> unit = jsNative with get,set
-    member val onFileReject : obj[] -> unit = jsNative with get,set
-    member val onFileChange : obj -> unit = jsNative with get,set
-    member val validateFile : obj -> obj[] = jsNative with get,set
+    member val onFileAccept : File[] -> unit = jsNative with get,set
+    member val onFileReject : FileRejection[] -> unit = jsNative with get,set
+    member val onFileChange : Details -> unit = jsNative with get,set
+    member val validateFile : File -> FileError[] option = jsNative with get,set
+    /// <summary>
+    /// The name of the select.
+    /// Submitted with its owning form as part of a name/value pair.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable name: string
+    /// <summary>
+    /// Whether the select should display its "valid" or "invalid" visual styling.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable validationState: ValidationState
+    /// <summary>
+    /// Whether the user must select an item before the owning form can be submitted.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable required: bool
+    /// <summary>
+    /// Whether the select is disabled.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable disabled: bool
+    /// <summary>
+    /// Whether the select is read only.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable readOnly: bool
 
 [<Erase; RequireQualifiedAccess>]
 module FileField =
@@ -26,7 +62,7 @@ module FileField =
     type Item() =
         inherit div()
         interface Polymorph
-        member val file : obj = jsNative with get,set
+        member val file : File = jsNative with get,set
     [<Erase; Import("ItemSize", Spec.fileField)>]
     type ItemSize() =
         interface VoidNode
@@ -55,8 +91,9 @@ module FileField =
         interface Polymorph
     [<Erase; Import("ItemList", Spec.fileField)>]
     type ItemList() =
-        inherit div()
+        inherit ul()
         interface Polymorph
+        interface ChildLambdaProvider<File>
     [<Erase; Import("ItemPreviewImage", Spec.fileField)>]
     type ItemPreviewImage() =
         inherit img()
@@ -79,3 +116,24 @@ module FileField =
         interface Polymorph
         member val forceMount : bool = jsNative with get,set
 
+[<Erase; AutoOpen>]
+module FileFieldContext =
+    [<AllowNullLiteral>]
+    [<Interface>]
+    type FileFieldContext =
+        abstract member inputId: Accessor<string> with get
+        abstract member fileInputRef: Accessor<HTMLInputElement option> with get
+        abstract member setFileInputRef: Setter<HTMLInputElement option> with get
+        abstract member dropzoneRef: Accessor<HTMLElement option> with get
+        abstract member setDropzoneRef: Setter<HTMLElement option> with get
+        abstract member disabled: Accessor<bool option> with get
+        abstract member multiple: Accessor<bool option> with get
+        abstract member accept: Accessor<string option> with get
+        abstract member allowDragAndDrop: Accessor<bool option> with get
+        abstract member processFiles: (ResizeArray<File> -> unit) with get
+        abstract member acceptedFiles: ResizeArray<File> with get
+        abstract member rejectedFiles: ResizeArray<FileRejection> with get
+        abstract member removeFile: (File -> unit) with get
+    
+    [<ImportMember(Spec.fileField)>]
+    let useFileFieldContext(): FileFieldContext = jsNative

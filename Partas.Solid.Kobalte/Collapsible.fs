@@ -11,11 +11,33 @@ open Fable.Core
 type Collapsible() =
     inherit div()
     interface Polymorph
-    member val open' : bool = jsNative with get,set // v0.13.9
-    member val defaultOpen : bool = jsNative with get,set // v0.13.9
-    member val onOpenChange : bool -> unit = jsNative with get,set // v0.13.9
-    member val disabled : bool = jsNative with get,set // v0.13.9
-    member val forceMount : bool = jsNative with get,set // v0.13.9
+    /// <summary>
+    /// The controlled open state of the collapsible.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable open': bool
+    /// <summary>
+    /// The default open state when initially rendered.
+    /// Useful when you do not need to control the open state.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable defaultOpen: bool
+    /// <summary>
+    /// Event handler called when the open state of the collapsible changes.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable onOpenChange: (bool -> unit)
+    /// <summary>
+    /// Whether the collapsible is disabled.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable disabled: bool
+    /// <summary>
+    /// Used to force mounting the collapsible content when more control is needed.
+    /// Useful when controlling animation with SolidJS animation libraries.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable forceMount: bool
 
 [<RequireQualifiedAccess; Erase>]
 module Collapsible =

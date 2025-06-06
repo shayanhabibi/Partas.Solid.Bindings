@@ -1,6 +1,8 @@
 ﻿namespace Partas.Solid.Kobalte
 
 open Fable.Core
+open Partas.Solid
+open Partas.Solid.Experimental.U
 
 // ================================================== Interfaces
 [<JS.Pojo>]
@@ -177,4 +179,149 @@ type Color =
     /// Returns a localized name for the hue, for use in visual or accessibility labels.
     /// </summary>
     abstract member getHueName: translations: obj -> string
+[<AllowNullLiteral>]
+[<Interface>]
+type SelectionManager =
+    abstract member selectionMode: unit -> SelectionMode
+    abstract member disallowEmptySelection: unit -> bool
+    abstract member selectionBehavior: unit -> SelectionBehavior
+    abstract member setSelectionBehavior: selectionBehavior: SelectionBehavior -> unit
+    abstract member isFocused: unit -> bool
+    abstract member setFocused: isFocused: bool -> unit
+    abstract member focusedKey: unit -> string option
+    abstract member setFocusedKey: ?key: string -> unit
+    abstract member selectedKeys: unit -> Set<string>
+    abstract member isSelected: key: string -> bool
+    abstract member isEmpty: unit -> bool
+    abstract member isSelectAll: unit -> bool
+    abstract member firstSelectedKey: unit -> string option
+    abstract member lastSelectedKey: unit -> string option
+    abstract member extendSelection: toKey: string -> unit
+    abstract member toggleSelection: key: string -> unit
+    abstract member replaceSelection: key: string -> unit
+    abstract member setSelectedKeys: keys: System.Collections.Generic.IEnumerable<string> -> unit
+    abstract member selectAll: unit -> unit
+    abstract member clearSelection: unit -> unit
+    abstract member toggleSelectAll: unit -> unit
+    abstract member select: key: string * ?e: Browser.Types.PointerEvent -> unit
+    abstract member isSelectionEqual: selection: Set<string> -> bool
+    abstract member canSelectItem: key: string -> bool
+    abstract member isDisabled: key: string -> bool
 
+[<AllowNullLiteral>]
+[<Interface>]
+type Collection<'T> =
+    inherit System.Collections.Generic.IEnumerable<'T>
+    /// <summary>
+    /// The number of items in the collection.
+    /// </summary>
+    abstract member getSize: (unit -> float) with get, set
+    /// <summary>
+    /// Iterate over all keys in the collection.
+    /// </summary>
+    abstract member getKeys: (unit -> System.Collections.Generic.IEnumerable<string>) with get, set
+    /// <summary>
+    /// Get an item by its key.
+    /// </summary>
+    abstract member getItem: (string -> 'T option) with get, set
+    /// <summary>
+    /// Get an item by the index of its key.
+    /// </summary>
+    abstract member at: (float -> 'T option) with get, set
+    /// <summary>
+    /// Get the key that comes before the given key in the collection.
+    /// </summary>
+    abstract member getKeyBefore: (string -> string option) with get, set
+    /// <summary>
+    /// Get the key that comes after the given key in the collection.
+    /// </summary>
+    abstract member getKeyAfter: (string -> string option) with get, set
+    /// <summary>
+    /// Get the first key in the collection.
+    /// </summary>
+    abstract member getFirstKey: (unit -> string option) with get, set
+    /// <summary>
+    /// Get the last key in the collection.
+    /// </summary>
+    abstract member getLastKey: (unit -> string option) with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type ListState<'Value> =
+    /// <summary>
+    /// A collection of items in the list.
+    /// </summary>
+    abstract member collection: Accessor<Collection<CollectionNode<'Value>>> with get, set
+    /// <summary>
+    /// A selection manager to read and update multiple selection state.
+    /// </summary>
+    abstract member selectionManager: Accessor<SelectionManager> with get, set
+
+[<Erase>]
+module KeyboardDelegate =
+
+    type getFirstKey =
+        delegate of ?key: string * ?``global``: bool -> string option
+
+    type getLastKey =
+        delegate of ?key: string * ?``global``: bool -> string option
+
+    type getKeyForSearch =
+        delegate of search: string * ?fromKey: string -> string option
+
+
+[<AllowNullLiteral>]
+[<Interface>]
+type KeyboardDelegate =
+    /// <summary>
+    /// Returns the key visually below the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyBelow: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the key visually above the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyAbove: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the key visually to the left of the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyLeftOf: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the key visually to the right of the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyRightOf: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the key visually one page below the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyPageBelow: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the key visually one page above the given one, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyPageAbove: (string -> string option) option with get, set
+    /// <summary>
+    /// Returns the first key, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getFirstKey: KeyboardDelegate.getFirstKey option with get, set
+    /// <summary>
+    /// Returns the last key, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getLastKey: KeyboardDelegate.getLastKey option with get, set
+    /// <summary>
+    /// Returns the next key after <c>fromKey</c> that matches the given search string, or <c>undefined</c> for none.
+    /// </summary>
+    abstract member getKeyForSearch: KeyboardDelegate.getKeyForSearch option with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type EventDetails<'T> =
+    abstract member originalEvent: 'T with get, set
+    abstract member isContextMenu: bool with get, set
+
+[<AllowNullLiteral>]
+[<Interface>]
+type FormControlDataSet =
+    abstract member ``data-valid``: string option with get, set
+    abstract member ``data-invalid``: string option with get, set
+    abstract member ``data-required``: string option with get, set
+    abstract member ``data-disabled``: string option with get, set
+    abstract member ``data-readonly``: string option with get, set
+    

@@ -72,6 +72,13 @@ module Enums =
         | Toggle
         | Replace
     
+    [<RequireQualifiedAccess>]
+    [<StringEnum>]
+    type SelectionMode =
+        | None
+        | Single
+        | Multiple
+    
     [<StringEnum; RequireQualifiedAccess>]
     type LoadingStatus =
         | Idle
@@ -110,7 +117,14 @@ module Enums =
     type ColorFormat =
         | Hex | Hexa | Rgb | Rgba
         | Hsl | Hsla | Hsb | Hsba
-    
+ 
+    [<RequireQualifiedAccess>]
+    [<StringEnum(CaseRules.SnakeCaseAllCaps)>]
+    type FileError =
+        | TooManyFiles
+        | FileInvalidType
+        | FileTooLarge
+        | FileTooSmall   
     
     /// <summary>
     /// Values for the <c>defaultFilter</c> prop of the Combobox
