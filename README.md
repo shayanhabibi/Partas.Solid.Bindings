@@ -15,7 +15,7 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 
 | **Library**       | **Status**     | **NuGet** |
 |-------------------|----------------|-----------|
-| Kobalte           | Stable         | 0.2.1     |
+| Kobalte           | Stable         | 0.3.0     |
 | Lucide            | Stable         | 0.514.0   |
 | ModularForms      | Stable-ish     | 0.2.0     |
 | TanStack.Table    | Stable-ish     | 0.2.0     |
