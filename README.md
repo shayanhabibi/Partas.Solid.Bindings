@@ -15,8 +15,8 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 
 | **Library**       | **Status**     | **NuGet** |
 |-------------------|----------------|-----------|
-| Kobalte           | Stable         | 0.2.0     |
-| Lucide            | Stable         | 0.2.0     |
+| Kobalte           | Stable         | 0.2.1     |
+| Lucide            | Stable         | 0.514.0   |
 | ModularForms      | Stable-ish     | 0.2.0     |
 | TanStack.Table    | Stable-ish     | 0.2.0     |
 | Solid-MotionOne   | Stable-ish     | 0.2.1     |
@@ -27,6 +27,7 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 | Sonner            | Beta           | 0.2.0     |
 | ApexCharts        | Beta-ish       | 0.2.0     |
 | NeoDrag           | Alpha          | 0.2.0     |
+| Storybook         | Alpha          | 0.1.2     |
 | ZagJs             | Partial-Alpha  | 0.1.0     |
 | ChartJs           | _Incomplete_   |           |
 | Dnd               | _Incomplete_   |           |

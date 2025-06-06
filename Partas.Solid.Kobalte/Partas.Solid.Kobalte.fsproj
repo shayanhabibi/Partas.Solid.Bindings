@@ -16,10 +16,10 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Kobalte</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
                 <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>0.2.0</PackageVersion>
-                <PackageReleaseNotes>Dependency update</PackageReleaseNotes>
+        <PackageVersion>0.2.1</PackageVersion>
+                <PackageReleaseNotes>Patch breadcrumbs link property from `currrent` to `current`</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@kobalte" Version=">= 0.13.10" />
         </NpmDependencies>

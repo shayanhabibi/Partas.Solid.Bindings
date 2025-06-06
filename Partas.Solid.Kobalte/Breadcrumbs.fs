@@ -21,7 +21,7 @@ module Breadcrumbs =
     type Link() =
         inherit Kobalte.Link()
         interface Polymorph
-        member val currrent : bool = jsNative with get,set //v0.13.9
+        member val current : bool = jsNative with get,set //v0.13.9
         member val disabled : bool = jsNative with get,set //v0.13.9
     [<Erase; Import("Separator", Spec.breadcrumbs)>]
     type Separator() = //v0.13.9
