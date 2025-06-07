@@ -31,7 +31,7 @@ module Combobox =
     /// <param name="data-readonly">Present when the combobox is readonly</param>
     [<Erase; Import("Control", Spec.combobox)>]
     type Control<'T>() = // v0.13.9
-        inherit div()
+        interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<ControlState<'T>>
     [<Erase; Import("Control", Spec.combobox)>]
@@ -109,11 +109,19 @@ module Combobox =
     type Listbox<'T>() = // v0.13.9
         inherit div()
         interface Polymorph
+        [<Erase>] member val scrollRef : Accessor<HtmlElement> = jsNative with get,set // v0.13.9
+        [<Erase>] member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
+    [<Erase; Import("Listbox", Spec.combobox)>]
+    type ListboxVirtualiser<'T>() =
+        interface HtmlTag
+        interface Polymorph
         interface ChildLambdaProvider<'T[]>
         [<Erase>] member val scrollRef : Accessor<HtmlElement> = jsNative with get,set // v0.13.9
         [<Erase>] member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox = Listbox<obj>
+    [<Erase; Import("Listbox", Spec.combobox)>]
+    type ListboxVirtualiser = ListboxVirtualiser<obj>
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>

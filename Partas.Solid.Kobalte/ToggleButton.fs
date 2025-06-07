@@ -9,7 +9,7 @@ type ToggleButtonState =
 
 [<Erase; Import("Root", Spec.toggleButton)>]
 type ToggleButton() =
-    inherit button()
+    interface HtmlTag
     interface Polymorph
     interface ChildLambdaProvider<ToggleButtonState>
     member val pressed : bool = jsNative with get,set

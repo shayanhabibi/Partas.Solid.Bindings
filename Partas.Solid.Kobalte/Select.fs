@@ -72,7 +72,7 @@ module Select =
         interface Polymorph
     [<Erase; Import("Value", Spec.select)>]
     type Value<'T>() =
-        inherit div()
+        interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<ValueState<'T>>
         member val selectedOption : 'T Accessor = jsNative with get,set

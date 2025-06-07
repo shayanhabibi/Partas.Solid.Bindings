@@ -91,7 +91,7 @@ module FileField =
         interface Polymorph
     [<Erase; Import("ItemList", Spec.fileField)>]
     type ItemList() =
-        inherit ul()
+        interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<File>
     [<Erase; Import("ItemPreviewImage", Spec.fileField)>]

@@ -20,7 +20,7 @@ type CheckboxRenderProp =
 /// <param name="data-indeterminate">Present when the checkbox is indeterminate</param>
 [<Erase; Import("Root", Spec.checkbox)>]
 type Checkbox() =
-    inherit div()
+    interface HtmlTag
     interface Polymorph
     interface ChildLambdaProvider<CheckboxRenderProp>
     member val checked' : bool = jsNative with get,set //v0.13.9
