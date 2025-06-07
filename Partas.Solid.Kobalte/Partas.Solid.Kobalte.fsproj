@@ -16,12 +16,12 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Kobalte</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.3.2</Version>
+        <Version>0.3.4</Version>
                 <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>0.3.2</PackageVersion>
-                <PackageReleaseNotes>REFACTOR: Remove chance of conflicting signatures with ChildLambdaProviders and ContainerFuns</PackageReleaseNotes>
+        <PackageVersion>0.3.4</PackageVersion>
+                <PackageReleaseNotes>BUGFIX: Kobalte examples point to the wrong package source for color utilities. see https://github.com/kobaltedev/kobalte/issues/586</PackageReleaseNotes>
         <NpmDependencies>
-            <NpmPackage Name="@kobalte" Version=">= 0.13.10" />
+            <NpmPackage Name="@kobalte/core" Version=">= 0.13.10" />
         </NpmDependencies>
     </PropertyGroup>
 

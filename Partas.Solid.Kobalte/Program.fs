@@ -100,21 +100,31 @@ type Color =
     /// <summary>
     /// Parses a color from a string value. Throws an error if the string could not be parsed.
     /// </summary>
-    [<Import("parseColor", "@kobalte/utils")>]
+    // BUG: Despite documentation and examples on site, the path to these color utilities is not in @kobalte/utils
+    // https://github.com/kobaltedev/kobalte/issues/586
+    [<Import("parseColor", "@kobalte/core/colors")>]
     static member parseColor(value: string): Color = jsNative
-    [<Import("normalizeColor", "@kobalte/utils")>]
+    // BUG: Despite documentation and examples on site, the path to these color utilities is not in @kobalte/utils
+    // https://github.com/kobaltedev/kobalte/issues/586
+    [<Import("normalizeColor", "@kobalte/core/colors")>]
     static member normalizeColor(value: string): Color = jsNative
-    [<Import("normalizeColor", "@kobalte/utils")>]
+    // BUG: Despite documentation and examples on site, the path to these color utilities is not in @kobalte/utils
+    // https://github.com/kobaltedev/kobalte/issues/586
+    [<Import("normalizeColor", "@kobalte/core/colors")>]
     static member normalizeColor(value: Color): Color = jsNative
     /// <summary>
     /// Returns a list of color channels for a given color space.
     /// </summary>
-    [<Import("getColorChannels", "@kobalte/utils")>]
+    // BUG: Despite documentation and examples on site, the path to these color utilities is not in @kobalte/utils
+    // https://github.com/kobaltedev/kobalte/issues/586
+    [<Import("getColorChannels", "@kobalte/core/colors")>]
     static member getColorChannels(colorSpace: ColorSpace): ColorChannel * ColorChannel * ColorChannel = jsNative
     /// <summary>
     /// Returns the hue value normalized to the range of 0 to 360.
     /// </summary>
-    [<Import("normalizeHue", "@kobalte/utils")>]
+    // BUG: Despite documentation and examples on site, the path to these color utilities is not in @kobalte/utils
+    // https://github.com/kobaltedev/kobalte/issues/586
+    [<Import("normalizeHue", "@kobalte/core/colors")>]
     static member normalizeHue(value: int): Color = jsNative
     /// <summary>
     /// Converts the color to the given color format, and returns a new Color object.
