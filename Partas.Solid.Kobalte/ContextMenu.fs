@@ -7,24 +7,24 @@ open Fable.Core
 type ContextMenu() =
     interface RegularNode
     interface Polymorph
-    member val onOpenChange : bool -> unit = jsNative with get,set // v0.13.9
-    member val id : string = jsNative with get,set // v0.13.9
-    member val modal : bool = jsNative with get,set // v0.13.9
-    member val preventScroll : bool = jsNative with get,set // v0.13.9
-    member val forceMount : bool = jsNative with get,set // v0.13.9
+    [<DefaultValue>] val mutable onOpenChange : bool -> unit  // v0.13.9
+    [<DefaultValue>] val mutable id : string  // v0.13.9
+    [<DefaultValue>] val mutable modal : bool  // v0.13.9
+    [<DefaultValue>] val mutable preventScroll : bool  // v0.13.9
+    [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
 
-    member val placement : KobaltePlacement = jsNative with get,set // v0.13.9
-    member val gutter : int = jsNative with get,set // v0.13.9
-    member val shift : int = jsNative with get,set // v0.13.9
-    member val flip : bool = jsNative with get,set // v0.13.9
-    member val slide : bool = jsNative with get,set // v0.13.9
-    member val overlap : bool = jsNative with get,set // v0.13.9
-    member val sameWidth : bool = jsNative with get,set // v0.13.9
-    member val fitViewport : bool = jsNative with get,set // v0.13.9
-    member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
-    member val detachedPadding : int = jsNative with get,set // v0.13.9
-    member val arrowPadding : int = jsNative with get,set // v0.13.9
-    member val overflowPadding : int = jsNative with get,set // v0.13.9
+    [<DefaultValue>] val mutable placement : KobaltePlacement  // v0.13.9
+    [<DefaultValue>] val mutable gutter : int  // v0.13.9
+    [<DefaultValue>] val mutable shift : int  // v0.13.9
+    [<DefaultValue>] val mutable flip : bool  // v0.13.9
+    [<DefaultValue>] val mutable slide : bool  // v0.13.9
+    [<DefaultValue>] val mutable overlap : bool  // v0.13.9
+    [<DefaultValue>] val mutable sameWidth : bool  // v0.13.9
+    [<DefaultValue>] val mutable fitViewport : bool  // v0.13.9
+    [<DefaultValue>] val mutable hideWhenDetached : bool  // v0.13.9
+    [<DefaultValue>] val mutable detachedPadding : int  // v0.13.9
+    [<DefaultValue>] val mutable arrowPadding : int  // v0.13.9
+    [<DefaultValue>] val mutable overflowPadding : int  // v0.13.9
 
 [<RequireQualifiedAccess; Erase>]
 module ContextMenu =
@@ -35,48 +35,48 @@ module ContextMenu =
     type Trigger() = // v0.13.9
         inherit Button()
         interface Polymorph
-        member val disabled : bool = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
     /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase ; Import("Content", Spec.contextMenu)>]
     type Content() =
         inherit div()
         interface Polymorph
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set // v0.13.9
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set // v0.13.9
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set // v0.13.9
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit  // v0.13.9
     [<Erase ; Import("Arrow", Spec.contextMenu)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        member val size : int = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable size : int  // v0.13.9
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase ; Import("Item", Spec.contextMenu)>]    
     type Item() =
         inherit div()
         interface Polymorph
-        member val textValue : string = jsNative with get,set // v0.13.9
-        member val disabled : bool = jsNative with get,set // v0.13.9
-        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
-        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable textValue : string  // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
+        [<DefaultValue>] val mutable closeOnSelect : bool  // v0.13.9
+        [<DefaultValue>] val mutable onSelect : unit -> unit  // v0.13.9
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
     [<Erase; Import("ItemIndicator", Spec.contextMenu)>]
     type ItemIndicator() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
     [<Erase; Import("RadioGroup", Spec.contextMenu)>]
     type RadioGroup() =
         inherit div()
         interface Polymorph
-        member val value : string = jsNative with get,set // v0.13.9
-        member val defaultValue : string = jsNative with get,set // v0.13.9
-        member val onChange : string -> unit = jsNative with get,set // v0.13.9
-        member val disabled : bool = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable value : string  // v0.13.9
+        [<DefaultValue>] val mutable defaultValue : string  // v0.13.9
+        [<DefaultValue>] val mutable onChange : string -> unit  // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-checked">Present when the item is checked</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -84,11 +84,11 @@ module ContextMenu =
     type RadioItem() =
         inherit div()
         interface Polymorph
-        member val value : string = jsNative with get,set // v0.13.9
-        member val textValue : string = jsNative with get,set // v0.13.9
-        member val disabled : bool = jsNative with get,set // v0.13.9
-        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
-        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable value : string  // v0.13.9
+        [<DefaultValue>] val mutable textValue : string  // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
+        [<DefaultValue>] val mutable closeOnSelect : bool  // v0.13.9
+        [<DefaultValue>] val mutable onSelect : unit -> unit  // v0.13.9
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-indeterminate">Present when the item is indeterminate</param>
     /// <param name="data-checked">Present when the item is checked</param>
@@ -97,48 +97,48 @@ module ContextMenu =
     type CheckboxItem() =
         inherit div()
         interface Polymorph
-        member val checked' : bool = jsNative with get,set // v0.13.9
-        member val defaultChecked : bool = jsNative with get,set // v0.13.9
-        member val onChange : bool -> unit = jsNative with get,set // v0.13.9
-        member val textValue : string = jsNative with get,set // v0.13.9
-        member val indeterminate : bool = jsNative with get,set // v0.13.9
-        member val disabled : bool = jsNative with get,set // v0.13.9
-        member val closeOnSelect : bool = jsNative with get,set // v0.13.9
-        member val onSelect : unit -> unit = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable checked' : bool  // v0.13.9
+        [<DefaultValue>] val mutable defaultChecked : bool  // v0.13.9
+        [<DefaultValue>] val mutable onChange : bool -> unit  // v0.13.9
+        [<DefaultValue>] val mutable textValue : string  // v0.13.9
+        [<DefaultValue>] val mutable indeterminate : bool  // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
+        [<DefaultValue>] val mutable closeOnSelect : bool  // v0.13.9
+        [<DefaultValue>] val mutable onSelect : unit -> unit  // v0.13.9
     [<Erase; Import("Sub", Spec.contextMenu)>]
     type Sub() =
         inherit div()
         interface Polymorph
-        member val open' : bool = jsNative with get,set // v0.13.9
-        member val defaultOpen : bool = jsNative with get,set // v0.13.9
-        member val onOpenChange : (bool -> unit) = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable open' : bool  // v0.13.9
+        [<DefaultValue>] val mutable defaultOpen : bool  // v0.13.9
+        [<DefaultValue>] val mutable onOpenChange : (bool -> unit)  // v0.13.9
 
-        member val getAnchorRect : HtmlElement -> obj = jsNative with get,set // v0.13.9
-        member val gutter : int = jsNative with get,set // v0.13.9
-        member val shift : int = jsNative with get,set // v0.13.9
-        member val slide : bool = jsNative with get,set // v0.13.9
-        member val overlap : bool = jsNative with get,set // v0.13.9
-        member val fitViewport : bool = jsNative with get,set // v0.13.9
-        member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
-        member val detachedPadding : int = jsNative with get,set // v0.13.9
-        member val arrowPadding : int = jsNative with get,set // v0.13.9
-        member val overflowPadding : int = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj  // v0.13.9
+        [<DefaultValue>] val mutable gutter : int  // v0.13.9
+        [<DefaultValue>] val mutable shift : int  // v0.13.9
+        [<DefaultValue>] val mutable slide : bool  // v0.13.9
+        [<DefaultValue>] val mutable overlap : bool  // v0.13.9
+        [<DefaultValue>] val mutable fitViewport : bool  // v0.13.9
+        [<DefaultValue>] val mutable hideWhenDetached : bool  // v0.13.9
+        [<DefaultValue>] val mutable detachedPadding : int  // v0.13.9
+        [<DefaultValue>] val mutable arrowPadding : int  // v0.13.9
+        [<DefaultValue>] val mutable overflowPadding : int  // v0.13.9
     /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("SubTrigger", Spec.contextMenu)>]
     type SubTrigger() =
         inherit Button()
         interface Polymorph
-        member val textValue : string = jsNative with get,set // v0.13.9
-        member val disabled : bool = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable textValue : string  // v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  // v0.13.9
     /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("SubContent", Spec.contextMenu)>]
     type SubContent() =
         inherit div()
         interface Polymorph
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set // v0.13.9
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set // v0.13.9
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set // v0.13.9
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set // v0.13.9
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit  // v0.13.9
+        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit  // v0.13.9
     /// <param name="data-expanded">Present when the trigger is expanded</param>
     [<Erase; Import("Icon", Spec.contextMenu)>]
     type Icon() =

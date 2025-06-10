@@ -9,30 +9,30 @@ open Browser.Types
 type Tooltip() =
     inherit div()
     interface Polymorph
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : (bool -> unit) = jsNative with get,set
-    member val triggerOnFocusOnly : bool = jsNative with get,set
-    member val openDelay : int = jsNative with get,set
-    member val skipDelayDuration : bool = jsNative with get,set
-    member val closeDelay : int = jsNative with get,set
-    member val ignoreSafeArea : bool = jsNative with get,set
-    member val id : string = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
+    [<DefaultValue>] val mutable open' : bool 
+    [<DefaultValue>] val mutable defaultOpen : bool 
+    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
+    [<DefaultValue>] val mutable triggerOnFocusOnly : bool 
+    [<DefaultValue>] val mutable openDelay : int 
+    [<DefaultValue>] val mutable skipDelayDuration : bool 
+    [<DefaultValue>] val mutable closeDelay : int 
+    [<DefaultValue>] val mutable ignoreSafeArea : bool 
+    [<DefaultValue>] val mutable id : string 
+    [<DefaultValue>] val mutable forceMount : bool 
 
-    member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-    member val placement : KobaltePlacement = jsNative with get,set
-    member val gutter : int = jsNative with get,set
-    member val shift : int = jsNative with get,set
-    member val flip : bool = jsNative with get,set
-    member val slide : bool = jsNative with get,set
-    member val overlap : bool = jsNative with get,set
-    member val sameWidth : bool = jsNative with get,set
-    member val fitViewport : bool = jsNative with get,set
-    member val hideWhenDetached : bool = jsNative with get,set
-    member val detachedPadding : int = jsNative with get,set
-    member val arrowPadding : int = jsNative with get,set
-    member val overflowPadding : int = jsNative with get,set
+    [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj 
+    [<DefaultValue>] val mutable placement : KobaltePlacement 
+    [<DefaultValue>] val mutable gutter : int 
+    [<DefaultValue>] val mutable shift : int 
+    [<DefaultValue>] val mutable flip : bool 
+    [<DefaultValue>] val mutable slide : bool 
+    [<DefaultValue>] val mutable overlap : bool 
+    [<DefaultValue>] val mutable sameWidth : bool 
+    [<DefaultValue>] val mutable fitViewport : bool 
+    [<DefaultValue>] val mutable hideWhenDetached : bool 
+    [<DefaultValue>] val mutable detachedPadding : int 
+    [<DefaultValue>] val mutable arrowPadding : int 
+    [<DefaultValue>] val mutable overflowPadding : int 
 
 [<RequireQualifiedAccess; Erase>]
 module Tooltip =
@@ -50,13 +50,13 @@ module Tooltip =
     type Content() =
         inherit div()
         interface Polymorph
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
+        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
     [<Erase; Import("Arrow", Spec.tooltip)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        member val size : int = jsNative with get,set
+        [<DefaultValue>] val mutable size : int 
     [<Erase; Import("Portal", Spec.tooltip)>]
     type Portal() =
         inherit div()

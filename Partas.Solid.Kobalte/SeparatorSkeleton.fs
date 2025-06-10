@@ -8,16 +8,16 @@ open Partas.Solid
 type Separator() =
     inherit hr()
     interface Polymorph
-    member val orientation : Orientation = jsNative with get,set
+    [<DefaultValue>] val mutable orientation : Orientation 
 
 [<Erase; Import("Root", Spec.skeleton)>]
 type Skeleton() =
     inherit div()
     interface Polymorph
-    member val visible : bool = jsNative with get,set
-    member val animate : bool = jsNative with get,set
-    member val width : int = jsNative with get,set
-    member val height : int = jsNative with get,set
-    member val radius : int = jsNative with get,set
-    member val circle : bool = jsNative with get,set
-    member val children : Fragment = jsNative with get,set
+    [<DefaultValue>] val mutable visible : bool 
+    [<DefaultValue>] val mutable animate : bool 
+    [<DefaultValue>] val mutable width : int 
+    [<DefaultValue>] val mutable height : int 
+    [<DefaultValue>] val mutable radius : int 
+    [<DefaultValue>] val mutable circle : bool 
+    [<DefaultValue>] val mutable children : Fragment 

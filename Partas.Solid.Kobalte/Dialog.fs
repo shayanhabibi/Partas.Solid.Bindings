@@ -8,14 +8,14 @@ open Browser.Types
 type Dialog() =
     interface RegularNode
     interface Polymorph
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : (bool -> unit) = jsNative with get,set
-    member val id : string = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
-    member val translations : string = jsNative with get,set
+    [<DefaultValue>] val mutable open' : bool 
+    [<DefaultValue>] val mutable defaultOpen : bool 
+    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
+    [<DefaultValue>] val mutable id : string 
+    [<DefaultValue>] val mutable modal : bool 
+    [<DefaultValue>] val mutable preventScroll : bool 
+    [<DefaultValue>] val mutable forceMount : bool 
+    [<DefaultValue>] val mutable translations : string 
 
 [<RequireQualifiedAccess; Erase>]
 module Dialog =
@@ -27,12 +27,12 @@ module Dialog =
     type Content() =
         inherit div()
         interface Polymorph
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onEscapeKeyDown : KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : PointerEvent -> unit = jsNative with get,set
-        member val onFocusOutside : FocusEvent -> unit = jsNative with get,set
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit 
+        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit 
+        [<DefaultValue>] val mutable onEscapeKeyDown : KeyboardEvent -> unit 
+        [<DefaultValue>] val mutable onPointerDownOutside : PointerEvent -> unit 
+        [<DefaultValue>] val mutable onFocusOutside : FocusEvent -> unit 
+        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
     [<Erase; Import("Overlay", Spec.dialog)>]
     type Overlay() =
         inherit div()

@@ -11,20 +11,16 @@ open Partas.Solid.Experimental.U
 type SolidApexCharts() =
     interface VoidNode
 
-    [<Erase>]
-    member val type': ApexChartType = jsNative with get, set
-
-    [<Erase>]
-    member val options: ApexCharts.Options = jsNative with get, set
-
-    [<Erase>]
-    member val series: U3<AxisChartSeries, float array, AxisChartSeries array> = jsNative with get, set
-
-    [<Erase>]
-    member val width: U2<int, string> = jsNative with get, set
-
-    [<Erase>]
-    member val height: U2<int, string> = jsNative with get, set
+    [<DefaultValue>]
+    val mutable type': ApexChartType
+    [<DefaultValue>]
+    val mutable options: ApexCharts.Options
+    [<DefaultValue>]
+    val mutable series: U3<AxisChartSeries, float array, AxisChartSeries array>
+    [<DefaultValue>]
+    val mutable width: U2<int, string>
+    [<DefaultValue>]
+    val mutable height: U2<int, string>
 
     [<Erase>]
     member _.onAnimationEnd

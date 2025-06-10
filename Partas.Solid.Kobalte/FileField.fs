@@ -19,16 +19,16 @@ type Details =
 type FileField() =
     inherit div()
     interface Polymorph
-    member val multiple : bool = jsNative with get,set
-    member val maxFiles : int = jsNative with get,set
-    member val accept : U2<string, string[]> = jsNative with get,set
-    member val allowDragAndDrop : bool = jsNative with get,set
-    member val maxFileSize : int = jsNative with get,set
-    member val minFileSize : int = jsNative with get,set
-    member val onFileAccept : File[] -> unit = jsNative with get,set
-    member val onFileReject : FileRejection[] -> unit = jsNative with get,set
-    member val onFileChange : Details -> unit = jsNative with get,set
-    member val validateFile : File -> FileError[] option = jsNative with get,set
+    [<DefaultValue>] val mutable multiple : bool 
+    [<DefaultValue>] val mutable maxFiles : int 
+    [<DefaultValue>] val mutable accept : U2<string, string[]> 
+    [<DefaultValue>] val mutable allowDragAndDrop : bool 
+    [<DefaultValue>] val mutable maxFileSize : int 
+    [<DefaultValue>] val mutable minFileSize : int 
+    [<DefaultValue>] val mutable onFileAccept : File[] -> unit 
+    [<DefaultValue>] val mutable onFileReject : FileRejection[] -> unit 
+    [<DefaultValue>] val mutable onFileChange : Details -> unit 
+    [<DefaultValue>] val mutable validateFile : File -> FileError[] option 
     /// <summary>
     /// The name of the select.
     /// Submitted with its owning form as part of a name/value pair.
@@ -62,17 +62,17 @@ module FileField =
     type Item() =
         inherit div()
         interface Polymorph
-        member val file : File = jsNative with get,set
+        [<DefaultValue>] val mutable file : File 
     [<Erase; Import("ItemSize", Spec.fileField)>]
     type ItemSize() =
         interface VoidNode
         interface Polymorph
-        member val precision : int = jsNative with get,set
+        [<DefaultValue>] val mutable precision : int 
     [<Erase; Import("ItemPreview", Spec.fileField)>]
     type ItemPreview() =
         interface VoidNode
         interface Polymorph
-        member val type' : string = jsNative with get,set
+        [<DefaultValue>] val mutable type' : string 
     [<Erase; Import("Dropzone", Spec.fileField)>]
     type Dropzone() =
         inherit div()
@@ -114,7 +114,7 @@ module FileField =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
 
 [<Erase; AutoOpen>]
 module FileFieldContext =

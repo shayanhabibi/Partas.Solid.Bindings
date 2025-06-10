@@ -71,7 +71,7 @@ module Pagination =
     type Item() =
         inherit Button()
         interface Polymorph
-        member val page : int = jsNative with get,set
+        [<DefaultValue>] val mutable page : int 
     [<Erase; Import("Ellipsis", Spec.pagination)>]
     type Ellipsis() =
         inherit div()

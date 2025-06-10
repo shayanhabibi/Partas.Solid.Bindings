@@ -23,17 +23,17 @@ type Checkbox() =
     interface HtmlTag
     interface Polymorph
     interface ChildLambdaProvider<CheckboxRenderProp>
-    member val checked' : bool = jsNative with get,set //v0.13.9
-    member val defaultChecked : bool = jsNative with get,set //v0.13.9
-    member val onChange : bool -> unit = jsNative with get,set //v0.13.9
-    member val indeterminate : bool = unbox null with get,set //v0.13.9
-    member val name : string = jsNative with get,set //v0.13.9
-    member val value : string = jsNative with get,set //v0.13.9
-    member val validationState : ValidationState = jsNative with get,set //v0.13.9
-    member val required : bool = jsNative with get,set //v0.13.9
-    member val disabled : bool = jsNative with get,set //v0.13.9
-    member val readOnly : bool = jsNative with get,set //v0.13.9
-    member val children : CheckboxRenderProp -> #HtmlElement = jsNative with get,set  //v0.13.9
+    [<DefaultValue>] val mutable checked' : bool  //v0.13.9
+    [<DefaultValue>] val mutable defaultChecked : bool  //v0.13.9
+    [<DefaultValue>] val mutable onChange : bool -> unit  //v0.13.9
+    [<DefaultValue>] val mutable indeterminate : bool //v0.13.9
+    [<DefaultValue>] val mutable name : string  //v0.13.9
+    [<DefaultValue>] val mutable value : string  //v0.13.9
+    [<DefaultValue>] val mutable validationState : ValidationState  //v0.13.9
+    [<DefaultValue>] val mutable required : bool  //v0.13.9
+    [<DefaultValue>] val mutable disabled : bool  //v0.13.9
+    [<DefaultValue>] val mutable readOnly : bool  //v0.13.9
+    [<DefaultValue>] val mutable children : CheckboxRenderProp -> HtmlElement   //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
 module Checkbox = //v0.13.9
@@ -51,7 +51,7 @@ module Checkbox = //v0.13.9
     type Indicator() = //v0.13.9
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set //v0.13.9
+        [<DefaultValue>] val mutable forceMount : bool  //v0.13.9
     /// <summary>
     /// 
     /// </summary>
@@ -66,7 +66,7 @@ module Checkbox = //v0.13.9
     type ErrorMessage() = //v0.13.9
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set //v0.13.9
+        [<DefaultValue>] val mutable forceMount : bool  //v0.13.9
     /// <summary>
     /// 
     /// </summary>

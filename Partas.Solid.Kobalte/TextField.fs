@@ -9,15 +9,15 @@ open Fable.Core
 type TextField() =
     inherit div()
     interface Polymorph
-    member val value : string = jsNative with get,set
-    member val defaultValue : string = jsNative with get,set
-    member val onChange : string -> unit = jsNative with get,set
-    [<Erase>] member val onBlur: Browser.Types.FocusEvent -> unit = JS.undefined with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
+    [<DefaultValue>] val mutable value : string 
+    [<DefaultValue>] val mutable defaultValue : string 
+    [<DefaultValue>] val mutable onChange : string -> unit 
+    [<DefaultValue>] val mutable onBlur: Browser.Types.FocusEvent -> unit
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
 
 [<Erase; RequireQualifiedAccess>]
 module TextField =
@@ -25,13 +25,13 @@ module TextField =
     type TextArea() =
         inherit textarea()
         interface Polymorph
-        member val autoResize : bool = jsNative with get,set
-        member val submitOnEnter : bool = jsNative with get,set
+        [<DefaultValue>] val mutable autoResize : bool 
+        [<DefaultValue>] val mutable submitOnEnter : bool 
     [<Erase; Import("ErrorMessage", Spec.textField)>]
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Label", Spec.textField)>]
     type Label() =
         inherit label()

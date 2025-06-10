@@ -8,15 +8,15 @@ open Partas.Solid
 type Switch() =
     inherit div()
     interface Polymorph
-    member val checked' : bool = jsNative with get,set
-    member val defaultChecked : bool = jsNative with get,set
-    member val onChange : bool -> unit = jsNative with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
-    member val value : string = jsNative with get,set
+    [<DefaultValue>] val mutable checked' : bool 
+    [<DefaultValue>] val mutable defaultChecked : bool 
+    [<DefaultValue>] val mutable onChange : bool -> unit 
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
+    [<DefaultValue>] val mutable value : string 
     
     member inline this.Checked : unit -> bool = fun _ -> this.checked'
 
@@ -46,7 +46,7 @@ module Switch =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Thumb", Spec.switch)>]
     type Thumb() =
         inherit div()

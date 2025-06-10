@@ -11,23 +11,23 @@ type ColorChannelField() =
     /// <summary>
     /// The controlled formatted value of the field.
     /// </summary>
-    [<Erase>] member val value: Color = JS.undefined with get,set
+    [<DefaultValue>] val mutable value: Color
     /// <summary>
     /// The default formatted value when initially rendered.
     /// </summary>
-    [<Erase>] member val defaultValue: Color = JS.undefined with get,set
+    [<DefaultValue>] val mutable defaultValue: Color
     /// <summary>
     /// Event handler called when the value of the field changes.
     /// </summary>
-    [<Erase>] member val onChange: (Color -> unit) = JS.undefined with get,set
+    [<DefaultValue>] val mutable onChange: (Color -> unit)
     /// <summary>
     /// The color channel that the field manipulates.
     /// </summary>
-    [<Erase>] member val channel: ColorChannel = JS.undefined with get,set
+    [<DefaultValue>] val mutable channel: ColorChannel
     /// <summary>
     /// The color space that the field operates in. The <c>channel</c> must be in this color space.
     /// </summary>
-    [<Erase>] member val colorSpace: ColorSpace = JS.undefined with get,set
+    [<DefaultValue>] val mutable colorSpace: ColorSpace
     [<Erase; System.Obsolete("Omitted")>] member val rawValue: unit = ()
     [<Erase; System.Obsolete("Omitted")>] member val onRawValueChange: unit = ()
     [<Erase; System.Obsolete("Omitted")>] member val formatOptions: unit = ()

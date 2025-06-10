@@ -7,8 +7,8 @@ open Partas.Solid
 type Image() =
     interface RegularNode
     interface Polymorph
-    member val fallbackDelay : int = jsNative with get,set
-    member val onLoadingStatusChange : LoadingStatus -> unit = jsNative with get,set
+    [<DefaultValue>] val mutable fallbackDelay : int 
+    [<DefaultValue>] val mutable onLoadingStatusChange : LoadingStatus -> unit 
 
 [<Erase; RequireQualifiedAccess>]
 module Image =

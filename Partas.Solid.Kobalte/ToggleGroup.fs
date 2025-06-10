@@ -52,10 +52,10 @@ module ToggleGroup =
     type Item() =
         inherit div()
         interface Polymorph
-        member val value : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val children : Fragment = jsNative with get,set
-        member val pressed : unit -> bool = jsNative with get,set
+        [<DefaultValue>] val mutable value : string 
+        [<DefaultValue>] val mutable disabled : bool 
+        [<DefaultValue>] val mutable children : Fragment 
+        [<DefaultValue>] val mutable pressed : unit -> bool 
 
 [<Erase; AutoOpen>]
 module ToggleGroupContext =

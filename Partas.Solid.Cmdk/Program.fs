@@ -12,67 +12,68 @@ module private Helper =
 [<Erase; Import("CommandRoot", cmdk)>]
 type Command() =
     inherit div()
-    member val label : string = jsNative with get,set
-    member val shouldFilter : bool = jsNative with set,get
+    [<DefaultValue>] val mutable label : string
+    [<DefaultValue>] val mutable shouldFilter : bool
     member _.filter
         with set(value: string, search: string, ?keywords: string array) = ()
-    member val defaultValue : string = jsNative with get,set
-    member val value : string = jsNative with get,set
-    member val onValueChange: string -> unit = jsNative with get,set
-    member val loop: bool = jsNative with get,set
-    member val disablePointerSelection:bool = jsNative with get,set
+    [<DefaultValue>] val mutable defaultValue : string
+    [<DefaultValue>] val mutable value : string
+    [<DefaultValue>] val mutable onValueChange: string -> unit
+    [<DefaultValue>] val mutable loop: bool
+    [<DefaultValue>] val mutable disablePointerSelection:bool
 [<Erase; RequireQualifiedAccess>]
 module Command =
     [<Erase; Import("CommandSeparator", cmdk)>]
     type Separator() =
         interface VoidNode
-        member val alwaysRender:bool = jsNative with get,set
+        [<DefaultValue>] val mutable alwaysRender:bool
     [<Erase; Import("CommandDialog", cmdk)>]
     type Dialog() =
         inherit Kobalte.Dialog()
-        member val vimBindings:bool = jsNative with get,set    member val label : string = jsNative with get,set
-        member val shouldFilter : bool = jsNative with set,get
+        [<DefaultValue>] val mutable vimBindings:bool
+        [<DefaultValue>] val mutable label : string
+        [<DefaultValue>] val mutable shouldFilter : bool
         member _.filter
             with set(value: string, search: string, ?keywords: string array) = ()
-        member val defaultValue : string = jsNative with get,set
-        member val value : string = jsNative with get,set
-        member val onValueChange: string -> unit = jsNative with get,set
-        member val loop: bool = jsNative with get,set
-        member val disablePointerSelection:bool = jsNative with get,set
-        member val overlayClassName : string = jsNative with get,set
-        member val contentClassName : string = jsNative with get,set
-        member val container: #HtmlElement = jsNative with get,set
+        [<DefaultValue>] val mutable defaultValue : string
+        [<DefaultValue>] val mutable value : string
+        [<DefaultValue>] val mutable onValueChange: string -> unit
+        [<DefaultValue>] val mutable loop: bool
+        [<DefaultValue>] val mutable disablePointerSelection:bool
+        [<DefaultValue>] val mutable overlayClassName : string
+        [<DefaultValue>] val mutable contentClassName : string
+        [<DefaultValue>] val mutable container: #HtmlElement
     [<Erase; Import("CommandEmpty", cmdk)>]
     type Empty() =
         interface RegularNode
     [<Erase; Import("CommandGroup", cmdk)>]
     type Group() =
         inherit div()
-        member val heading: #HtmlElement = jsNative with get,set
-        member val value: string = jsNative with get,set
-        member val forceMount: bool = jsNative with get,set
+        [<DefaultValue>] val mutable heading: #HtmlElement
+        [<DefaultValue>] val mutable value: string
+        [<DefaultValue>] val mutable forceMount: bool
     [<Erase; Import("CommandInput", cmdk)>]
     type Input() =
         inherit input()
-        member val value : string = jsNative with get,set
-        member val onValueChange : string -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable value : string
+        [<DefaultValue>] val mutable onValueChange : string -> unit
     [<Erase; Import("CommandItem", cmdk)>]
     type Item() =
         inherit div()
-        member val disabled: bool = jsNative with get,set
-        member val onSelect : string -> unit = jsNative with get,set
-        member val value: string = jsNative with get,set
-        member val keyWords: string array = jsNative with get,set
-        member val forceMount: bool = jsNative with get,set
+        [<DefaultValue>] val mutable disabled: bool
+        [<DefaultValue>] val mutable onSelect : string -> unit
+        [<DefaultValue>] val mutable value: string
+        [<DefaultValue>] val mutable keyWords: string array
+        [<DefaultValue>] val mutable forceMount: bool
     [<Erase; Import("CommandList", cmdk)>]
     type List() =
         inherit div()
-        member val label: string = jsNative with get,set
+        [<DefaultValue>] val mutable label: string
     [<Erase; Import("CommandLoading", cmdk)>]
     type Loading() =
         inherit div()
-        member val progress: int = jsNative with get,set
-        member val label: string = jsNative with get,set
+        [<DefaultValue>] val mutable progress: int
+        [<DefaultValue>] val mutable label: string
     [<Erase; Import("defaultFilter", cmdk)>]
     let defaultFilter () = jsNative
     [<Erase; Import("useCommandState", cmdk)>]

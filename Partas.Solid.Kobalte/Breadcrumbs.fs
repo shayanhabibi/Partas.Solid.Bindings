@@ -8,9 +8,9 @@ open Partas.Solid
 type Breadcrumbs() =
     inherit nav()
     interface Polymorph // the custom is that if a property takes an element or string, then the apostrophised version takes the element
-    member val separator' : HtmlElement = jsNative with get,set //v0.13.9
-    member val separator : string = jsNative with get,set  //v0.13.9
-    // member val translations : string = jsNative with get,set // todo- support  //v0.13.9
+    [<DefaultValue>] val mutable separator' : HtmlElement  //v0.13.9
+    [<DefaultValue>] val mutable separator : string   //v0.13.9
+    // [<DefaultValue>] val mutable translations : string  // todo- support  //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
 module Breadcrumbs =
@@ -21,8 +21,8 @@ module Breadcrumbs =
     type Link() =
         inherit Kobalte.Link()
         interface Polymorph
-        member val current : bool = jsNative with get,set //v0.13.9
-        member val disabled : bool = jsNative with get,set //v0.13.9
+        [<DefaultValue>] val mutable current : bool  //v0.13.9
+        [<DefaultValue>] val mutable disabled : bool  //v0.13.9
     [<Erase; Import("Separator", Spec.breadcrumbs)>]
     type Separator() = //v0.13.9
         inherit span()

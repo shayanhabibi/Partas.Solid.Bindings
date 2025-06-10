@@ -10,22 +10,22 @@ open Partas.Solid
 type Slider() =
     inherit div()
     interface Polymorph
-    member val value : int[] = jsNative with get,set
-    member val defaultValue : int[] = jsNative with get,set
-    member val onChange : int[] -> unit = jsNative with get,set
-    member val onChangeEnd : int[] -> unit = jsNative with get,set
-    member val inverted : bool = jsNative with get,set
-    member val minValue : int = jsNative with get,set
-    member val maxValue : int = jsNative with get,set
-    member val step : int = jsNative with get,set
-    member val minStepsBetweenThumbs : int = jsNative with get,set
-    member val getValueLabel : {| values: int[] ; min : int ; max : int |} -> string = jsNative with get,set
-    member val orientation : Orientation = jsNative with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
+    [<DefaultValue>] val mutable value : int[] 
+    [<DefaultValue>] val mutable defaultValue : int[] 
+    [<DefaultValue>] val mutable onChange : int[] -> unit 
+    [<DefaultValue>] val mutable onChangeEnd : int[] -> unit 
+    [<DefaultValue>] val mutable inverted : bool 
+    [<DefaultValue>] val mutable minValue : int 
+    [<DefaultValue>] val mutable maxValue : int 
+    [<DefaultValue>] val mutable step : int 
+    [<DefaultValue>] val mutable minStepsBetweenThumbs : int 
+    [<DefaultValue>] val mutable getValueLabel : {| values: int[] ; min : int ; max : int |} -> string 
+    [<DefaultValue>] val mutable orientation : Orientation 
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
 
 [<Erase; RequireQualifiedAccess>]
 module Slider =

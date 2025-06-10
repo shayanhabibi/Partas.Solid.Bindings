@@ -66,7 +66,7 @@ module Combobox =
     type ErrorMessage() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] member val forceMount : bool = jsNative with get,set // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
     /// <param name="data-expanded">Present when combobox is open</param>
     /// <param name="data-closed">Present when combobox is closed</param>
     [<Erase; Import("Content", Spec.combobox)>]
@@ -104,20 +104,20 @@ module Combobox =
     type Arrow() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] member val size : int = jsNative with get,set // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable size : int  // v0.13.9
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox<'T>() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] member val scrollRef : Accessor<HtmlElement> = jsNative with get,set // v0.13.9
-        [<Erase>] member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable scrollRef : Accessor<HtmlElement>  // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable scrollToItem : string -> unit  // v0.13.9
     [<Erase; Import("Listbox", Spec.combobox)>]
     type ListboxVirtualiser<'T>() =
         interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<'T[]>
-        [<Erase>] member val scrollRef : Accessor<HtmlElement> = jsNative with get,set // v0.13.9
-        [<Erase>] member val scrollToItem : string -> unit = jsNative with get,set // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable scrollRef : Accessor<HtmlElement>  // v0.13.9
+        [<Erase>] [<DefaultValue>] val mutable scrollToItem : string -> unit  // v0.13.9
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox = Listbox<obj>
     [<Erase; Import("Listbox", Spec.combobox)>]
@@ -129,7 +129,7 @@ module Combobox =
     type Item<'Value>() = // v0.13.9
         inherit li()
         interface Polymorph
-        [<Erase>] member val item : 'Value = jsNative with get,set
+        [<Erase>] [<DefaultValue>] val mutable item : 'Value 
     [<Erase; Import("Item", Spec.combobox)>]
     type Item = Item<obj>
     /// <param name="data-disabled">Present when the item is disabled</param>
@@ -139,7 +139,7 @@ module Combobox =
     type ItemIndicator() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] member val forceMount : bool = jsNative with get,set
+        [<Erase>] [<DefaultValue>] val mutable forceMount : bool 
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -211,71 +211,71 @@ module Combobox =
 type Combobox<'Value>() =
     inherit div()
     interface Polymorph
-    [<Erase>] member val defaultFilter : ComboboxFilter = jsNative with get,set // v0.13.9
-    [<Erase>] member val options : 'Value[] = jsNative with get,set // v0.13.9
-    [<Erase>] member val optionValue : 'Value -> string = jsNative with get,set // v0.13.9
-    [<Erase>] member val optionTextValue : 'Value -> string = jsNative with get,set // v0.13.9
-    [<Erase>] member val optionLabel : 'Value -> string = jsNative with get,set // v0.13.9
-    [<Erase>] member val optionDisabled : 'Value -> bool = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable defaultFilter : ComboboxFilter  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable options : 'Value[]  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable optionValue : 'Value -> string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable optionTextValue : 'Value -> string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable optionLabel : 'Value -> string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable optionDisabled : 'Value -> bool  // v0.13.9
     /// <summary>
     /// Key property that refers to children of the option group.
     /// </summary>
-    [<Erase>] member val optionGroupChildren : string = jsNative with get,set // v0.13.9
-    [<Erase>] member val itemComponent : ItemComponentProps<'Value> -> HtmlElement = jsNative with get,set // v0.13.9
-    [<Erase>] member val sectionComponent : SectionComponentProps<'Value> -> HtmlElement = jsNative with get,set // v0.13.9
-    [<Erase>] member val multiple : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val placeholder : string = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable optionGroupChildren : string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable itemComponent : ItemComponentProps<'Value> -> HtmlElement  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable sectionComponent : SectionComponentProps<'Value> -> HtmlElement  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable multiple : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable placeholder : string  // v0.13.9
     member this.placeholder' // v0.13.9
         with set(value: HtmlElement) = () // v0.13.9
         and get(): HtmlElement = unbox null // v0.13.9
-    [<Erase>] member val value : 'Value = jsNative with get,set // will add an s when it is an array and reroute it to value
+    [<Erase>] [<DefaultValue>] val mutable value : 'Value  // will add an s when it is an array and reroute it to value
     member this.values // v0.13.9
         with inline set(values: 'Value[]) = this.value <- !!values // v0.13.9
         and inline get(): 'Value[] = !!this.value // v0.13.9
-    [<Erase>] member val defaultValue : 'Value = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable defaultValue : 'Value  // v0.13.9
     member this.defaultValues // v0.13.9
         with inline set(values: 'Value[]) = this.defaultValue <- !!values // v0.13.9
         and inline get(): 'Value[] = !!this.defaultValue // v0.13.9
-    [<Erase>] member val onChange : 'Value -> unit = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable onChange : 'Value -> unit  // v0.13.9
     member this.onChanges // v0.13.9
         with inline set(values: 'Value[] -> unit) = this.onChange <- !!values // v0.13.9
         and inline get(): 'Value[] -> unit = !!this.onChange // v0.13.9
-    [<Erase>] member val open' : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val defaultOpen : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val onOpenChange : bool * TriggerMode -> unit = jsNative with get,set // v0.13.9
-    [<Erase>] member val onInputChange : string -> unit = jsNative with get,set // v0.13.9
-    [<Erase>] member val triggerMode : TriggerMode = jsNative with get,set // v0.13.9
-    [<Erase>] member val removeOnBackspace : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val allowDuplicateSelectionEvents : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val disallowEmptySelection : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val allowsEmptyCollection : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val closeOnSelection : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val selectionBehavior : SelectionBehavior = jsNative with get,set // v0.13.9
-    [<Erase>] member val virtualized : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val modal : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val preventScroll : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val forceMount : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val name : string = jsNative with get,set // v0.13.9
-    [<Erase>] member val validationState : ValidationState = jsNative with get,set // v0.13.9
-    [<Erase>] member val required : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val disabled : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val readOnly : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val translations : string = jsNative with get,set // v0.13.9
-    [<Erase>] member val autoComplete : string = jsNative with get,set // v0.13.9
-    [<Erase>] member val noResetInputOnBlur : bool = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable open' : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable defaultOpen : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable onOpenChange : bool * TriggerMode -> unit  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable onInputChange : string -> unit  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable triggerMode : TriggerMode  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable removeOnBackspace : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable allowDuplicateSelectionEvents : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable disallowEmptySelection : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable allowsEmptyCollection : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable closeOnSelection : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable selectionBehavior : SelectionBehavior  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable virtualized : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable modal : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable preventScroll : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable name : string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable validationState : ValidationState  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable required : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable disabled : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable readOnly : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable translations : string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable autoComplete : string  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable noResetInputOnBlur : bool  // v0.13.9
 
-    [<Erase>] member val placement : KobaltePlacement = jsNative with get,set // v0.13.9
-    [<Erase>] member val gutter : int = jsNative with get,set // v0.13.9
-    [<Erase>] member val shift : int = jsNative with get,set // v0.13.9
-    [<Erase>] member val flip : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val slide : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val overlap : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val sameWidth : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val fitViewport : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val hideWhenDetached : bool = jsNative with get,set // v0.13.9
-    [<Erase>] member val detachedPadding : int = jsNative with get,set // v0.13.9
-    [<Erase>] member val arrowPadding : int = jsNative with get,set // v0.13.9
-    [<Erase>] member val overflowPadding : int = jsNative with get,set // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable placement : KobaltePlacement  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable gutter : int  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable shift : int  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable flip : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable slide : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable overlap : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable sameWidth : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable fitViewport : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable hideWhenDetached : bool  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable detachedPadding : int  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable arrowPadding : int  // v0.13.9
+    [<Erase>] [<DefaultValue>] val mutable overflowPadding : int  // v0.13.9
 [<Erase; Import("Root", Spec.combobox)>]
 type Combobox = Combobox<obj>
 

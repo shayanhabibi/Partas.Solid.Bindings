@@ -7,13 +7,13 @@ open Fable.Core
 type AlertDialog() =
     interface RegularNode
     interface Polymorph
-    member val open' : bool = jsNative with get,set //v0.13.9
-    member val defaultOpen : bool = jsNative with get,set //v0.13.9
-    member val onOpenChange : bool -> unit = jsNative with get,set //v0.13.9
-    member val id : string = jsNative with get,set //v0.13.9
-    member val modal : bool = jsNative with get,set //v0.13.9
-    member val preventScroll : bool = jsNative with get,set //v0.13.9
-    member val forceMount : bool = jsNative with get,set //v0.13.9
+    [<DefaultValue>] val mutable open' : bool //v0.13.9
+    [<DefaultValue>] val mutable defaultOpen : bool //v0.13.9
+    [<DefaultValue>] val mutable onOpenChange : bool -> unit //v0.13.9
+    [<DefaultValue>] val mutable id : string //v0.13.9
+    [<DefaultValue>] val mutable modal : bool //v0.13.9
+    [<DefaultValue>] val mutable preventScroll : bool //v0.13.9
+    [<DefaultValue>] val mutable forceMount : bool //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
 module AlertDialog =
@@ -33,12 +33,12 @@ module AlertDialog =
     type Content() =
         inherit div()
         interface Polymorph
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set //v0.13.9
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set //v0.13.9
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set //v0.13.9
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set //v0.13.9
+        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit //v0.13.9
+        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit //v0.13.9
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit //v0.13.9
+        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit //v0.13.9
+        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit //v0.13.9
+        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit //v0.13.9
     [<Erase; Import("Portal", Spec.alertDialog)>]
     type Portal() = //v0.13.9
         inherit div()

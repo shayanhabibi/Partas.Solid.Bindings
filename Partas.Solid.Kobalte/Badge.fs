@@ -8,4 +8,4 @@ type Badge() =
     inherit span()
     interface Polymorph
     /// Accessible text description of the badge if child is not text
-    member val textValue : string = jsNative with get,set //v0.13.9
+    [<DefaultValue>] val mutable textValue : string //v0.13.9

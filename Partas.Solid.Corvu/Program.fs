@@ -36,35 +36,35 @@ module Disclosure =
     [<Erase; Import("Trigger", disclosure)>]
     type Trigger() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Content", disclosure)>]
     type Content() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val forceMount : bool = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable forceMount : bool
+        [<DefaultValue>] val mutable contextId : string
 
 [<Erase; Import("Root", disclosure)>]
 type Disclosure() =
     interface RegularNode
-    member val expanded : bool = jsNative with get,set
-    member val onExpandedChange : bool -> unit = jsNative with get,set
-    member val intialExpanded : bool = jsNative with get,set
-    member val collapseBehavior : CollapseBehavior = jsNative with get,set
-    member val onContentPresentChange : bool -> unit = jsNative with get,set
-    member val disclosureId : string = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable expanded : bool
+    [<DefaultValue>] val mutable onExpandedChange : bool -> unit
+    [<DefaultValue>] val mutable intialExpanded : bool
+    [<DefaultValue>] val mutable collapseBehavior : CollapseBehavior
+    [<DefaultValue>] val mutable onContentPresentChange : bool -> unit
+    [<DefaultValue>] val mutable disclosureId : string
+    [<DefaultValue>] val mutable contextId : string
 
 [<RequireQualifiedAccess>]
 module [<Erase>] Accordion =
     [<Erase; Import("Item", accordion)>]
     type Item() =
         inherit Disclosure()
-        member val value : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
-        member val triggerId : string = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
+        [<DefaultValue>] val mutable value : string
+        [<DefaultValue>] val mutable disabled : bool
+        [<DefaultValue>] val mutable triggerId : string
+        [<DefaultValue>] val mutable as' : JSX.Element
 
     [<Erase; Import("Trigger", accordion)>]
     type Trigger() =
@@ -76,17 +76,17 @@ module [<Erase>] Accordion =
 [<Erase; Import("Root", accordion)>]
 type Accordion() =
     interface RegularNode
-    member val multiple : bool = jsNative with get,set
-    member val value : U2<string, string[]> = jsNative with get,set
-    member val onValueChange : U2<string, string[]> -> unit = jsNative with get,set
-    member val initialValue : U2<string, string[]> -> unit = jsNative with get,set
-    member val collapsible : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val orientation : Orientation = jsNative with get,set
-    member val loop : bool = jsNative with get,set
-    member val textDirection : TextDirection = jsNative with get,set
-    member val collapseBehavior : CollapseBehavior = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable multiple : bool
+    [<DefaultValue>] val mutable value : U2<string, string[]>
+    [<DefaultValue>] val mutable onValueChange : U2<string, string[]> -> unit
+    [<DefaultValue>] val mutable initialValue : U2<string, string[]> -> unit
+    [<DefaultValue>] val mutable collapsible : bool
+    [<DefaultValue>] val mutable disabled : bool
+    [<DefaultValue>] val mutable orientation : Orientation
+    [<DefaultValue>] val mutable loop : bool
+    [<DefaultValue>] val mutable textDirection : TextDirection
+    [<DefaultValue>] val mutable collapseBehavior : CollapseBehavior
+    [<DefaultValue>] val mutable contextId : string
 
 [<StringEnum>]
 type CalendarMode =
@@ -106,28 +106,28 @@ type [<Erase>] day =
 [<Erase; Import("Root", calendar)>]
 type Calendar() =
     interface RegularNode
-    member val mode : CalendarMode = jsNative with get,set
-    member val value : U3<DateTime, DateTime[], {| from:DateTime; ``to``:DateTime |}> = jsNative with get,set
-    member val onValueChange : U3<DateTime, DateTime[], {|from:DateTime;``to``:DateTime|}> -> unit = jsNative with get,set
-    member val initialValue : U3<DateTime, DateTime[], {| from:DateTime;``to``:DateTime |}> = jsNative with get,set
-    member val month : DateTime = jsNative
-    member val onMonthChange : DateTime -> unit = jsNative with get,set
-    member val initialMonth : DateTime = jsNative with get,set
-    member val focusedDay : DateTime = jsNative with get,set
-    member val onFocusedDayChange : DateTime -> unit = jsNative with get,set
-    member val initialFocusedDay : DateTime = jsNative with get,set
-    member val startOfWeek : day = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : DateTime -> bool = jsNative with get,set
-    member val numberOfMonths : int = jsNative with get,set
-    member val disableOutsideDays : bool = jsNative with get,set
-    member val fixedWeeks : bool = jsNative with get,set
-    member val textDirection : TextDirection = jsNative with get,set
-    member val min : int = jsNative with get,set
-    member val max : int = jsNative with get,set
-    member val excludeDisabled : bool = jsNative with get,set
-    member val labelIds : string[] = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable mode : CalendarMode
+    [<DefaultValue>] val mutable value : U3<DateTime, DateTime[], {| from:DateTime; ``to``:DateTime |}>
+    [<DefaultValue>] val mutable onValueChange : U3<DateTime, DateTime[], {|from:DateTime;``to``:DateTime|}> -> unit
+    [<DefaultValue>] val mutable initialValue : U3<DateTime, DateTime[], {| from:DateTime;``to``:DateTime |}>
+    [<DefaultValue>] val
+    [<DefaultValue>] val mutable onMonthChange : DateTime -> unit
+    [<DefaultValue>] val mutable initialMonth : DateTime
+    [<DefaultValue>] val mutable focusedDay : DateTime
+    [<DefaultValue>] val mutable onFocusedDayChange : DateTime -> unit
+    [<DefaultValue>] val mutable initialFocusedDay : DateTime
+    [<DefaultValue>] val mutable startOfWeek : day
+    [<DefaultValue>] val mutable required : bool
+    [<DefaultValue>] val mutable disabled : DateTime -> bool
+    [<DefaultValue>] val mutable numberOfMonths : int
+    [<DefaultValue>] val mutable disableOutsideDays : bool
+    [<DefaultValue>] val mutable fixedWeeks : bool
+    [<DefaultValue>] val mutable textDirection : TextDirection
+    [<DefaultValue>] val mutable min : int
+    [<DefaultValue>] val mutable max : int
+    [<DefaultValue>] val mutable excludeDisabled : bool
+    [<DefaultValue>] val mutable labelIds : string[]
+    [<DefaultValue>] val mutable contextId : string
 
 
 [<Erase; RequireQualifiedAccess>]
@@ -140,36 +140,36 @@ module Calendar =
     [<Erase; Import("Label", calendar)>]
     type Label() =
         interface RegularNode
-        member val index : int = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable index : int
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Nav", calendar)>]
     type Nav() =
         interface RegularNode
-        member val action : Action = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable action : Action
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Table", calendar)>]
     type Table() =
         interface RegularNode
-        member val index : int = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable index : int
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("HeadCell", calendar)>]
     type HeadCell() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
     [<Erase; Import("Cell", calendar)>]
     type Cell() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
     [<Erase; Import("CellTrigger", calendar)>]
     type CellTrigger() =
         interface RegularNode
-        member val day : DateTime = jsNative with get,set
-        member val month : DateTime = jsNative with get,set
-        member val contextId : string = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
+        [<DefaultValue>] val mutable day : DateTime
+        [<DefaultValue>] val mutable month : DateTime
+        [<DefaultValue>] val mutable contextId : string
+        [<DefaultValue>] val mutable as' : JSX.Element
 
 type [<StringEnum>] DialogRole =
     | Dialog
@@ -186,82 +186,82 @@ type [<StringEnum>] ScrollbarShiftMode =
 [<Erase; Import("Root", dialog)>]
 type Dialog() =
     interface RegularNode
-    member val role : DialogRole = jsNative with get,set
-    member val open' : bool = jsNative with get,set
-    member val onOpenChange : bool -> unit = jsNative with get,set
-    member val initialOpen : bool = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val closeOnEscapeKeyDown : bool = jsNative with get,set
-    member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-    member val closeOnOutsideFocus : bool = jsNative with get,set
-    member val closeOnOutsidePointerStrategy : PointerStrategy = jsNative with get,set
-    member val onOutsideFocus : Browser.Types.CustomEvent -> unit = jsNative with get,set
-    member val onOutsidePointer : Browser.Types.PointerEvent -> unit = jsNative with get,set
-    member val noOutsidePointerEvents : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val hideScrollbar : bool = jsNative with get,set
-    member val preventScrollbarShift : bool = jsNative with get,set
-    member val preventScrollbarShiftMode : ScrollbarShiftMode = jsNative with get,set
-    member val restoreScrollPosition : bool = jsNative with get,set
-    member val allowPinchZoom : bool = jsNative with get,set
-    member val trapFocus : bool = jsNative with get,set
-    member val restoreFocus : bool = jsNative with get,set
-    member val initialFocusEl : JSX.Element = jsNative with get,set
-    member val onInitialFocus : Browser.Types.Event -> unit = jsNative with get,set
-    member val finalFocusEl : JSX.Element = jsNative with get,set
-    member val onFinalFocus : Browser.Types.Event -> unit= jsNative with get,set
-    member val onContentPresentChange : bool -> unit = jsNative with get,set
-    member val onOverlayPresentChange : bool -> unit = jsNative with get,set
-    member val dialogId : string = jsNative with get,set
-    member val labelId : string = jsNative with get,set
-    member val descriptionId : string = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable role : DialogRole
+    [<DefaultValue>] val mutable open' : bool
+    [<DefaultValue>] val mutable onOpenChange : bool -> unit
+    [<DefaultValue>] val mutable initialOpen : bool
+    [<DefaultValue>] val mutable modal : bool
+    [<DefaultValue>] val mutable closeOnEscapeKeyDown : bool
+    [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit
+    [<DefaultValue>] val mutable closeOnOutsideFocus : bool
+    [<DefaultValue>] val mutable closeOnOutsidePointerStrategy : PointerStrategy
+    [<DefaultValue>] val mutable onOutsideFocus : Browser.Types.CustomEvent -> unit
+    [<DefaultValue>] val mutable onOutsidePointer : Browser.Types.PointerEvent -> unit
+    [<DefaultValue>] val mutable noOutsidePointerEvents : bool
+    [<DefaultValue>] val mutable preventScroll : bool
+    [<DefaultValue>] val mutable hideScrollbar : bool
+    [<DefaultValue>] val mutable preventScrollbarShift : bool
+    [<DefaultValue>] val mutable preventScrollbarShiftMode : ScrollbarShiftMode
+    [<DefaultValue>] val mutable restoreScrollPosition : bool
+    [<DefaultValue>] val mutable allowPinchZoom : bool
+    [<DefaultValue>] val mutable trapFocus : bool
+    [<DefaultValue>] val mutable restoreFocus : bool
+    [<DefaultValue>] val mutable initialFocusEl : JSX.Element
+    [<DefaultValue>] val mutable onInitialFocus : Browser.Types.Event -> unit
+    [<DefaultValue>] val mutable finalFocusEl : JSX.Element
+    [<DefaultValue>] val mutable onFinalFocus : Browser.Types.Event -> unit
+    [<DefaultValue>] val mutable onContentPresentChange : bool -> unit
+    [<DefaultValue>] val mutable onOverlayPresentChange : bool -> unit
+    [<DefaultValue>] val mutable dialogId : string
+    [<DefaultValue>] val mutable labelId : string
+    [<DefaultValue>] val mutable descriptionId : string
+    [<DefaultValue>] val mutable contextId : string
     
 [<RequireQualifiedAccess; Erase>]
 module Dialog =
     [<Erase; Import("Trigger", dialog)>]
     type Trigger() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
         
     [<Erase ; Import("Portal", dialog)>]
     type Portal() =
         interface RegularNode
-        member val forceMount : bool = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool
+        [<DefaultValue>] val mutable contextId : string
     
     [<Erase; Import("Overlay", dialog)>]
     type Overlay() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val forceMount : bool = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable forceMount : bool
+        [<DefaultValue>] val mutable contextId : string
     
     [<Erase; Import("Content", dialog)>]
     type Content() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val forceMount : bool = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable forceMount : bool
+        [<DefaultValue>] val mutable contextId : string
     
     [<Erase; Import("Close", dialog)>]
     type Close() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId: string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId: string
     
     [<Erase; Import("Label", dialog)>]
     type Label() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     
     [<Erase; Import("Description", dialog)>]
     type Description() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
 
 [<StringEnum>]
 type Side =
@@ -275,18 +275,18 @@ type Side =
 [<Erase; Import("Root", drawer)>]
 type Drawer() =
     interface RegularNode
-    member val snapPoints : float[] = jsNative with get,set
-    member val breakPoints : float[] = jsNative with get,set
-    member val defaultSnapPoint : float = jsNative with get,set
-    member val activeSnapPoint : float = jsNative with get,set
-    member val onActiveSnapPointChange : float -> unit = jsNative with get,set
-    member val side : Side = jsNative with get,set
-    member val dampFunction : int -> int = jsNative with get,set
-    member val velocityFunction : int * int -> int = jsNative with get,set
-    member val velocityCacheReset : int = jsNative with get,set
-    member val allowSkippingSnapPoints : bool = jsNative with get,set
-    member val handleScrollableElements : bool = jsNative with get,set
-    member val transitionResize : bool = jsNative with get,set
+    [<DefaultValue>] val mutable snapPoints : float[]
+    [<DefaultValue>] val mutable breakPoints : float[]
+    [<DefaultValue>] val mutable defaultSnapPoint : float
+    [<DefaultValue>] val mutable activeSnapPoint : float
+    [<DefaultValue>] val mutable onActiveSnapPointChange : float -> unit
+    [<DefaultValue>] val mutable side : Side
+    [<DefaultValue>] val mutable dampFunction : int -> int
+    [<DefaultValue>] val mutable velocityFunction : int * int -> int
+    [<DefaultValue>] val mutable velocityCacheReset : int
+    [<DefaultValue>] val mutable allowSkippingSnapPoints : bool
+    [<DefaultValue>] val mutable handleScrollableElements : bool
+    [<DefaultValue>] val mutable transitionResize : bool
 
 [<RequireQualifiedAccess; Erase>]
 module Drawer =
@@ -323,24 +323,24 @@ type OtpFieldContext
         activeSlots: Accessor<int[]>,
         shiftPWManagers: Accessor<bool>
     ) =
-    member val value: Accessor<string>
-    member val isFocused: Accessor<bool>
-    member val isHovered: Accessor<bool>
-    member val isInserting: Accessor<bool>
-    member val maxLength: Accessor<int>
-    member val activeSlots: Accessor<int[]>
-    member val shiftPWManagers: Accessor<bool>
+    [<DefaultValue>] val mutable
+    [<DefaultValue>] val mutable
+    [<DefaultValue>] val mutable
+    [<DefaultValue>] val mutable
+    [<DefaultValue>] val mutable
+    [<DefaultValue>] val mutable activeSlots:
+    [<DefaultValue>] val mutable
 
 [<Erase; Import("Root", otpField)>]
 type OtpField() =
     interface RegularNode
-    member val maxLength : int = jsNative with get,set
-    member val value : string = jsNative with get,set
-    member val onValueChange : string -> unit = jsNative with get,set
-    member val onComplete : string -> unit = jsNative with get,set
-    member val shiftPWManagers : bool = jsNative with get,set
-    member val contextId: string = jsNative with get,set
-    member val as' : string = jsNative with get,set
+    [<DefaultValue>] val mutable maxLength : int
+    [<DefaultValue>] val mutable value : string
+    [<DefaultValue>] val mutable onValueChange : string -> unit
+    [<DefaultValue>] val mutable onComplete : string -> unit
+    [<DefaultValue>] val mutable shiftPWManagers : bool
+    [<DefaultValue>] val mutable contextId: string
+    [<DefaultValue>] val mutable as' : string
     [<ImportMember(otpField)>]
     static member useContext (): OtpFieldContext = jsNative
     
@@ -349,10 +349,10 @@ module OtpField =
     [<Erase; Import("Input", otpField)>]
     type Input() =
         interface RegularNode
-        member val pattern : string = jsNative with get,set
-        member val noScriptCSSFallback : string = jsNative with get,set
-        member val contextId : string = jsNative with get,set
-        member val as' : string = jsNative with get,set
+        [<DefaultValue>] val mutable pattern : string
+        [<DefaultValue>] val mutable noScriptCSSFallback : string
+        [<DefaultValue>] val mutable contextId : string
+        [<DefaultValue>] val mutable as' : string
 
 [<StringEnum>]
 type PositionStrategy =
@@ -362,17 +362,17 @@ type PositionStrategy =
 [<Erase; Import("Root", popover)>]
 type Popover() =
     inherit Dialog()
-    member val placement : Side = jsNative with get,set
-    member val strategy : PositionStrategy = jsNative with get,set
-    member val floatingOptions : {| flip : bool ; shift : bool |} = jsNative with get,set
+    [<DefaultValue>] val mutable placement : Side
+    [<DefaultValue>] val mutable strategy : PositionStrategy
+    [<DefaultValue>] val mutable floatingOptions : {| flip : bool ; shift : bool |}
 
 [<Erase; RequireQualifiedAccess>]
 module Popover =
     [<Erase; Import("Anchor", popover)>]
     type Anchor() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Trigger", popover)>]
     type Trigger() =
         inherit Dialog.Trigger()
@@ -398,21 +398,21 @@ module Popover =
     [<Erase; Import("Arrow", popover)>]
     type Arrow() =
         interface RegularNode
-        member val size : int = jsNative with get,set
-        member val as' : JSX.ElementType = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable size : int
+        [<DefaultValue>] val mutable as' : JSX.ElementType
+        [<DefaultValue>] val mutable contextId : string
     
 [<Erase; Import("Root", resizable)>]
 type Resizable() =
     interface RegularNode
-    member val orientation : Orientation = jsNative with get,set
-    member val sizes : float[] = jsNative with get,set
-    member val onSizesChange : float[] -> unit = jsNative with get,set
-    member val initialSizes : float[] = jsNative with get,set
-    member val keyboardDelta : float = jsNative with get,set
-    member val handleCursorStyle : bool = jsNative with get,set
-    member val as' : JSX.Element = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable orientation : Orientation
+    [<DefaultValue>] val mutable sizes : float[]
+    [<DefaultValue>] val mutable onSizesChange : float[] -> unit
+    [<DefaultValue>] val mutable initialSizes : float[]
+    [<DefaultValue>] val mutable keyboardDelta : float
+    [<DefaultValue>] val mutable handleCursorStyle : bool
+    [<DefaultValue>] val mutable as' : JSX.Element
+    [<DefaultValue>] val mutable contextId : string
 
 type [<Erase>] DefaultTruth =
     static member inline true' : DefaultTruth = unbox true
@@ -424,90 +424,90 @@ module Resizable =
     [<Erase; Import("Panel", resizable)>]
     type Panel() =
         interface RegularNode
-        member val initialSize : float = jsNative with get,set
-        member val minSize : float = jsNative with get,set
-        member val maxSize : float = jsNative with get,set
-        member val collapsible : bool = jsNative with get,set
-        member val collapsedSize : float = jsNative with get,set
-        member val collapseThreshold : float = jsNative with get,set
-        member val onResize : float -> unit = jsNative with get,set
-        member val onCollapse : float -> unit = jsNative with get,set
-        member val onExpand : float -> unit = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
-        member val panelId : string = jsNative with get,set
+        [<DefaultValue>] val mutable initialSize : float
+        [<DefaultValue>] val mutable minSize : float
+        [<DefaultValue>] val mutable maxSize : float
+        [<DefaultValue>] val mutable collapsible : bool
+        [<DefaultValue>] val mutable collapsedSize : float
+        [<DefaultValue>] val mutable collapseThreshold : float
+        [<DefaultValue>] val mutable onResize : float -> unit
+        [<DefaultValue>] val mutable onCollapse : float -> unit
+        [<DefaultValue>] val mutable onExpand : float -> unit
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
+        [<DefaultValue>] val mutable panelId : string
     
     [<Erase; Import("Handle", resizable)>]
     type Handle() =
         interface RegularNode
-        member val startIntersection : bool = jsNative with get,set
-        member val endIntersection : bool = jsNative with get,set
-        member val altKey : DefaultTruth = jsNative with get,set
-        member val onHandleDragStart : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onHandleDrag : Browser.Types.CustomEvent -> unit = jsNative with get,set
-        member val onHandleDragEnd : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable startIntersection : bool
+        [<DefaultValue>] val mutable endIntersection : bool
+        [<DefaultValue>] val mutable altKey : DefaultTruth
+        [<DefaultValue>] val mutable onHandleDragStart : Browser.Types.PointerEvent -> unit
+        [<DefaultValue>] val mutable onHandleDrag : Browser.Types.CustomEvent -> unit
+        [<DefaultValue>] val mutable onHandleDragEnd : Browser.Types.PointerEvent -> unit
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
 
 [<Erase; Import("Root", tooltip)>]
 type Tooltip() =
     interface RegularNode
-    member val open' : bool = jsNative with get,set
-    member val onOpenChange : bool -> unit = jsNative with get,set
-    member val initialOpen : bool = jsNative with get,set
-    member val placement : Side = jsNative with get,set
-    member val strategy : PositionStrategy = jsNative with get,set
-    member val floatingOptions : {| flip : bool ; shift : bool |} = jsNative with get,set
-    member val openDelay : int = jsNative with get,set
-    member val closeDelay : int = jsNative with get,set
-    member val skipDelayDuration : int = jsNative with get,set
-    member val hoverableContent : bool = jsNative with get,set
-    member val group : string = jsNative with get,set
-    member val openOnFocus : bool = jsNative with get,set
-    member val onFocus : Browser.Types.FocusEvent -> unit = jsNative with get,set
-    member val onBlue : Browser.Types.FocusEvent -> unit = jsNative with get,set
-    member val openOnHover : bool = jsNative with get,set
-    member val onHover : Browser.Types.MouseEvent -> unit = jsNative with get,set
-    member val onLeave : Browser.Types.MouseEvent -> unit = jsNative with get,set
-    member val closeOnEscapeKeyDown : bool = jsNative with get,set
-    member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-    member val closeOnPointerDown : bool = jsNative with get,set
-    member val onPointerDown : Browser.Types.MouseEvent -> unit = jsNative with get,set
-    member val closeOnScroll : bool = jsNative with get,set
-    member val onScroll : Browser.Types.Event -> unit = jsNative with get,set
-    member val onContentPresentChange : bool -> unit = jsNative with get,set
-    member val tooltipId : string = jsNative with get,set
-    member val contextId : string = jsNative with get,set
+    [<DefaultValue>] val mutable open' : bool
+    [<DefaultValue>] val mutable onOpenChange : bool -> unit
+    [<DefaultValue>] val mutable initialOpen : bool
+    [<DefaultValue>] val mutable placement : Side
+    [<DefaultValue>] val mutable strategy : PositionStrategy
+    [<DefaultValue>] val mutable floatingOptions : {| flip : bool ; shift : bool |}
+    [<DefaultValue>] val mutable openDelay : int
+    [<DefaultValue>] val mutable closeDelay : int
+    [<DefaultValue>] val mutable skipDelayDuration : int
+    [<DefaultValue>] val mutable hoverableContent : bool
+    [<DefaultValue>] val mutable group : string
+    [<DefaultValue>] val mutable openOnFocus : bool
+    [<DefaultValue>] val mutable onFocus : Browser.Types.FocusEvent -> unit
+    [<DefaultValue>] val mutable onBlue : Browser.Types.FocusEvent -> unit
+    [<DefaultValue>] val mutable openOnHover : bool
+    [<DefaultValue>] val mutable onHover : Browser.Types.MouseEvent -> unit
+    [<DefaultValue>] val mutable onLeave : Browser.Types.MouseEvent -> unit
+    [<DefaultValue>] val mutable closeOnEscapeKeyDown : bool
+    [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit
+    [<DefaultValue>] val mutable closeOnPointerDown : bool
+    [<DefaultValue>] val mutable onPointerDown : Browser.Types.MouseEvent -> unit
+    [<DefaultValue>] val mutable closeOnScroll : bool
+    [<DefaultValue>] val mutable onScroll : Browser.Types.Event -> unit
+    [<DefaultValue>] val mutable onContentPresentChange : bool -> unit
+    [<DefaultValue>] val mutable tooltipId : string
+    [<DefaultValue>] val mutable contextId : string
 
 [<RequireQualifiedAccess; Erase>]
 module Tooltip =
     [<Erase; Import("Anchor", tooltip)>]
     type Anchor() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Trigger", tooltip)>]
     type Trigger() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Portal", tooltip)>]
     type Portal() =
         interface RegularNode
-        member val forceMount: bool = jsNative with get,set
-        member val contextId : string = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount: bool
+        [<DefaultValue>] val mutable contextId : string
     [<Erase; Import("Content", tooltip)>]
     type Content() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
-        member val forceMount: bool = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
+        [<DefaultValue>] val mutable forceMount: bool
     [<Erase; Import("Arrow", tooltip)>]
     type Arrow() =
         interface RegularNode
-        member val as' : JSX.Element = jsNative with get,set
-        member val contextId : string = jsNative with get,set
-        member val size: int = jsNative with get,set
+        [<DefaultValue>] val mutable as' : JSX.Element
+        [<DefaultValue>] val mutable contextId : string
+        [<DefaultValue>] val mutable size: int
     
 module Utilities =
     [<Erase; AutoOpen>]
@@ -529,19 +529,19 @@ module Utilities =
     [<Erase; Import("Dismissible", dismissible)>]
     type Dismissible() =
         interface RegularNode
-        member val enabled : bool = jsNative with get,set
-        member val dismissibleId : string = jsNative with get,set
-        member val element : HtmlElement = jsNative with get,set
-        member val onDismiss : DismissReason -> unit = jsNative with get,set
-        member val dismissOnEscapeKeyDown : bool = jsNative with get,set
-        member val dismissOnOutsideFocus : bool = jsNative with get,set
-        member val dismissOnOutsidePointer : bool = jsNative with get,set
-        member val outsidePointerStrategy : PointerStrategy = jsNative with get,set
-        member val outsidePointerIgnore : HtmlElement = jsNative with get,set
-        member val noOutsidePointerEvents : bool = jsNative with get,set
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onOutsidePointer : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onOutsideFocus : Browser.Types.CustomEvent -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable enabled : bool
+        [<DefaultValue>] val mutable dismissibleId : string
+        [<DefaultValue>] val mutable element : HtmlElement
+        [<DefaultValue>] val mutable onDismiss : DismissReason -> unit
+        [<DefaultValue>] val mutable dismissOnEscapeKeyDown : bool
+        [<DefaultValue>] val mutable dismissOnOutsideFocus : bool
+        [<DefaultValue>] val mutable dismissOnOutsidePointer : bool
+        [<DefaultValue>] val mutable outsidePointerStrategy : PointerStrategy
+        [<DefaultValue>] val mutable outsidePointerIgnore : HtmlElement
+        [<DefaultValue>] val mutable noOutsidePointerEvents : bool
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit
+        [<DefaultValue>] val mutable onOutsidePointer : Browser.Types.PointerEvent -> unit
+        [<DefaultValue>] val mutable onOutsideFocus : Browser.Types.CustomEvent -> unit
     
     [<Global; AllowNullLiteral>]
     type CreateListResult [<ParamObject; Emit("$0")>]
@@ -550,9 +550,9 @@ module Utilities =
             setActive : 'T -> unit,
             onKeyDown : Browser.Types.KeyboardEvent -> unit
         ) =
-        member val active : unit -> 'T = jsNative with get,set
-        member val setActive : 'T -> unit = jsNative with get,set
-        member val onKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable active : unit -> 'T
+        [<DefaultValue>] val mutable setActive : 'T -> unit
+        [<DefaultValue>] val mutable onKeyDown : Browser.Types.KeyboardEvent -> unit
     
     [<Global; AllowNullLiteral>]
     type CreateMultiListResult [<ParamObject; Emit("$0")>]
@@ -567,21 +567,21 @@ module Utilities =
             toggleSelected : 'T -> unit,
             onKeyDown : Browser.Types.KeyboardEvent -> unit
         ) =
-        member val cursor : unit -> 'T = jsNative with get,set
-        member val setCursor : 'T -> unit = jsNative with get,set
-        member val active : unit -> 'T[] = jsNative with get,set
-        member val setActive : 'T[] -> unit = jsNative with get,set
-        member val selected : unit -> 'T[] = jsNative with get,set
-        member val setSelected : 'T[] -> unit = jsNative with get,set
-        member val onKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val setCursorActive : 'T -> unit = jsNative with get,set
-        member val toggleSelected : 'T -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable cursor : unit -> 'T
+        [<DefaultValue>] val mutable setCursor : 'T -> unit
+        [<DefaultValue>] val mutable active : unit -> 'T[]
+        [<DefaultValue>] val mutable setActive : 'T[] -> unit
+        [<DefaultValue>] val mutable selected : unit -> 'T[]
+        [<DefaultValue>] val mutable setSelected : 'T[] -> unit
+        [<DefaultValue>] val mutable onKeyDown : Browser.Types.KeyboardEvent -> unit
+        [<DefaultValue>] val mutable setCursorActive : 'T -> unit
+        [<DefaultValue>] val mutable toggleSelected : 'T -> unit
     [<Global; AllowNullLiteral>]
     type CreatePersistentComponentResult [<ParamObject; Emit("$0")>]
         (
             persistedComponent : JSX.Element
         ) =
-        member val persistedComponent : JSX.Element = jsNative with get,set
+        [<DefaultValue>] val mutable persistedComponent : JSX.Element
     [<StringEnum>]
     type PresenceState =
         | Present
@@ -594,8 +594,8 @@ module Utilities =
             present : unit -> bool,
             state : unit -> PresenceState
         ) =
-        member val present : unit -> bool = jsNative with get,set
-        member val state : unit -> PresenceState = jsNative with get,set
+        [<DefaultValue>] val mutable present : unit -> bool
+        [<DefaultValue>] val mutable state : unit -> PresenceState
 
     [<StringEnum>]
     type ScollbarShiftMode =
@@ -614,8 +614,8 @@ module Utilities =
             transitionSize : unit -> float[],
             transitioning : unit -> bool
         ) =
-        member val transitionSize : unit -> float[] = jsNative with get,set
-        member val transitioning : unit -> bool = jsNative with get,set
+        [<DefaultValue>] val mutable transitionSize : unit -> float[]
+        [<DefaultValue>] val mutable transitioning : unit -> bool
 
     [<Erase>]
     type Corvu =

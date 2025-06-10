@@ -36,31 +36,31 @@ type ColorModeProvider() =
     /// <summary>
     /// The initial color mode to use.
     /// </summary>
-    [<Erase>] member val initialColorMode: Theme.Mode = JS.undefined with get, set
+    [<DefaultValue>] val mutable initialColorMode: Theme.Mode
     /// <summary>
     /// Whether css transitions should be disabled during the color mode changes.
     /// </summary>
-    [<Erase>] member val disableTransitionOnChange: bool = JS.undefined with get, set
+    [<DefaultValue>] val mutable disableTransitionOnChange: bool
     /// <summary>
     /// The color mode storage manager, either localStorage or cookie.
     /// </summary>
-    [<Erase>] member val storageManager: ColorModeStorageManager = JS.undefined with get, set
+    [<DefaultValue>] val mutable storageManager: ColorModeStorageManager
     
 type ColorModeScript() =
     interface RegularNode
     /// <summary>
     /// The initial color mode to use.
     /// </summary>
-    [<Erase>] member val initialColorMode: Theme.Config.Mode = JS.undefined with get, set
+    [<DefaultValue>] val mutable initialColorMode: Theme.Config.Mode
     /// <summary>
     /// The type of the color mode storage manager, either localStorage or cookie.
     /// </summary>
-    [<Erase>] member val storageType: Theme.Config.Storage = JS.undefined with get, set
+    [<DefaultValue>] val mutable storageType: Theme.Config.Storage
     /// <summary>
     /// The key used to store color mode preference in localStorage or cookie.
     /// </summary>
-    [<Erase>] member val storageKey: string = JS.undefined with get, set
-    [<Erase>] member val nonce: string = JS.undefined with get, set
+    [<DefaultValue>] val mutable storageKey: string
+    [<DefaultValue>] val mutable nonce: string
 
 [<AutoOpen; Erase>]
 type ColorMode =

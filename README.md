@@ -17,15 +17,15 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 |-------------------|----------------|-----------|
 | Kobalte           | Stable         | 0.3.5     |
 | Lucide            | Stable         | 0.514.0   |
-| ModularForms      | Stable-ish     | 0.2.0     |
+| ModularForms      | Stable-ish     | 0.2.1     |
 | TanStack.Table    | Stable-ish     | 0.2.0     |
 | Solid-MotionOne   | Stable-ish     | 0.2.1     |
 | CVA               | Stable         | 0.1.0     |
-| Cmdk              | Stable         | 0.2.0     |
-| ArkUI             | Partial-Stable | 0.2.0     |
-| Corvu             | Partial-Beta   | 0.2.0     |
-| Sonner            | Beta           | 0.2.0     |
-| ApexCharts        | Beta-ish       | 0.2.0     |
+| Cmdk              | Stable         | 0.2.2     |
+| ArkUI             | Partial-Stable | 0.2.2     |
+| Corvu             | Partial-Beta   | 0.2.2     |
+| Sonner            | Beta           | 0.2.1     |
+| ApexCharts        | Beta-ish       | 0.2.2     |
 | NeoDrag           | Alpha          | 0.2.0     |
 | Storybook         | Alpha          | 0.1.2     |
 | ZagJs             | Partial-Alpha  | 0.1.0     |

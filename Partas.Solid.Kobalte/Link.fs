@@ -13,4 +13,5 @@ module Kobalte =
     type Link() =
         inherit a()
         interface Polymorph
-        member val disabled : bool = jsNative with get,set
+        [<DefaultValue>]
+        val mutable disabled : bool

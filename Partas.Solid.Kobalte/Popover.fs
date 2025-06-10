@@ -8,29 +8,29 @@ open Partas.Solid
 type Popover() =
     inherit div()
     interface Polymorph
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : (bool -> unit) = jsNative with get,set
-    member val id : string = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
-    member val translations : string = jsNative with get,set
+    [<DefaultValue>] val mutable open' : bool 
+    [<DefaultValue>] val mutable defaultOpen : bool 
+    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
+    [<DefaultValue>] val mutable id : string 
+    [<DefaultValue>] val mutable modal : bool 
+    [<DefaultValue>] val mutable preventScroll : bool 
+    [<DefaultValue>] val mutable forceMount : bool 
+    [<DefaultValue>] val mutable translations : string 
 
-    member val getAnchorRect : HtmlElement -> obj = jsNative with get,set
-    member val anchorRef : unit -> HtmlElement = jsNative with get,set
-    member val placement : Popover.Placement = jsNative with get,set
-    member val gutter : int = jsNative with get,set
-    member val shift : int = jsNative with get,set
-    member val flip : bool = jsNative with get,set
-    member val slide : bool = jsNative with get,set
-    member val overlap : bool = jsNative with get,set
-    member val sameWidth : bool = jsNative with get,set
-    member val fitViewport : bool = jsNative with get,set
-    member val hideWhenDetached : bool = jsNative with get,set
-    member val detachedPadding : int = jsNative with get,set
-    member val arrowPadding : int = jsNative with get,set
-    member val overflowPadding : int = jsNative with get,set
+    [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj 
+    [<DefaultValue>] val mutable anchorRef : unit -> HtmlElement 
+    [<DefaultValue>] val mutable placement : Popover.Placement 
+    [<DefaultValue>] val mutable gutter : int 
+    [<DefaultValue>] val mutable shift : int 
+    [<DefaultValue>] val mutable flip : bool 
+    [<DefaultValue>] val mutable slide : bool 
+    [<DefaultValue>] val mutable overlap : bool 
+    [<DefaultValue>] val mutable sameWidth : bool 
+    [<DefaultValue>] val mutable fitViewport : bool 
+    [<DefaultValue>] val mutable hideWhenDetached : bool 
+    [<DefaultValue>] val mutable detachedPadding : int 
+    [<DefaultValue>] val mutable arrowPadding : int 
+    [<DefaultValue>] val mutable overflowPadding : int 
 
 [<RequireQualifiedAccess; Erase>]
 module Popover =
@@ -42,18 +42,18 @@ module Popover =
     type Content() =
         inherit div()
         interface Polymorph
-        member val gutter : int = jsNative with get,set
-        member val onOpenAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onCloseAutoFocus : Browser.Types.Event -> unit = jsNative with get,set
-        member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
-        member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = jsNative with get,set
-        member val onFocusOutside : Browser.Types.FocusEvent -> unit = jsNative with get,set
-        member val onInteractOutside : Browser.Types.Event -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable gutter : int 
+        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit 
+        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit 
+        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
+        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
+        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit 
+        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
     [<Erase; Import("Arrow", Spec.popover)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        member val size : int = jsNative with get,set
+        [<DefaultValue>] val mutable size : int 
     [<Erase; Import("Portal", Spec.popover)>]
     type Portal() =
         inherit div()

@@ -18,70 +18,70 @@ type ColorArea() =
     /// <summary>
     /// The localized strings of the component.
     /// </summary>
-    [<Erase>] member val translations: obj = JS.undefined with get,set
+    [<DefaultValue>] val mutable translations: obj
     /// <summary>
     /// The controlled value of the color area.
     /// </summary>
-    [<Erase>] member val value: Color = JS.undefined with get,set
+    [<DefaultValue>] val mutable value: Color
     /// <summary>
     /// The value of the color area when initially rendered.
     /// </summary>
-    [<Erase>] member val defaultValue: Color = JS.undefined with get,set
+    [<DefaultValue>] val mutable defaultValue: Color
     /// <summary>
     /// Event handler called when the value changes.
     /// </summary>
-    [<Erase>] member val onChange: (Color -> unit) = JS.undefined with get,set
+    [<DefaultValue>] val mutable onChange: (Color -> unit)
     /// <summary>
     /// Called when the value changes at the end of an interaction.
     /// </summary>
-    [<Erase>] member val onChangeEnd: (Color -> unit) = JS.undefined with get,set
+    [<DefaultValue>] val mutable onChangeEnd: (Color -> unit)
     /// <summary>
     /// Color channel for the horizontal axis.
     /// </summary>
-    [<Erase>] member val xChannel: ColorChannel = JS.undefined with get,set
+    [<DefaultValue>] val mutable xChannel: ColorChannel
     /// <summary>
     /// Color channel for the vertical axis.
     /// </summary>
-    [<Erase>] member val yChannel: ColorChannel = JS.undefined with get,set
+    [<DefaultValue>] val mutable yChannel: ColorChannel
     /// <summary>
     /// The color space that the color area operates in. The <c>xChannel</c> and <c>yChannel</c> must be in this color space.
     /// </summary>
-    [<Erase>] member val colorSpace: ColorSpace = JS.undefined with get,set
+    [<DefaultValue>] val mutable colorSpace: ColorSpace
     /// <summary>
     /// A unique identifier for the component.
     /// The id is used to generate id attributes for nested components.
     /// If no id prop is provided, a generated id will be used.
     /// </summary>
-    [<Erase>] member val id: string = JS.undefined with get,set
+    [<DefaultValue>] val mutable id: string
     /// <summary>
     /// The name of the color area, used when submitting an HTML form.
     /// See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname">MDN</a>.
     /// </summary>
-    [<Erase>] member val name: string = JS.undefined with get,set
+    [<DefaultValue>] val mutable name: string
     /// <summary>
     /// The name of the x channel input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
     /// </summary>
-    [<Erase>] member val xName: string = JS.undefined with get,set
+    [<DefaultValue>] val mutable xName: string
     /// <summary>
     /// The name of the y channel input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
     /// </summary>
-    [<Erase>] member val yName: string = JS.undefined with get,set
+    [<DefaultValue>] val mutable yName: string
     /// <summary>
     /// Whether the color area should display its "valid" or "invalid" visual styling.
     /// </summary>
-    [<Erase>] member val validationState: ValidationState = JS.undefined with get,set
+    [<DefaultValue>] val mutable validationState: ValidationState
     /// <summary>
     /// Whether the user must select an item before the owning form can be submitted.
     /// </summary>
-    [<Erase>] member val required: bool = JS.undefined with get,set
+    [<DefaultValue>] val mutable required: bool
     /// <summary>
     /// Whether the color area is disabled.
     /// </summary>
-    [<Erase>] member val disabled: bool = JS.undefined with get,set
+    [<DefaultValue>] val mutable disabled: bool
     /// <summary>
     /// Whether the color area is read only.
     /// </summary>
-    [<Erase>] member val readOnly: bool = JS.undefined with get,set
+    [<DefaultValue>] val mutable readOnly: bool
 
 [<Erase; RequireQualifiedAccess>]
 module ColorArea =
@@ -96,9 +96,9 @@ module ColorArea =
     type Background() =
         inherit div()
         interface Polymorph
-        [<Erase>] member val onPointerDown: PointerEvent -> unit = JS.undefined with get,set
-        [<Erase>] member val onPointerMove: PointerEvent -> unit = JS.undefined with get,set
-        [<Erase>] member val onPointerUp: PointerEvent -> unit = JS.undefined with get,set
+        [<DefaultValue>] val mutable onPointerDown: PointerEvent -> unit
+        [<DefaultValue>] val mutable onPointerMove: PointerEvent -> unit
+        [<DefaultValue>] val mutable onPointerUp: PointerEvent -> unit
 
     /// <summary>
     /// The current color is available on the thumb using the custom css property <c>--kb-color-current</c>
@@ -112,10 +112,10 @@ module ColorArea =
     type Thumb() =
         inherit span()
         interface Polymorph
-        [<Erase>] member val onPointerDown: PointerEvent -> unit = JS.undefined with get,set
-        [<Erase>] member val onPointerMove: PointerEvent -> unit = JS.undefined with get,set
-        [<Erase>] member val onPointerUp: PointerEvent -> unit = JS.undefined with get,set
-        [<Erase>] member val onKeyDown: KeyboardEvent -> unit = JS.undefined with get,set
+        [<DefaultValue>] val mutable onPointerDown: PointerEvent -> unit
+        [<DefaultValue>] val mutable onPointerMove: PointerEvent -> unit
+        [<DefaultValue>] val mutable onPointerUp: PointerEvent -> unit
+        [<DefaultValue>] val mutable onKeyDown: KeyboardEvent -> unit
     
     /// <summary>
     /// <param name="data-valid">Present when the slider is valid according to the validation rules.</param>

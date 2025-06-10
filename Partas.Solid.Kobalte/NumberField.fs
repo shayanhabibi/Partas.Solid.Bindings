@@ -8,24 +8,24 @@ open Partas.Solid
 type NumberField() =
     inherit div()
     interface Polymorph
-    member val value : string = jsNative with get,set
-    member val defaultValue : string = jsNative with get,set
-    member val onChange : string -> unit = jsNative with get,set
-    member val rawValue : float = jsNative with get,set
-    member val onRawValueChange : float -> unit = jsNative with get,set
-    member val minValue : float = jsNative with get,set
-    member val maxValue : float = jsNative with get,set
-    member val step : float = jsNative with get,set
-    member val largeStep : float = jsNative with get,set
-    member val changeOnWheel : bool = jsNative with get,set
-    member val format : bool = jsNative with get,set
-    member val formatOptions : obj = jsNative with get,set
-    member val allowedInput : string = jsNative with get,set // regex
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
+    [<DefaultValue>] val mutable value : string 
+    [<DefaultValue>] val mutable defaultValue : string 
+    [<DefaultValue>] val mutable onChange : string -> unit 
+    [<DefaultValue>] val mutable rawValue : float 
+    [<DefaultValue>] val mutable onRawValueChange : float -> unit 
+    [<DefaultValue>] val mutable minValue : float 
+    [<DefaultValue>] val mutable maxValue : float 
+    [<DefaultValue>] val mutable step : float 
+    [<DefaultValue>] val mutable largeStep : float 
+    [<DefaultValue>] val mutable changeOnWheel : bool 
+    [<DefaultValue>] val mutable format : bool 
+    [<DefaultValue>] val mutable formatOptions : obj 
+    [<DefaultValue>] val mutable allowedInput : string  // regex
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
 
 [<Erase; RequireQualifiedAccess>]
 module NumberField =
@@ -33,7 +33,7 @@ module NumberField =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Label", Spec.numberField)>]
     type Label() =
         inherit label()

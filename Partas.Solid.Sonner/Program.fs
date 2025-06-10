@@ -388,18 +388,18 @@ module [<Erase>] Sonner =
 [<Import("Toaster",Spec.path)>]
 type Toaster() =
     inherit div()
-    member val invert: bool = unbox null with get,set
-    member val hotkey: string[] = unbox null with get,set
-    member val richColors: bool = unbox null with get,set
-    member val expand: bool = unbox null with get,set
-    member val duration: int = unbox null with get,set
-    member val gap: int = unbox null with get,set
-    member val visibleToasts: int = unbox null with get,set
-    member val closeButton: bool = unbox null with get,set
-    member val toastOptions: Toast = unbox null with get,set
-    member val offset: int = unbox null with get,set
-    member val icons: ToastIcons = unbox null with get,set
-    member val containerAriaLabel: string = unbox null with get,set
-    member val pauseWhenPageIsHidden: bool = unbox null with get,set
-    member val cn: string list -> string = unbox null with get,set
+    [<DefaultValue>] val mutable invert: bool
+    [<DefaultValue>] val mutable hotkey: string[]
+    [<DefaultValue>] val mutable richColors: bool
+    [<DefaultValue>] val mutable expand: bool
+    [<DefaultValue>] val mutable duration: int
+    [<DefaultValue>] val mutable gap: int
+    [<DefaultValue>] val mutable visibleToasts: int
+    [<DefaultValue>] val mutable closeButton: bool
+    [<DefaultValue>] val mutable toastOptions: Toast
+    [<DefaultValue>] val mutable offset: int
+    [<DefaultValue>] val mutable icons: ToastIcons
+    [<DefaultValue>] val mutable containerAriaLabel: string
+    [<DefaultValue>] val mutable pauseWhenPageIsHidden: bool
+    [<DefaultValue>] val mutable cn: string list -> string
     

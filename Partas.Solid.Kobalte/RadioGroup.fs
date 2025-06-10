@@ -8,16 +8,16 @@ open Fable.Core
 type RadioGroup() =
     inherit div()
     interface Polymorph
-    member val ref: HtmlElement = jsNative with get,set
-    member val value : string = jsNative with get,set
-    member val defaultValue : string = jsNative with get,set
-    member val onChange : string -> unit = jsNative with get,set
-    member val orientation : Orientation = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
+    [<DefaultValue>] val mutable ref: HtmlElement 
+    [<DefaultValue>] val mutable value : string 
+    [<DefaultValue>] val mutable defaultValue : string 
+    [<DefaultValue>] val mutable onChange : string -> unit 
+    [<DefaultValue>] val mutable orientation : Orientation 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
 
 [<RequireQualifiedAccess; Erase>]
 module RadioGroup =
@@ -33,14 +33,14 @@ module RadioGroup =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Item", Spec.radioGroup)>]
     type Item() =
         inherit div()
         interface Polymorph
-        member val ref : HtmlElement = jsNative with get,set
-        member val value : string = jsNative with get,set
-        member val disabled : bool = jsNative with get,set
+        [<DefaultValue>] val mutable ref : HtmlElement 
+        [<DefaultValue>] val mutable value : string 
+        [<DefaultValue>] val mutable disabled : bool 
     [<Erase; Import("ItemInput", Spec.radioGroup)>]
     type ItemInput() =
         inherit input()

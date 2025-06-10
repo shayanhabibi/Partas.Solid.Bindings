@@ -12,7 +12,7 @@ type ToggleButton() =
     interface HtmlTag
     interface Polymorph
     interface ChildLambdaProvider<ToggleButtonState>
-    member val pressed : bool = jsNative with get,set
-    member val defaultPressed : bool = jsNative with get,set
-    member val onChange : bool -> unit = jsNative with get,set
+    [<DefaultValue>] val mutable pressed : bool 
+    [<DefaultValue>] val mutable defaultPressed : bool 
+    [<DefaultValue>] val mutable onChange : bool -> unit 
 

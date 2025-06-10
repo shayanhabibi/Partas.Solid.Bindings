@@ -9,54 +9,54 @@ open Partas.Solid
 type Select<'T>() =
     inherit div()
     interface Polymorph
-    member val options : 'T[] = jsNative with get,set
-    member val optionValue : 'T -> U3<string, float, int> = jsNative with get,set
-    member val optionTextValue : 'T -> string = jsNative with get,set
-    member val optionDisabled : 'T -> bool = jsNative with get,set
-    member val optionGroupChildren : string = jsNative with get,set
-    member val itemComponent : ItemComponentProps<'T> -> HtmlElement = jsNative with get,set
-    member val sectionComponent : SectionComponentProps<'T> -> HtmlElement = jsNative with get,set
-    member val multiple : bool = jsNative with get,set
-    member val placeholder : HtmlElement = jsNative with get,set
-    member val value : 'T = jsNative with get,set
+    [<DefaultValue>] val mutable options : 'T[] 
+    [<DefaultValue>] val mutable optionValue : 'T -> U3<string, float, int> 
+    [<DefaultValue>] val mutable optionTextValue : 'T -> string 
+    [<DefaultValue>] val mutable optionDisabled : 'T -> bool 
+    [<DefaultValue>] val mutable optionGroupChildren : string 
+    [<DefaultValue>] val mutable itemComponent : ItemComponentProps<'T> -> HtmlElement 
+    [<DefaultValue>] val mutable sectionComponent : SectionComponentProps<'T> -> HtmlElement 
+    [<DefaultValue>] val mutable multiple : bool 
+    [<DefaultValue>] val mutable placeholder : HtmlElement 
+    [<DefaultValue>] val mutable value : 'T 
     member this.values
         with inline set(values: 'T[]) = this.value <- !!values 
-    member val defaultValue : 'T = jsNative with get,set
+    [<DefaultValue>] val mutable defaultValue : 'T 
     member this.defaultValues
         with inline set(values: 'T[]) = this.defaultValue <- !!values
-    member val onChange : 'T -> unit = jsNative with get,set
+    [<DefaultValue>] val mutable onChange : 'T -> unit 
     member this.onChanges
         with inline set(handler: 'T[] -> unit) = this.onChange <- !!handler
-    member val open' : bool = jsNative with get,set
-    member val defaultOpen : bool = jsNative with get,set
-    member val onOpenChange : (bool -> unit) = jsNative with get,set
-    member val allowDuplicateSelectionEvents : bool = jsNative with get,set
-    member val disallowEmptySelection : bool = jsNative with get,set
-    member val closeOnSelection : bool = jsNative with get,set
-    member val selectionBehavior : SelectionBehavior = jsNative with get,set
-    member val virtualized : bool = jsNative with get,set
-    member val modal : bool = jsNative with get,set
-    member val preventScroll : bool = jsNative with get,set
-    member val forceMount : bool = jsNative with get,set
-    member val name : string = jsNative with get,set
-    member val validationState : ValidationState = jsNative with get,set
-    member val required : bool = jsNative with get,set
-    member val disabled : bool = jsNative with get,set
-    member val readOnly : bool = jsNative with get,set
-    member val autoComplete : string = jsNative with get,set
+    [<DefaultValue>] val mutable open' : bool 
+    [<DefaultValue>] val mutable defaultOpen : bool 
+    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
+    [<DefaultValue>] val mutable allowDuplicateSelectionEvents : bool 
+    [<DefaultValue>] val mutable disallowEmptySelection : bool 
+    [<DefaultValue>] val mutable closeOnSelection : bool 
+    [<DefaultValue>] val mutable selectionBehavior : SelectionBehavior 
+    [<DefaultValue>] val mutable virtualized : bool 
+    [<DefaultValue>] val mutable modal : bool 
+    [<DefaultValue>] val mutable preventScroll : bool 
+    [<DefaultValue>] val mutable forceMount : bool 
+    [<DefaultValue>] val mutable name : string 
+    [<DefaultValue>] val mutable validationState : ValidationState 
+    [<DefaultValue>] val mutable required : bool 
+    [<DefaultValue>] val mutable disabled : bool 
+    [<DefaultValue>] val mutable readOnly : bool 
+    [<DefaultValue>] val mutable autoComplete : string 
 
-    member val placement : KobaltePlacement = jsNative with get,set
-    member val gutter : int = jsNative with get,set
-    member val shift : int = jsNative with get,set
-    member val flip : bool = jsNative with get,set
-    member val slide : bool = jsNative with get,set
-    member val overlap : bool = jsNative with get,set
-    member val sameWidth : bool = jsNative with get,set
-    member val fitViewport : bool = jsNative with get,set
-    member val hideWhenDetached : bool = jsNative with get,set
-    member val detachedPadding : int = jsNative with get,set
-    member val arrowPadding : int = jsNative with get,set
-    member val overflowPadding : int = jsNative with get,set
+    [<DefaultValue>] val mutable placement : KobaltePlacement 
+    [<DefaultValue>] val mutable gutter : int 
+    [<DefaultValue>] val mutable shift : int 
+    [<DefaultValue>] val mutable flip : bool 
+    [<DefaultValue>] val mutable slide : bool 
+    [<DefaultValue>] val mutable overlap : bool 
+    [<DefaultValue>] val mutable sameWidth : bool 
+    [<DefaultValue>] val mutable fitViewport : bool 
+    [<DefaultValue>] val mutable hideWhenDetached : bool 
+    [<DefaultValue>] val mutable detachedPadding : int 
+    [<DefaultValue>] val mutable arrowPadding : int 
+    [<DefaultValue>] val mutable overflowPadding : int 
 type Select = Select<obj>
 [<RequireQualifiedAccess; Erase>]
 module Select =
@@ -75,10 +75,10 @@ module Select =
         interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<ValueState<'T>>
-        member val selectedOption : 'T Accessor = jsNative with get,set
-        member val selectedOptions : 'T[] Accessor = jsNative with get,set
-        member val remove : 'T -> unit = jsNative with get,set
-        member val clear : unit -> unit = jsNative with get,set
+        [<DefaultValue>] val mutable selectedOption : 'T Accessor 
+        [<DefaultValue>] val mutable selectedOptions : 'T[] Accessor 
+        [<DefaultValue>] val mutable remove : 'T -> unit 
+        [<DefaultValue>] val mutable clear : unit -> unit 
     type Value = Value<obj>
     [<Erase; Import("Icon", Spec.select)>]
     type Icon() =
@@ -88,7 +88,7 @@ module Select =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Content", Spec.select)>]
     type Content() =
         inherit div()
@@ -97,25 +97,25 @@ module Select =
     type Arrow() =
         inherit div()
         interface Polymorph
-        member val size : int = jsNative with get,set
+        [<DefaultValue>] val mutable size : int 
     [<Erase; Import("Listbox", Spec.select)>]
     type Listbox() =
         inherit div()
         interface Polymorph
-        member val scrollRef : unit -> HtmlElement = jsNative with get,set
-        member val scrollToItem : string -> unit = jsNative with get,set
-        member val children : obj[] -> HtmlElement = jsNative with get,set
+        [<DefaultValue>] val mutable scrollRef : unit -> HtmlElement 
+        [<DefaultValue>] val mutable scrollToItem : string -> unit 
+        [<DefaultValue>] val mutable children : obj[] -> HtmlElement 
     [<Erase; Import("Item", Spec.select)>]
     type Item<'T>() =
         inherit div()
         interface Polymorph
-        member val item : 'T = jsNative with get,set
+        [<DefaultValue>] val mutable item : 'T 
     type Item = Item<obj>
     [<Erase; Import("ItemIndicator", Spec.select)>]
     type ItemIndicator() =
         inherit div()
         interface Polymorph
-        member val forceMount : bool = jsNative with get,set
+        [<DefaultValue>] val mutable forceMount : bool 
     [<Erase; Import("Label", Spec.select)>]
     type Label() =
         inherit span()

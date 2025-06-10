@@ -7,12 +7,12 @@ open Fable.Core
 type Accordion() =
     inherit div()
     interface Polymorph
-    member val value : string[] = jsNative with get,set //v0.13.9
-    member val defaultValue : string[] = jsNative with get,set //v0.13.9
-    member val onChange : string[] -> unit = jsNative with get,set //v0.13.9
-    member val multiple : bool = jsNative with get,set //v0.13.9
-    member val collapsible : bool = jsNative with get,set //v0.13.9
-    member val shouldFocusWrap : bool = jsNative with get,set //v0.13.9
+    [<DefaultValue>] val mutable value : string[] //v0.13.9
+    [<DefaultValue>] val mutable defaultValue : string[] //v0.13.9
+    [<DefaultValue>] val mutable onChange : string[] -> unit //v0.13.9
+    [<DefaultValue>] val mutable multiple : bool //v0.13.9
+    [<DefaultValue>] val mutable collapsible : bool //v0.13.9
+    [<DefaultValue>] val mutable shouldFocusWrap : bool //v0.13.9
 
 [<Erase>]
 module Accordion =
@@ -25,12 +25,12 @@ module Accordion =
     type Item() =
         inherit Collapsible()  //v0.13.9
         interface Polymorph //v0.13.9
-        member val open' : bool = jsNative with get,set //v0.13.9
-        member val defaultOpen : bool = jsNative with get,set //v0.13.9
-        member val onOpenChange : bool -> unit = jsNative with get,set //v0.13.9
-        member val disabled : bool = jsNative with get,set //v0.13.9
-        member val forceMount : bool = jsNative with get,set //v0.13.9
-        member val value : string = jsNative with get,set //v0.13.9
+        [<DefaultValue>] val mutable open' : bool //v0.13.9
+        [<DefaultValue>] val mutable defaultOpen : bool //v0.13.9
+        [<DefaultValue>] val mutable onOpenChange : bool -> unit //v0.13.9
+        [<DefaultValue>] val mutable disabled : bool //v0.13.9
+        [<DefaultValue>] val mutable forceMount : bool //v0.13.9
+        [<DefaultValue>] val mutable value : string //v0.13.9
     [<Erase; Import("Trigger", Spec.accordion)>]
     type Trigger() =
         inherit Collapsible.Trigger() //v0.13.9
