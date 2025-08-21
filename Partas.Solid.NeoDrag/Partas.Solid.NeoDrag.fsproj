@@ -19,6 +19,7 @@
         <Version>0.2.0</Version>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageVersion>0.2.0</PackageVersion>
+        <GitNetInitialVersion>0.2.0</GitNetInitialVersion>
         <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@neodrag/solid" Version=">= 2.3.0" />

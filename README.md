@@ -27,7 +27,7 @@ Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
 | Sonner            | Beta           | 0.2.1     |
 | ApexCharts        | Beta-ish       | 0.2.2     |
 | NeoDrag           | Alpha          | 0.2.0     |
-| Storybook         | Alpha          | 0.1.2     |
+| Storybook         | Alpha          | 0.2.0     |
 | ZagJs             | Partial-Alpha  | 0.1.0     |
 | ChartJs           | _Incomplete_   |           |
 | Dnd               | _Incomplete_   |           |

@@ -19,6 +19,7 @@
         <Version>0.2.1</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.1</PackageVersion>
+        <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
         <NpmDependencies>
             <NpmPackage Name="solid-sonner" Version=">= 0.2.8" />
         </NpmDependencies>

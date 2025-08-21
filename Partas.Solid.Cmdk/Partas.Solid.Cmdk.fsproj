@@ -19,6 +19,7 @@
         <Version>0.2.2</Version>
 <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.2</PackageVersion>
+        <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
         <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="cmdk-solid" Version=">= 1.1.0" />

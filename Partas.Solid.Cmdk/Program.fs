@@ -42,14 +42,14 @@ module Command =
         [<DefaultValue>] val mutable disablePointerSelection:bool
         [<DefaultValue>] val mutable overlayClassName : string
         [<DefaultValue>] val mutable contentClassName : string
-        [<DefaultValue>] val mutable container: #HtmlElement
+        [<DefaultValue>] val mutable container: HtmlElement
     [<Erase; Import("CommandEmpty", cmdk)>]
     type Empty() =
         interface RegularNode
     [<Erase; Import("CommandGroup", cmdk)>]
     type Group() =
         inherit div()
-        [<DefaultValue>] val mutable heading: #HtmlElement
+        [<DefaultValue>] val mutable heading: HtmlElement
         [<DefaultValue>] val mutable value: string
         [<DefaultValue>] val mutable forceMount: bool
     [<Erase; Import("CommandInput", cmdk)>]

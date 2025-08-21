@@ -19,6 +19,7 @@
         <Version>0.2.1</Version>
         <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.1</PackageVersion>
+        <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
                 <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@modular-forms/solid" Version=">= 0.29.1" />

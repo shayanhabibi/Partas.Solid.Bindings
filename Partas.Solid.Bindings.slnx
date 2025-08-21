@@ -1,0 +1,34 @@
+﻿<Solution>
+  <Folder Name=".build">
+    <Project Path="Build.fsproj" Type="Classic F#" />
+  </Folder>
+  <Folder Name=".github" />
+  <Folder Name=".github/workflows">
+    <File Path=".github/workflows/ci.yml" />
+  </Folder>
+  <Folder Name="/Bindings/">
+    <Project Path="Glutinum.Internationalised\Glutinum.Internationalised.fsproj" Type="Classic F#" />
+    <Project Path="Glutinum.ZagJs\Glutinum.ZagJs.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.ApexCharts\Partas.Solid.ApexCharts.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.ArkUI\Partas.Solid.ArkUI.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.ChartJs\Partas.Solid.ChartJs.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Cmdk\Partas.Solid.Cmdk.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Corvu\Partas.Solid.Corvu.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Cva\Partas.Solid.Cva.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.DndKit\Partas.Solid.DndKit.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Dnd\Partas.Solid.Dnd.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.EmblaCarousel\Partas.Solid.EmblaCarousel.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Kobalte\Partas.Solid.Kobalte.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Lucide\Partas.Solid.Lucide.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.ModularForms\Partas.Solid.ModularForms.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Motion\Partas.Solid.Motion.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.NeoDrag\Partas.Solid.NeoDrag.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Sonner\Partas.Solid.Sonner.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Storybook\Partas.Solid.Storybook.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.TanStack.Table\Partas.Solid.TanStack.Table.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.TanStack.Virtual\Partas.Solid.TanStack.Virtual.fsproj" Type="Classic F#" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Build.fsproj" Type="Classic F#" />
+  <Project Path="Partas.Solid.Bindings\Partas.Solid.Bindings.fsproj" Type="Classic F#" />
+</Solution>

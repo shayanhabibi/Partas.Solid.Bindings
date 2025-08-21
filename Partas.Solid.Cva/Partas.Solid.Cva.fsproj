@@ -19,6 +19,7 @@
         <Version>0.1.0</Version>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageVersion>0.1.0</PackageVersion>
+        <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
         <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
                         <NpmPackage Name="class-variance-authority" Version=">= 0.7.1" />

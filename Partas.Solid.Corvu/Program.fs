@@ -110,7 +110,7 @@ type Calendar() =
     [<DefaultValue>] val mutable value : U3<DateTime, DateTime[], {| from:DateTime; ``to``:DateTime |}>
     [<DefaultValue>] val mutable onValueChange : U3<DateTime, DateTime[], {|from:DateTime;``to``:DateTime|}> -> unit
     [<DefaultValue>] val mutable initialValue : U3<DateTime, DateTime[], {| from:DateTime;``to``:DateTime |}>
-    [<DefaultValue>] val
+    [<DefaultValue>] val mutable month : DateTime
     [<DefaultValue>] val mutable onMonthChange : DateTime -> unit
     [<DefaultValue>] val mutable initialMonth : DateTime
     [<DefaultValue>] val mutable focusedDay : DateTime
@@ -323,13 +323,13 @@ type OtpFieldContext
         activeSlots: Accessor<int[]>,
         shiftPWManagers: Accessor<bool>
     ) =
-    [<DefaultValue>] val mutable
-    [<DefaultValue>] val mutable
-    [<DefaultValue>] val mutable
-    [<DefaultValue>] val mutable
-    [<DefaultValue>] val mutable
-    [<DefaultValue>] val mutable activeSlots:
-    [<DefaultValue>] val mutable
+    member val value: Accessor<string>
+    member val isFocused: Accessor<bool>
+    member val isHovered: Accessor<bool>
+    member val isInserting: Accessor<bool>
+    member val maxLength: Accessor<int>
+    member val activeSlots: Accessor<int[]>
+    member val shiftPWManagers: Accessor<bool>
 
 [<Erase; Import("Root", otpField)>]
 type OtpField() =
@@ -550,9 +550,9 @@ module Utilities =
             setActive : 'T -> unit,
             onKeyDown : Browser.Types.KeyboardEvent -> unit
         ) =
-        [<DefaultValue>] val mutable active : unit -> 'T
-        [<DefaultValue>] val mutable setActive : 'T -> unit
-        [<DefaultValue>] val mutable onKeyDown : Browser.Types.KeyboardEvent -> unit
+        member val active : unit -> 'T = jsNative with get,set
+        member val setActive : 'T -> unit = jsNative with get,set
+        member val onKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
     
     [<Global; AllowNullLiteral>]
     type CreateMultiListResult [<ParamObject; Emit("$0")>]
@@ -567,15 +567,15 @@ module Utilities =
             toggleSelected : 'T -> unit,
             onKeyDown : Browser.Types.KeyboardEvent -> unit
         ) =
-        [<DefaultValue>] val mutable cursor : unit -> 'T
-        [<DefaultValue>] val mutable setCursor : 'T -> unit
-        [<DefaultValue>] val mutable active : unit -> 'T[]
-        [<DefaultValue>] val mutable setActive : 'T[] -> unit
-        [<DefaultValue>] val mutable selected : unit -> 'T[]
-        [<DefaultValue>] val mutable setSelected : 'T[] -> unit
-        [<DefaultValue>] val mutable onKeyDown : Browser.Types.KeyboardEvent -> unit
-        [<DefaultValue>] val mutable setCursorActive : 'T -> unit
-        [<DefaultValue>] val mutable toggleSelected : 'T -> unit
+        member val cursor : unit -> 'T = jsNative with get,set
+        member val setCursor : 'T -> unit = jsNative with get,set
+        member val active : unit -> 'T[] = jsNative with get,set
+        member val setActive : 'T[] -> unit = jsNative with get,set
+        member val selected : unit -> 'T[] = jsNative with get,set
+        member val setSelected : 'T[] -> unit = jsNative with get,set
+        member val onKeyDown : Browser.Types.KeyboardEvent -> unit = jsNative with get,set
+        member val setCursorActive : 'T -> unit = jsNative with get,set
+        member val toggleSelected : 'T -> unit = jsNative with get,set
     [<Global; AllowNullLiteral>]
     type CreatePersistentComponentResult [<ParamObject; Emit("$0")>]
         (

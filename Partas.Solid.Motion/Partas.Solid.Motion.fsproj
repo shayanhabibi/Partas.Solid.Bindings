@@ -19,6 +19,7 @@
     <Version>0.2.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageVersion>0.2.1</PackageVersion>
+    <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
     <PackageReleaseNotes>Change MotionStyle to produce camelCased CSS properties; despite source claims, kebab cased is not working.</PackageReleaseNotes>
     <NpmDependencies>
         <NpmPackage Name="solid-motionone" Version=">= 1.0.0" />
