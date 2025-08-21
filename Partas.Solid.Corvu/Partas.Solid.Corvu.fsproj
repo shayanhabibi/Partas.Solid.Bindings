@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -21,7 +22,7 @@
         <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
                 <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
         <NpmDependencies>
-            <NpmPackage Name="@corvu/otp-field" Version=">= 0.1.4" />
+            <NpmPackage Name="@corvu/otp-field" Version="&gt;= 0.1.4" />
         </NpmDependencies>
     </PropertyGroup>
 

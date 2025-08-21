@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -20,7 +21,7 @@
         <PackageVersion>0.513.0</PackageVersion>
         <GitNetInitialVersion>0.513.0</GitNetInitialVersion>
         <NpmDependencies>
-            <NpmPackage Name="lucide-solid" Version=">= 0.513.0" />
+            <NpmPackage Name="lucide-solid" Version="&gt;= 0.513.0" />
         </NpmDependencies>
     </PropertyGroup>
 

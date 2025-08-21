@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -19,7 +20,7 @@
         <PackageVersion>0.2.0</PackageVersion>
         <GitNetInitialVersion>0.2.0</GitNetInitialVersion>
         <NpmDependencies>
-            <NpmPackage Name="@tanstack/solid-table" Version=">= 8.0.0" />
+            <NpmPackage Name="@tanstack/solid-table" Version="&gt;= 8.0.0" />
         </NpmDependencies>
     </PropertyGroup>
 
