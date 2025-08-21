@@ -8,7 +8,7 @@ open Fable.Core.Reflection
 [<AutoOpen>]
 type ``class-variance-authority`` =
     [<Import("cva", "class-variance-authority")>]
-    static member cva (defaults: string) (o: obj): (obj -> string) = jsNative
+    static member cva (_defaults: string) (_: obj): (obj -> string) = jsNative
 
 [<JS.Pojo>]
 type CvaBaseObj private (variants: JS.ObjectConstructor, defaultVariants: JS.ObjectConstructor, compoundVariants: JS.ObjectConstructor ResizeArray) =
@@ -198,13 +198,13 @@ type CvaCompound<'A> = private Compound of CvaCompoundBase with
 [<Erase>]
 type CvaFunc<'A> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A): string = this.Invoke(createObj [Experimental.nameof typeof<'A> ==> getCaseName variant])
 [<Erase>]
 type CvaFunc<'A, 'B> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     member inline this.Invoke(variant: 'A, variantB: 'B): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant
         Experimental.nameof typeof<'B> ==> getCaseName variantB
@@ -212,7 +212,7 @@ type CvaFunc<'A, 'B> =
 [<Erase>]
 type CvaFunc<'A, 'B, 'C> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A, variantB: 'B, variantC: 'C): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant
@@ -222,7 +222,7 @@ type CvaFunc<'A, 'B, 'C> =
 [<Erase>]
 type CvaFunc<'A, 'B, 'C, 'D> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A, variantB: 'B, variantC: 'C, variantD: 'D): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant
@@ -233,7 +233,7 @@ type CvaFunc<'A, 'B, 'C, 'D> =
 [<Erase>]
 type CvaFunc<'A, 'B, 'C, 'D, 'E> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A, variantB: 'B, variantC: 'C, variantD: 'D, variantE: 'E): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant
@@ -245,7 +245,7 @@ type CvaFunc<'A, 'B, 'C, 'D, 'E> =
 [<Erase>]
 type CvaFunc<'A, 'B, 'C, 'D, 'E, 'F> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A, variantB: 'B, variantC: 'C, variantD: 'D, variantE: 'E, variantF: 'F): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant
@@ -258,7 +258,7 @@ type CvaFunc<'A, 'B, 'C, 'D, 'E, 'F> =
 [<Erase>]
 type CvaFunc<'A, 'B, 'C, 'D, 'E, 'F, 'G> =
     [<Emit("$0($1)")>]
-    member inline private this.Invoke(o: obj) = jsNative
+    member inline private this.Invoke(_: obj) = jsNative
     [<Erase>]
     member inline this.Invoke(variant: 'A, variantB: 'B, variantC: 'C, variantD: 'D, variantE: 'E, variantF: 'F, variantG: 'G): string = this.Invoke(createObj [
         Experimental.nameof typeof<'A> ==> getCaseName variant

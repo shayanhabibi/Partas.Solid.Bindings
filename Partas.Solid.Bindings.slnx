@@ -1,4 +1,8 @@
 ﻿<Solution>
+    <Folder Name="misc">
+        <File Path="README.md"/>
+        <File Path="RELEASE_NOTES.md"/>
+    </Folder>
   <Folder Name=".build">
     <Project Path="Build.fsproj" Type="Classic F#" />
   </Folder>
