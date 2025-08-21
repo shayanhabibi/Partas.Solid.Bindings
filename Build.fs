@@ -147,3 +147,9 @@ let dependenciesMapping = [
     ==> GitPush
     ==> Publish
 ]
+
+[<EntryPoint>]
+let main args =
+    args |> Args.setArgs
+    args[0] |> Target.runOrDefaultWithArguments
+    0
