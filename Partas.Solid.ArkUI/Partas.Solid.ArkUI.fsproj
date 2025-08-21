@@ -17,7 +17,6 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.2.2</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.2</PackageVersion>
         <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
                 <PackageReleaseNotes>Init</PackageReleaseNotes>
@@ -27,7 +26,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="ContextBindings.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>

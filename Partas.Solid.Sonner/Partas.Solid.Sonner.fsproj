@@ -3,7 +3,6 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
         <PackageId>Partas.Solid.Sonner</PackageId>
         <Title>Partas.Solid.Sonner</Title>
         <RootNamespace>Partas.Solid.Sonner</RootNamespace>
@@ -17,7 +16,6 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.2.1</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.1</PackageVersion>
         <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
         <NpmDependencies>

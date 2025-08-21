@@ -17,7 +17,6 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.2.2</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.2</PackageVersion>
         <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
         <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
@@ -27,7 +26,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="Spec.fs" />
         <Compile Include="Refactor.fs" />
         <Compile Include="Solid.fs" />

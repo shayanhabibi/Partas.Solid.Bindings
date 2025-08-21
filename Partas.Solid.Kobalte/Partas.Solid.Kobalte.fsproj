@@ -3,7 +3,6 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
         <PackageId>Partas.Solid.Kobalte</PackageId>
         <Title>Partas.Solid.Kobalte</Title>
         <RootNamespace>Partas.Solid.Kobalte</RootNamespace>

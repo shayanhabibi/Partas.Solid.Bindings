@@ -17,10 +17,8 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.513.0</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.513.0</PackageVersion>
         <GitNetInitialVersion>0.513.0</GitNetInitialVersion>
-        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
             <NpmPackage Name="lucide-solid" Version=">= 0.513.0" />
         </NpmDependencies>

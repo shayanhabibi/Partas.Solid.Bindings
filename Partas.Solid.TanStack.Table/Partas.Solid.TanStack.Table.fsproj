@@ -3,7 +3,6 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-        <!--        <WarningsAsErrors>3239;0025</WarningsAsErrors>-->
         <PackageId>Partas.Solid.TanStack.Table</PackageId>
         <Title>Partas.Solid.TanStack.Table</Title>
         <RootNamespace>Partas.Solid.TanStack.Table</RootNamespace>
@@ -17,17 +16,14 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.2.0</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.2.0</PackageVersion>
         <GitNetInitialVersion>0.2.0</GitNetInitialVersion>
-        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
             <NpmPackage Name="@tanstack/solid-table" Version=">= 8.0.0" />
         </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
-        <!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
         <Compile Include="Spec.fs" />
         <Compile Include="Program.fs" />
         <Compile Include="ColumnFiltering.fs" />

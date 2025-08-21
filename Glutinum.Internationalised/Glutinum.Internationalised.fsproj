@@ -16,13 +16,8 @@
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.1.1</Version>
-        <!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
         <PackageVersion>0.1.1</PackageVersion>
         <GitNetInitialVersion>0.1.1</GitNetInitialVersion>
-        <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
-        <!--    <NpmDependencies>-->
-        <!--        <NpmPackage Name="solid-apexcharts" Version=">= 0.4.0" />-->
-        <!--    </NpmDependencies>-->
     </PropertyGroup>
 
     <ItemGroup>
