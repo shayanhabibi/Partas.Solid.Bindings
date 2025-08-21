@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -22,7 +23,7 @@
         <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
         <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
-                        <NpmPackage Name="class-variance-authority" Version=">= 0.7.1" />
+                        <NpmPackage Name="class-variance-authority" Version="&gt;= 0.7.1" />
         </NpmDependencies>
     </PropertyGroup>
 

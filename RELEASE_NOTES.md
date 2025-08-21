@@ -372,25 +372,7 @@ the ecosystems marketed change does not change the Engine packages API**
 
 # Cva
 
-## UNRELEASED
-
-* add ci workflow - cabboose@[bb105](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/bb105fbdf0fb7446f663d388a10e8ada5a0f5e89)
-  
-
-* v1.0.0 Partas.Solid release - cabboose@[3b47d](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/3b47d542682bf70d4901fa2a3ee5cde1efcf1643)
-  
-
-* Bump versions, add Sonner, update some of the older bindings with better APIs. - cabboose@[e9cc5](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/e9cc5346070b7fad4d384b301851c08f3ca0b6a1)
-  
-
-* Update package references and add Partas.Solid.Motion module - cabboose@[fa454](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/fa454b8c40367ca61baabeecd8b4e3928bb22ee4)
-  
-
-* Dump - cabboose@[0a850](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/0a8503a51b628e7fc3a6828177b02b05ae195e5d)
-  
-
-* upd - cabboose@[58361](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/583612088c29a484e80e0a90ee07e9248c242796)
-  
+## [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.0...HEAD)
 
 -----------------------
 
