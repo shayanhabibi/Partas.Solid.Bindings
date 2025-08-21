@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -19,13 +20,13 @@
         <PackageVersion>0.2.1</PackageVersion>
         <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
         <NpmDependencies>
-            <NpmPackage Name="solid-sonner" Version=">= 0.2.8" />
+            <NpmPackage Name="solid-sonner" Version="&gt;= 0.2.8" />
         </NpmDependencies>
     </PropertyGroup>
 
     <ItemGroup>
         <Compile Include="Spec.fs" />
-        <Compile Include="Program.fs"/>
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
