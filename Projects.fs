@@ -142,7 +142,8 @@ let projects = [
     Projects.motion
     Projects.neodrag
     Projects.sonner
-    Projects.storybook
+    // TODO - fix storybook errors
+    // Projects.storybook
     Projects.tanstackTables
 ]    
 let ignored = [
