@@ -16,8 +16,8 @@
         <PackageTags>Partas;F#;FSharp;Fable;fable-javascript;Web;Storybook-solid</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.2.0</Version>
-        <PackageVersion>0.2.0</PackageVersion>
+        <Version>0.2.1</Version>
+        <PackageVersion>0.2.1</PackageVersion>
         <GitNetInitialVersion>0.2.0</GitNetInitialVersion>
     </PropertyGroup>
 
