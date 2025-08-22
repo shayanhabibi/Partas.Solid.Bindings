@@ -16,8 +16,8 @@
     <PackageTags>Glutinum;F#;FSharp;Fable;fable-javascript;Web;ZagJs</PackageTags>
     <Authors>Shayan Habibi</Authors>
     <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-    <Version>0.1.1</Version>
-    <PackageVersion>0.1.1</PackageVersion>
+    <Version>0.1.2</Version>
+    <PackageVersion>0.1.2</PackageVersion>
     <GitNetInitialVersion>0.1.1</GitNetInitialVersion>
 </PropertyGroup>
 
