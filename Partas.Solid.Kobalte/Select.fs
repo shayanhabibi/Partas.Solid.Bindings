@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Partas.Solid
@@ -145,3 +146,54 @@ module Select =
         inherit div()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module SelectContext =
+    [<StringEnum; RequireQualifiedAccess>]
+    type FocusStrategy =
+        | First
+        | Last
+    [<AllowNullLiteral; Interface>]
+    type SelectDataSet =
+        abstract ``data-expanded``: string option
+        abstract ``data-closed``: string option
+    
+    [<AllowNullLiteral; Interface>]
+    type SelectContext =
+        abstract dataset: Accessor<SelectDataSet>
+        abstract isOpen: Accessor<bool>
+        abstract isDisabled: Accessor<bool>
+        abstract isMultiple: Accessor<bool>
+        abstract isVirtualized: Accessor<bool>
+        abstract isModal: Accessor<bool>
+        abstract preventScroll: Accessor<bool>
+        abstract disallowTypeAhead: Accessor<bool>
+        abstract shouldFocusWrap: Accessor<bool>
+        abstract selectedOptions: Accessor<obj[]>
+        abstract contentPresent: Accessor<bool>
+        abstract autoFocus: Accessor<U2<FocusStrategy, bool>>
+        abstract triggerRef: Accessor<HTMLElement option>
+        abstract triggerId: Accessor<string option>
+        abstract valueId: Accessor<string option>
+        abstract listboxId: Accessor<string option>
+        abstract listboxAriaLabelledBy: Accessor<string option>
+        abstract listState: Accessor<ListState<string>>
+        abstract keyboardDelegate: Accessor<KeyboardDelegate>
+        abstract setListboxAriaLabelledBy: Setter<string option>
+        abstract setTriggerRef: HTMLElement -> unit
+        abstract setContentRef: HTMLElement -> unit
+        abstract setListboxRef: HTMLElement -> Unit
+        abstract open': U2<FocusStrategy, bool> -> unit
+        abstract close: unit -> unit
+        abstract toggle: U2<FocusStrategy, bool> -> unit
+        abstract placeholder: Accessor<HtmlElement>
+        abstract renderItem: CollectionNode<obj> -> HtmlElement
+        abstract renderSection: CollectionNode<obj> -> HtmlElement
+        abstract removeOptionFromSelection: obj -> unit
+        abstract generateId: string -> string
+        abstract registerTriggerId: string -> (unit -> unit)
+        abstract registerValueId: string -> (unit -> unit)
+        abstract registerListboxId: string -> (unit -> unit)
+    [<ImportMember(Spec.select)>]
+    let useSelectContext(): SelectContext = jsNative
+        

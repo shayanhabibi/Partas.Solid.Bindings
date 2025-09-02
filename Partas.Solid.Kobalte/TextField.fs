@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Partas.Solid
 open Fable.Core
 
@@ -45,3 +46,14 @@ module TextField =
         inherit div()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module TextFieldContext =
+    [<AllowNullLiteral; Interface>]
+    type TextFieldContext =
+        abstract value: Accessor<string option>
+        abstract generateId: part: string -> string
+        abstract onInput: (InputEvent -> unit) with get,set
+    
+    [<ImportMember(Spec.textField)>]
+    let useTextFieldContext(): TextFieldContext = jsNative

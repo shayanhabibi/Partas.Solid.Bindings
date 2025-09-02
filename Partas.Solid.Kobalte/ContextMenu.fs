@@ -173,3 +173,12 @@ module ContextMenu =
         inherit div()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module ContextMenuContext =
+    [<AllowNullLiteral; Interface>]
+    type ContextMenuContext =
+        abstract setAnchorRect: Setter<{|x: float; y: float|}>
+    
+    [<ImportMember(Spec.contextMenu)>]
+    let useContextMenuContext(): ContextMenuContext = jsNative

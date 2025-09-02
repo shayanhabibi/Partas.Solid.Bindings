@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Partas.Solid
 open Fable.Core
 
@@ -38,3 +39,26 @@ module Tabs =
         inherit div()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module TabsContext =
+    [<AllowNullLiteral; Interface>]
+    type SingleSelectListState =
+        inherit ListState<obj>
+        abstract selectedItem: Accessor<CollectionNode<obj> option>
+        abstract selectedKey: Accessor<string option>
+        abstract setSelectedKey: key: string -> unit
+    [<AllowNullLiteral; Interface>]
+    type TabsContext =
+        abstract isDisabled: Accessor<bool>
+        abstract orientation: Accessor<Orientation>
+        abstract activationMode: Accessor<ActivationMode>
+        abstract triggerIdsMap: Accessor<Map<string, string>>
+        abstract contentIdsMap: Accessor<Map<string, string>>
+        abstract listState: Accessor<SingleSelectListState>
+        abstract selectedTab: Accessor<HTMLElement option>
+        abstract setSelectedTab: Setter<HTMLElement option>
+        abstract generateTriggerId: value: string -> string
+        abstract generateContentId: value: string -> string
+    [<ImportMember(Spec.tabs)>]
+    let useTabsContext(): TabsContext = jsNative

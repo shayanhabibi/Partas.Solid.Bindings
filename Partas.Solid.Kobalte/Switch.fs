@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Fable.Core
 open Partas.Solid
 
@@ -52,4 +53,22 @@ module Switch =
         inherit div()
         interface Polymorph
 
+[<Erase; AutoOpen>]
+module SwitchContext =
+    [<AllowNullLiteral; Interface>]
+    type SwitchDataSet =
+        abstract ``data-checked``: string option
+    [<AllowNullLiteral; Interface>]
+    type SwitchContext =
+        abstract value: Accessor<string>
+        abstract dataset: Accessor<SwitchDataSet>
+        abstract checked': Accessor<bool>
+        abstract inputRef: Accessor<HTMLInputElement option>
+        abstract generateId: part: string -> string
+        abstract toggle: unit -> unit
+        abstract setIsChecked: isChecked: bool -> unit
+        abstract setIsFocused: isFocused: bool -> unit
+        abstract setInputRef: el: HTMLInputElement -> unit
+    [<ImportMember(Spec.switch)>]
+    let useSwitchContext(): SwitchContext = jsNative
 

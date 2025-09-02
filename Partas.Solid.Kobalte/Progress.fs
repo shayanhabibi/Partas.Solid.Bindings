@@ -33,3 +33,17 @@ module Progress =
         inherit div()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module ProgressContext =
+    type ProgressDataSet =
+        abstract ``data-progress``: string option with get
+        abstract ``data-indeterminate``: string option with get
+    type ProgressContext =
+        inherit MeterContext
+        abstract dataset: Accessor<ProgressDataSet>
+        abstract progressFillWidth: Accessor<string option>
+        [<System.Obsolete("", true)>]
+        abstract meterFillWidth: Accessor<string option>
+    [<ImportMember(Spec.progress)>]
+    let useProgressContext(): ProgressContext = jsNative

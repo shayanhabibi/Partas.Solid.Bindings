@@ -34,14 +34,24 @@ module Accordion =
     [<Erase; Import("Trigger", Spec.accordion)>]
     type Trigger() =
         inherit Collapsible.Trigger() //v0.13.9
-        // inherit button()
         interface Polymorph //v0.13.9
     [<Erase; Import("Content", Spec.accordion)>]
     type Content() =
         inherit Collapsible.Content() //v0.13.9
-        // inherit div()
         interface Polymorph  //v0.13.9
+    /// <summary>
+    /// Wraps an accordion trigger
+    /// </summary>
     [<Erase; Import("Header", Spec.accordion)>]
     type Header() =
         inherit h3() //v0.13.9
         interface Polymorph //v0.13.9
+
+[<Erase; AutoOpen>]
+module AccordionContext =
+    [<AllowNullLiteral; Interface>]
+    type AccordionContext =
+        abstract listState: Accessor<ListState<obj>> with get,set
+        abstract generateId: (string -> string) with get,set
+    [<ImportMember(Spec.accordion)>]
+    let useAccordionContext(): AccordionContext = jsNative

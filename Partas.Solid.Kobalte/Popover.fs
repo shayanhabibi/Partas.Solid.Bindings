@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Fable.Core
 open Partas.Solid
 
@@ -75,3 +76,33 @@ module Popover =
         inherit p()
         interface Polymorph
 
+
+[<Erase; AutoOpen>]
+module PopoverContext =
+    [<AllowNullLiteral; Interface>]
+    type PopoverDataSet =
+        abstract ``data-expanded``: string option
+        abstract ``data-closed``: string option
+    [<AllowNullLiteral; Interface>]
+    type PopoverContext =
+        abstract translations: Accessor<obj>
+        abstract dataset: Accessor<PopoverDataSet>
+        abstract isOpen: Accessor<bool>
+        abstract isModal: Accessor<bool>
+        abstract preventScroll: Accessor<bool>
+        abstract contentPresent: Accessor<bool>
+        abstract triggerRef: Accessor<HTMLElement option>
+        abstract contentId: Accessor<string option>
+        abstract titleId: Accessor<string option>
+        abstract descriptionId: Accessor<string option>
+        abstract setDefaultAnchorRef: HTMLElement -> unit
+        abstract setTriggerRef: HTMLElement -> unit
+        abstract setContentRef: HTMLElement -> unit
+        abstract close: unit -> unit
+        abstract toggle: unit -> unit
+        abstract generateId: string -> string
+        abstract registerContentId: string -> (unit -> unit)
+        abstract registerTitleId: string -> (unit -> unit)
+        abstract reigsterDescriptionId: string -> (unit -> unit)
+    [<ImportMember(Spec.popover)>]
+    let usePopoverContext(): PopoverContext = jsNative

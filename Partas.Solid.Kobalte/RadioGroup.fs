@@ -62,3 +62,13 @@ module RadioGroup =
         inherit div()
         interface Polymorph
 
+[<Erase; AutoOpen>]
+module RadioGroupContext =
+    [<AllowNullLiteral; Interface>]
+    type RadioGroupContext =
+        abstract ariaDescribedBy: Accessor<string option>
+        abstract isDefaultValue: string -> bool
+        abstract isSelectedValue: string -> bool
+        abstract setSelectedValue: string -> unit
+    [<ImportMember(Spec.radioGroup)>]
+    let useRadioGroupContext(): RadioGroupContext = jsNative

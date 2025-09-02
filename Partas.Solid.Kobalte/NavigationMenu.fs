@@ -174,3 +174,29 @@ module NavigationMenu =
         interface Polymorph
 
 
+[<Erase; AutoOpen>]
+module NavigationMenuContext =
+    [<AllowNullLiteral; Interface>]
+    type NavigationMenuDataSet =
+        abstract ``data-expanded``: string option
+        abstract ``data-closed``: string option
+    [<AllowNullLiteral; Interface>]
+    type NavigationMenuContext =
+        abstract dataset: Accessor<NavigationMenuDataSet>
+        abstract delayDuration: Accessor<float>
+        abstract skipDelayDuration: Accessor<float>
+        abstract autoFocusMenu: Accessor<bool>
+        abstract setAutoFocusMenu: Setter<bool>
+        abstract startLeaveTimer: unit -> unit
+        abstract cancelLeaveTimer: unit -> unit
+        abstract rootRef: Accessor<Browser.Types.HTMLElement option>
+        abstract setRootRef: Setter<Browser.Types.HTMLElement>
+        abstract viewportRef: Accessor<Browser.Types.HTMLElement option>
+        abstract setViewportRef: Setter<Browser.Types.HTMLElement>
+        abstract viewportPresent: Accessor<bool>
+        abstract currentPlacement: Accessor<KobaltePlacement>
+        abstract previousMenu: Accessor<string option>
+        abstract setPreviousMenu: Setter<string option>
+    [<ImportMember(Spec.navigationMenu)>]
+    let useNavigationMenuContext(): NavigationMenuContext = jsNative
+        

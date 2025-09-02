@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Fable.Core
 open Partas.Solid
 
@@ -60,3 +61,28 @@ module NumberField =
         interface Polymorph
 
 
+[<Erase; AutoOpen>]
+module NumberFieldContext =
+    [<AllowNullLiteral; Interface>]
+    type NumberFieldContext =
+        abstract value: Accessor<U2<float option, string option>>
+        abstract setValue: U2<float, string> -> unit
+        abstract rawValue: Accessor<float>
+        abstract generateId: string -> string
+        abstract formatNumber: float -> string
+        abstract format: unit -> unit
+        abstract onInput: InputEvent -> unit
+        abstract textValue: Accessor<string option>
+        abstract minValue: Accessor<float>
+        abstract maxValue: Accessor<float>
+        abstract step: Accessor<float>
+        abstract largeStep: Accessor<float>
+        abstract changeOnWheel: Accessor<bool>
+        abstract translations: Accessor<obj option>
+        abstract inputRef: Accessor<HTMLInputElement option>
+        abstract setInputRef: HTMLInputElement option -> unit
+        abstract hiddenInputRef: Accessor<HTMLInputElement option>
+        abstract setHiddenInputRef: HTMLInputElement option -> unit
+        abstract varyValue: float -> unit
+    [<ImportMember(Spec.numberField)>]
+    let useNumberFieldContext(): NumberFieldContext = jsNative

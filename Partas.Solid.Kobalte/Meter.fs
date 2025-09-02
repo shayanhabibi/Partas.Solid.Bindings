@@ -33,3 +33,20 @@ module Meter =
         interface Polymorph
 
 
+[<Erase; AutoOpen>]
+module MeterContext =
+    [<Interface; AllowNullLiteral>]
+    type MeterDataSet = interface end
+    
+    [<AllowNullLiteral; Interface>]
+    type MeterContext =
+        abstract dataset: Accessor<MeterDataSet>
+        abstract value: Accessor<float>
+        abstract valuePercent: Accessor<float>
+        abstract valueLabel: Accessor<string option>
+        abstract meterFillWidth: Accessor<string option>
+        abstract labelId: Accessor<string option>
+        abstract generateId: (string -> string)
+        abstract registerLabelId: (string -> (unit -> unit))
+    [<ImportMember(Spec.meter)>]
+    let useMeterContext(): MeterContext = jsNative

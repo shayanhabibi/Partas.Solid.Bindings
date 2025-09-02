@@ -161,3 +161,32 @@ module Menubar =
     type ItemDescription() =
         inherit div()
         interface Polymorph
+
+[<Erase; AutoOpen>]
+module MenubarContext =
+    [<AllowNullLiteral; Interface>]
+    type MenubarDataSet =
+        abstract ``data-expanded``: string option with get,set
+        abstract ``data-closed``: string option with get,set
+    
+    [<AllowNullLiteral; Interface>]
+    type MenubarContext =
+        abstract dataset: Accessor<MenubarDataSet>
+        abstract value: Accessor<string option>
+        abstract setValue: (string option -> string option) -> unit
+        abstract menus: Accessor<Set<string>>
+        abstract menuRefs: Accessor<Browser.Types.HTMLElement array>
+        abstract menuRefMap: Accessor<Map<string, Browser.Types.HTMLElement[]>>
+        abstract lastValue: Accessor<string option>
+        abstract setLastValue: (string option -> string option) -> unit
+        abstract registerMenu: (string * HtmlElement[]) -> unit
+        abstract unregisterMenu: string -> unit
+        abstract nextMenu: unit -> unit
+        abstract previousMenu: unit -> unit
+        abstract closeMenu: unit -> unit
+        abstract setAutoFocusMenu: Setter<bool>
+        abstract autoFocusMenu: Accessor<bool>
+        abstract generateId: string -> string
+        abstract orientation: Accessor<Orientation>
+    [<ImportMember(Spec.menubar)>]
+    let useMenubarContext(): MenubarContext = jsNative
