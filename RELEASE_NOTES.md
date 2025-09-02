@@ -17,7 +17,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Cmdk**](#cmdk) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) | 1 commits
 [**Corvu**](#corvu) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) | 1 commits
 [**Internationalised**](#internationalised) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) | 1 commits
-[**Kobalte**](#kobalte) | [0.3.6](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.3.5..._%28Kobalte%29_0.3.6) | 1 commits
+[**Kobalte**](#kobalte) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.3.6..._%28Kobalte%29_0.4.0) | 2 commits
 [**Lucide**](#lucide) | [0.513.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.0..._%28Lucide%29_0.513.1) | 1 commits
 [**ModularForms**](#modularforms) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.1..._%28ModularForms%29_0.2.2) | 1 commits
 [**Motion**](#motion) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.1..._%28Motion%29_0.2.2) | 1 commits
@@ -95,7 +95,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Kobalte
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.3.6...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.0...HEAD)
+
+### [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.3.6..._%28Kobalte%29_0.4.0) - (2025-09-02)
+
+#### <!-- 6 --> Others
+
+* add bindings to more of the contexts by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#b105c](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/b105c7c07de91630d81c5d8f9407d438fa8b6f0d)
+  
 
 ### [0.3.6](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.3.5..._%28Kobalte%29_0.3.6) - (2025-08-22)
 
