@@ -1,8 +1,4 @@
 ﻿<Solution>
-    <Folder Name="misc">
-        <File Path="README.md"/>
-        <File Path="RELEASE_NOTES.md"/>
-    </Folder>
   <Folder Name=".build">
     <Project Path="Build.fsproj" Type="Classic F#" />
   </Folder>
@@ -33,6 +29,9 @@
     <Project Path="Partas.Solid.TanStack.Virtual\Partas.Solid.TanStack.Virtual.fsproj" Type="Classic F#" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="Build.fsproj" Type="Classic F#" />
+  <Folder Name="misc">
+    <File Path="README.md" />
+    <File Path="RELEASE_NOTES.md" />
+  </Folder>
   <Project Path="Partas.Solid.Bindings\Partas.Solid.Bindings.fsproj" Type="Classic F#" />
 </Solution>
