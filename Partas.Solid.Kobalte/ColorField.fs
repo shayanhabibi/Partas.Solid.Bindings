@@ -1,5 +1,6 @@
 ﻿namespace Partas.Solid.Kobalte
 
+open Browser.Types
 open Partas.Solid
 open Fable.Core
 
@@ -26,3 +27,13 @@ module ColorField =
     type Label() =
         inherit TextField.Label()
         interface Polymorph
+
+[<Erase; AutoOpen>]
+module ColorFieldContext =
+    [<JS.Pojo>]
+    type ColorFieldContext(
+        onBlur: FocusEvent -> unit
+        ) =
+        member val onBlur = onBlur with get,set
+    [<ImportMember(Spec.colorField)>]
+    let useColorFieldContext(): ColorFieldContext = jsNative

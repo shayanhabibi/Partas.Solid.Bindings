@@ -103,6 +103,6 @@ module PopoverContext =
         abstract generateId: string -> string
         abstract registerContentId: string -> (unit -> unit)
         abstract registerTitleId: string -> (unit -> unit)
-        abstract reigsterDescriptionId: string -> (unit -> unit)
+        abstract registerDescriptionId: string -> (unit -> unit)
     [<ImportMember(Spec.popover)>]
     let usePopoverContext(): PopoverContext = jsNative
