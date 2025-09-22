@@ -10,5 +10,8 @@ open Partas.Solid
 type Button() =
     inherit button()
     interface Polymorph
-    [<DefaultValue>]
-    val mutable disabled : bool
+    /// <summary>
+    /// Whether the button is disabled.
+    /// </summary>
+    [<Erase>]
+    member val disabled : bool = JS.undefined with get,set

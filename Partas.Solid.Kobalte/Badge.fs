@@ -7,5 +7,7 @@ open Partas.Solid
 type Badge() =
     inherit span()
     interface Polymorph
+    /// <summary>
     /// Accessible text description of the badge if child is not text
-    [<DefaultValue>] val mutable textValue : string //v0.13.9
+    /// </summary>
+    [<Erase>] member val textValue : string = JS.undefined with get,set

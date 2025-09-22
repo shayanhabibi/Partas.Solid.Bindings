@@ -14,30 +14,30 @@ type Collapsible() =
     /// <summary>
     /// The controlled open state of the collapsible.
     /// </summary>
-    [<DefaultValue>]
-    val mutable open': bool
+    [<Erase>]
+    member val open': bool = JS.undefined with get,set
     /// <summary>
     /// The default open state when initially rendered.
     /// Useful when you do not need to control the open state.
     /// </summary>
-    [<DefaultValue>]
-    val mutable defaultOpen: bool
+    [<Erase>]
+    member val defaultOpen: bool = JS.undefined with get,set
     /// <summary>
     /// Event handler called when the open state of the collapsible changes.
     /// </summary>
-    [<DefaultValue>]
-    val mutable onOpenChange: (bool -> unit)
+    [<Erase>]
+    member val onOpenChange: (bool -> unit) = JS.undefined with get,set
     /// <summary>
     /// Whether the collapsible is disabled.
     /// </summary>
-    [<DefaultValue>]
-    val mutable disabled: bool
+    [<Erase>]
+    member val disabled: bool = JS.undefined with get,set
     /// <summary>
     /// Used to force mounting the collapsible content when more control is needed.
     /// Useful when controlling animation with SolidJS animation libraries.
     /// </summary>
-    [<DefaultValue>]
-    val mutable forceMount: bool
+    [<Erase>]
+    member val forceMount: bool = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module Collapsible =

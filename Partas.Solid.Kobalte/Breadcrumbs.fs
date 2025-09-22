@@ -8,8 +8,22 @@ open Partas.Solid
 type Breadcrumbs() =
     inherit nav()
     interface Polymorph // the custom is that if a property takes an element or string, then the apostrophised version takes the element
-    [<DefaultValue>] val mutable separator' : HtmlElement  //v0.13.9
-    [<DefaultValue>] val mutable separator : string   //v0.13.9
+    /// <summary>
+    /// The visual separator between each breadcrumb item. It will be used as the default children of
+    /// `Kobalte.Breadcrumbs.Separator`.
+    /// </summary>
+    /// <remarks>
+    /// You can also override each `Breadcrumbs.Separator` content by providing your own `children`.
+    /// </remarks>
+    [<Erase>] member val separator' : HtmlElement = JS.undefined with get,set
+    /// <summary>
+    /// The visual separator between each breadcrumb item. It will be used as the default children of
+    /// `Kobalte.Breadcrumbs.Separator`.
+    /// </summary>
+    /// <remarks>
+    /// You can also override each `Breadcrumbs.Separator` content by providing your own `children`.
+    /// </remarks>
+    [<Erase>] member val separator : string = JS.undefined with get,set
     // [<DefaultValue>] val mutable translations : string  // todo- support  //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
@@ -21,8 +35,14 @@ module Breadcrumbs =
     type Link() =
         inherit Kobalte.Link()
         interface Polymorph
-        [<DefaultValue>] val mutable current : bool  //v0.13.9
-        [<DefaultValue>] val mutable disabled : bool  //v0.13.9
+        /// <summary>
+        /// Whether the breadcrumb link represents the current page.
+        /// </summary>
+        [<Erase>] member val current : bool = JS.undefined with get,set
+        /// <summary>
+        /// Whether the breadcrumb link is disabled.
+        /// </summary>
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
     [<Erase; Import("Separator", Spec.breadcrumbs)>]
     type Separator() = //v0.13.9
         inherit span()

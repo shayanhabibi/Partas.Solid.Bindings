@@ -18,7 +18,7 @@ type ColorArea() =
     /// <summary>
     /// The localized strings of the component.
     /// </summary>
-    [<DefaultValue>] val mutable translations: obj
+    [<Erase>] member val translations: obj = JS.undefined with get,set
     /// <summary>
     /// The controlled value of the color area.
     /// </summary>

@@ -23,17 +23,50 @@ type Checkbox() =
     inherit div()
     interface Polymorph
     interface ChildLambdaProvider<CheckboxRenderProp>
-    [<DefaultValue>] val mutable checked' : bool  //v0.13.9
-    [<DefaultValue>] val mutable defaultChecked : bool  //v0.13.9
-    [<DefaultValue>] val mutable onChange : bool -> unit  //v0.13.9
-    [<DefaultValue>] val mutable indeterminate : bool //v0.13.9
-    [<DefaultValue>] val mutable name : string  //v0.13.9
-    [<DefaultValue>] val mutable value : string  //v0.13.9
-    [<DefaultValue>] val mutable validationState : ValidationState  //v0.13.9
-    [<DefaultValue>] val mutable required : bool  //v0.13.9
-    [<DefaultValue>] val mutable disabled : bool  //v0.13.9
-    [<DefaultValue>] val mutable readOnly : bool  //v0.13.9
-    [<DefaultValue>] val mutable children : CheckboxRenderProp -> HtmlElement   //v0.13.9
+    /// <summary>
+    /// The controlled checked state of the checkbox.
+    /// </summary>
+    [<Erase>] member val checked' : bool = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// The default checked state when initially rendered. Useful when you do not need to control the checked state.
+    /// </summary>
+    [<Erase>] member val defaultChecked : bool = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Event handler called when the checked state of the checkbox changes.
+    /// </summary>
+    [<Erase>] member val onChange : bool -> unit = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Whether the checkbox is in an indeterminate state.
+    /// </summary>
+    [<Erase>] member val indeterminate : bool = JS.undefined with get,set //v0.13.9
+    /// <summary>
+    /// The name of the checkbox, used when submitting an HTML form.
+    /// </summary>
+    [<Erase>] member val name : string = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// The value of the checkbox, used when submitting an HTML form.
+    /// </summary>
+    [<Erase>] member val value : string = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Whether the checkbox should display its "valid" or "invalid" visual styling.
+    /// </summary>
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Whether the user must check the checkbox before the owning form can be submitted.
+    /// </summary>
+    [<Erase>] member val required : bool = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Whether the checkbox is disabled
+    /// </summary>
+    [<Erase>] member val disabled : bool = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// Whether the checkbox can be checked but not changed by the user.
+    /// </summary>
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set  //v0.13.9
+    /// <summary>
+    /// The children of the checkbox. Can be an element or a render prop for having access to the internal state.
+    /// </summary>
+    [<Erase>] member val children : CheckboxRenderProp -> HtmlElement = JS.undefined   //v0.13.9
 
 [<Erase; RequireQualifiedAccess>]
 module Checkbox = //v0.13.9
@@ -51,7 +84,11 @@ module Checkbox = //v0.13.9
     type Indicator() = //v0.13.9
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool  //v0.13.9
+        /// <summary>
+        /// Used to force mounting when more control is needed. Useful when controlling animation with SolidJS
+        /// animation libraries.
+        /// </summary>
+        [<Erase>] member val forceMount : bool = JS.undefined  //v0.13.9
     /// <summary>
     /// 
     /// </summary>
@@ -66,7 +103,11 @@ module Checkbox = //v0.13.9
     type ErrorMessage() = //v0.13.9
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool  //v0.13.9
+        /// <summary>
+        /// Used to force mounting when more control is needed. Useful when controlling animation with SolidJS
+        /// animation libraries.
+        /// </summary>
+        [<Erase>] member val forceMount : bool = JS.undefined  //v0.13.9
     /// <summary>
     /// 
     /// </summary>
