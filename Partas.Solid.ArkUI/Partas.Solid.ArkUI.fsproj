@@ -29,6 +29,7 @@
     <ItemGroup>
         <Compile Include="ContextBindings.fs" />
         <Compile Include="Program.fs" />
+        <Compile Include="SignaturePad.fs" />
     </ItemGroup>
 
     <ItemGroup>
