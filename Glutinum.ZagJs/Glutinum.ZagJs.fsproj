@@ -35,6 +35,7 @@
         <Compile Include="DatePicker.fs" />
         <Compile Include="Accordion.fs" />
         <Compile Include="Avatar.fs" />
+        <Compile Include="SignaturePad.fs" />
     </ItemGroup>
     
 
