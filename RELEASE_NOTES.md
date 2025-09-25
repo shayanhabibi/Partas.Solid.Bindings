@@ -13,7 +13,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 **Scope** | Current Release | Commit Count
 :--- | :---: | :---:
-[**ArkUI**](#arkui) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.3.0..._%28ArkUI%29_0.4.0) | 3 commits
+[**ArkUI**](#arkui) | [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.0..._%28ArkUI%29_0.4.1) | 4 commits
 [**Cmdk**](#cmdk) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) | 1 commits
 [**Corvu**](#corvu) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) | 1 commits
 [**Internationalised**](#internationalised) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) | 1 commits
@@ -28,14 +28,21 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**ApexCharts**](#apexcharts) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9ec3269ac3c7564668c4ada409d59a4fd45b04e4) | None yet!
 [**Build**](#build) | Unreleased | None yet!
 [**Cva**](#cva) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/8fe28819955fec8c7e989f58a8fe88c5e67f1d8e) | None yet!
-[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | 3 commits
+[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | None yet!
 
 
 -----------------------
 
 # ArkUI
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1...HEAD)
+
+### [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.0..._%28ArkUI%29_0.4.1) - (2025-09-25)
+
+#### <!-- 2 --> Fixed
+
+* rename zagjs partas port to prevent name collision by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#48da2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/48da2104e1226ef7f6dfcae3bd6124d3d1a588bc)
+  
 
 ### [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.3.0..._%28ArkUI%29_0.4.0) - (2025-09-25)
 
@@ -269,30 +276,7 @@ No commits at this time.
 
 # ZagJs
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0...HEAD)
-
-### [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) - (2025-09-25)
-
-#### <!-- 2 --> Fixed
-
-* remove conflicting gitnet scope by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9e8cd](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9e8cd40d83d21538e017f23e111a8e637d408478)
-  
-
-#### <!-- 6 --> Others
-
-* more bindings to ark-ui by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#27d84](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/27d84481913b89b4fbaf4deaefb2465f5b717bea)
-  
-
-### [0.3.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.2.0..._%28ZagJs%29_0.3.0) - (2025-09-25)
-
-#### <!-- 6 --> Others
-
-* more bindings to ark-ui by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#27d84](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/27d84481913b89b4fbaf4deaefb2465f5b717bea)
-  
-
-<div align="right"><a href="#quick-navigation">(back to top)</a></div>
-
------------------------
+No commits at this time.
 
 
 ---
