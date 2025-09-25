@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <FablePackageType>library</FablePackageType>
+        <TargetFramework>net9.0</TargetFramework>
+        <PackageId>Partas.Solid.ZagJs</PackageId>
+        <Title>Partas.Solid.ZagJs</Title>
+        <RootNamespace>Partas.Solid.ZagJs</RootNamespace>
+        <AssemblyName>Partas.Solid.ZagJs</AssemblyName>
+        <Company>F# Community</Company>
+        <Description>Bindings for ZagJs for Partas.Solid</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;ZagJs</PackageTags>
+        <Authors>Shayan Habibi</Authors>
+        <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
+        <Version>0.1.0</Version>
+        <PackageVersion>0.1.0</PackageVersion>
+        <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs"/>
+        <Compile Include="ZagJs.Utils.fs" />
+        <Compile Include="Anatomy.fs" />
+        <Compile Include="Accordion.fs" />
+        <Compile Include="AngleSlider.fs" />
+        <Compile Include="Carousel.fs" />
+        <Compile Include="Checkbox.fs" />
+        <Compile Include="Clipboard.fs" />
+        <Compile Include="Collapsible.fs" />
+        <Compile Include="Color.fs" />
+        <Compile Include="ColorPicker.fs" />
+        <Compile Include="Combobox.fs" />
+        <Compile Include="Dismissable.fs" />
+        <Compile Include="Dialog.fs" />
+        <Compile Include="FloatingPanel.fs" />
+        <Compile Include="HighlightWord.fs" />
+        <Compile Include="TagsInput.fs" />
+        <Compile Include="Tour.fs" />
+        <Compile Include="QrCode.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fable.Browser.Worker" Version="1.4.0" />
+      <PackageReference Include="Partas.Solid" Version="2.1.2" />
+        <PackageReference Include="Fable.Core" Version="4.5.0" />
+        <PackageReference Include="Fable.Package.SDK" Version="1.3.1">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>

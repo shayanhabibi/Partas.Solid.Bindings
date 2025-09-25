@@ -180,4 +180,8 @@ module SignaturePad =
         [<Erase>]
         member val asChild: Svg.svg -> HtmlTag = undefined with get,set
         
+    [<Import("SignaturePad.Context", sigPad)>]
+    type Context() =
+        interface HtmlElement
+        interface ChildLambdaProvider<Accessor<SignaturePadApi<HtmlTag>>>
         

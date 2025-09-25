@@ -30,6 +30,12 @@
         <Compile Include="ContextBindings.fs" />
         <Compile Include="Program.fs" />
         <Compile Include="SignaturePad.fs" />
+        <Compile Include="AngleSlider.fs" />
+        <Compile Include="Carousel.fs" />
+        <Compile Include="FloatingPanel.fs" />
+        <Compile Include="TagsInput.fs" />
+        <Compile Include="Tour.fs" />
+        <Compile Include="QrCode.fs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -45,6 +51,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Glutinum.Internationalised\Glutinum.Internationalised.fsproj" />
       <ProjectReference Include="..\Glutinum.ZagJs\Glutinum.ZagJs.fsproj" />
+      <ProjectReference Include="..\Partas.Solid.ZagJs\Partas.Solid.ZagJs.fsproj" />
     </ItemGroup>
 
 </Project>
