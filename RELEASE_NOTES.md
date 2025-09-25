@@ -28,7 +28,8 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**ApexCharts**](#apexcharts) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9ec3269ac3c7564668c4ada409d59a4fd45b04e4) | None yet!
 [**Build**](#build) | Unreleased | None yet!
 [**Cva**](#cva) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/8fe28819955fec8c7e989f58a8fe88c5e67f1d8e) | None yet!
-[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | None yet!
+[**Zag**](#zag) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/7afc894eadd46e1fd01bb5aea010b4780315900d) | None yet!
+[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | 3 commits
 
 
 -----------------------
@@ -274,9 +275,38 @@ No commits at this time.
 
 No commits at this time.
 
-# ZagJs
+# Zag
 
 No commits at this time.
+
+# ZagJs
+
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0...HEAD)
+
+### [0.3.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.2.0..._%28ZagJs%29_0.3.0) - (2025-09-25)
+
+#### <!-- 6 --> Others
+
+* SignaturePad glutinum bindings by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#dc515](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/dc515893d6d750c0b0240a113d9a7fa32d48c0cb)
+  
+
+### [0.2.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.1.2..._%28ZagJs%29_0.2.0) - (2025-09-22)
+
+#### <!-- 6 --> Others
+
+* SignaturePad glutinum bindings by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#dc515](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/dc515893d6d750c0b0240a113d9a7fa32d48c0cb)
+  
+
+### [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.1.1..._%28ZagJs%29_0.1.2) - (2025-08-22)
+
+#### <!-- 2 --> Fixed
+
+* Force initial tagging of all projects by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#b5e6c](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/b5e6cb6262c060ea6fe742835601c00f3abb188b)
+  
+
+<div align="right"><a href="#quick-navigation">(back to top)</a></div>
+
+-----------------------
 
 
 ---
