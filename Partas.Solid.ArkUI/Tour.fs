@@ -203,3 +203,111 @@ type Title
     interface Polymorph
     [<Erase>]
     member val asChild: h2 -> HtmlElement = undefined with get,set
+
+[<JS.Pojo>]
+type TourProps
+    (
+        ?ids: obj option,
+        ?steps: Tour.StepDetails[],
+        ?stepId: string,
+        ?onStepChange: (Tour.StepChangeDetails -> unit),
+        ?onStepsChange: (Tour.StepsChangeDetails -> unit),
+        ?onStatusChange: (Tour.StatusChangeDetails -> unit),
+        ?closeOnInteractOutside: bool,
+        ?closeOnEscape: bool,
+        ?keyboardNavigation: bool,
+        ?preventInteraction: bool,
+        ?spotlightOffset: Point,
+        ?spotlightRadius: float,
+        ?translations: Tour.IntlTranslations
+    ) =
+    interface DirectionProperty
+    interface CommonProperties
+    interface InteractionOutsideHandler
+
+    /// <summary>
+    /// The ids of the elements in the tour. Useful for composition.
+    /// </summary>
+    [<DefaultValue>]
+    val mutable ids: obj option
+
+    /// <summary>
+    /// The steps of the tour
+    /// </summary>
+    [<DefaultValue>]
+    val mutable steps: Tour.StepDetails[]
+
+    /// <summary>
+    /// The id of the currently highlighted step
+    /// </summary>
+    [<DefaultValue>]
+    val mutable stepId: string
+
+    /// <summary>
+    /// Callback when the highlighted step changes
+    /// </summary>
+    [<DefaultValue>]
+    val mutable onStepChange: (Tour.StepChangeDetails -> unit)
+
+    /// <summary>
+    /// Callback when the steps change
+    /// </summary>
+    [<DefaultValue>]
+    val mutable onStepsChange: (Tour.StepsChangeDetails -> unit)
+
+    /// <summary>
+    /// Callback when the tour is opened or closed
+    /// </summary>
+    [<DefaultValue>]
+    val mutable onStatusChange: (Tour.StatusChangeDetails -> unit)
+
+    /// <summary>
+    /// Whether to close the tour when the user clicks outside the tour
+    /// </summary>
+    [<DefaultValue>]
+    val mutable closeOnInteractOutside: bool
+
+    /// <summary>
+    /// Whether to close the tour when the user presses the escape key
+    /// </summary>
+    [<DefaultValue>]
+    val mutable closeOnEscape: bool
+
+    /// <summary>
+    /// Whether to allow keyboard navigation (right/left arrow keys to navigate between steps)
+    /// </summary>
+    [<DefaultValue>]
+    val mutable keyboardNavigation: bool
+
+    /// <summary>
+    /// Prevents interaction with the rest of the page while the tour is open
+    /// </summary>
+    [<DefaultValue>]
+    val mutable preventInteraction: bool
+
+    /// <summary>
+    /// The offsets to apply to the spotlight
+    /// </summary>
+    [<DefaultValue>]
+    val mutable spotlightOffset: Point
+
+    /// <summary>
+    /// The radius of the spotlight clip path
+    /// </summary>
+    [<DefaultValue>]
+    val mutable spotlightRadius: float
+
+    /// <summary>
+    /// The translations for the tour
+    /// </summary>
+    [<DefaultValue>]
+    val mutable translations: Tour.IntlTranslations
+
+[<AutoOpen; Erase>]
+type Exports =
+    [<ImportMember(import)>]
+    static member useTour(props: TourProps): Accessor<TourApi> = jsNative
+    [<ImportMember(import)>]
+    static member useTour(props: Accessor<TourProps>): Accessor<TourApi> = jsNative
+    [<ImportMember(import)>]
+    static member useTour(): Accessor<TourApi> = jsNative

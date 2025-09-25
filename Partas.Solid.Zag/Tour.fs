@@ -47,51 +47,186 @@ module Tour =
         | Bottom
         | Right
         | Left
-    type StepActionMap =
-        abstract next: (unit -> unit) with get,set
-        abstract prev: (unit -> unit) with get,set
-        abstract dismiss: (unit -> unit) with get,set
-        abstract goto: (string -> unit) with get,set
+    [<JS.Pojo>]
+    type StepActionMap(?next: (unit -> unit), ?prev: (unit -> unit), ?dismiss: (unit -> unit), ?goto: (string -> unit)) =
+        [<DefaultValue>]
+        val mutable next: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable prev: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable dismiss: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable goto: (string -> unit)
+
     type StepActionFn = StepActionMap -> unit
     [<Erase>]
     module StepBaseDetails =
-        type Offset =
-            abstract mainAxis: int with get,set
-            abstract crossAxis: int with get,set
-    type StepAction =
-        abstract label: string with get,set
-        abstract action: U2<StepActionType, StepActionFn> with get,set
-        abstract attrs: obj with get,set
-    type StepBaseDetails =
-        abstract ``type``: StepType with get,set
-        abstract target: (unit -> HTMLElement) option with get,set
-        abstract title: obj with get,set
-        abstract description: obj with get,set
-        abstract placement: StepPlacement option with get,set
-        abstract offset: StepBaseDetails.Offset with get,set
-        abstract meta: obj with get,set
-        abstract backdrop: bool with get,set
-        abstract arrow: bool with get,set
-        abstract actions: StepAction[] with get,set
-    type StepEffectArgs =
-        abstract next: (unit -> unit) with get,set
-        abstract goto: (string -> unit) with get,set
-        abstract dismiss: (unit -> unit) with get,set
-        abstract show: (unit -> unit) with get,set
-        abstract update: (StepBaseDetails -> unit) with get,set
-        abstract target: (unit -> HTMLElement option) option
-    type StepDetails =
-        inherit StepBaseDetails
-        abstract id: string with get,set
-        abstract effect: (StepEffectArgs -> unit -> unit) with get,set
-    type StepChangeDetails =
-        abstract stepId: string option
-        abstract stepIndex: int
-        abstract totalSteps: int
-        abstract complete: bool
-        abstract progress: int
-    type StepsChangeDetails =
-        abstract steps: StepDetails[]
+        [<JS.Pojo>]
+        type Offset(?mainAxis: int, ?crossAxis: int) =
+            [<DefaultValue>]
+            val mutable mainAxis: int
+
+            [<DefaultValue>]
+            val mutable crossAxis: int
+
+    [<JS.Pojo>]
+    type StepAction(?label: string, ?action: U2<StepActionType, StepActionFn>, ?attrs: obj) =
+        [<DefaultValue>]
+        val mutable label: string
+
+        [<DefaultValue>]
+        val mutable action: U2<StepActionType, StepActionFn>
+
+        [<DefaultValue>]
+        val mutable attrs: obj
+
+    [<JS.Pojo>]
+    type StepBaseDetails
+        (
+            ?``type``: StepType,
+            ?target: (unit -> HTMLElement) option,
+            ?title: obj,
+            ?description: obj,
+            ?placement: StepPlacement option,
+            ?offset: StepBaseDetails.Offset,
+            ?meta: obj,
+            ?backdrop: bool,
+            ?arrow: bool,
+            ?actions: StepAction[]
+        ) =
+        [<DefaultValue>]
+        val mutable ``type``: StepType
+
+        [<DefaultValue>]
+        val mutable target: (unit -> HTMLElement) option
+
+        [<DefaultValue>]
+        val mutable title: obj
+
+        [<DefaultValue>]
+        val mutable description: obj
+
+        [<DefaultValue>]
+        val mutable placement: StepPlacement option
+
+        [<DefaultValue>]
+        val mutable offset: StepBaseDetails.Offset
+
+        [<DefaultValue>]
+        val mutable meta: obj
+
+        [<DefaultValue>]
+        val mutable backdrop: bool
+
+        [<DefaultValue>]
+        val mutable arrow: bool
+
+        [<DefaultValue>]
+        val mutable actions: StepAction[]
+
+    [<JS.Pojo>]
+    type StepEffectArgs
+        (
+            ?next: unit -> unit,
+            ?goto: string -> unit,
+            ?dismiss: unit -> unit,
+            ?show: unit -> unit,
+            ?update: StepBaseDetails -> unit,
+            ?target: unit -> HTMLElement option
+        ) =
+        [<DefaultValue>]
+        val mutable next: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable goto: (string -> unit)
+
+        [<DefaultValue>]
+        val mutable dismiss: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable show: (unit -> unit)
+
+        [<DefaultValue>]
+        val mutable update: (StepBaseDetails -> unit)
+
+        [<DefaultValue>]
+        val mutable target: (unit -> HTMLElement option)
+
+    [<JS.Pojo>]
+    type StepDetails(
+        ?id: string,
+        ?effect: (StepEffectArgs -> unit -> unit),
+        ?``type``: StepType,
+        ?target: (unit -> HTMLElement) option,
+        ?title: obj,
+        ?description: obj,
+        ?placement: StepPlacement option,
+        ?offset: StepBaseDetails.Offset,
+        ?meta: obj,
+        ?backdrop: bool,
+        ?arrow: bool,
+        ?actions: StepAction[]
+        ) =
+        [<DefaultValue>]
+        val mutable id: string
+
+        [<DefaultValue>]
+        val mutable effect: (StepEffectArgs -> unit -> unit)
+        
+        [<DefaultValue>]
+        val mutable ``type``: StepType
+
+        [<DefaultValue>]
+        val mutable target: (unit -> HTMLElement) option
+
+        [<DefaultValue>]
+        val mutable title: obj
+
+        [<DefaultValue>]
+        val mutable description: obj
+
+        [<DefaultValue>]
+        val mutable placement: StepPlacement option
+
+        [<DefaultValue>]
+        val mutable offset: StepBaseDetails.Offset
+
+        [<DefaultValue>]
+        val mutable meta: obj
+
+        [<DefaultValue>]
+        val mutable backdrop: bool
+
+        [<DefaultValue>]
+        val mutable arrow: bool
+
+        [<DefaultValue>]
+        val mutable actions: StepAction[]
+    [<JS.Pojo>]
+    type StepChangeDetails(?stepId: string option, ?stepIndex: int, ?totalSteps: int, ?complete: bool, ?progress: int) =
+        [<DefaultValue>]
+        val mutable stepId: string option
+
+        [<DefaultValue>]
+        val mutable stepIndex: int
+
+        [<DefaultValue>]
+        val mutable totalSteps: int
+
+        [<DefaultValue>]
+        val mutable complete: bool
+
+        [<DefaultValue>]
+        val mutable progress: int
+
+    [<JS.Pojo>]
+    type StepsChangeDetails(?steps: StepDetails[]) =
+        [<DefaultValue>]
+        val mutable steps: StepDetails[]
+
     [<StringEnum(CaseRules.KebabCase)>]
     type StepStatus =
         | Idle
