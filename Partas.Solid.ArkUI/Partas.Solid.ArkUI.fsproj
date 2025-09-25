@@ -17,8 +17,8 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ArkUI</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.4.1</Version>
-        <PackageVersion>0.4.1</PackageVersion>
+        <Version>0.5.0</Version>
+        <PackageVersion>0.5.0</PackageVersion>
         <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
                 <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>

@@ -13,7 +13,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 **Scope** | Current Release | Commit Count
 :--- | :---: | :---:
-[**ArkUI**](#arkui) | [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.0..._%28ArkUI%29_0.4.1) | 4 commits
+[**ArkUI**](#arkui) | [0.5.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1..._%28ArkUI%29_0.5.0) | 5 commits
 [**Cmdk**](#cmdk) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) | 1 commits
 [**Corvu**](#corvu) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) | 1 commits
 [**Internationalised**](#internationalised) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) | 1 commits
@@ -36,7 +36,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # ArkUI
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0...HEAD)
+
+### [0.5.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1..._%28ArkUI%29_0.5.0) - (2025-09-25)
+
+#### <!-- 6 --> Others
+
+* force minor bump to reassess dependencies by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#bfb78](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/bfb782279ac012825ce94b4a34116e1269432654)
+  
 
 ### [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.0..._%28ArkUI%29_0.4.1) - (2025-09-25)
 
