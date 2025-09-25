@@ -126,6 +126,9 @@ module Projects =
         path Files.Root.``Partas.Solid.TanStack.Table``.``Partas.Solid.TanStack.Table.fsproj``
         npm "@tanstack/solid-table" 8 0 0
     }
+    let zag = project {
+        path Files.Root.``Partas.Solid.Zag``.``Partas.Solid.Zag.fsproj``
+    }
     
     
 let projects = [
@@ -145,6 +148,7 @@ let projects = [
     // TODO - fix storybook errors
     // Projects.storybook
     Projects.tanstackTables
+    Projects.zag
 ]    
 let ignored = [
     IgnoredProjects.chartJs

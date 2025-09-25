@@ -5,8 +5,8 @@
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
         <PackageId>Partas.Solid.Zag</PackageId>
-        <Title>Partas.Solid.ZagJs</Title>
-        <RootNamespace>Partas.Solid.ZagJs</RootNamespace>
+        <Title>Partas.Solid.Zag</Title>
+        <RootNamespace>Partas.Solid.Zag</RootNamespace>
         <Company>F# Community</Company>
         <Description>Bindings for ZagJs for Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
