@@ -13,7 +13,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 **Scope** | Current Release | Commit Count
 :--- | :---: | :---:
-[**ArkUI**](#arkui) | [0.5.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1..._%28ArkUI%29_0.5.0) | 5 commits
+[**ArkUI**](#arkui) | [0.5.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0..._%28ArkUI%29_0.5.1) | 6 commits
 [**Cmdk**](#cmdk) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) | 1 commits
 [**Corvu**](#corvu) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) | 1 commits
 [**Internationalised**](#internationalised) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) | 1 commits
@@ -28,7 +28,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**ApexCharts**](#apexcharts) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9ec3269ac3c7564668c4ada409d59a4fd45b04e4) | None yet!
 [**Build**](#build) | Unreleased | None yet!
 [**Cva**](#cva) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/8fe28819955fec8c7e989f58a8fe88c5e67f1d8e) | None yet!
-[**Zag**](#zag) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/7afc894eadd46e1fd01bb5aea010b4780315900d) | None yet!
+[**Zag**](#zag) | [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.0..._%28Zag%29_0.1.1) | 2 commits
 [**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | 3 commits
 
 
@@ -36,7 +36,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # ArkUI
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.1...HEAD)
+
+### [0.5.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0..._%28ArkUI%29_0.5.1) - (2025-09-25)
+
+#### <!-- 2 --> Fixed
+
+* type dx improvement and added useTour method by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#cc3c7](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/cc3c7da9c37efe24e803e86d6fc5870fee393ac3)
+  
 
 ### [0.5.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.4.1..._%28ArkUI%29_0.5.0) - (2025-09-25)
 
@@ -284,7 +291,21 @@ No commits at this time.
 
 # Zag
 
-No commits at this time.
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.1...HEAD)
+
+* type dx improvement and added useTour method by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#cc3c7](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/cc3c7da9c37efe24e803e86d6fc5870fee393ac3)
+  
+
+### [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.0..._%28Zag%29_0.1.1) - (2025-09-25)
+
+#### <!-- 2 --> Fixed
+
+* type dx improvement and added useTour method by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#cc3c7](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/cc3c7da9c37efe24e803e86d6fc5870fee393ac3)
+  
+
+<div align="right"><a href="#quick-navigation">(back to top)</a></div>
+
+-----------------------
 
 # ZagJs
 
