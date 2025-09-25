@@ -11,7 +11,7 @@ open Glutinum.ZagJs
 /// <summary>
 /// Ark UI
 /// </summary>
-/// <value>v5.0.1</value>
+/// <value>v5.0.1</value> 
 [<Erase; AutoOpen>]
 module private Helpers =
     let [<Literal>] path = "@ark-ui/solid"
