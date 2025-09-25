@@ -28,7 +28,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**ApexCharts**](#apexcharts) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9ec3269ac3c7564668c4ada409d59a4fd45b04e4) | None yet!
 [**Build**](#build) | Unreleased | None yet!
 [**Cva**](#cva) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/8fe28819955fec8c7e989f58a8fe88c5e67f1d8e) | None yet!
-[**ZagJs**](#zagjs) | [0.3.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.2.0..._%28ZagJs%29_0.3.0) | 2 commits
+[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | 3 commits
 
 
 -----------------------
@@ -269,7 +269,16 @@ No commits at this time.
 
 # ZagJs
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0...HEAD)
+
+### [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) - (2025-09-25)
+
+#### <!-- 2 --> Fixed
+
+* remove conflicting gitnet scope by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9e8cd](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9e8cd40d83d21538e017f23e111a8e637d408478)
+  
+
+#### <!-- 6 --> Others
 
 * more bindings to ark-ui by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#27d84](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/27d84481913b89b4fbaf4deaefb2465f5b717bea)
   
