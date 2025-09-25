@@ -51,7 +51,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Glutinum.Internationalised\Glutinum.Internationalised.fsproj" />
       <ProjectReference Include="..\Glutinum.ZagJs\Glutinum.ZagJs.fsproj" />
-      <ProjectReference Include="..\Partas.Solid.ZagJs\Partas.Solid.ZagJs.fsproj" />
+      <ProjectReference Include="..\Partas.Solid.Zag\Partas.Solid.Zag.fsproj" />
     </ItemGroup>
 
 </Project>

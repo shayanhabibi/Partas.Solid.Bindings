@@ -4,10 +4,9 @@
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
         <TargetFramework>net9.0</TargetFramework>
-        <PackageId>Partas.Solid.ZagJs</PackageId>
+        <PackageId>Partas.Solid.Zag</PackageId>
         <Title>Partas.Solid.ZagJs</Title>
         <RootNamespace>Partas.Solid.ZagJs</RootNamespace>
-        <AssemblyName>Partas.Solid.ZagJs</AssemblyName>
         <Company>F# Community</Company>
         <Description>Bindings for ZagJs for Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -19,7 +18,6 @@
         <Version>0.4.0</Version>
         <PackageVersion>0.4.0</PackageVersion>
         <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
-        <GitNetScope>PartasZagJs</GitNetScope>
     </PropertyGroup>
 
     <ItemGroup>
