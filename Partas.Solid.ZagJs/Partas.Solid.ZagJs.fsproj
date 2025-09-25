@@ -19,6 +19,7 @@
         <Version>0.3.0</Version>
         <PackageVersion>0.3.0</PackageVersion>
         <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
+        <GitNetScope>PartasZagJs</GitNetScope>
     </PropertyGroup>
 
     <ItemGroup>
