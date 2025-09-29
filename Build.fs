@@ -160,7 +160,7 @@ Target.create Ops.GenerateLucide <| fun args ->
             values
             |> List.map (sprintf "add %s")
             |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
-            Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.`` "commit Partas.Solid.Lucide --dry-run -m \"add(lucide): autoupdate lucide package\""
+            Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.`` "commit Partas.Solid.Lucide -m \"add(lucide): autoupdate lucide package\""
             ()
     
     Shell.cleanDir "temp"
