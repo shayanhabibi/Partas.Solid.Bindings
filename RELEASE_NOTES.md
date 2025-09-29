@@ -20,13 +20,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Cva**](#cva) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.1..._%28Cva%29_0.1.2) | 2 commits
 [**Internationalised**](#internationalised) | [0.1.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.3..._%28Internationalised%29_0.1.4) | 3 commits
 [**Kobalte**](#kobalte) | [0.4.5](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.4..._%28Kobalte%29_0.4.5) | 7 commits
-[**Lucide**](#lucide) | [0.513.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.2..._%28Lucide%29_0.513.3) | 5 commits
+[**Lucide**](#lucide) | [0.514.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.3..._%28Lucide%29_0.514.0) | 5 commits
 [**ModularForms**](#modularforms) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.3..._%28ModularForms%29_0.2.4) | 3 commits
 [**Motion**](#motion) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.3..._%28Motion%29_0.2.4) | 3 commits
 [**NeoDrag**](#neodrag) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.2..._%28NeoDrag%29_0.2.3) | 3 commits
 [**Sonner**](#sonner) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.3..._%28Sonner%29_0.2.4) | 3 commits
 [**Storybook**](#storybook) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.2..._%28Storybook%29_0.2.3) | 3 commits
 [**Table**](#table) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.2..._%28Table%29_0.2.3) | 3 commits
+[**Tabler**](#tabler) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/6ccccc9f6cea6dac677b46a0f6caeb80f61ce3a1) | 2 commits
 [**Build**](#build) | Unreleased | None yet!
 [**Zag**](#zag) | [0.1.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.2..._%28Zag%29_0.1.3) | 4 commits
 [**ZagJs**](#zagjs) | [0.4.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.1..._%28ZagJs%29_0.4.2) | 5 commits
@@ -281,7 +282,11 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Lucide
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.3...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.514.0...HEAD)
+
+### [0.514.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.3..._%28Lucide%29_0.514.0) - (2025-09-29)
+
+#### <!-- 6 --> Others
 
 * autoupdate lucide package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#d29fb](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/d29fb5288c453d21ec0d3bf7eca48b1b41094a09)
   
@@ -484,6 +489,20 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 #### <!-- 2 --> Fixed
 
 * Force initial tagging of all projects by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#b5e6c](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/b5e6cb6262c060ea6fe742835601c00f3abb188b)
+  
+
+<div align="right"><a href="#quick-navigation">(back to top)</a></div>
+
+-----------------------
+
+# Tabler
+
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.1.0...HEAD)
+
+* autoupdate tabler package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#24475](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/24475dbfed3cbff68ce90e9b1f0f39c891227c35)
+  
+
+* Tabler generator by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#1a731](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/1a7310918e3923c47bf19248025e13b7c663d513)
   
 
 <div align="right"><a href="#quick-navigation">(back to top)</a></div>
