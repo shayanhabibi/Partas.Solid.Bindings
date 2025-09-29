@@ -21,6 +21,8 @@ module Ops =
     let GitPush = "GitPush"
     [<Literal>]
     let Publish = "Publish"
+    [<Literal>]
+    let GenerateLucide = "GenerateLucide"
 
 module Args =
     let mutable local: bool = false
@@ -57,3 +59,38 @@ let createProcess exe args dir =
     |> CreateProcess.ensureExitCode
     
 let dotnet args dir = createProcess "dotnet" args dir
+
+module Parser =
+    type GitStatus =
+        | Added of string
+        | Modified of string
+    open XParsec
+    open XParsec.CharParsers
+    let parseGitStatus (arr: string list) =
+        let statusChars = tuple4 anyChar anyChar anyChar (manyChars anyChar)
+        let getGitStatusFrom (input: string) =
+            let reader = Reader.ofString input false
+            statusChars reader
+            |> function
+                | Ok { Parsed = value } -> Some value
+                | Error e ->
+                    ErrorFormatting.formatStringError input e
+                    |> printfn "%s"
+                    None
+            |> Option.bind (fun struct (c1,c2,c3,path) ->
+                match c1,c2 with
+                
+                | 'M', _
+                | _, 'M' ->
+                    GitStatus.Modified path
+                    |> Some
+                | 'A', _ ->
+                    GitStatus.Added path
+                    |> Some
+                | _ -> None
+                )
+        arr
+        |> List.map getGitStatusFrom
+        |> List.choose id
+        
+            

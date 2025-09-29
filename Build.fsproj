@@ -6,13 +6,16 @@
     <ItemGroup>
       <Compile Include="Spec.fs" />
       <Compile Include="Projects.fs" />
+      <Compile Include="Generators\Lucide.fs" />
       <Compile Include="Build.fs" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="EasyBuild.FileSystemProvider" Version="1.1.0" />
       <PackageReference Include="Fake.Core.Target" Version="6.1.3" />
       <PackageReference Include="Fake.DotNet.Cli" Version="6.1.3" />
+      <PackageReference Include="Fake.JavaScript.Npm" Version="6.1.3" />
       <PackageReference Include="Fake.Tools.Git" Version="6.1.3" />
       <PackageReference Include="Partas.GitNet" Version="0.1.1" />
+      <PackageReference Include="XParsec" Version="0.2.2" />
     </ItemGroup>
 </Project>

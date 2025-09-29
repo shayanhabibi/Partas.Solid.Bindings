@@ -136,10 +136,41 @@ Target.create Ops.Publish <| fun args ->
                         .ApiKey = Args.apiKey
             }))
 
+open Generators
+open Fake.JavaScript
+Target.create Ops.GenerateLucide <| fun args ->
+    Directory.create "temp"
+    Npm.exec "install lucide-solid @lucide/lab" (fun p ->
+        {
+            p with
+                WorkingDirectory = Path.combine Files.Root.``.`` "temp"
+        }
+        )
+    Lucide.generateLucideFiles()
+    Git.CommandHelper.getGitResult Files.Root.``.`` "status -s --untracked-files=no"
+    |> Parser.parseGitStatus
+    |> List.choose (function
+        | Parser.GitStatus.Modified path
+            when path.EndsWith("LucideLab.fs") || path.EndsWith("Lucide.fs") -> Some path
+        | _ -> None
+        )
+    |> function
+        | [] -> ()
+        | values ->
+            values
+            |> List.map (sprintf "add %s")
+            |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
+            Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.`` "commit Partas.Solid.Lucide --dry-run -m \"add(lucide): autoupdate lucide package\""
+            ()
+    
+    Shell.cleanDir "temp"
+    ()
 open Fake.Core.TargetOperators
 
 let dependenciesMapping = [
     Setup
+    ==> Clean
+    ==> GenerateLucide
     ==> Clean
     ==> GitNet
     ==> Build
