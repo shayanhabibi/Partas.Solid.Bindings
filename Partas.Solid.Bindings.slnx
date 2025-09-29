@@ -25,6 +25,7 @@
     <Project Path="Partas.Solid.NeoDrag\Partas.Solid.NeoDrag.fsproj" Type="Classic F#" />
     <Project Path="Partas.Solid.Sonner\Partas.Solid.Sonner.fsproj" Type="Classic F#" />
     <Project Path="Partas.Solid.Storybook\Partas.Solid.Storybook.fsproj" Type="Classic F#" />
+    <Project Path="Partas.Solid.Tabler\Partas.Solid.Tabler.fsproj" Type="Classic F#" />
     <Project Path="Partas.Solid.TanStack.Table\Partas.Solid.TanStack.Table.fsproj" Type="Classic F#" />
     <Project Path="Partas.Solid.TanStack.Virtual\Partas.Solid.TanStack.Virtual.fsproj" Type="Classic F#" />
     <Project Path="Partas.Solid.Zag\Partas.Solid.Zag.fsproj" Type="Classic F#" />

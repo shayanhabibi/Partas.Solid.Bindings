@@ -7,6 +7,7 @@
       <Compile Include="Spec.fs" />
       <Compile Include="Projects.fs" />
       <Compile Include="Generators\Lucide.fs" />
+      <Compile Include="Generators\Tabler.fs" />
       <Compile Include="Build.fs" />
     </ItemGroup>
     <ItemGroup>

@@ -162,7 +162,33 @@ Target.create Ops.GenerateLucide <| fun args ->
             |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
             Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.`` "commit Partas.Solid.Lucide -m \"add(lucide): autoupdate lucide package\""
             ()
+    Shell.cleanDir "temp"
+    ()
     
+Target.create GenerateTabler <| fun args ->
+    Directory.create "temp"
+    Npm.exec "install @tabler/icons-solidjs" (fun p ->
+        {
+            p with
+                WorkingDirectory = Path.combine Files.Root.``.`` "temp"
+        }
+        )
+    Tabler.generateTablerFile()
+    Git.CommandHelper.getGitResult Files.Root.``.`` "status -s --untracked-files=no"
+    |> Parser.parseGitStatus
+    |> List.choose (function
+        | Parser.GitStatus.Modified path
+            when path.EndsWith("Tabler.fs") -> Some path
+        | _ -> None
+        )
+    |> function
+        | [] -> ()
+        | values ->
+            values
+            |> List.map (sprintf "add %s")
+            |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
+            Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.`` "commit Partas.Solid.Tabler -m \"add(tabler): autoupdate tabler package\""
+            ()
     Shell.cleanDir "temp"
     ()
 open Fake.Core.TargetOperators
@@ -171,6 +197,7 @@ let dependenciesMapping = [
     Setup
     ==> Clean
     ==> GenerateLucide
+    ==> GenerateTabler
     ==> GitNet
     ==> Build
     ==> Pack

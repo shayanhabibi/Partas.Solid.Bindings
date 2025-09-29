@@ -23,6 +23,8 @@ module Ops =
     let Publish = "Publish"
     [<Literal>]
     let GenerateLucide = "GenerateLucide"
+    [<Literal>]
+    let GenerateTabler = "GenerateTabler"
 
 module Args =
     let mutable local: bool = false
