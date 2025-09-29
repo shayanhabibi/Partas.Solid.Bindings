@@ -11,13 +11,13 @@
         <Company>F# Community</Company>
         <Description>Bindings for Solid-EmblaCarousel in Oxpecker.Solid Style compatible with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-EmblaCarousel</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
         <Version>0.1.0</Version>
-<!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageVersion>0.1.0</PackageVersion>
         <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
@@ -26,7 +26,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Compile Include="Program.fs" />
 <!--        <Content Include="README.md" />-->
     </ItemGroup>

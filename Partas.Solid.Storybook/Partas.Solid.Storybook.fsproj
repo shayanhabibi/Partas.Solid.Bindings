@@ -11,7 +11,7 @@
         <Company>F# Community</Company>
         <Description>Bindings for/related to using @kachurun/storybook-solid with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;F#;FSharp;Fable;fable-javascript;Web;Storybook-solid</PackageTags>
         <Authors>Shayan Habibi</Authors>
@@ -35,5 +35,6 @@
     <ItemGroup>
         <Compile Include="Program.fs" />
         <Compile Include="Wrapper.fs" />
+        <Compile Include="ComputationExpression.fs" />
     </ItemGroup>
 </Project>

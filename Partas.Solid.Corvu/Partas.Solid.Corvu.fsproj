@@ -12,7 +12,7 @@
         <Company>F# Community</Company>
         <Description>Bindings for Solid-Corvu in Oxpecker.Solid Style compatible with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Corvu</PackageTags>
         <Authors>Shayan Habibi</Authors>
@@ -20,13 +20,14 @@
         <Version>0.2.3</Version>
         <PackageVersion>0.2.3</PackageVersion>
         <GitNetInitialVersion>0.2.2</GitNetInitialVersion>
-                <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@corvu/otp-field" Version="&gt;= 0.1.4" />
         </NpmDependencies>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

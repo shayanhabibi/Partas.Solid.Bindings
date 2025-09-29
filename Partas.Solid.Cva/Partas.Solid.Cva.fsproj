@@ -12,7 +12,7 @@
         <Company>F# Community</Company>
         <Description>Fable bindings for CVA</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>F#;FSharp;Fable;fable-javascript;Web;Bindings;CVA;class-variance-authority</PackageTags>
         <Authors>Shayan Habibi</Authors>
@@ -21,7 +21,6 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageVersion>0.1.0</PackageVersion>
         <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
-        <PackageReleaseNotes>Init</PackageReleaseNotes>
         <NpmDependencies>
                         <NpmPackage Name="class-variance-authority" Version="&gt;= 0.7.1" />
         </NpmDependencies>

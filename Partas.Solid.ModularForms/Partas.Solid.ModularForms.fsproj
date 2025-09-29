@@ -12,7 +12,7 @@
         <Company>F# Community</Company>
         <Description>Bindings for Solid-ModularForms in Oxpecker.Solid Style compatible with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ModularForms</PackageTags>
         <Authors>Shayan Habibi</Authors>
@@ -20,13 +20,14 @@
         <Version>0.2.2</Version>
         <PackageVersion>0.2.2</PackageVersion>
         <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
-                <PackageReleaseNotes>Refactor to use true property definitions for Partas.Solid.Storybook compatibility</PackageReleaseNotes>
         <NpmDependencies>
             <NpmPackage Name="@modular-forms/solid" Version="&gt;= 0.29.1" />
         </NpmDependencies>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 

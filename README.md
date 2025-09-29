@@ -8,33 +8,39 @@
 
 [//]: # (</div>)
 
-Bindings for libraries in Oxpecker.Solid style, compatible with Partas.Solid.
+Bindings for various libraries for the `Partas.Solid` plugin and ecosystem.
+
+They have various levels of api stability and real world usage depending on whether they were bound to expand the ecosystem, or bound for usage in personal projects.
+
+We try to reflect their stability in this table.
+
+Visit the [`Partas.Solid` docs](https://partas-solid.vercel.app/) for more information on the plugin and the ecosystem. Docs for your particular binding may have their own page in the ecosystem section.
 
 > [!IMPORTANT]
 > Partas.Solid.Primitives is now in a independent repo.
 
-| **Library**       | **Status**     | **NuGet** |
-|-------------------|----------------|-----------|
-| Kobalte           | Stable         | 0.3.5     |
-| Lucide            | Stable         | 0.514.0   |
-| ModularForms      | Stable-ish     | 0.2.1     |
-| TanStack.Table    | Stable-ish     | 0.2.0     |
-| Solid-MotionOne   | Stable-ish     | 0.2.1     |
-| CVA               | Stable         | 0.1.0     |
-| Cmdk              | Stable         | 0.2.2     |
-| ArkUI             | Partial-Stable | 0.2.2     |
-| Corvu             | Partial-Beta   | 0.2.2     |
-| Sonner            | Beta           | 0.2.1     |
-| ApexCharts        | Beta-ish       | 0.2.2     |
-| NeoDrag           | Alpha          | 0.2.0     |
-| Storybook         | Alpha          | 0.2.0     |
-| ZagJs             | Partial-Alpha  | 0.1.0     |
-| ChartJs           | _Incomplete_   |           |
-| Dnd               | _Incomplete_   |           |
-| DndKit            | _Incomplete_   |           |
-| EmblaCarousel     | _Incomplete_   |           |
-| TanStack.Virtual  | _Incomplete_   |           |
-| Internationalised | _Dependency_   | 0.1.0     |
+| **Library**       | **Status**        |
+|-------------------|-------------------|
+| Kobalte           | Stable            |
+| Lucide            | Stable            |
+| ModularForms      | Stable-ish        |
+| TanStack.Table    | Stable-ish        |
+| Solid-MotionOne   | Stable-ish        |
+| CVA               | Stable            |
+| Cmdk              | Stable            |
+| ArkUI             | Partial-Stable    |
+| Corvu             | Partial-Beta      |
+| Sonner            | Beta              |
+| ApexCharts        | Beta-ish          |
+| NeoDrag           | Alpha             |
+| Storybook         | Deprecated        |
+| ZagJs             | Ark-UI Dependency |
+| ChartJs           | _Incomplete_      |
+| Dnd               | _Incomplete_      |
+| DndKit            | _Incomplete_      |
+| EmblaCarousel     | _Incomplete_      |
+| TanStack.Virtual  | _Incomplete_      |
+| Internationalised | _Dependency_      |
 
 > - Stable
 > 

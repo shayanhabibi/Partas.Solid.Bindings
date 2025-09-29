@@ -11,7 +11,7 @@
         <Company>F# Community</Company>
         <Description>Bindings for Solid-Dnd in Oxpecker.Solid Style compatible with Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Dnd</PackageTags>
         <Authors>Shayan Habibi</Authors>

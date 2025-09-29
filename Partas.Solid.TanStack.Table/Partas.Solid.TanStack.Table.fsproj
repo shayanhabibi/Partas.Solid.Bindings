@@ -11,7 +11,7 @@
         <Company>F# Community</Company>
         <Description>Bindings for TanStack.Table for Partas.Solid</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Bindings</RepositoryUrl>
+        <RepositoryUrl>https://github.com/shayanhabibi/Partas.Solid.Bindings</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Table; TanStack</PackageTags>
         <Authors>Shayan Habibi</Authors>
@@ -22,9 +22,11 @@
         <NpmDependencies>
             <NpmPackage Name="@tanstack/solid-table" Version="&gt;= 8.0.0" />
         </NpmDependencies>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Compile Include="Spec.fs" />
         <Compile Include="Program.fs" />
         <Compile Include="ColumnFiltering.fs" />
@@ -41,7 +43,6 @@
         <Compile Include="Pagination.fs" />
         <Compile Include="RowPinning.fs" />
         <Compile Include="RowSelection.fs" />
-        <Content Include="README.md" />
     </ItemGroup>
 
     <ItemGroup>
