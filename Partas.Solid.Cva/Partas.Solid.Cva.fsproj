@@ -17,9 +17,9 @@
         <PackageTags>F#;FSharp;Fable;fable-javascript;Web;Bindings;CVA;class-variance-authority</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.1.1</Version>
+        <Version>0.1.2</Version>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageVersion>0.1.1</PackageVersion>
+        <PackageVersion>0.1.2</PackageVersion>
         <GitNetInitialVersion>0.1.0</GitNetInitialVersion>
         <NpmDependencies>
                         <NpmPackage Name="class-variance-authority" Version="&gt;= 0.7.1" />

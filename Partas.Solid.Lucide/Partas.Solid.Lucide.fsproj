@@ -17,8 +17,8 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Lucide</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.513.2</Version>
-        <PackageVersion>0.513.2</PackageVersion>
+        <Version>0.513.3</Version>
+        <PackageVersion>0.513.3</PackageVersion>
         <GitNetInitialVersion>0.513.0</GitNetInitialVersion>
         <NpmDependencies>
             <NpmPackage Name="lucide-solid" Version="&gt;= 0.513.0" />

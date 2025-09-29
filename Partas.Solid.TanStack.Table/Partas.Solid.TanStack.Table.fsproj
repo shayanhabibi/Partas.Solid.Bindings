@@ -16,8 +16,8 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-Table; TanStack</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>0.2.2</Version>
-        <PackageVersion>0.2.2</PackageVersion>
+        <Version>0.2.3</Version>
+        <PackageVersion>0.2.3</PackageVersion>
         <GitNetInitialVersion>0.2.0</GitNetInitialVersion>
         <NpmDependencies>
             <NpmPackage Name="@tanstack/solid-table" Version="&gt;= 8.0.0" />
