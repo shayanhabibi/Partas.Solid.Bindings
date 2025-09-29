@@ -171,7 +171,6 @@ let dependenciesMapping = [
     Setup
     ==> Clean
     ==> GenerateLucide
-    ==> Clean
     ==> GitNet
     ==> Build
     ==> Pack
