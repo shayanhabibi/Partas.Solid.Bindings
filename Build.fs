@@ -43,7 +43,7 @@ Target.create Ops.Setup <| fun args ->
         crackedProjects.Value
         |> ignore
     } |> ignore
-    if Args.local then
+    if not Args.local then
         [ $"config --local user.email \"{githubEmail}\""
           $"config --local user.user \"{githubUsername}\"" ]
         |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
