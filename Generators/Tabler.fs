@@ -70,9 +70,12 @@ let generateTablerFile () =
         Path.GetFileNameWithoutExtension
         >> function
             | name when name.StartsWith("Icon") ->
-                name.Substring(4) |> Some
+                name.Substring(4)
+                |> _.Replace(".js", "")
+                |> Some
             | _ -> None
         )
+    |> Array.distinct
     |> TablerGenerator.renderDocument
     |> fun render -> File.WriteAllText(Spec.outPath, render)
     
