@@ -157,6 +157,10 @@ Target.create Ops.GenerateLucide <| fun args ->
     |> function
         | [] -> ()
         | values ->
+            if not Args.local then
+                [ $"config user.email \"{githubEmail}\""
+                  $"config user.user \"{githubUsername}\"" ]
+                |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
             values
             |> List.map (sprintf "add %s")
             |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
