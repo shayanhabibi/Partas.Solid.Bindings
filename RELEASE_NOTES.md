@@ -27,7 +27,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Sonner**](#sonner) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.3..._%28Sonner%29_0.2.4) | 3 commits
 [**Storybook**](#storybook) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.2..._%28Storybook%29_0.2.3) | 3 commits
 [**Table**](#table) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.2..._%28Table%29_0.2.3) | 3 commits
-[**Tabler**](#tabler) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/6ccccc9f6cea6dac677b46a0f6caeb80f61ce3a1) | 2 commits
+[**Tabler**](#tabler) | [0.2.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.1.0..._%28Tabler%29_0.2.0) | 3 commits
 [**Build**](#build) | Unreleased | None yet!
 [**Zag**](#zag) | [0.1.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.2..._%28Zag%29_0.1.3) | 4 commits
 [**ZagJs**](#zagjs) | [0.4.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.1..._%28ZagJs%29_0.4.2) | 5 commits
@@ -497,12 +497,19 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Tabler
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.1.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.2.0...HEAD)
+
+### [0.2.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.1.0..._%28Tabler%29_0.2.0) - (2025-09-29)
+
+#### <!-- 6 --> Others
 
 * autoupdate tabler package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#24475](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/24475dbfed3cbff68ce90e9b1f0f39c891227c35)
   
 
 * Tabler generator by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#1a731](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/1a7310918e3923c47bf19248025e13b7c663d513)
+  
+
+* autoupdate tabler package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#eb96c](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/eb96c42e446773a81ffff572d2d339b2efceb003)
   
 
 <div align="right"><a href="#quick-navigation">(back to top)</a></div>
