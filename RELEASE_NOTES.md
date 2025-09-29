@@ -13,30 +13,55 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 **Scope** | Current Release | Commit Count
 :--- | :---: | :---:
-[**ArkUI**](#arkui) | [0.5.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0..._%28ArkUI%29_0.5.1) | 6 commits
-[**Cmdk**](#cmdk) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) | 1 commits
-[**Corvu**](#corvu) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) | 1 commits
-[**Internationalised**](#internationalised) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) | 1 commits
-[**Kobalte**](#kobalte) | [0.4.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.2..._%28Kobalte%29_0.4.3) | 5 commits
-[**Lucide**](#lucide) | [0.513.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.0..._%28Lucide%29_0.513.1) | 1 commits
-[**ModularForms**](#modularforms) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.1..._%28ModularForms%29_0.2.2) | 1 commits
-[**Motion**](#motion) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.1..._%28Motion%29_0.2.2) | 1 commits
-[**NeoDrag**](#neodrag) | [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.0..._%28NeoDrag%29_0.2.1) | 1 commits
-[**Sonner**](#sonner) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.1..._%28Sonner%29_0.2.2) | 1 commits
-[**Storybook**](#storybook) | [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.0..._%28Storybook%29_0.2.1) | 1 commits
-[**Table**](#table) | [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.0..._%28Table%29_0.2.1) | 1 commits
-[**ApexCharts**](#apexcharts) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9ec3269ac3c7564668c4ada409d59a4fd45b04e4) | None yet!
+[**ApexCharts**](#apexcharts) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ApexCharts%29_0.2.2..._%28ApexCharts%29_0.2.3) | 1 commits
+[**ArkUI**](#arkui) | [0.5.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.1..._%28ArkUI%29_0.5.2) | 8 commits
+[**Cmdk**](#cmdk) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.3..._%28Cmdk%29_0.2.4) | 3 commits
+[**Corvu**](#corvu) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.3..._%28Corvu%29_0.2.4) | 3 commits
+[**Cva**](#cva) | [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.0..._%28Cva%29_0.1.1) | 2 commits
+[**Internationalised**](#internationalised) | [0.1.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.2..._%28Internationalised%29_0.1.3) | 3 commits
+[**Kobalte**](#kobalte) | [0.4.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.3..._%28Kobalte%29_0.4.4) | 7 commits
+[**Lucide**](#lucide) | [0.513.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.1..._%28Lucide%29_0.513.2) | 3 commits
+[**ModularForms**](#modularforms) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.2..._%28ModularForms%29_0.2.3) | 3 commits
+[**Motion**](#motion) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.2..._%28Motion%29_0.2.3) | 3 commits
+[**NeoDrag**](#neodrag) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.1..._%28NeoDrag%29_0.2.2) | 3 commits
+[**Sonner**](#sonner) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.2..._%28Sonner%29_0.2.3) | 3 commits
+[**Storybook**](#storybook) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.1..._%28Storybook%29_0.2.2) | 3 commits
+[**Table**](#table) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.1..._%28Table%29_0.2.2) | 3 commits
 [**Build**](#build) | Unreleased | None yet!
-[**Cva**](#cva) | [0.1.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/8fe28819955fec8c7e989f58a8fe88c5e67f1d8e) | None yet!
-[**Zag**](#zag) | [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.0..._%28Zag%29_0.1.1) | 2 commits
-[**ZagJs**](#zagjs) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.3.0..._%28ZagJs%29_0.4.0) | 3 commits
+[**Zag**](#zag) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.1..._%28Zag%29_0.1.2) | 4 commits
+[**ZagJs**](#zagjs) | [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0..._%28ZagJs%29_0.4.1) | 5 commits
 
+
+-----------------------
+
+# ApexCharts
+
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ApexCharts%29_0.2.3...HEAD)
+
+### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ApexCharts%29_0.2.2..._%28ApexCharts%29_0.2.3) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+<div align="right"><a href="#quick-navigation">(back to top)</a></div>
 
 -----------------------
 
 # ArkUI
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.5.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.1..._%28ArkUI%29_0.5.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.5.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ArkUI%29_0.5.0..._%28ArkUI%29_0.5.1) - (2025-09-25)
 
@@ -86,7 +111,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Cmdk
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.3...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.4...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.3..._%28Cmdk%29_0.2.4) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cmdk%29_0.2.2..._%28Cmdk%29_0.2.3) - (2025-08-22)
 
@@ -101,7 +136,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Corvu
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.3...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.4...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.3..._%28Corvu%29_0.2.4) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.2..._%28Corvu%29_0.2.3) - (2025-08-22)
 
@@ -114,9 +159,37 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 -----------------------
 
+# Cva
+
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.1...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.0..._%28Cva%29_0.1.1) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+<div align="right"><a href="#quick-navigation">(back to top)</a></div>
+
+-----------------------
+
 # Internationalised
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.2...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.3...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.1.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.2..._%28Internationalised%29_0.1.3) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.1..._%28Internationalised%29_0.1.2) - (2025-08-22)
 
@@ -131,7 +204,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Kobalte
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.3...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.4...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.4.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.3..._%28Kobalte%29_0.4.4) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.4.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.2..._%28Kobalte%29_0.4.3) - (2025-09-25)
 
@@ -174,7 +257,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Lucide
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.513.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.1..._%28Lucide%29_0.513.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.513.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.513.0..._%28Lucide%29_0.513.1) - (2025-08-22)
 
@@ -189,7 +282,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # ModularForms
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.2...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.3...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.2..._%28ModularForms%29_0.2.3) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.1..._%28ModularForms%29_0.2.2) - (2025-08-22)
 
@@ -204,7 +307,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Motion
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.2...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.3...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.2..._%28Motion%29_0.2.3) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.1..._%28Motion%29_0.2.2) - (2025-08-22)
 
@@ -219,7 +332,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # NeoDrag
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.1..._%28NeoDrag%29_0.2.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.0..._%28NeoDrag%29_0.2.1) - (2025-08-22)
 
@@ -234,7 +357,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Sonner
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.2...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.3...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.2..._%28Sonner%29_0.2.3) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.1..._%28Sonner%29_0.2.2) - (2025-08-22)
 
@@ -249,7 +382,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Storybook
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.1..._%28Storybook%29_0.2.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.0..._%28Storybook%29_0.2.1) - (2025-08-22)
 
@@ -264,7 +407,17 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Table
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.1..._%28Table%29_0.2.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.0..._%28Table%29_0.2.1) - (2025-08-22)
 
@@ -277,23 +430,25 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 -----------------------
 
-# ApexCharts
-
-No commits at this time.
-
 # Build
-
-No commits at this time.
-
-# Cva
 
 No commits at this time.
 
 # Zag
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.2...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.1..._%28Zag%29_0.1.2) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
 
 * type dx improvement and added useTour method by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#cc3c7](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/cc3c7da9c37efe24e803e86d6fc5870fee393ac3)
+  
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
   
 
 ### [0.1.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.0..._%28Zag%29_0.1.1) - (2025-09-25)
@@ -309,7 +464,17 @@ No commits at this time.
 
 # ZagJs
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.1...HEAD)
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
+
+### [0.4.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.0..._%28ZagJs%29_0.4.1) - (2025-09-29)
+
+#### <!-- 2 --> Fixed
+
+* Package github path, fix issue #3 by [@cabboose](https://github.com/shayanhabibi/Partas.Solid.Bindings/cabboose) with [#9a402](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/9a402d8b210dec2f45f235d02b29e3103a0566f3)
+  
 
 ### [0.3.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.2.0..._%28ZagJs%29_0.3.0) - (2025-09-25)
 
