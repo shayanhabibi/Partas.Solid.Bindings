@@ -31,6 +31,7 @@ Visit the [`Partas.Solid` docs](https://partas-solid.vercel.app/) for more infor
 | ArkUI             | Partial-Stable    |
 | Corvu             | Partial-Beta      |
 | Sonner            | Beta              |
+| Tabler (Icons)    | Beta              |
 | ApexCharts        | Beta-ish          |
 | NeoDrag           | Alpha             |
 | Storybook         | Deprecated        |
