@@ -45,7 +45,9 @@ let sourceFiles =
     !! "**/*.fs"
     -- "**/obj/**/*.*"
     -- "**/AssemblyInfo.fs"
+[<Literal>]
 let githubUsername = "GitHub Action"
+[<Literal>]
 let githubEmail = "41898282+github-actions[bot]@users.noreply.github.com"
 
 // Credit SAFE STACK
