@@ -45,7 +45,7 @@ Target.create Ops.Setup <| fun args ->
     } |> ignore
     if not Args.local then
         [ $"config --local user.email \"{githubEmail}\""
-          $"config --local user.user \"{githubUsername}\"" ]
+          $"config --local user.name \"{githubUsername}\"" ]
         |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
     
 Target.create Ops.GitNet <| fun args ->
@@ -157,10 +157,6 @@ Target.create Ops.GenerateLucide <| fun args ->
     |> function
         | [] -> ()
         | values ->
-            if not Args.local then
-                [ $"config user.email \"{githubEmail}\""
-                  $"config user.user \"{githubUsername}\"" ]
-                |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
             values
             |> List.map (sprintf "add %s")
             |> List.iter (Git.CommandHelper.directRunGitCommandAndFail Files.Root.``.``)
