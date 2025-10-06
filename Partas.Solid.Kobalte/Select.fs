@@ -57,8 +57,10 @@ type Select<'T>() =
     [<DefaultValue>] val mutable hideWhenDetached : bool 
     [<DefaultValue>] val mutable detachedPadding : int 
     [<DefaultValue>] val mutable arrowPadding : int 
-    [<DefaultValue>] val mutable overflowPadding : int 
-type Select = Select<obj>
+    [<DefaultValue>] val mutable overflowPadding : int
+[<Erase; Import("Root", Spec.select)>]
+type Select() =
+    inherit Select<obj>()
 [<RequireQualifiedAccess; Erase>]
 module Select =
     [<Interface; Erase>]
@@ -80,7 +82,9 @@ module Select =
         [<DefaultValue>] val mutable selectedOptions : 'T[] Accessor 
         [<DefaultValue>] val mutable remove : 'T -> unit 
         [<DefaultValue>] val mutable clear : unit -> unit 
-    type Value = Value<obj>
+    [<Erase; Import("Value", Spec.select)>]
+    type Value() =
+        inherit Value<obj>()
     [<Erase; Import("Icon", Spec.select)>]
     type Icon() =
         inherit div()

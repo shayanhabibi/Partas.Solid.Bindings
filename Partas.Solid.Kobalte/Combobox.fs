@@ -35,7 +35,8 @@ module Combobox =
         interface Polymorph
         interface ChildLambdaProvider<ControlState<'T>>
     [<Erase; Import("Control", Spec.combobox)>]
-    type Control = Control<obj>
+    type Control() =
+        inherit Control<obj>()
     /// <summary>
     /// </summary>
     /// <param name="data-valid">Present when the combobox is valid</param>
@@ -115,13 +116,13 @@ module Combobox =
     type ListboxVirtualiser<'T>() =
         interface HtmlTag
         interface Polymorph
-        interface ChildLambdaProvider<'T[]>
+        interface ChildLambdaProvider<Accessor<Collection<CollectionNode<'T>>>>
         [<Erase>] [<DefaultValue>] val mutable scrollRef : Accessor<HtmlElement>  // v0.13.9
         [<Erase>] [<DefaultValue>] val mutable scrollToItem : string -> unit  // v0.13.9
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox = Listbox<obj>
     [<Erase; Import("Listbox", Spec.combobox)>]
-    type ListboxVirtualiser = ListboxVirtualiser<obj>
+    type ListboxVirtualiser() = inherit ListboxVirtualiser<obj>()
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -129,9 +130,10 @@ module Combobox =
     type Item<'Value>() = // v0.13.9
         inherit li()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable item : 'Value 
+        [<Erase>] [<DefaultValue>] val mutable item : CollectionNode<'Value>
     [<Erase; Import("Item", Spec.combobox)>]
-    type Item = Item<obj>
+    type Item() =
+        inherit Item<obj>()
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
