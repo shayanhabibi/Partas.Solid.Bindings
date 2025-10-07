@@ -9,12 +9,12 @@ open Fable.Core
 type Tabs() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable value : string 
-    [<DefaultValue>] val mutable defaultValue : string 
-    [<DefaultValue>] val mutable onChange : string -> unit 
-    [<DefaultValue>] val mutable orientation : Orientation 
-    [<DefaultValue>] val mutable activationMode : ActivationMode 
-    [<DefaultValue>] val mutable disabled : bool 
+    [<Erase>] member val value : string = JS.undefined with get,set
+    [<Erase>] member val defaultValue : string = JS.undefined with get,set
+    [<Erase>] member val onChange : string -> unit = JS.undefined with get,set
+    [<Erase>] member val orientation : Orientation = JS.undefined with get,set
+    [<Erase>] member val activationMode : ActivationMode = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module Tabs =
@@ -22,14 +22,14 @@ module Tabs =
     type Trigger() =
         inherit Button()
         interface Polymorph
-        [<DefaultValue>] val mutable value : string 
-        [<DefaultValue>] val mutable disabled : bool 
+        [<Erase>] member val value : string = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
     [<Erase; Import("Content", Spec.tabs)>]
     type Content() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable value : string 
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val value : string = JS.undefined with get,set
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("List", Spec.tabs)>]
     type List() =
         inherit div()

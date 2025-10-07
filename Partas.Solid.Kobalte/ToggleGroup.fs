@@ -12,39 +12,33 @@ type ToggleGroup() =
     /// <summary>
     /// The controlled value of the toggle group.
     /// </summary>
-    [<DefaultValue>]
-    val mutable value: U2<string, string[]>
+    [<Erase>] member val value: U2<string, string[]> = JS.undefined with get,set
 
     /// <summary>
     /// The value of the select when initially rendered.
     /// Useful when you do not need to control the value.
     /// </summary>
-    [<DefaultValue>]
-    val mutable defaultValue: U2<string, string[]>
+    [<Erase>] member val defaultValue: U2<string, string[]> = JS.undefined with get,set
 
     /// <summary>
     /// Event handler called when the value changes.
     /// </summary>
-    [<DefaultValue>]
-    val mutable onChange: (U2<string, string[]> -> unit)
+    [<Erase>] member val onChange: (U2<string, string[]> -> unit) = JS.undefined with get,set
 
     /// <summary>
     /// The type of selection that is allowed in the toggle group.
     /// </summary>
-    [<DefaultValue>]
-    val mutable selectionMode: SelectionMode
+    [<Erase>] member val selectionMode: SelectionMode = JS.undefined with get,set
 
     /// <summary>
     /// Whether the toggle group is disabled.
     /// </summary>
-    [<DefaultValue>]
-    val mutable disabled: bool
+    [<Erase>] member val disabled: bool = JS.undefined with get,set
 
     /// <summary>
     /// The axis the toggle group items should align with.
     /// </summary>
-    [<DefaultValue>]
-    val mutable orientation: Orientation
+    [<Erase>] member val orientation: Orientation = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module ToggleGroup =
@@ -52,10 +46,10 @@ module ToggleGroup =
     type Item() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable value : string 
-        [<DefaultValue>] val mutable disabled : bool 
-        [<DefaultValue>] val mutable children : Fragment 
-        [<DefaultValue>] val mutable pressed : unit -> bool 
+        [<Erase>] member val value : string  = JS.undefined with get,set
+        [<Erase>] member val disabled : bool  = JS.undefined with get,set
+        [<Erase>] member val children : Fragment  = JS.undefined with get,set
+        [<Erase>] member val pressed : unit -> bool  = JS.undefined with get,set
 
 [<Erase; AutoOpen>]
 module ToggleGroupContext =

@@ -11,22 +11,22 @@ open Partas.Solid
 type Slider() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable value : int[] 
-    [<DefaultValue>] val mutable defaultValue : int[] 
-    [<DefaultValue>] val mutable onChange : int[] -> unit 
-    [<DefaultValue>] val mutable onChangeEnd : int[] -> unit 
-    [<DefaultValue>] val mutable inverted : bool 
-    [<DefaultValue>] val mutable minValue : int 
-    [<DefaultValue>] val mutable maxValue : int 
-    [<DefaultValue>] val mutable step : int 
-    [<DefaultValue>] val mutable minStepsBetweenThumbs : int 
-    [<DefaultValue>] val mutable getValueLabel : {| values: int[] ; min : int ; max : int |} -> string 
-    [<DefaultValue>] val mutable orientation : Orientation 
-    [<DefaultValue>] val mutable name : string 
-    [<DefaultValue>] val mutable validationState : ValidationState 
-    [<DefaultValue>] val mutable required : bool 
-    [<DefaultValue>] val mutable disabled : bool 
-    [<DefaultValue>] val mutable readOnly : bool 
+    [<Erase>] member val value : int[] = JS.undefined with get,set
+    [<Erase>] member val defaultValue : int[] = JS.undefined with get,set
+    [<Erase>] member val onChange : int[] -> unit = JS.undefined with get,set
+    [<Erase>] member val onChangeEnd : int[] -> unit = JS.undefined with get,set
+    [<Erase>] member val inverted : bool = JS.undefined with get,set
+    [<Erase>] member val minValue : int = JS.undefined with get,set
+    [<Erase>] member val maxValue : int = JS.undefined with get,set
+    [<Erase>] member val step : int = JS.undefined with get,set
+    [<Erase>] member val minStepsBetweenThumbs : int = JS.undefined with get,set
+    [<Erase>] member val getValueLabel : {| values: int[] ; min : int ; max : int |} -> string = JS.undefined with get,set
+    [<Erase>] member val orientation : Orientation = JS.undefined with get,set
+    [<Erase>] member val name : string = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set
+    [<Erase>] member val required : bool = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module Slider =
@@ -106,12 +106,9 @@ module SliderContext =
     
     [<JS.Pojo>]
     type GetValueLabelParams(values: float[], min: float, max: float) =
-        [<DefaultValue>]
-        val mutable values: float[]
-        [<DefaultValue>]
-        val mutable min: float
-        [<DefaultValue>]
-        val mutable max: float
+        [<Erase>] member val values: float[] = JS.undefined with get,set
+        [<Erase>] member val min: float = JS.undefined with get,set
+        [<Erase>] member val max: float = JS.undefined with get,set
         
     [<AllowNullLiteral; Interface>]
     type SliderContext =

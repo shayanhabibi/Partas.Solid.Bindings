@@ -10,15 +10,15 @@ open Fable.Core
 type TextField() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable value : string 
-    [<DefaultValue>] val mutable defaultValue : string 
-    [<DefaultValue>] val mutable onChange : string -> unit 
-    [<DefaultValue>] val mutable onBlur: Browser.Types.FocusEvent -> unit
-    [<DefaultValue>] val mutable name : string 
-    [<DefaultValue>] val mutable validationState : ValidationState 
-    [<DefaultValue>] val mutable required : bool 
-    [<DefaultValue>] val mutable disabled : bool 
-    [<DefaultValue>] val mutable readOnly : bool 
+    [<Erase>] member val value : string = JS.undefined with get,set
+    [<Erase>] member val defaultValue : string = JS.undefined with get,set
+    [<Erase>] member val onChange : string -> unit = JS.undefined with get,set
+    [<Erase>] member val onBlur: Browser.Types.FocusEvent -> unit= JS.undefined with get,set
+    [<Erase>] member val name : string = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set
+    [<Erase>] member val required : bool = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module TextField =
@@ -26,13 +26,13 @@ module TextField =
     type TextArea() =
         inherit textarea()
         interface Polymorph
-        [<DefaultValue>] val mutable autoResize : bool 
-        [<DefaultValue>] val mutable submitOnEnter : bool 
+        [<Erase>] member val autoResize : bool = JS.undefined with get,set
+        [<Erase>] member val submitOnEnter : bool = JS.undefined with get,set
     [<Erase; Import("ErrorMessage", Spec.textField)>]
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("Label", Spec.textField)>]
     type Label() =
         inherit label()

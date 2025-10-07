@@ -31,7 +31,7 @@ module Combobox =
     /// <param name="data-readonly">Present when the combobox is readonly</param>
     [<Erase; Import("Control", Spec.combobox)>]
     type Control<'T>() = // v0.13.9
-        interface HtmlTag
+        interface RegularNode
         interface Polymorph
         interface ChildLambdaProvider<ControlState<'T>>
     [<Erase; Import("Control", Spec.combobox)>]
@@ -67,7 +67,7 @@ module Combobox =
     type ErrorMessage() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     /// <param name="data-expanded">Present when combobox is open</param>
     /// <param name="data-closed">Present when combobox is closed</param>
     [<Erase; Import("Content", Spec.combobox)>]
@@ -78,47 +78,47 @@ module Combobox =
         /// Event handler called when focus moves to the trigger after closing.
         /// It can be prevented by calling <c>event.preventDefault</c>.
         /// </summary>
-        [<DefaultValue>]
-        val mutable onCloseAutoFocus: (Event -> unit) option
+        [<Erase>]
+        member val onCloseAutoFocus: (Event -> unit) option = JS.undefined with get,set
 
         /// <summary>
         /// Event handler called when a pointer event occurs outside the bounds of the component.
         /// It can be prevented by calling <c>event.preventDefault</c>.
         /// </summary>
-        [<DefaultValue>]
-        val mutable onPointerDownOutside: (CustomEvent<EventDetails<PointerEvent>> -> unit) option
+        [<Erase>]
+        member val onPointerDownOutside: (CustomEvent<EventDetails<PointerEvent>> -> unit) option = JS.undefined with get,set
 
         /// <summary>
         /// Event handler called when the focus moves outside the bounds of the component.
         /// It can be prevented by calling <c>event.preventDefault</c>.
         /// </summary>
-        [<DefaultValue>]
-        val mutable onFocusOutside: (CustomEvent<EventDetails<FocusEvent>> -> unit) option
+        [<Erase>]
+        member val onFocusOutside: (CustomEvent<EventDetails<FocusEvent>> -> unit) option = JS.undefined with get,set
 
         /// <summary>
         /// Event handler called when an interaction (pointer or focus event) happens outside the bounds of the component.
         /// It can be prevented by calling <c>event.preventDefault</c>.
         /// </summary>
-        [<DefaultValue>]
-        val mutable onInteractOutside: (CustomEvent<EventDetails<PointerEvent>> -> unit) option
+        [<Erase>]
+        member val onInteractOutside: (CustomEvent<EventDetails<PointerEvent>> -> unit) option = JS.undefined with get,set
     [<Erase; Import("Arrow", Spec.combobox)>]
     type Arrow() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable size : int  // v0.13.9
+        [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox<'T>() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable scrollRef : Accessor<HtmlElement>  // v0.13.9
-        [<Erase>] [<DefaultValue>] val mutable scrollToItem : string -> unit  // v0.13.9
+        [<Erase>] member val scrollRef : Accessor<HtmlElement> = JS.undefined with get,set
+        [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.combobox)>]
     type ListboxVirtualiser<'T>() =
         interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<Accessor<Collection<CollectionNode<'T>>>>
-        [<Erase>] [<DefaultValue>] val mutable scrollRef : Accessor<HtmlElement>  // v0.13.9
-        [<Erase>] [<DefaultValue>] val mutable scrollToItem : string -> unit  // v0.13.9
+        [<Erase>] member val scrollRef : Accessor<HtmlElement> = JS.undefined with get,set
+        [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.combobox)>]
     type Listbox = Listbox<obj>
     [<Erase; Import("Listbox", Spec.combobox)>]
@@ -130,7 +130,7 @@ module Combobox =
     type Item<'Value>() = // v0.13.9
         inherit li()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable item : CollectionNode<'Value>
+        [<Erase>] member val item : CollectionNode<'Value> = JS.undefined with get,set
     [<Erase; Import("Item", Spec.combobox)>]
     type Item() =
         inherit Item<obj>()
@@ -141,7 +141,7 @@ module Combobox =
     type ItemIndicator() = // v0.13.9
         inherit div()
         interface Polymorph
-        [<Erase>] [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -213,71 +213,71 @@ module Combobox =
 type Combobox<'Value>() =
     inherit div()
     interface Polymorph
-    [<Erase>] [<DefaultValue>] val mutable defaultFilter : ComboboxFilter  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable options : 'Value[]  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable optionValue : 'Value -> string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable optionTextValue : 'Value -> string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable optionLabel : 'Value -> string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable optionDisabled : 'Value -> bool  // v0.13.9
+    [<Erase>] member val defaultFilter : ComboboxFilter = JS.undefined with get,set
+    [<Erase>] member val options : 'Value[] = JS.undefined with get,set
+    [<Erase>] member val optionValue : 'Value -> string = JS.undefined with get,set
+    [<Erase>] member val optionTextValue : 'Value -> string = JS.undefined with get,set
+    [<Erase>] member val optionLabel : 'Value -> string = JS.undefined with get,set
+    [<Erase>] member val optionDisabled : 'Value -> bool = JS.undefined with get,set
     /// <summary>
     /// Key property that refers to children of the option group.
     /// </summary>
-    [<Erase>] [<DefaultValue>] val mutable optionGroupChildren : string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable itemComponent : ItemComponentProps<'Value> -> HtmlElement  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable sectionComponent : SectionComponentProps<'Value> -> HtmlElement  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable multiple : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable placeholder : string  // v0.13.9
+    [<Erase>] member val optionGroupChildren : string  = JS.undefined with get,set
+    [<Erase>] member val itemComponent : ItemComponentProps<'Value> -> HtmlElement  = JS.undefined with get,set
+    [<Erase>] member val sectionComponent : SectionComponentProps<'Value> -> HtmlElement  = JS.undefined with get,set
+    [<Erase>] member val multiple : bool  = JS.undefined with get,set
+    [<Erase>] member val placeholder : string  = JS.undefined with get,set
     member this.placeholder' // v0.13.9
         with set(value: HtmlElement) = () // v0.13.9
         and get(): HtmlElement = unbox null // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable value : 'Value  // will add an s when it is an array and reroute it to value
+    [<Erase>] member val value : 'Value = JS.undefined with get,set
     member this.values // v0.13.9
         with inline set(values: 'Value[]) = this.value <- !!values // v0.13.9
         and inline get(): 'Value[] = !!this.value // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable defaultValue : 'Value  // v0.13.9
+    [<Erase>] member val defaultValue : 'Value  = JS.undefined with get,set
     member this.defaultValues // v0.13.9
         with inline set(values: 'Value[]) = this.defaultValue <- !!values // v0.13.9
         and inline get(): 'Value[] = !!this.defaultValue // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable onChange : 'Value -> unit  // v0.13.9
+    [<Erase>] member val onChange : 'Value -> unit = JS.undefined with get,set
     member this.onChanges // v0.13.9
         with inline set(values: 'Value[] -> unit) = this.onChange <- !!values // v0.13.9
         and inline get(): 'Value[] -> unit = !!this.onChange // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable open' : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable defaultOpen : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable onOpenChange : bool * TriggerMode -> unit  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable onInputChange : string -> unit  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable triggerMode : TriggerMode  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable removeOnBackspace : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable allowDuplicateSelectionEvents : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable disallowEmptySelection : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable allowsEmptyCollection : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable closeOnSelection : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable selectionBehavior : SelectionBehavior  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable virtualized : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable modal : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable preventScroll : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable forceMount : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable name : string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable validationState : ValidationState  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable required : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable disabled : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable readOnly : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable translations : string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable autoComplete : string  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable noResetInputOnBlur : bool  // v0.13.9
+    [<Erase>] member val open' : bool  = JS.undefined with get,set
+    [<Erase>] member val defaultOpen : bool  = JS.undefined with get,set
+    [<Erase>] member val onOpenChange : bool * TriggerMode -> unit  = JS.undefined with get,set
+    [<Erase>] member val onInputChange : string -> unit  = JS.undefined with get,set
+    [<Erase>] member val triggerMode : TriggerMode  = JS.undefined with get,set
+    [<Erase>] member val removeOnBackspace : bool  = JS.undefined with get,set
+    [<Erase>] member val allowDuplicateSelectionEvents : bool  = JS.undefined with get,set
+    [<Erase>] member val disallowEmptySelection : bool  = JS.undefined with get,set
+    [<Erase>] member val allowsEmptyCollection : bool  = JS.undefined with get,set
+    [<Erase>] member val closeOnSelection : bool  = JS.undefined with get,set
+    [<Erase>] member val selectionBehavior : SelectionBehavior  = JS.undefined with get,set
+    [<Erase>] member val virtualized : bool  = JS.undefined with get,set
+    [<Erase>] member val modal : bool  = JS.undefined with get,set
+    [<Erase>] member val preventScroll : bool  = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool  = JS.undefined with get,set
+    [<Erase>] member val name : string  = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState  = JS.undefined with get,set
+    [<Erase>] member val required : bool  = JS.undefined with get,set
+    [<Erase>] member val disabled : bool  = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool  = JS.undefined with get,set
+    [<Erase>] member val translations : string  = JS.undefined with get,set
+    [<Erase>] member val autoComplete : string  = JS.undefined with get,set
+    [<Erase>] member val noResetInputOnBlur : bool  = JS.undefined with get,set
 
-    [<Erase>] [<DefaultValue>] val mutable placement : KobaltePlacement  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable gutter : int  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable shift : int  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable flip : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable slide : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable overlap : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable sameWidth : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable fitViewport : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable hideWhenDetached : bool  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable detachedPadding : int  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable arrowPadding : int  // v0.13.9
-    [<Erase>] [<DefaultValue>] val mutable overflowPadding : int  // v0.13.9
+    [<Erase>] member val placement : KobaltePlacement = JS.undefined with get,set
+    [<Erase>] member val gutter : int = JS.undefined with get,set
+    [<Erase>] member val shift : int = JS.undefined with get,set
+    [<Erase>] member val flip : bool = JS.undefined with get,set
+    [<Erase>] member val slide : bool = JS.undefined with get,set
+    [<Erase>] member val overlap : bool = JS.undefined with get,set
+    [<Erase>] member val sameWidth : bool = JS.undefined with get,set
+    [<Erase>] member val fitViewport : bool = JS.undefined with get,set
+    [<Erase>] member val hideWhenDetached : bool = JS.undefined with get,set
+    [<Erase>] member val detachedPadding : int = JS.undefined with get,set
+    [<Erase>] member val arrowPadding : int = JS.undefined with get,set
+    [<Erase>] member val overflowPadding : int = JS.undefined with get,set
 [<Erase; Import("Root", Spec.combobox)>]
 type Combobox = Combobox<obj>
 

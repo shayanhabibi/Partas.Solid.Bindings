@@ -10,60 +10,49 @@ type Pagination() =
     /// <summary>
     /// The controlled page number of the pagination. (1-indexed)
     /// </summary>
-    [<DefaultValue>]
-    val mutable page: int
+    [<Erase>] member val page: int = JS.undefined with get,set
     /// <summary>
     /// The default page number when initially rendered. (1-indexed)
     /// Useful when you do not need to control the page number.
     /// </summary>
-    [<DefaultValue>]
-    val mutable defaultPage: int
+    [<Erase>] member val defaultPage: int = JS.undefined with get,set
     /// <summary>
     /// Event handler called when the page number changes.
     /// </summary>
-    [<DefaultValue>]
-    val mutable onPageChange: (int -> unit)
+    [<Erase>] member val onPageChange: (int -> unit) = JS.undefined with get,set
     /// <summary>
     /// The number of pages for the pagination.
     /// </summary>
-    [<DefaultValue>]
-    val mutable count: int
+    [<Erase>] member val count: int = JS.undefined with get,set
     /// <summary>
     /// The number of siblings to show around the current page item.
     /// </summary>
-    [<DefaultValue>]
-    val mutable siblingCount: int
+    [<Erase>] member val siblingCount: int = JS.undefined with get,set
     /// <summary>
     /// Whether to always show the first page item.
     /// </summary>
-    [<DefaultValue>]
-    val mutable showFirst: bool
+    [<Erase>] member val showFirst: bool = JS.undefined with get,set
     /// <summary>
     /// Whether to always show the last page item.
     /// </summary>
-    [<DefaultValue>]
-    val mutable showLast: bool
+    [<Erase>] member val showLast: bool = JS.undefined with get,set
     /// <summary>
     /// Whether to always show the same number of items (to avoid content shift).
     /// Special value: "no-ellipsis" does not count the ellipsis as an item (used when ellipsis are disabled).
     /// </summary>
-    [<DefaultValue>]
-    val mutable fixedItems: PaginationFixedItems
+    [<Erase>] member val fixedItems: PaginationFixedItems = JS.undefined with get,set
     /// <summary>
     /// The component to render as an item in the <c>Pagination.List</c>.
     /// </summary>
-    [<DefaultValue>]
-    val mutable itemComponent: ({| page: int |} -> HtmlElement)
+    [<Erase>] member val itemComponent: ({| page: int |} -> HtmlElement) = JS.undefined with get,set
     /// <summary>
     /// The component to render as an ellipsis item in the <c>Pagination.List</c>.
     /// </summary>
-    [<DefaultValue>]
-    val mutable ellipsisComponent: (unit -> HtmlElement)
+    [<Erase>] member val ellipsisComponent: (unit -> HtmlElement) = JS.undefined with get,set
     /// <summary>
     /// Whether the pagination is disabled.
     /// </summary>
-    [<DefaultValue>]
-    val mutable disabled: bool
+    [<Erase>] member val disabled: bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module Pagination =
@@ -71,7 +60,7 @@ module Pagination =
     type Item() =
         inherit Button()
         interface Polymorph
-        [<DefaultValue>] val mutable page : int 
+        [<Erase>] member val page : int = JS.undefined with get,set
     [<Erase; Import("Ellipsis", Spec.pagination)>]
     type Ellipsis() =
         inherit div()

@@ -9,30 +9,29 @@ open Browser.Types
 type Tooltip() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable open' : bool 
-    [<DefaultValue>] val mutable defaultOpen : bool 
-    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-    [<DefaultValue>] val mutable triggerOnFocusOnly : bool 
-    [<DefaultValue>] val mutable openDelay : int 
-    [<DefaultValue>] val mutable skipDelayDuration : bool 
-    [<DefaultValue>] val mutable closeDelay : int 
-    [<DefaultValue>] val mutable ignoreSafeArea : bool 
-    [<DefaultValue>] val mutable id : string 
-    [<DefaultValue>] val mutable forceMount : bool 
-
-    [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj 
-    [<DefaultValue>] val mutable placement : KobaltePlacement 
-    [<DefaultValue>] val mutable gutter : int 
-    [<DefaultValue>] val mutable shift : int 
-    [<DefaultValue>] val mutable flip : bool 
-    [<DefaultValue>] val mutable slide : bool 
-    [<DefaultValue>] val mutable overlap : bool 
-    [<DefaultValue>] val mutable sameWidth : bool 
-    [<DefaultValue>] val mutable fitViewport : bool 
-    [<DefaultValue>] val mutable hideWhenDetached : bool 
-    [<DefaultValue>] val mutable detachedPadding : int 
-    [<DefaultValue>] val mutable arrowPadding : int 
-    [<DefaultValue>] val mutable overflowPadding : int 
+    [<Erase>] member val open' : bool  = JS.undefined with get,set
+    [<Erase>] member val defaultOpen : bool  = JS.undefined with get,set
+    [<Erase>] member val onOpenChange : (bool -> unit)  = JS.undefined with get,set
+    [<Erase>] member val triggerOnFocusOnly : bool  = JS.undefined with get,set
+    [<Erase>] member val openDelay : int  = JS.undefined with get,set
+    [<Erase>] member val skipDelayDuration : bool  = JS.undefined with get,set
+    [<Erase>] member val closeDelay : int  = JS.undefined with get,set
+    [<Erase>] member val ignoreSafeArea : bool  = JS.undefined with get,set
+    [<Erase>] member val id : string  = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool  = JS.undefined with get,set
+    [<Erase>] member val getAnchorRect : HtmlElement -> obj  = JS.undefined with get,set
+    [<Erase>] member val placement : KobaltePlacement  = JS.undefined with get,set
+    [<Erase>] member val gutter : int  = JS.undefined with get,set
+    [<Erase>] member val shift : int  = JS.undefined with get,set
+    [<Erase>] member val flip : bool  = JS.undefined with get,set
+    [<Erase>] member val slide : bool  = JS.undefined with get,set
+    [<Erase>] member val overlap : bool  = JS.undefined with get,set
+    [<Erase>] member val sameWidth : bool  = JS.undefined with get,set
+    [<Erase>] member val fitViewport : bool  = JS.undefined with get,set
+    [<Erase>] member val hideWhenDetached : bool  = JS.undefined with get,set
+    [<Erase>] member val detachedPadding : int  = JS.undefined with get,set
+    [<Erase>] member val arrowPadding : int  = JS.undefined with get,set
+    [<Erase>] member val overflowPadding : int  = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module Tooltip =
@@ -50,13 +49,13 @@ module Tooltip =
     type Content() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
+        [<Erase>] member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = JS.undefined with get,set
     [<Erase; Import("Arrow", Spec.tooltip)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable size : int 
+        [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Portal", Spec.tooltip)>]
     type Portal() =
         inherit div()

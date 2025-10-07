@@ -9,29 +9,28 @@ open Partas.Solid
 type Popover() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable open' : bool 
-    [<DefaultValue>] val mutable defaultOpen : bool 
-    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-    [<DefaultValue>] val mutable id : string 
-    [<DefaultValue>] val mutable modal : bool 
-    [<DefaultValue>] val mutable preventScroll : bool 
-    [<DefaultValue>] val mutable forceMount : bool 
-    [<DefaultValue>] val mutable translations : string 
-
-    [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj 
-    [<DefaultValue>] val mutable anchorRef : unit -> HtmlElement 
-    [<DefaultValue>] val mutable placement : Popover.Placement 
-    [<DefaultValue>] val mutable gutter : int 
-    [<DefaultValue>] val mutable shift : int 
-    [<DefaultValue>] val mutable flip : bool 
-    [<DefaultValue>] val mutable slide : bool 
-    [<DefaultValue>] val mutable overlap : bool 
-    [<DefaultValue>] val mutable sameWidth : bool 
-    [<DefaultValue>] val mutable fitViewport : bool 
-    [<DefaultValue>] val mutable hideWhenDetached : bool 
-    [<DefaultValue>] val mutable detachedPadding : int 
-    [<DefaultValue>] val mutable arrowPadding : int 
-    [<DefaultValue>] val mutable overflowPadding : int 
+    [<Erase>] member val open' : bool = JS.undefined with get,set
+    [<Erase>] member val defaultOpen : bool = JS.undefined with get,set
+    [<Erase>] member val onOpenChange : (bool -> unit) = JS.undefined with get,set
+    [<Erase>] member val id : string = JS.undefined with get,set
+    [<Erase>] member val modal : bool = JS.undefined with get,set
+    [<Erase>] member val preventScroll : bool = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool = JS.undefined with get,set
+    [<Erase>] member val translations : string = JS.undefined with get,set
+    [<Erase>] member val getAnchorRect : HtmlElement -> obj = JS.undefined with get,set
+    [<Erase>] member val anchorRef : unit -> HtmlElement = JS.undefined with get,set
+    [<Erase>] member val placement : Popover.Placement = JS.undefined with get,set
+    [<Erase>] member val gutter : int = JS.undefined with get,set
+    [<Erase>] member val shift : int = JS.undefined with get,set
+    [<Erase>] member val flip : bool = JS.undefined with get,set
+    [<Erase>] member val slide : bool = JS.undefined with get,set
+    [<Erase>] member val overlap : bool = JS.undefined with get,set
+    [<Erase>] member val sameWidth : bool = JS.undefined with get,set
+    [<Erase>] member val fitViewport : bool = JS.undefined with get,set
+    [<Erase>] member val hideWhenDetached : bool = JS.undefined with get,set
+    [<Erase>] member val detachedPadding : int = JS.undefined with get,set
+    [<Erase>] member val arrowPadding : int = JS.undefined with get,set
+    [<Erase>] member val overflowPadding : int = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module Popover =
@@ -43,18 +42,18 @@ module Popover =
     type Content() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable gutter : int 
-        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
-        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit 
-        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
+        [<Erase>] member val gutter : int = JS.undefined with get,set
+        [<Erase>] member val onOpenAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onCloseAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onFocusOutside : Browser.Types.FocusEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onInteractOutside : Browser.Types.Event -> unit = JS.undefined with get,set
     [<Erase; Import("Arrow", Spec.popover)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable size : int 
+        [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Portal", Spec.popover)>]
     type Portal() =
         inherit div()

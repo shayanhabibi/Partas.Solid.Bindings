@@ -40,7 +40,7 @@ module SegmentedControl =
         inherit div()
         interface Polymorph
         /// Used to force mounting when more control is needed. Useful when controlling animation with SolidJS animation libraries.
-        [<DefaultValue>] val mutable forceMount: bool
+        [<Erase>] member val forceMount: bool = JS.undefined with get,set
     [<Import("Indicator", Spec.segmentedControl)>]
     type Indicator() =
         inherit div()
@@ -56,11 +56,9 @@ module SegmentedControl =
         inherit div()
         interface Polymorph
         /// The value of the item's radio button, used when submitting an HTML form.
-        [<Erase>]
-        [<DefaultValue>] val mutable value: string
+        [<Erase>] member val value: string = JS.undefined with get,set
         /// Whether the item's radio button is disabled or not.
-        [<Erase>]
-        [<DefaultValue>] val mutable disabled: bool
+        [<Erase>] member val disabled: bool = JS.undefined with get,set
     /// <summary>
     /// <param name="data-valid">Present when the parent segmented control is valid according to the validation rules.</param>
     /// <param name="data-invalid">Present when the parent segmented control is invalid according to the validation rules.</param>
@@ -92,8 +90,7 @@ module SegmentedControl =
         inherit div()
         interface Polymorph
         /// Used to force mounting when more control is needed. Useful when controlling animation with SolidJS animation libraries.
-        [<Erase>]
-        [<DefaultValue>] val mutable forceMount: bool
+        [<Erase>] member val forceMount: bool = JS.undefined with get,set
     /// <summary>
     /// <param name="data-valid">Present when the parent segmented control is valid according to the validation rules.</param>
     /// <param name="data-invalid">Present when the parent segmented control is invalid according to the validation rules.</param>
@@ -125,32 +122,31 @@ type SegmentedControl() =
     inherit div()
     interface Polymorph
     /// The controlled value of the item's radio button to check.
-    [<Erase>]
-    [<DefaultValue>] val mutable value: string
+    [<Erase>] member val value: string = JS.undefined with get,set
     /// The value of the item's radio button that should be checked when initially rendered. Useful when you do not need to control the state of the radio buttons.
     [<Erase>]
-    [<DefaultValue>] val mutable defaultValue: string
+    member val defaultValue: string = JS.undefined with get,set
     /// Event handler called when the value changes.
     [<Erase>]
-    [<DefaultValue>] val mutable onChange: (string -> unit)
+    member val onChange: (string -> unit) = JS.undefined with get,set
     /// The axis the segmented control items should align with.
     [<Erase>]
-    [<DefaultValue>] val mutable orientation: Orientation
+    member val orientation: Orientation = JS.undefined with get,set
     /// The name of the segmented control. Submitted with its owning form as part of a name/value pair.
     [<Erase>]
-    [<DefaultValue>] val mutable name: string
+    member val name: string = JS.undefined with get,set
     /// Whether the segmented control should display its "valid" or "invalid" visual styling.
     [<Erase>]
-    [<DefaultValue>] val mutable validationState: ValidationState
+    member val validationState: ValidationState = JS.undefined with get,set
     /// Whether the user must check a segmented control item before the owning form can be submitted.
     [<Erase>]
-    [<DefaultValue>] val mutable required: bool
+    member val required: bool = JS.undefined with get,set
     /// Whether the segmented control is disabled.
     [<Erase>]
-    [<DefaultValue>] val mutable disabled: bool
+    member val disabled: bool = JS.undefined with get,set
     /// Whether the segmented control items can be selected but not changed by the user.
     [<Erase>]
-    [<DefaultValue>] val mutable readOnly: bool
+    member val readOnly: bool = JS.undefined with get,set
     
 [<AutoOpen; Erase>]
 module SegmentedControlContext =

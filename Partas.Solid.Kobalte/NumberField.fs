@@ -9,24 +9,24 @@ open Partas.Solid
 type NumberField() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable value : string 
-    [<DefaultValue>] val mutable defaultValue : string 
-    [<DefaultValue>] val mutable onChange : string -> unit 
-    [<DefaultValue>] val mutable rawValue : float 
-    [<DefaultValue>] val mutable onRawValueChange : float -> unit 
-    [<DefaultValue>] val mutable minValue : float 
-    [<DefaultValue>] val mutable maxValue : float 
-    [<DefaultValue>] val mutable step : float 
-    [<DefaultValue>] val mutable largeStep : float 
-    [<DefaultValue>] val mutable changeOnWheel : bool 
-    [<DefaultValue>] val mutable format : bool 
-    [<DefaultValue>] val mutable formatOptions : obj 
-    [<DefaultValue>] val mutable allowedInput : string  // regex
-    [<DefaultValue>] val mutable name : string 
-    [<DefaultValue>] val mutable validationState : ValidationState 
-    [<DefaultValue>] val mutable required : bool 
-    [<DefaultValue>] val mutable disabled : bool 
-    [<DefaultValue>] val mutable readOnly : bool 
+    [<Erase>] member val value : string = JS.undefined with get,set
+    [<Erase>] member val defaultValue : string = JS.undefined with get,set
+    [<Erase>] member val onChange : string -> unit = JS.undefined with get,set
+    [<Erase>] member val rawValue : float = JS.undefined with get,set
+    [<Erase>] member val onRawValueChange : float -> unit = JS.undefined with get,set
+    [<Erase>] member val minValue : float = JS.undefined with get,set
+    [<Erase>] member val maxValue : float = JS.undefined with get,set
+    [<Erase>] member val step : float = JS.undefined with get,set
+    [<Erase>] member val largeStep : float = JS.undefined with get,set
+    [<Erase>] member val changeOnWheel : bool = JS.undefined with get,set
+    [<Erase>] member val format : bool = JS.undefined with get,set
+    [<Erase>] member val formatOptions : obj = JS.undefined with get,set
+    [<Erase>] member val allowedInput : string = JS.undefined with get,set
+    [<Erase>] member val name : string = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set
+    [<Erase>] member val required : bool = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module NumberField =
@@ -34,7 +34,7 @@ module NumberField =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("Label", Spec.numberField)>]
     type Label() =
         inherit label()

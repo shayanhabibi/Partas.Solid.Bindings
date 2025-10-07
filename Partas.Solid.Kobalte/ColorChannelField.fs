@@ -2,6 +2,7 @@
 
 open Partas.Solid
 open Fable.Core
+open Fable.Core.JS
 
 
 [<Import("Root", Spec.colorChannelField)>]
@@ -11,23 +12,23 @@ type ColorChannelField() =
     /// <summary>
     /// The controlled formatted value of the field.
     /// </summary>
-    [<DefaultValue>] val mutable value: Color
+    [<Erase>] member val value: Color = undefined with get,set
     /// <summary>
     /// The default formatted value when initially rendered.
     /// </summary>
-    [<DefaultValue>] val mutable defaultValue: Color
+    [<Erase>] member val defaultValue: Color = undefined with get,set
     /// <summary>
     /// Event handler called when the value of the field changes.
     /// </summary>
-    [<DefaultValue>] val mutable onChange: (Color -> unit)
+    [<Erase>] member val onChange: (Color -> unit) = undefined with get,set
     /// <summary>
     /// The color channel that the field manipulates.
     /// </summary>
-    [<DefaultValue>] val mutable channel: ColorChannel
+    [<Erase>] member val channel: ColorChannel = undefined with get,set
     /// <summary>
     /// The color space that the field operates in. The <c>channel</c> must be in this color space.
     /// </summary>
-    [<DefaultValue>] val mutable colorSpace: ColorSpace
+    [<Erase>] member val colorSpace: ColorSpace = undefined with get,set
     [<Erase; System.Obsolete("Omitted")>] member val rawValue: unit = ()
     [<Erase; System.Obsolete("Omitted")>] member val onRawValueChange: unit = ()
     [<Erase; System.Obsolete("Omitted")>] member val formatOptions: unit = ()

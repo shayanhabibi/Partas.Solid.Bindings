@@ -8,14 +8,14 @@ open Browser.Types
 type Dialog() =
     interface RegularNode
     interface Polymorph
-    [<DefaultValue>] val mutable open' : bool 
-    [<DefaultValue>] val mutable defaultOpen : bool 
-    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-    [<DefaultValue>] val mutable id : string 
-    [<DefaultValue>] val mutable modal : bool 
-    [<DefaultValue>] val mutable preventScroll : bool 
-    [<DefaultValue>] val mutable forceMount : bool 
-    [<DefaultValue>] val mutable translations : string 
+    [<Erase>] member val open' : bool = JS.undefined with get,set
+    [<Erase>] member val defaultOpen : bool = JS.undefined with get,set
+    [<Erase>] member val onOpenChange : (bool -> unit) = JS.undefined with get,set
+    [<Erase>] member val id : string = JS.undefined with get,set
+    [<Erase>] member val modal : bool = JS.undefined with get,set
+    [<Erase>] member val preventScroll : bool = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool = JS.undefined with get,set
+    [<Erase>] member val translations : string = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module Dialog =
@@ -27,12 +27,12 @@ module Dialog =
     type Content() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onEscapeKeyDown : KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : PointerEvent -> unit 
-        [<DefaultValue>] val mutable onFocusOutside : FocusEvent -> unit 
-        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
+        [<Erase>] member val onOpenAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onCloseAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onEscapeKeyDown : KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : PointerEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onFocusOutside : FocusEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onInteractOutside : Browser.Types.Event -> unit = JS.undefined with get,set
     [<Erase; Import("Overlay", Spec.dialog)>]
     type Overlay() =
         inherit div()

@@ -9,15 +9,15 @@ open Partas.Solid
 type Switch() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable checked' : bool 
-    [<DefaultValue>] val mutable defaultChecked : bool 
-    [<DefaultValue>] val mutable onChange : bool -> unit 
-    [<DefaultValue>] val mutable name : string 
-    [<DefaultValue>] val mutable validationState : ValidationState 
-    [<DefaultValue>] val mutable required : bool 
-    [<DefaultValue>] val mutable disabled : bool 
-    [<DefaultValue>] val mutable readOnly : bool 
-    [<DefaultValue>] val mutable value : string 
+    [<Erase>] member val checked' : bool = JS.undefined with get,set
+    [<Erase>] member val defaultChecked : bool = JS.undefined with get,set
+    [<Erase>] member val onChange : bool -> unit = JS.undefined with get,set
+    [<Erase>] member val name : string = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set
+    [<Erase>] member val required : bool = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set
+    [<Erase>] member val value : string = JS.undefined with get,set
     
     member inline this.Checked : unit -> bool = fun _ -> this.checked'
 
@@ -47,7 +47,7 @@ module Switch =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("Thumb", Spec.switch)>]
     type Thumb() =
         inherit div()

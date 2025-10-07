@@ -9,10 +9,10 @@ type ToggleButtonState =
 
 [<Erase; Import("Root", Spec.toggleButton)>]
 type ToggleButton() =
-    interface HtmlTag
+    interface RegularNode
     interface Polymorph
     interface ChildLambdaProvider<ToggleButtonState>
-    [<DefaultValue>] val mutable pressed : bool 
-    [<DefaultValue>] val mutable defaultPressed : bool 
-    [<DefaultValue>] val mutable onChange : bool -> unit 
+    [<Erase>] member val pressed : bool = JS.undefined with get,set
+    [<Erase>] member val defaultPressed : bool = JS.undefined with get,set
+    [<Erase>] member val onChange : bool -> unit = JS.undefined with get,set
 

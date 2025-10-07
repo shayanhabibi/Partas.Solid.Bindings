@@ -3,6 +3,7 @@
 open Partas.Solid
 open Fable.Core
 open Browser.Types
+open Fable.Core.JS
 
 /// <summary>
 /// <param name="data-valid">Present when the slider is valid according to the validation rules.</param>
@@ -18,70 +19,70 @@ type ColorArea() =
     /// <summary>
     /// The localized strings of the component.
     /// </summary>
-    [<Erase>] member val translations: obj = JS.undefined with get,set
+    [<Erase>] member val translations: obj = undefined with get,set
     /// <summary>
     /// The controlled value of the color area.
     /// </summary>
-    [<DefaultValue>] val mutable value: Color
+    [<Erase>] member val value: Color = undefined with get,set
     /// <summary>
     /// The value of the color area when initially rendered.
     /// </summary>
-    [<DefaultValue>] val mutable defaultValue: Color
+    [<Erase>] member val defaultValue: Color = undefined with get,set
     /// <summary>
     /// Event handler called when the value changes.
     /// </summary>
-    [<DefaultValue>] val mutable onChange: (Color -> unit)
+    [<Erase>] member val onChange: (Color -> unit) = undefined with get,set
     /// <summary>
     /// Called when the value changes at the end of an interaction.
     /// </summary>
-    [<DefaultValue>] val mutable onChangeEnd: (Color -> unit)
+    [<Erase>] member val onChangeEnd: (Color -> unit) = undefined with get,set
     /// <summary>
     /// Color channel for the horizontal axis.
     /// </summary>
-    [<DefaultValue>] val mutable xChannel: ColorChannel
+    [<Erase>] member val xChannel: ColorChannel = undefined with get,set
     /// <summary>
     /// Color channel for the vertical axis.
     /// </summary>
-    [<DefaultValue>] val mutable yChannel: ColorChannel
+    [<Erase>] member val yChannel: ColorChannel = undefined with get,set
     /// <summary>
     /// The color space that the color area operates in. The <c>xChannel</c> and <c>yChannel</c> must be in this color space.
     /// </summary>
-    [<DefaultValue>] val mutable colorSpace: ColorSpace
+    [<Erase>] member val colorSpace: ColorSpace = undefined with get,set
     /// <summary>
     /// A unique identifier for the component.
     /// The id is used to generate id attributes for nested components.
     /// If no id prop is provided, a generated id will be used.
     /// </summary>
-    [<DefaultValue>] val mutable id: string
+    [<Erase>] member val id: string = undefined with get,set
     /// <summary>
     /// The name of the color area, used when submitting an HTML form.
     /// See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname">MDN</a>.
     /// </summary>
-    [<DefaultValue>] val mutable name: string
+    [<Erase>] member val name: string = undefined with get,set
     /// <summary>
     /// The name of the x channel input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
     /// </summary>
-    [<DefaultValue>] val mutable xName: string
+    [<Erase>] member val xName: string = undefined with get,set
     /// <summary>
     /// The name of the y channel input element, used when submitting an HTML form. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname).
     /// </summary>
-    [<DefaultValue>] val mutable yName: string
+    [<Erase>] member val yName: string = undefined with get,set
     /// <summary>
     /// Whether the color area should display its "valid" or "invalid" visual styling.
     /// </summary>
-    [<DefaultValue>] val mutable validationState: ValidationState
+    [<Erase>] member val validationState: ValidationState = undefined with get,set
     /// <summary>
     /// Whether the user must select an item before the owning form can be submitted.
     /// </summary>
-    [<DefaultValue>] val mutable required: bool
+    [<Erase>] member val required: bool = undefined with get,set
     /// <summary>
     /// Whether the color area is disabled.
     /// </summary>
-    [<DefaultValue>] val mutable disabled: bool
+    [<Erase>] member val disabled: bool = undefined with get,set
     /// <summary>
     /// Whether the color area is read only.
     /// </summary>
-    [<DefaultValue>] val mutable readOnly: bool
+    [<Erase>] member val readOnly: bool = undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module ColorArea =
@@ -96,9 +97,9 @@ module ColorArea =
     type Background() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onPointerDown: PointerEvent -> unit
-        [<DefaultValue>] val mutable onPointerMove: PointerEvent -> unit
-        [<DefaultValue>] val mutable onPointerUp: PointerEvent -> unit
+        [<Erase>] member val onPointerDown: PointerEvent -> unit = undefined with get,set
+        [<Erase>] member val onPointerMove: PointerEvent -> unit = undefined with get,set
+        [<Erase>] member val onPointerUp: PointerEvent -> unit = undefined with get,set
 
     /// <summary>
     /// The current color is available on the thumb using the custom css property <c>--kb-color-current</c>
@@ -112,10 +113,10 @@ module ColorArea =
     type Thumb() =
         inherit span()
         interface Polymorph
-        [<DefaultValue>] val mutable onPointerDown: PointerEvent -> unit
-        [<DefaultValue>] val mutable onPointerMove: PointerEvent -> unit
-        [<DefaultValue>] val mutable onPointerUp: PointerEvent -> unit
-        [<DefaultValue>] val mutable onKeyDown: KeyboardEvent -> unit
+        [<Erase>] member val onPointerDown: PointerEvent -> unit = undefined with get,set
+        [<Erase>] member val onPointerMove: PointerEvent -> unit = undefined with get,set
+        [<Erase>] member val onPointerUp: PointerEvent -> unit = undefined with get,set
+        [<Erase>] member val onKeyDown: KeyboardEvent -> unit = undefined with get,set
     
     /// <summary>
     /// <param name="data-valid">Present when the slider is valid according to the validation rules.</param>

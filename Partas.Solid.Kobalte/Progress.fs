@@ -8,11 +8,11 @@ open Partas.Solid
 type Progress() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable value : int 
-    [<DefaultValue>] val mutable minValue : int 
-    [<DefaultValue>] val mutable maxValue : int 
-    [<DefaultValue>] val mutable getValueLabel : {| value: int ; min : int ; max : int |} -> string 
-    [<DefaultValue>] val mutable indeterminate : bool 
+    [<Erase>] member val value : int = JS.undefined with get,set
+    [<Erase>] member val minValue : int = JS.undefined with get,set
+    [<Erase>] member val maxValue : int = JS.undefined with get,set
+    [<Erase>] member val getValueLabel : {| value: int ; min : int ; max : int |} -> string = JS.undefined with get,set
+    [<Erase>] member val indeterminate : bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module Progress =

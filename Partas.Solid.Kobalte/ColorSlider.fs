@@ -2,6 +2,7 @@
 
 open Fable.Core
 open Partas.Solid
+open Fable.Core.JS
 
 [<Import("Root", Spec.colorSlider)>]
 type ColorSlider() =
@@ -10,66 +11,66 @@ type ColorSlider() =
     /// <summary>
     /// The controlled values of the slider.
     /// </summary>
-    [<DefaultValue>] val mutable value: Color
+    [<Erase>] member val value: Color = undefined with get,set
     /// <summary>
     /// The value of the slider when initially rendered.
     /// </summary>
-    [<DefaultValue>] val mutable defaultValue: Color
+    [<Erase>] member val defaultValue: Color = undefined with get,set
     /// <summary>
     /// Called when the value changes.
     /// </summary>
-    [<DefaultValue>] val mutable onChange: (Color -> unit)
+    [<Erase>] member val onChange: (Color -> unit) = undefined with get,set
     /// <summary>
     /// Called when the value changes at the end of an interaction.
     /// </summary>
-    [<DefaultValue>] val mutable onChangeEnd: (Color -> unit)
+    [<Erase>] member val onChangeEnd: (Color -> unit) = undefined with get,set
     /// <summary>
     /// The color channel that the slider manipulates.
     /// </summary>
-    [<DefaultValue>] val mutable channel: ColorChannel
+    [<Erase>] member val channel: ColorChannel = undefined with get,set
     /// <summary>
     /// The color space that the slider operates in. The <c>channel</c> must be in this color space.
     /// </summary>
-    [<DefaultValue>] val mutable colorSpace: ColorSpace
+    [<Erase>] member val colorSpace: ColorSpace = undefined with get,set
     /// <summary>
     /// The orientation of the slider.
     /// </summary>
-    [<DefaultValue>] val mutable orientation: Enums.Orientation
+    [<Erase>] member val orientation: Enums.Orientation = undefined with get,set
     /// <summary>
     /// A function to get the accessible label text representing the current value in a human-readable format.
     /// </summary>
-    [<DefaultValue>] val mutable getValueLabel: (Color -> string)
+    [<Erase>] member val getValueLabel: (Color -> string) = undefined with get,set
     /// <summary>
     /// A unique identifier for the component.
     /// The id is used to generate id attributes for nested components.
     /// If no id prop is provided, a generated id will be used.
     /// </summary>
-    [<DefaultValue>] val mutable id: string
+    [<Erase>] member val id: string = undefined with get,set
     /// <summary>
     /// The name of the slider, used when submitting an HTML form.
     /// See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefname">MDN</a>.
     /// </summary>
-    [<DefaultValue>] val mutable name: string
+    [<Erase>] member val name: string = undefined with get,set
     /// <summary>
     /// Whether the slider should display its "valid" or "invalid" visual styling.
     /// </summary>
-    [<DefaultValue>] val mutable validationState: ValidationState
+    [<Erase>] member val validationState: ValidationState = undefined with get,set
     /// <summary>
     /// Whether the user must fill the slider before the owning form can be submitted.
     /// </summary>
-    [<DefaultValue>] val mutable required: bool
+    [<Erase>] member val required: bool = undefined with get,set
     /// <summary>
     /// Whether the slider is disabled.
     /// </summary>
-    [<DefaultValue>] val mutable disabled: bool
+    [<Erase>] member val disabled: bool = undefined with get,set
     /// <summary>
     /// Whether the slider is read only.
     /// </summary>
-    [<DefaultValue>] val mutable readOnly: bool
+    [<Erase>] member val readOnly: bool = undefined with get,set
     /// <summary>
     /// The localized strings of the component.
     /// </summary>
-    [<DefaultValue>] val mutable translations: obj
+    [<Erase>] member val translations: obj = undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module ColorSlider =

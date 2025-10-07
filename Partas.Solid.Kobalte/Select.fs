@@ -10,54 +10,53 @@ open Partas.Solid
 type Select<'T>() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable options : 'T[] 
-    [<DefaultValue>] val mutable optionValue : 'T -> U3<string, float, int> 
-    [<DefaultValue>] val mutable optionTextValue : 'T -> string 
-    [<DefaultValue>] val mutable optionDisabled : 'T -> bool 
-    [<DefaultValue>] val mutable optionGroupChildren : string 
-    [<DefaultValue>] val mutable itemComponent : ItemComponentProps<'T> -> HtmlElement 
-    [<DefaultValue>] val mutable sectionComponent : SectionComponentProps<'T> -> HtmlElement 
-    [<DefaultValue>] val mutable multiple : bool 
-    [<DefaultValue>] val mutable placeholder : HtmlElement 
-    [<DefaultValue>] val mutable value : 'T 
+    [<Erase>] member val options : 'T[] = JS.undefined with get,set
+    [<Erase>] member val optionValue : 'T -> U3<string, float, int> = JS.undefined with get,set
+    [<Erase>] member val optionTextValue : 'T -> string = JS.undefined with get,set
+    [<Erase>] member val optionDisabled : 'T -> bool = JS.undefined with get,set
+    [<Erase>] member val optionGroupChildren : string = JS.undefined with get,set
+    [<Erase>] member val itemComponent : ItemComponentProps<'T> -> HtmlElement = JS.undefined with get,set
+    [<Erase>] member val sectionComponent : SectionComponentProps<'T> -> HtmlElement = JS.undefined with get,set
+    [<Erase>] member val multiple : bool = JS.undefined with get,set
+    [<Erase>] member val placeholder : HtmlElement = JS.undefined with get,set
+    [<Erase>] member val value : 'T = JS.undefined with get,set
     member this.values
         with inline set(values: 'T[]) = this.value <- !!values 
-    [<DefaultValue>] val mutable defaultValue : 'T 
+    [<Erase>] member val defaultValue : 'T = JS.undefined with get,set
     member this.defaultValues
         with inline set(values: 'T[]) = this.defaultValue <- !!values
-    [<DefaultValue>] val mutable onChange : 'T -> unit 
+    [<Erase>] member val onChange : 'T -> unit = JS.undefined with get,set
     member this.onChanges
         with inline set(handler: 'T[] -> unit) = this.onChange <- !!handler
-    [<DefaultValue>] val mutable open' : bool 
-    [<DefaultValue>] val mutable defaultOpen : bool 
-    [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-    [<DefaultValue>] val mutable allowDuplicateSelectionEvents : bool 
-    [<DefaultValue>] val mutable disallowEmptySelection : bool 
-    [<DefaultValue>] val mutable closeOnSelection : bool 
-    [<DefaultValue>] val mutable selectionBehavior : SelectionBehavior 
-    [<DefaultValue>] val mutable virtualized : bool 
-    [<DefaultValue>] val mutable modal : bool 
-    [<DefaultValue>] val mutable preventScroll : bool 
-    [<DefaultValue>] val mutable forceMount : bool 
-    [<DefaultValue>] val mutable name : string 
-    [<DefaultValue>] val mutable validationState : ValidationState 
-    [<DefaultValue>] val mutable required : bool 
-    [<DefaultValue>] val mutable disabled : bool 
-    [<DefaultValue>] val mutable readOnly : bool 
-    [<DefaultValue>] val mutable autoComplete : string 
-
-    [<DefaultValue>] val mutable placement : KobaltePlacement 
-    [<DefaultValue>] val mutable gutter : int 
-    [<DefaultValue>] val mutable shift : int 
-    [<DefaultValue>] val mutable flip : bool 
-    [<DefaultValue>] val mutable slide : bool 
-    [<DefaultValue>] val mutable overlap : bool 
-    [<DefaultValue>] val mutable sameWidth : bool 
-    [<DefaultValue>] val mutable fitViewport : bool 
-    [<DefaultValue>] val mutable hideWhenDetached : bool 
-    [<DefaultValue>] val mutable detachedPadding : int 
-    [<DefaultValue>] val mutable arrowPadding : int 
-    [<DefaultValue>] val mutable overflowPadding : int
+    [<Erase>] member val open' : bool = JS.undefined with get,set
+    [<Erase>] member val defaultOpen : bool = JS.undefined with get,set
+    [<Erase>] member val onOpenChange : (bool -> unit) = JS.undefined with get,set
+    [<Erase>] member val allowDuplicateSelectionEvents : bool = JS.undefined with get,set
+    [<Erase>] member val disallowEmptySelection : bool = JS.undefined with get,set
+    [<Erase>] member val closeOnSelection : bool = JS.undefined with get,set
+    [<Erase>] member val selectionBehavior : SelectionBehavior = JS.undefined with get,set
+    [<Erase>] member val virtualized : bool = JS.undefined with get,set
+    [<Erase>] member val modal : bool = JS.undefined with get,set
+    [<Erase>] member val preventScroll : bool = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool = JS.undefined with get,set
+    [<Erase>] member val name : string = JS.undefined with get,set
+    [<Erase>] member val validationState : ValidationState = JS.undefined with get,set
+    [<Erase>] member val required : bool = JS.undefined with get,set
+    [<Erase>] member val disabled : bool = JS.undefined with get,set
+    [<Erase>] member val readOnly : bool = JS.undefined with get,set
+    [<Erase>] member val autoComplete : string = JS.undefined with get,set
+    [<Erase>] member val placement : KobaltePlacement = JS.undefined with get,set
+    [<Erase>] member val gutter : int = JS.undefined with get,set
+    [<Erase>] member val shift : int = JS.undefined with get,set
+    [<Erase>] member val flip : bool = JS.undefined with get,set
+    [<Erase>] member val slide : bool = JS.undefined with get,set
+    [<Erase>] member val overlap : bool = JS.undefined with get,set
+    [<Erase>] member val sameWidth : bool = JS.undefined with get,set
+    [<Erase>] member val fitViewport : bool = JS.undefined with get,set
+    [<Erase>] member val hideWhenDetached : bool = JS.undefined with get,set
+    [<Erase>] member val detachedPadding : int = JS.undefined with get,set
+    [<Erase>] member val arrowPadding : int = JS.undefined with get,set
+    [<Erase>] member val overflowPadding : int= JS.undefined with get,set
 [<Erase; Import("Root", Spec.select)>]
 type Select() =
     inherit Select<obj>()
@@ -78,10 +77,10 @@ module Select =
         interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<ValueState<'T>>
-        [<DefaultValue>] val mutable selectedOption : 'T Accessor 
-        [<DefaultValue>] val mutable selectedOptions : 'T[] Accessor 
-        [<DefaultValue>] val mutable remove : 'T -> unit 
-        [<DefaultValue>] val mutable clear : unit -> unit 
+        [<Erase>] member val selectedOption : 'T Accessor = JS.undefined with get,set
+        [<Erase>] member val selectedOptions : 'T[] Accessor = JS.undefined with get,set
+        [<Erase>] member val remove : 'T -> unit = JS.undefined with get,set
+        [<Erase>] member val clear : unit -> unit = JS.undefined with get,set
     [<Erase; Import("Value", Spec.select)>]
     type Value() =
         inherit Value<obj>()
@@ -93,7 +92,7 @@ module Select =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("Content", Spec.select)>]
     type Content() =
         inherit div()
@@ -102,25 +101,25 @@ module Select =
     type Arrow() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable size : int 
+        [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.select)>]
     type Listbox() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable scrollRef : unit -> HtmlElement 
-        [<DefaultValue>] val mutable scrollToItem : string -> unit 
-        [<DefaultValue>] val mutable children : obj[] -> HtmlElement 
+        [<Erase>] member val scrollRef : unit -> HtmlElement = JS.undefined with get,set
+        [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
+        [<Erase>] member val children : obj[] -> HtmlElement = JS.undefined with get,set
     [<Erase; Import("Item", Spec.select)>]
     type Item<'T>() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable item : 'T 
+        [<Erase>] member val item : 'T = JS.undefined with get,set
     type Item = Item<obj>
     [<Erase; Import("ItemIndicator", Spec.select)>]
     type ItemIndicator() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("Label", Spec.select)>]
     type Label() =
         inherit span()

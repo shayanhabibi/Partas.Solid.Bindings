@@ -19,42 +19,42 @@ type Details =
 type FileField() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable multiple : bool 
-    [<DefaultValue>] val mutable maxFiles : int 
-    [<DefaultValue>] val mutable accept : U2<string, string[]> 
-    [<DefaultValue>] val mutable allowDragAndDrop : bool 
-    [<DefaultValue>] val mutable maxFileSize : int 
-    [<DefaultValue>] val mutable minFileSize : int 
-    [<DefaultValue>] val mutable onFileAccept : File[] -> unit 
-    [<DefaultValue>] val mutable onFileReject : FileRejection[] -> unit 
-    [<DefaultValue>] val mutable onFileChange : Details -> unit 
-    [<DefaultValue>] val mutable validateFile : File -> FileError[] option 
+    [<Erase>] member val multiple : bool = JS.undefined with get,set
+    [<Erase>] member val maxFiles : int = JS.undefined with get,set
+    [<Erase>] member val accept : U2<string, string[]> = JS.undefined with get,set
+    [<Erase>] member val allowDragAndDrop : bool = JS.undefined with get,set
+    [<Erase>] member val maxFileSize : int = JS.undefined with get,set
+    [<Erase>] member val minFileSize : int = JS.undefined with get,set
+    [<Erase>] member val onFileAccept : File[] -> unit = JS.undefined with get,set
+    [<Erase>] member val onFileReject : FileRejection[] -> unit = JS.undefined with get,set
+    [<Erase>] member val onFileChange : Details -> unit = JS.undefined with get,set
+    [<Erase>] member val validateFile : File -> FileError[] option = JS.undefined with get,set
     /// <summary>
     /// The name of the select.
     /// Submitted with its owning form as part of a name/value pair.
     /// </summary>
-    [<DefaultValue>]
-    val mutable name: string
+    [<Erase>]
+    member val name: string = JS.undefined with get,set
     /// <summary>
     /// Whether the select should display its "valid" or "invalid" visual styling.
     /// </summary>
-    [<DefaultValue>]
-    val mutable validationState: ValidationState
+    [<Erase>]
+    member val validationState: ValidationState= JS.undefined with get,set
     /// <summary>
     /// Whether the user must select an item before the owning form can be submitted.
     /// </summary>
-    [<DefaultValue>]
-    val mutable required: bool
+    [<Erase>]
+    member val required: bool= JS.undefined with get,set
     /// <summary>
     /// Whether the select is disabled.
     /// </summary>
-    [<DefaultValue>]
-    val mutable disabled: bool
+    [<Erase>]
+    member val disabled: bool = JS.undefined with get,set
     /// <summary>
     /// Whether the select is read only.
     /// </summary>
-    [<DefaultValue>]
-    val mutable readOnly: bool
+    [<Erase>]
+    member val readOnly: bool = JS.undefined with get,set
 
 [<Erase; RequireQualifiedAccess>]
 module FileField =
@@ -62,17 +62,17 @@ module FileField =
     type Item() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable file : File 
+        [<Erase>] member val file : File = JS.undefined with get,set
     [<Erase; Import("ItemSize", Spec.fileField)>]
     type ItemSize() =
         interface VoidNode
         interface Polymorph
-        [<DefaultValue>] val mutable precision : int 
+        [<Erase>] member val precision : int = JS.undefined with get,set
     [<Erase; Import("ItemPreview", Spec.fileField)>]
     type ItemPreview() =
         interface VoidNode
         interface Polymorph
-        [<DefaultValue>] val mutable type' : string 
+        [<Erase>] member val type' : string = JS.undefined with get,set
     [<Erase; Import("Dropzone", Spec.fileField)>]
     type Dropzone() =
         inherit div()
@@ -114,7 +114,7 @@ module FileField =
     type ErrorMessage() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
 
 [<Erase; AutoOpen>]
 module FileFieldContext =

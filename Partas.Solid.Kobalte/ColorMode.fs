@@ -1,6 +1,7 @@
 ﻿namespace Partas.Solid.Kobalte
 
 open Fable.Core
+open Fable.Core.JS
 open Partas.Solid
 
 [<AllowNullLiteral>]
@@ -36,31 +37,31 @@ type ColorModeProvider() =
     /// <summary>
     /// The initial color mode to use.
     /// </summary>
-    [<DefaultValue>] val mutable initialColorMode: Theme.Mode
+    [<Erase>] member val initialColorMode: Theme.Mode = undefined with get,set
     /// <summary>
     /// Whether css transitions should be disabled during the color mode changes.
     /// </summary>
-    [<DefaultValue>] val mutable disableTransitionOnChange: bool
+    [<Erase>] member val disableTransitionOnChange: bool = undefined with get,set
     /// <summary>
     /// The color mode storage manager, either localStorage or cookie.
     /// </summary>
-    [<DefaultValue>] val mutable storageManager: ColorModeStorageManager
+    [<Erase>] member val storageManager: ColorModeStorageManager = undefined with get,set
     
 type ColorModeScript() =
     interface RegularNode
     /// <summary>
     /// The initial color mode to use.
     /// </summary>
-    [<DefaultValue>] val mutable initialColorMode: Theme.Config.Mode
+    [<Erase>] member val initialColorMode: Theme.Config.Mode = undefined with get,set
     /// <summary>
     /// The type of the color mode storage manager, either localStorage or cookie.
     /// </summary>
-    [<DefaultValue>] val mutable storageType: Theme.Config.Storage
+    [<Erase>] member val storageType: Theme.Config.Storage = undefined with get,set
     /// <summary>
     /// The key used to store color mode preference in localStorage or cookie.
     /// </summary>
-    [<DefaultValue>] val mutable storageKey: string
-    [<DefaultValue>] val mutable nonce: string
+    [<Erase>] member val storageKey: string = undefined with get,set
+    [<Erase>] member val nonce: string = undefined with get,set
 
 [<AutoOpen; Erase>]
 type ColorMode =

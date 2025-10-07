@@ -12,70 +12,70 @@ type HoverCard() =
     /// <summary>
     /// The controlled open state of the hovercard.
     /// </summary>
-    [<DefaultValue>]
-    val mutable open': bool
+    [<Erase>]
+    member val open': bool = JS.undefined with get,set
     /// <summary>
     /// The default open state when initially rendered.
     /// Useful when you do not need to control the open state.
     /// </summary>
-    [<DefaultValue>]
-    val mutable defaultOpen: bool
+    [<Erase>]
+    member val defaultOpen: bool = JS.undefined with get,set
     /// <summary>
     /// Event handler called when the open state of the hovercard changes.
     /// </summary>
-    [<DefaultValue>]
-    val mutable onOpenChange: (bool -> unit)
+    [<Erase>]
+    member val onOpenChange: (bool -> unit) = JS.undefined with get,set
     /// <summary>
     /// The duration from when the mouse enters the trigger until the hovercard opens.
     /// </summary>
-    [<DefaultValue>]
-    val mutable openDelay: float
+    [<Erase>]
+    member val openDelay: float = JS.undefined with get,set
     /// <summary>
     /// The duration from when the mouse leaves the trigger or content until the hovercard closes.
     /// </summary>
-    [<DefaultValue>]
-    val mutable closeDelay: float
+    [<Erase>]
+    member val closeDelay: float = JS.undefined with get,set
     /// <summary>
     /// Whether to close the hovercard even if the user cursor is inside the safe area between the trigger and hovercard.
     /// </summary>
-    [<DefaultValue>]
-    val mutable ignoreSafeArea: bool
+    [<Erase>]
+    member val ignoreSafeArea: bool = JS.undefined with get,set
     /// <summary>
     /// Used to force mounting the hovercard (portal and content) when more control is needed.
     /// Useful when controlling animation with SolidJS animation libraries.
     /// </summary>
-    [<DefaultValue>]
-    val mutable forceMount: bool
+    [<Erase>]
+    member val forceMount: bool = JS.undefined with get,set
     /// <summary>
     /// A unique identifier for the component.
     /// The id is used to generate id attributes for nested components.
     /// If no id prop is provided, a generated id will be used.
     /// </summary>
-    [<DefaultValue>]
-    val mutable id: string
+    [<Erase>]
+    member val id: string  =JS.undefined with get,set
 
     /// <summary>
     /// Function that returns the anchor element's DOMRect. If this is explicitly
     /// passed, it will override the anchor <c>getBoundingClientRect</c> method.
     /// </summary>
-    [<DefaultValue>]
-    val mutable getAnchorRect: (HTMLElement -> obj)
+    [<Erase>]
+    member val getAnchorRect: (HTMLElement -> obj) = JS.undefined with get,set
     /// <summary>
     /// The placement of the popper.
     /// </summary>
-    [<DefaultValue>]
-    val mutable placement: KobaltePlacement
+    [<Erase>]
+    member val placement: KobaltePlacement = JS.undefined with get,set
     /// <summary>
     /// The distance between the popper and the anchor element.
     /// By default, it's 0 plus half of the arrow offset, if it exists.
     /// </summary>
-    [<DefaultValue>]
-    val mutable gutter: float
+    [<Erase>]
+    member val gutter: float = JS.undefined with get,set
     /// <summary>
     /// The skidding of the popper along the anchor element.
     /// </summary>
-    [<DefaultValue>]
-    val mutable shift: float
+    [<Erase>]
+    member val shift: float = JS.undefined with get,set
     /// <summary>
     /// Controls the behavior of the popper when it overflows the viewport:
     ///   - If a <c>boolean</c>, specifies whether the popper should flip to the
@@ -83,52 +83,52 @@ type HoverCard() =
     ///   - If a <c>string</c>, indicates the preferred fallback placements when it
     ///     overflows. The placements must be spaced-delimited, e.g. "top left".
     /// </summary>
-    [<DefaultValue>]
-    val mutable flip: U2<bool, string>
+    [<Erase>]
+    member val flip: U2<bool, string> = JS.undefined with get,set
     /// <summary>
     /// Whether the popper should slide when it overflows.
     /// </summary>
-    [<DefaultValue>]
-    val mutable slide: bool
+    [<Erase>]
+    member val slide: bool = JS.undefined with get,set
     /// <summary>
     /// Whether the popper can overlap the anchor element when it overflows.
     /// </summary>
-    [<DefaultValue>]
-    val mutable overlap: bool
+    [<Erase>]
+    member val overlap: bool = JS.undefined with get,set
     /// <summary>
     /// Whether the popper should have the same width as the anchor element.
     /// This will be exposed to CSS as <c>--kb-popper-anchor-width</c>.
     /// </summary>
-    [<DefaultValue>]
-    val mutable sameWidth: bool
+    [<Erase>]
+    member val sameWidth: bool = JS.undefined with get,set
     /// <summary>
     /// Whether the popper should fit the viewport. If this is set to true, the
     /// popper positioner will have <c>maxWidth</c> and <c>maxHeight</c> set to the viewport size.
     /// This will be exposed to CSS as <c>--kb-popper-content-available-width</c> and <c>--kb-popper-content-available-height</c>.
     /// </summary>
-    [<DefaultValue>]
-    val mutable fitViewport: bool
+    [<Erase>]
+    member val fitViewport: bool = JS.undefined with get,set
     /// <summary>
     /// Whether to hide the popper when the anchor element becomes occluded.
     /// </summary>
-    [<DefaultValue>]
-    val mutable hideWhenDetached: bool
+    [<Erase>]
+    member val hideWhenDetached: bool = JS.undefined with get,set
     /// <summary>
     /// The minimum padding in order to consider the anchor element occluded.
     /// </summary>
-    [<DefaultValue>]
-    val mutable detachedPadding: float
+    [<Erase>]
+    member val detachedPadding: float = JS.undefined with get,set
     /// <summary>
     /// The minimum padding between the arrow and the popper corner.
     /// </summary>
-    [<DefaultValue>]
-    val mutable arrowPadding: float
+    [<Erase>]
+    member val arrowPadding: float = JS.undefined with get,set
     /// <summary>
     /// The minimum padding between the popper and the viewport edge.
     /// This will be exposed to CSS as <c>--kb-popper-content-overflow-padding</c>.
     /// </summary>
-    [<DefaultValue>]
-    val mutable overflowPadding: float
+    [<Erase>]
+    member val overflowPadding: float = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module HoverCard =

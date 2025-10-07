@@ -8,15 +8,15 @@ open Fable.Core
 type NavigationMenu() =
     inherit div()
     interface Polymorph
-    [<DefaultValue>] val mutable defaultValue : string 
-    [<DefaultValue>] val mutable value : string 
-    [<DefaultValue>] val mutable onValueChange : string -> unit 
-    [<DefaultValue>] val mutable loop : bool 
-    [<DefaultValue>] val mutable delayDuration : int 
-    [<DefaultValue>] val mutable skipDelayDuration : bool 
-    [<DefaultValue>] val mutable focusOnAlt : bool 
-    [<DefaultValue>] val mutable forceMount : bool 
-    [<DefaultValue>] val mutable gutter: int 
+    [<Erase>] member val defaultValue : string  = JS.undefined with get,set
+    [<Erase>] member val value : string  = JS.undefined with get,set
+    [<Erase>] member val onValueChange : string -> unit  = JS.undefined with get,set
+    [<Erase>] member val loop : bool  = JS.undefined with get,set
+    [<Erase>] member val delayDuration : int  = JS.undefined with get,set
+    [<Erase>] member val skipDelayDuration : bool  = JS.undefined with get,set
+    [<Erase>] member val focusOnAlt : bool  = JS.undefined with get,set
+    [<Erase>] member val forceMount : bool  = JS.undefined with get,set
+    [<Erase>] member val gutter: int  = JS.undefined with get,set
 
 [<RequireQualifiedAccess; Erase>]
 module NavigationMenu =
@@ -24,38 +24,37 @@ module NavigationMenu =
     type Viewport() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
-        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit 
-        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
+        [<Erase>] member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onFocusOutside : Browser.Types.FocusEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onInteractOutside : Browser.Types.Event -> unit = JS.undefined with get,set
     [<Erase; Import("Arrow", Spec.navigationMenu)>]
     type Arrow() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable size : int 
+        [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Menu", Spec.navigationMenu)>]
     type Menu() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-        [<DefaultValue>] val mutable id : string 
-        [<DefaultValue>] val mutable modal : bool 
-        [<DefaultValue>] val mutable preventScroll : bool 
-        [<DefaultValue>] val mutable forceMount : bool 
-        [<DefaultValue>] val mutable value : string 
-
-        [<DefaultValue>] val mutable placement : KobaltePlacement 
-        [<DefaultValue>] val mutable gutter : int 
-        [<DefaultValue>] val mutable shift : int 
-        [<DefaultValue>] val mutable flip : bool 
-        [<DefaultValue>] val mutable slide : bool 
-        [<DefaultValue>] val mutable overlap : bool 
-        [<DefaultValue>] val mutable sameWidth : bool 
-        [<DefaultValue>] val mutable fitViewport : bool 
-        [<DefaultValue>] val mutable hideWhenDetached : bool 
-        [<DefaultValue>] val mutable detachedPadding : int 
-        [<DefaultValue>] val mutable arrowPadding : int 
-        [<DefaultValue>] val mutable overflowPadding : int 
+        [<Erase>] member val onOpenChange : (bool -> unit) = JS.undefined with get,set
+        [<Erase>] member val id : string = JS.undefined with get,set
+        [<Erase>] member val modal : bool = JS.undefined with get,set
+        [<Erase>] member val preventScroll : bool = JS.undefined with get,set
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
+        [<Erase>] member val value : string = JS.undefined with get,set
+        [<Erase>] member val placement : KobaltePlacement = JS.undefined with get,set
+        [<Erase>] member val gutter : int = JS.undefined with get,set
+        [<Erase>] member val shift : int = JS.undefined with get,set
+        [<Erase>] member val flip : bool = JS.undefined with get,set
+        [<Erase>] member val slide : bool = JS.undefined with get,set
+        [<Erase>] member val overlap : bool = JS.undefined with get,set
+        [<Erase>] member val sameWidth : bool = JS.undefined with get,set
+        [<Erase>] member val fitViewport : bool = JS.undefined with get,set
+        [<Erase>] member val hideWhenDetached : bool = JS.undefined with get,set
+        [<Erase>] member val detachedPadding : int = JS.undefined with get,set
+        [<Erase>] member val arrowPadding : int = JS.undefined with get,set
+        [<Erase>] member val overflowPadding : int = JS.undefined with get,set
     [<Erase; Import("Trigger", Spec.navigationMenu)>]
     type Trigger() =
         inherit Button()
@@ -64,86 +63,85 @@ module NavigationMenu =
     type Content() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onOpenAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onCloseAutoFocus : Browser.Types.Event -> unit 
-        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
-        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit 
-        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
+        [<Erase>] member val onOpenAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onCloseAutoFocus : Browser.Types.Event -> unit = JS.undefined with get,set
+        [<Erase>] member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onFocusOutside : Browser.Types.FocusEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onInteractOutside : Browser.Types.Event -> unit = JS.undefined with get,set
     [<Erase; Import("Item", Spec.navigationMenu)>]
     type Item() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable textValue : string 
-        [<DefaultValue>] val mutable disabled : bool 
-        [<DefaultValue>] val mutable closeOnSelect : bool 
-        [<DefaultValue>] val mutable onSelect : unit -> unit 
+        [<Erase>] member val textValue : string = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
+        [<Erase>] member val closeOnSelect : bool = JS.undefined with get,set
+        [<Erase>] member val onSelect : unit -> unit = JS.undefined with get,set
     [<Erase; Import("ItemIndicator", Spec.navigationMenu)>]
     type ItemIndicator() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable forceMount : bool 
+        [<Erase>] member val forceMount : bool = JS.undefined with get,set
     [<Erase; Import("RadioGroup", Spec.navigationMenu)>]
     type RadioGroup() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable value : string 
-        [<DefaultValue>] val mutable defaultValue : string 
-        [<DefaultValue>] val mutable onChange : string -> unit 
-        [<DefaultValue>] val mutable disabled : bool 
+        [<Erase>] member val value : string = JS.undefined with get,set
+        [<Erase>] member val defaultValue : string = JS.undefined with get,set
+        [<Erase>] member val onChange : string -> unit = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
     [<Erase; Import("RadioItem", Spec.navigationMenu)>]
     type RadioItem() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable value : string 
-        [<DefaultValue>] val mutable textValue : string 
-        [<DefaultValue>] val mutable disabled : bool 
-        [<DefaultValue>] val mutable closeOnSelect : bool 
-        [<DefaultValue>] val mutable onSelect : unit -> unit 
+        [<Erase>] member val value : string = JS.undefined with get,set
+        [<Erase>] member val textValue : string = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
+        [<Erase>] member val closeOnSelect : bool = JS.undefined with get,set
+        [<Erase>] member val onSelect : unit -> unit = JS.undefined with get,set
     [<Erase; Import("CheckboxItem", Spec.navigationMenu)>]
     type CheckboxItem() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable checked' : bool 
-        [<DefaultValue>] val mutable defaultChecked : bool 
-        [<DefaultValue>] val mutable onChange : bool -> unit 
-        [<DefaultValue>] val mutable textValue : string 
-        [<DefaultValue>] val mutable indeterminate : bool 
-        [<DefaultValue>] val mutable disabled : bool 
-        [<DefaultValue>] val mutable closeOnSelect : bool 
-        [<DefaultValue>] val mutable onSelect : unit -> unit 
+        [<Erase>] member val checked' : bool = JS.undefined with get,set
+        [<Erase>] member val defaultChecked : bool = JS.undefined with get,set
+        [<Erase>] member val onChange : bool -> unit = JS.undefined with get,set
+        [<Erase>] member val textValue : string = JS.undefined with get,set
+        [<Erase>] member val indeterminate : bool = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
+        [<Erase>] member val closeOnSelect : bool = JS.undefined with get,set
+        [<Erase>] member val onSelect : unit -> unit = JS.undefined with get,set
     [<Erase; Import("Sub", Spec.navigationMenu)>]
     type Sub() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable open' : bool 
-        [<DefaultValue>] val mutable defaultOpen : bool 
-        [<DefaultValue>] val mutable onOpenChange : (bool -> unit) 
-
-        [<DefaultValue>] val mutable getAnchorRect : HtmlElement -> obj 
-        [<DefaultValue>] val mutable gutter : int 
-        [<DefaultValue>] val mutable shift : int 
-        [<DefaultValue>] val mutable slide : bool 
-        [<DefaultValue>] val mutable overlap : bool 
-        [<DefaultValue>] val mutable fitViewport : bool 
-        [<DefaultValue>] val mutable hideWhenDetached : bool 
-        [<DefaultValue>] val mutable detachedPadding : int 
-        [<DefaultValue>] val mutable arrowPadding : int 
-        [<DefaultValue>] val mutable overflowPadding : int 
+        [<Erase>] member val open' : bool = JS.undefined with get,set
+        [<Erase>] member val defaultOpen : bool = JS.undefined with get,set
+        [<Erase>] member val onOpenChange : (bool -> unit) = JS.undefined with get,set
+        [<Erase>] member val getAnchorRect : HtmlElement -> obj = JS.undefined with get,set
+        [<Erase>] member val gutter : int = JS.undefined with get,set
+        [<Erase>] member val shift : int = JS.undefined with get,set
+        [<Erase>] member val slide : bool = JS.undefined with get,set
+        [<Erase>] member val overlap : bool = JS.undefined with get,set
+        [<Erase>] member val fitViewport : bool = JS.undefined with get,set
+        [<Erase>] member val hideWhenDetached : bool = JS.undefined with get,set
+        [<Erase>] member val detachedPadding : int = JS.undefined with get,set
+        [<Erase>] member val arrowPadding : int = JS.undefined with get,set
+        [<Erase>] member val overflowPadding : int = JS.undefined with get,set
     [<Erase; Import("SubTrigger", Spec.navigationMenu)>]
     type SubTrigger() =
         inherit Button()
         interface Polymorph
-        [<DefaultValue>] val mutable textValue : string 
-        [<DefaultValue>] val mutable disabled : bool 
+        [<Erase>] member val textValue : string = JS.undefined with get,set
+        [<Erase>] member val disabled : bool = JS.undefined with get,set
     [<Erase; Import("SubContent", Spec.navigationMenu)>]
     type SubContent() =
         inherit div()
         interface Polymorph
-        [<DefaultValue>] val mutable onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit 
-        [<DefaultValue>] val mutable onPointerDownOutside : Browser.Types.PointerEvent -> unit 
-        [<DefaultValue>] val mutable onFocusOutside : Browser.Types.FocusEvent -> unit 
-        [<DefaultValue>] val mutable onInteractOutside : Browser.Types.Event -> unit 
+        [<Erase>] member val onEscapeKeyDown : Browser.Types.KeyboardEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onPointerDownOutside : Browser.Types.PointerEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onFocusOutside : Browser.Types.FocusEvent -> unit = JS.undefined with get,set
+        [<Erase>] member val onInteractOutside : Browser.Types.Event -> unit = JS.undefined with get,set
     [<Erase; Import("Icon", Spec.navigationMenu)>]
     type Icon() =
         inherit div()
