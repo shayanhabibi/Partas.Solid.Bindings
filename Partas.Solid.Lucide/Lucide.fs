@@ -4460,3 +4460,480 @@ module Lucide =
     [<Erase; Import("default as CircleQuestionMark", "lucide-solid/icons/circle-question-mark")>]
     type CircleQuestionMark() =
         inherit IconNode()
+    [<Erase; Import("default as CircleSlash2", "lucide-solid/icons/circle-slash-2")>]
+    type CircleSlash2() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleStop", "lucide-solid/icons/circle-stop")>]
+    type CircleStop() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleUserRound", "lucide-solid/icons/circle-user-round")>]
+    type CircleUserRound() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleUser", "lucide-solid/icons/circle-user")>]
+    type CircleUser() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleX", "lucide-solid/icons/circle-x")>]
+    type CircleX() =
+        inherit IconNode()
+    [<Erase; Import("default as ClipboardPenLine", "lucide-solid/icons/clipboard-pen-line")>]
+    type ClipboardPenLine() =
+        inherit IconNode()
+    [<Erase; Import("default as ClipboardPen", "lucide-solid/icons/clipboard-pen")>]
+    type ClipboardPen() =
+        inherit IconNode()
+    [<Erase; Import("default as CloudDownload", "lucide-solid/icons/cloud-download")>]
+    type CloudDownload() =
+        inherit IconNode()
+    [<Erase; Import("default as CloudUpload", "lucide-solid/icons/cloud-upload")>]
+    type CloudUpload() =
+        inherit IconNode()
+    [<Erase; Import("default as CodeXml", "lucide-solid/icons/code-xml")>]
+    type CodeXml() =
+        inherit IconNode()
+    [<Erase; Import("default as Columns2", "lucide-solid/icons/columns-2")>]
+    type Columns2() =
+        inherit IconNode()
+    [<Erase; Import("default as Columns3Cog", "lucide-solid/icons/columns-3-cog")>]
+    type Columns3Cog() =
+        inherit IconNode()
+    [<Erase; Import("default as Columns3", "lucide-solid/icons/columns-3")>]
+    type Columns3() =
+        inherit IconNode()
+    [<Erase; Import("default as ContactRound", "lucide-solid/icons/contact-round")>]
+    type ContactRound() =
+        inherit IconNode()
+    [<Erase; Import("default as DiamondPercent", "lucide-solid/icons/diamond-percent")>]
+    type DiamondPercent() =
+        inherit IconNode()
+    [<Erase; Import("default as Earth", "lucide-solid/icons/earth")>]
+    type Earth() =
+        inherit IconNode()
+    [<Erase; Import("default as Ellipsis", "lucide-solid/icons/ellipsis")>]
+    type Ellipsis() =
+        inherit IconNode()
+    [<Erase; Import("default as EllipsisVertical", "lucide-solid/icons/ellipsis-vertical")>]
+    type EllipsisVertical() =
+        inherit IconNode()
+    [<Erase; Import("default as FileAxis3d", "lucide-solid/icons/file-axis-3d")>]
+    type FileAxis3d() =
+        inherit IconNode()
+    [<Erase; Import("default as FileChartColumnIncreasing", "lucide-solid/icons/file-chart-column-increasing")>]
+    type FileChartColumnIncreasing() =
+        inherit IconNode()
+    [<Erase; Import("default as FileChartColumn", "lucide-solid/icons/file-chart-column")>]
+    type FileChartColumn() =
+        inherit IconNode()
+    [<Erase; Import("default as FileChartPie", "lucide-solid/icons/file-chart-pie")>]
+    type FileChartPie() =
+        inherit IconNode()
+    [<Erase; Import("default as FileChartLine", "lucide-solid/icons/file-chart-line")>]
+    type FileChartLine() =
+        inherit IconNode()
+    [<Erase; Import("default as FileCog", "lucide-solid/icons/file-cog")>]
+    type FileCog() =
+        inherit IconNode()
+    [<Erase; Import("default as FilePenLine", "lucide-solid/icons/file-pen-line")>]
+    type FilePenLine() =
+        inherit IconNode()
+    [<Erase; Import("default as FilePen", "lucide-solid/icons/file-pen")>]
+    type FilePen() =
+        inherit IconNode()
+    [<Erase; Import("default as FilePlay", "lucide-solid/icons/file-play")>]
+    type FilePlay() =
+        inherit IconNode()
+    [<Erase; Import("default as FileQuestionMark", "lucide-solid/icons/file-question-mark")>]
+    type FileQuestionMark() =
+        inherit IconNode()
+    [<Erase; Import("default as FileVideoCamera", "lucide-solid/icons/file-video-camera")>]
+    type FileVideoCamera() =
+        inherit IconNode()
+    [<Erase; Import("default as FolderCog", "lucide-solid/icons/folder-cog")>]
+    type FolderCog() =
+        inherit IconNode()
+    [<Erase; Import("default as FolderPen", "lucide-solid/icons/folder-pen")>]
+    type FolderPen() =
+        inherit IconNode()
+    [<Erase; Import("default as FunnelX", "lucide-solid/icons/funnel-x")>]
+    type FunnelX() =
+        inherit IconNode()
+    [<Erase; Import("default as Funnel", "lucide-solid/icons/funnel")>]
+    type Funnel() =
+        inherit IconNode()
+    [<Erase; Import("default as GitCommitHorizontal", "lucide-solid/icons/git-commit-horizontal")>]
+    type GitCommitHorizontal() =
+        inherit IconNode()
+    [<Erase; Import("default as Grid2x2Check", "lucide-solid/icons/grid-2x2-check")>]
+    type Grid2x2Check() =
+        inherit IconNode()
+    [<Erase; Import("default as Grid2x2Plus", "lucide-solid/icons/grid-2x2-plus")>]
+    type Grid2x2Plus() =
+        inherit IconNode()
+    [<Erase; Import("default as Grid2x2X", "lucide-solid/icons/grid-2x2-x")>]
+    type Grid2x2X() =
+        inherit IconNode()
+    [<Erase; Import("default as Grid2x2", "lucide-solid/icons/grid-2x2")>]
+    type Grid2x2() =
+        inherit IconNode()
+    [<Erase; Import("default as Grid3x3", "lucide-solid/icons/grid-3x3")>]
+    type Grid3x3() =
+        inherit IconNode()
+    [<Erase; Import("default as HandGrab", "lucide-solid/icons/hand-grab")>]
+    type HandGrab() =
+        inherit IconNode()
+    [<Erase; Import("default as HandHelping", "lucide-solid/icons/hand-helping")>]
+    type HandHelping() =
+        inherit IconNode()
+    [<Erase; Import("default as House", "lucide-solid/icons/house")>]
+    type House() =
+        inherit IconNode()
+    [<Erase; Import("default as IceCreamBowl", "lucide-solid/icons/ice-cream-bowl")>]
+    type IceCreamBowl() =
+        inherit IconNode()
+    [<Erase; Import("default as IceCreamCone", "lucide-solid/icons/ice-cream-cone")>]
+    type IceCreamCone() =
+        inherit IconNode()
+    [<Erase; Import("default as LaptopMinimal", "lucide-solid/icons/laptop-minimal")>]
+    type LaptopMinimal() =
+        inherit IconNode()
+    [<Erase; Import("default as Layers", "lucide-solid/icons/layers")>]
+    type Layers() =
+        inherit IconNode()
+    [<Erase; Import("default as ListIndentDecrease", "lucide-solid/icons/list-indent-decrease")>]
+    type ListIndentDecrease() =
+        inherit IconNode()
+    [<Erase; Import("default as ListIndentIncrease", "lucide-solid/icons/list-indent-increase")>]
+    type ListIndentIncrease() =
+        inherit IconNode()
+    [<Erase; Import("default as LoaderCircle", "lucide-solid/icons/loader-circle")>]
+    type LoaderCircle() =
+        inherit IconNode()
+    [<Erase; Import("default as LockKeyholeOpen", "lucide-solid/icons/lock-keyhole-open")>]
+    type LockKeyholeOpen() =
+        inherit IconNode()
+    [<Erase; Import("default as LockOpen", "lucide-solid/icons/lock-open")>]
+    type LockOpen() =
+        inherit IconNode()
+    [<Erase; Import("default as MailQuestionMark", "lucide-solid/icons/mail-question-mark")>]
+    type MailQuestionMark() =
+        inherit IconNode()
+    [<Erase; Import("default as MapPinPen", "lucide-solid/icons/map-pin-pen")>]
+    type MapPinPen() =
+        inherit IconNode()
+    [<Erase; Import("default as MessageCircleQuestionMark", "lucide-solid/icons/message-circle-question-mark")>]
+    type MessageCircleQuestionMark() =
+        inherit IconNode()
+    [<Erase; Import("default as MicVocal", "lucide-solid/icons/mic-vocal")>]
+    type MicVocal() =
+        inherit IconNode()
+    [<Erase; Import("default as Move3d", "lucide-solid/icons/move-3d")>]
+    type Move3d() =
+        inherit IconNode()
+    [<Erase; Import("default as OctagonAlert", "lucide-solid/icons/octagon-alert")>]
+    type OctagonAlert() =
+        inherit IconNode()
+    [<Erase; Import("default as OctagonX", "lucide-solid/icons/octagon-x")>]
+    type OctagonX() =
+        inherit IconNode()
+    [<Erase; Import("default as OctagonPause", "lucide-solid/icons/octagon-pause")>]
+    type OctagonPause() =
+        inherit IconNode()
+    [<Erase; Import("default as PaintbrushVertical", "lucide-solid/icons/paintbrush-vertical")>]
+    type PaintbrushVertical() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelBottomDashed", "lucide-solid/icons/panel-bottom-dashed")>]
+    type PanelBottomDashed() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelLeftClose", "lucide-solid/icons/panel-left-close")>]
+    type PanelLeftClose() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelLeftDashed", "lucide-solid/icons/panel-left-dashed")>]
+    type PanelLeftDashed() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelLeftOpen", "lucide-solid/icons/panel-left-open")>]
+    type PanelLeftOpen() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelLeft", "lucide-solid/icons/panel-left")>]
+    type PanelLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelRightDashed", "lucide-solid/icons/panel-right-dashed")>]
+    type PanelRightDashed() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelTopDashed", "lucide-solid/icons/panel-top-dashed")>]
+    type PanelTopDashed() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelsTopLeft", "lucide-solid/icons/panels-top-left")>]
+    type PanelsTopLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as PenLine", "lucide-solid/icons/pen-line")>]
+    type PenLine() =
+        inherit IconNode()
+    [<Erase; Import("default as Pen", "lucide-solid/icons/pen")>]
+    type Pen() =
+        inherit IconNode()
+    [<Erase; Import("default as PlugZap", "lucide-solid/icons/plug-zap")>]
+    type PlugZap() =
+        inherit IconNode()
+    [<Erase; Import("default as RectangleEllipsis", "lucide-solid/icons/rectangle-ellipsis")>]
+    type RectangleEllipsis() =
+        inherit IconNode()
+    [<Erase; Import("default as Rotate3d", "lucide-solid/icons/rotate-3d")>]
+    type Rotate3d() =
+        inherit IconNode()
+    [<Erase; Import("default as Rows2", "lucide-solid/icons/rows-2")>]
+    type Rows2() =
+        inherit IconNode()
+    [<Erase; Import("default as Rows3", "lucide-solid/icons/rows-3")>]
+    type Rows3() =
+        inherit IconNode()
+    [<Erase; Import("default as Scale3d", "lucide-solid/icons/scale-3d")>]
+    type Scale3d() =
+        inherit IconNode()
+    [<Erase; Import("default as SendHorizontal", "lucide-solid/icons/send-horizontal")>]
+    type SendHorizontal() =
+        inherit IconNode()
+    [<Erase; Import("default as ShieldQuestionMark", "lucide-solid/icons/shield-question-mark")>]
+    type ShieldQuestionMark() =
+        inherit IconNode()
+    [<Erase; Import("default as ShieldX", "lucide-solid/icons/shield-x")>]
+    type ShieldX() =
+        inherit IconNode()
+    [<Erase; Import("default as SlidersVertical", "lucide-solid/icons/sliders-vertical")>]
+    type SlidersVertical() =
+        inherit IconNode()
+    [<Erase; Import("default as Sparkles", "lucide-solid/icons/sparkles")>]
+    type Sparkles() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareActivity", "lucide-solid/icons/square-activity")>]
+    type SquareActivity() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowDownLeft", "lucide-solid/icons/square-arrow-down-left")>]
+    type SquareArrowDownLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowDown", "lucide-solid/icons/square-arrow-down")>]
+    type SquareArrowDown() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowDownRight", "lucide-solid/icons/square-arrow-down-right")>]
+    type SquareArrowDownRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowOutDownLeft", "lucide-solid/icons/square-arrow-out-down-left")>]
+    type SquareArrowOutDownLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowLeft", "lucide-solid/icons/square-arrow-left")>]
+    type SquareArrowLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowOutDownRight", "lucide-solid/icons/square-arrow-out-down-right")>]
+    type SquareArrowOutDownRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowOutUpLeft", "lucide-solid/icons/square-arrow-out-up-left")>]
+    type SquareArrowOutUpLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowOutUpRight", "lucide-solid/icons/square-arrow-out-up-right")>]
+    type SquareArrowOutUpRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowRight", "lucide-solid/icons/square-arrow-right")>]
+    type SquareArrowRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowUpLeft", "lucide-solid/icons/square-arrow-up-left")>]
+    type SquareArrowUpLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowUpRight", "lucide-solid/icons/square-arrow-up-right")>]
+    type SquareArrowUpRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareArrowUp", "lucide-solid/icons/square-arrow-up")>]
+    type SquareArrowUp() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareAsterisk", "lucide-solid/icons/square-asterisk")>]
+    type SquareAsterisk() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareBottomDashedScissors", "lucide-solid/icons/square-bottom-dashed-scissors")>]
+    type SquareBottomDashedScissors() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareChartGantt", "lucide-solid/icons/square-chart-gantt")>]
+    type SquareChartGantt() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareCheckBig", "lucide-solid/icons/square-check-big")>]
+    type SquareCheckBig() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareCheck", "lucide-solid/icons/square-check")>]
+    type SquareCheck() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareChevronDown", "lucide-solid/icons/square-chevron-down")>]
+    type SquareChevronDown() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareChevronLeft", "lucide-solid/icons/square-chevron-left")>]
+    type SquareChevronLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareChevronRight", "lucide-solid/icons/square-chevron-right")>]
+    type SquareChevronRight() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareChevronUp", "lucide-solid/icons/square-chevron-up")>]
+    type SquareChevronUp() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareCode", "lucide-solid/icons/square-code")>]
+    type SquareCode() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareDashedKanban", "lucide-solid/icons/square-dashed-kanban")>]
+    type SquareDashedKanban() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareDashedMousePointer", "lucide-solid/icons/square-dashed-mouse-pointer")>]
+    type SquareDashedMousePointer() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareDashed", "lucide-solid/icons/square-dashed")>]
+    type SquareDashed() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareDivide", "lucide-solid/icons/square-divide")>]
+    type SquareDivide() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareEqual", "lucide-solid/icons/square-equal")>]
+    type SquareEqual() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareFunction", "lucide-solid/icons/square-function")>]
+    type SquareFunction() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareDot", "lucide-solid/icons/square-dot")>]
+    type SquareDot() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareKanban", "lucide-solid/icons/square-kanban")>]
+    type SquareKanban() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareM", "lucide-solid/icons/square-m")>]
+    type SquareM() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareLibrary", "lucide-solid/icons/square-library")>]
+    type SquareLibrary() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareMenu", "lucide-solid/icons/square-menu")>]
+    type SquareMenu() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareMinus", "lucide-solid/icons/square-minus")>]
+    type SquareMinus() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareMousePointer", "lucide-solid/icons/square-mouse-pointer")>]
+    type SquareMousePointer() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareParkingOff", "lucide-solid/icons/square-parking-off")>]
+    type SquareParkingOff() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareParking", "lucide-solid/icons/square-parking")>]
+    type SquareParking() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePen", "lucide-solid/icons/square-pen")>]
+    type SquarePen() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePercent", "lucide-solid/icons/square-percent")>]
+    type SquarePercent() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePilcrow", "lucide-solid/icons/square-pilcrow")>]
+    type SquarePilcrow() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePi", "lucide-solid/icons/square-pi")>]
+    type SquarePi() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePlay", "lucide-solid/icons/square-play")>]
+    type SquarePlay() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePlus", "lucide-solid/icons/square-plus")>]
+    type SquarePlus() =
+        inherit IconNode()
+    [<Erase; Import("default as SquarePower", "lucide-solid/icons/square-power")>]
+    type SquarePower() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareScissors", "lucide-solid/icons/square-scissors")>]
+    type SquareScissors() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareSigma", "lucide-solid/icons/square-sigma")>]
+    type SquareSigma() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareSlash", "lucide-solid/icons/square-slash")>]
+    type SquareSlash() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareSplitHorizontal", "lucide-solid/icons/square-split-horizontal")>]
+    type SquareSplitHorizontal() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareSplitVertical", "lucide-solid/icons/square-split-vertical")>]
+    type SquareSplitVertical() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareTerminal", "lucide-solid/icons/square-terminal")>]
+    type SquareTerminal() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareUserRound", "lucide-solid/icons/square-user-round")>]
+    type SquareUserRound() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareX", "lucide-solid/icons/square-x")>]
+    type SquareX() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareUser", "lucide-solid/icons/square-user")>]
+    type SquareUser() =
+        inherit IconNode()
+    [<Erase; Import("default as TextAlignCenter", "lucide-solid/icons/text-align-center")>]
+    type TextAlignCenter() =
+        inherit IconNode()
+    [<Erase; Import("default as TestTubeDiagonal", "lucide-solid/icons/test-tube-diagonal")>]
+    type TestTubeDiagonal() =
+        inherit IconNode()
+    [<Erase; Import("default as TextAlignEnd", "lucide-solid/icons/text-align-end")>]
+    type TextAlignEnd() =
+        inherit IconNode()
+    [<Erase; Import("default as TextAlignJustify", "lucide-solid/icons/text-align-justify")>]
+    type TextAlignJustify() =
+        inherit IconNode()
+    [<Erase; Import("default as TextInitial", "lucide-solid/icons/text-initial")>]
+    type TextInitial() =
+        inherit IconNode()
+    [<Erase; Import("default as TextAlignStart", "lucide-solid/icons/text-align-start")>]
+    type TextAlignStart() =
+        inherit IconNode()
+    [<Erase; Import("default as TextSelect", "lucide-solid/icons/text-select")>]
+    type TextSelect() =
+        inherit IconNode()
+    [<Erase; Import("default as TextWrap", "lucide-solid/icons/text-wrap")>]
+    type TextWrap() =
+        inherit IconNode()
+    [<Erase; Import("default as TramFront", "lucide-solid/icons/tram-front")>]
+    type TramFront() =
+        inherit IconNode()
+    [<Erase; Import("default as TreePalm", "lucide-solid/icons/tree-palm")>]
+    type TreePalm() =
+        inherit IconNode()
+    [<Erase; Import("default as TriangleAlert", "lucide-solid/icons/triangle-alert")>]
+    type TriangleAlert() =
+        inherit IconNode()
+    [<Erase; Import("default as TvMinimal", "lucide-solid/icons/tv-minimal")>]
+    type TvMinimal() =
+        inherit IconNode()
+    [<Erase; Import("default as University", "lucide-solid/icons/university")>]
+    type University() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRoundCheck", "lucide-solid/icons/user-round-check")>]
+    type UserRoundCheck() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRoundCog", "lucide-solid/icons/user-round-cog")>]
+    type UserRoundCog() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRoundMinus", "lucide-solid/icons/user-round-minus")>]
+    type UserRoundMinus() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRoundPlus", "lucide-solid/icons/user-round-plus")>]
+    type UserRoundPlus() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRoundX", "lucide-solid/icons/user-round-x")>]
+    type UserRoundX() =
+        inherit IconNode()
+    [<Erase; Import("default as UserRound", "lucide-solid/icons/user-round")>]
+    type UserRound() =
+        inherit IconNode()
+    [<Erase; Import("default as UsersRound", "lucide-solid/icons/users-round")>]
+    type UsersRound() =
+        inherit IconNode()
+    [<Erase; Import("default as UtensilsCrossed", "lucide-solid/icons/utensils-crossed")>]
+    type UtensilsCrossed() =
+        inherit IconNode()
+    [<Erase; Import("default as Utensils", "lucide-solid/icons/utensils")>]
+    type Utensils() =
+        inherit IconNode()
+    [<Erase; Import("default as WalletMinimal", "lucide-solid/icons/wallet-minimal")>]
+    type WalletMinimal() =
+        inherit IconNode()
+    [<Erase; Import("default as WandSparkles", "lucide-solid/icons/wand-sparkles")>]
+    type WandSparkles() =
+        inherit IconNode()
