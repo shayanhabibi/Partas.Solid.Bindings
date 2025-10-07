@@ -65,7 +65,6 @@ module IgnoredProjects =
     let dnd = ignore Files.Root.``Partas.Solid.Dnd``.``Partas.Solid.Dnd.fsproj``
     let dndkit = ignore Files.Root.``Partas.Solid.DndKit``.``Partas.Solid.DndKit.fsproj``
     let embla = ignore Files.Root.``Partas.Solid.EmblaCarousel``.``Partas.Solid.EmblaCarousel.fsproj``
-    let tanstackVirtual = ignore Files.Root.``Partas.Solid.TanStack.Virtual``.``Partas.Solid.TanStack.Virtual.fsproj``
     let bindings = ignore Files.Root.``Partas.Solid.Bindings``.``Partas.Solid.Bindings.fsproj``
     
 module Projects =
@@ -129,9 +128,17 @@ module Projects =
     let zag = project {
         path Files.Root.``Partas.Solid.Zag``.``Partas.Solid.Zag.fsproj``
     }
+    let tabler = project {
+        path Files.Root.``Partas.Solid.Tabler``.``Partas.Solid.Tabler.fsproj``
+    }
+    let tanstackVirtual = project {
+        path Files.Root.``Partas.Solid.TanStack.Virtual``.``Partas.Solid.TanStack.Virtual.fsproj``
+        npm "@tanstack/solid-virtual" 3 0 0
+    }
     
     
 let projects = [
+    Projects.tabler
     Projects.zagJs
     Projects.internationalised
     Projects.apexCharts
@@ -145,9 +152,8 @@ let projects = [
     Projects.motion
     Projects.neodrag
     Projects.sonner
-    // TODO - fix storybook errors
-    // Projects.storybook
     Projects.tanstackTables
+    Projects.tanstackVirtual
     Projects.zag
 ]    
 let ignored = [
@@ -155,6 +161,5 @@ let ignored = [
     IgnoredProjects.dnd
     IgnoredProjects.dndkit
     IgnoredProjects.embla
-    IgnoredProjects.tanstackVirtual
     IgnoredProjects.bindings
 ]

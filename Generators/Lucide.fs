@@ -78,7 +78,7 @@ module Parsers =
     // Some of the icons are deprecated, this should be detected and then skipped.
     module Lucide =
         let private findExport = skipManyTill anyChar (pstring "export {") >>. ws
-        let private skipDeprecated = opt (pstring "/** @deprecated" >>. findExport) >>. preturn ()
+        let private skipDeprecated = many (pstring "/** @deprecated" >>. findExport >>. ws) >>. preturn ()
         let private consumeExportIdentifier =
             ws >>. pstring "default as Lucide" >>. manyChars (asciiLetter <|> digit)
         let private consumePath =
