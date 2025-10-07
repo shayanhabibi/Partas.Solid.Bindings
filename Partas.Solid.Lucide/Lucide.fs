@@ -71,11 +71,11 @@ module Lucide =
     [<Erase; Import("default as AlignEndVertical", "lucide-solid/icons/align-end-vertical")>]
     type AlignEndVertical() =
         inherit IconNode()
-    [<Erase; Import("default as AlignHorizontalDistributeEnd", "lucide-solid/icons/align-horizontal-distribute-end")>]
-    type AlignHorizontalDistributeEnd() =
-        inherit IconNode()
     [<Erase; Import("default as AlignHorizontalDistributeCenter", "lucide-solid/icons/align-horizontal-distribute-center")>]
     type AlignHorizontalDistributeCenter() =
+        inherit IconNode()
+    [<Erase; Import("default as AlignHorizontalDistributeEnd", "lucide-solid/icons/align-horizontal-distribute-end")>]
+    type AlignHorizontalDistributeEnd() =
         inherit IconNode()
     [<Erase; Import("default as AlignHorizontalDistributeStart", "lucide-solid/icons/align-horizontal-distribute-start")>]
     type AlignHorizontalDistributeStart() =
@@ -104,14 +104,14 @@ module Lucide =
     [<Erase; Import("default as AlignVerticalDistributeCenter", "lucide-solid/icons/align-vertical-distribute-center")>]
     type AlignVerticalDistributeCenter() =
         inherit IconNode()
+    [<Erase; Import("default as AlignVerticalDistributeEnd", "lucide-solid/icons/align-vertical-distribute-end")>]
+    type AlignVerticalDistributeEnd() =
+        inherit IconNode()
     [<Erase; Import("default as AlignVerticalDistributeStart", "lucide-solid/icons/align-vertical-distribute-start")>]
     type AlignVerticalDistributeStart() =
         inherit IconNode()
     [<Erase; Import("default as AlignVerticalJustifyCenter", "lucide-solid/icons/align-vertical-justify-center")>]
     type AlignVerticalJustifyCenter() =
-        inherit IconNode()
-    [<Erase; Import("default as AlignVerticalDistributeEnd", "lucide-solid/icons/align-vertical-distribute-end")>]
-    type AlignVerticalDistributeEnd() =
         inherit IconNode()
     [<Erase; Import("default as AlignVerticalJustifyEnd", "lucide-solid/icons/align-vertical-justify-end")>]
     type AlignVerticalJustifyEnd() =
@@ -137,11 +137,11 @@ module Lucide =
     [<Erase; Import("default as Amphora", "lucide-solid/icons/amphora")>]
     type Amphora() =
         inherit IconNode()
-    [<Erase; Import("default as Anchor", "lucide-solid/icons/anchor")>]
-    type Anchor() =
-        inherit IconNode()
     [<Erase; Import("default as Angry", "lucide-solid/icons/angry")>]
     type Angry() =
+        inherit IconNode()
+    [<Erase; Import("default as Anchor", "lucide-solid/icons/anchor")>]
+    type Anchor() =
         inherit IconNode()
     [<Erase; Import("default as Annoyed", "lucide-solid/icons/annoyed")>]
     type Annoyed() =
@@ -152,14 +152,14 @@ module Lucide =
     [<Erase; Import("default as Anvil", "lucide-solid/icons/anvil")>]
     type Anvil() =
         inherit IconNode()
+    [<Erase; Import("default as Aperture", "lucide-solid/icons/aperture")>]
+    type Aperture() =
+        inherit IconNode()
     [<Erase; Import("default as AppWindowMac", "lucide-solid/icons/app-window-mac")>]
     type AppWindowMac() =
         inherit IconNode()
     [<Erase; Import("default as AppWindow", "lucide-solid/icons/app-window")>]
     type AppWindow() =
-        inherit IconNode()
-    [<Erase; Import("default as Aperture", "lucide-solid/icons/aperture")>]
-    type Aperture() =
         inherit IconNode()
     [<Erase; Import("default as Apple", "lucide-solid/icons/apple")>]
     type Apple() =
@@ -173,20 +173,20 @@ module Lucide =
     [<Erase; Import("default as Armchair", "lucide-solid/icons/armchair")>]
     type Armchair() =
         inherit IconNode()
-    [<Erase; Import("default as ArrowBigDownDash", "lucide-solid/icons/arrow-big-down-dash")>]
-    type ArrowBigDownDash() =
-        inherit IconNode()
     [<Erase; Import("default as Archive", "lucide-solid/icons/archive")>]
     type Archive() =
+        inherit IconNode()
+    [<Erase; Import("default as ArrowBigDownDash", "lucide-solid/icons/arrow-big-down-dash")>]
+    type ArrowBigDownDash() =
         inherit IconNode()
     [<Erase; Import("default as ArrowBigDown", "lucide-solid/icons/arrow-big-down")>]
     type ArrowBigDown() =
         inherit IconNode()
-    [<Erase; Import("default as ArrowBigLeft", "lucide-solid/icons/arrow-big-left")>]
-    type ArrowBigLeft() =
-        inherit IconNode()
     [<Erase; Import("default as ArrowBigLeftDash", "lucide-solid/icons/arrow-big-left-dash")>]
     type ArrowBigLeftDash() =
+        inherit IconNode()
+    [<Erase; Import("default as ArrowBigLeft", "lucide-solid/icons/arrow-big-left")>]
+    type ArrowBigLeft() =
         inherit IconNode()
     [<Erase; Import("default as ArrowBigRightDash", "lucide-solid/icons/arrow-big-right-dash")>]
     type ArrowBigRightDash() =
@@ -227,11 +227,11 @@ module Lucide =
     [<Erase; Import("default as ArrowLeftFromLine", "lucide-solid/icons/arrow-left-from-line")>]
     type ArrowLeftFromLine() =
         inherit IconNode()
-    [<Erase; Import("default as ArrowLeftRight", "lucide-solid/icons/arrow-left-right")>]
-    type ArrowLeftRight() =
-        inherit IconNode()
     [<Erase; Import("default as ArrowLeftToLine", "lucide-solid/icons/arrow-left-to-line")>]
     type ArrowLeftToLine() =
+        inherit IconNode()
+    [<Erase; Import("default as ArrowLeftRight", "lucide-solid/icons/arrow-left-right")>]
+    type ArrowLeftRight() =
         inherit IconNode()
     [<Erase; Import("default as ArrowLeft", "lucide-solid/icons/arrow-left")>]
     type ArrowLeft() =
@@ -254,11 +254,11 @@ module Lucide =
     [<Erase; Import("default as ArrowUpFromDot", "lucide-solid/icons/arrow-up-from-dot")>]
     type ArrowUpFromDot() =
         inherit IconNode()
-    [<Erase; Import("default as ArrowUpFromLine", "lucide-solid/icons/arrow-up-from-line")>]
-    type ArrowUpFromLine() =
-        inherit IconNode()
     [<Erase; Import("default as ArrowUpLeft", "lucide-solid/icons/arrow-up-left")>]
     type ArrowUpLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as ArrowUpFromLine", "lucide-solid/icons/arrow-up-from-line")>]
+    type ArrowUpFromLine() =
         inherit IconNode()
     [<Erase; Import("default as ArrowUpRight", "lucide-solid/icons/arrow-up-right")>]
     type ArrowUpRight() =
@@ -293,11 +293,11 @@ module Lucide =
     [<Erase; Import("default as Award", "lucide-solid/icons/award")>]
     type Award() =
         inherit IconNode()
-    [<Erase; Import("default as Baby", "lucide-solid/icons/baby")>]
-    type Baby() =
-        inherit IconNode()
     [<Erase; Import("default as Axe", "lucide-solid/icons/axe")>]
     type Axe() =
+        inherit IconNode()
+    [<Erase; Import("default as Baby", "lucide-solid/icons/baby")>]
+    type Baby() =
         inherit IconNode()
     [<Erase; Import("default as Backpack", "lucide-solid/icons/backpack")>]
     type Backpack() =
@@ -374,14 +374,14 @@ module Lucide =
     [<Erase; Import("default as Banknote", "lucide-solid/icons/banknote")>]
     type Banknote() =
         inherit IconNode()
-    [<Erase; Import("default as Barrel", "lucide-solid/icons/barrel")>]
-    type Barrel() =
-        inherit IconNode()
     [<Erase; Import("default as Barcode", "lucide-solid/icons/barcode")>]
     type Barcode() =
         inherit IconNode()
     [<Erase; Import("default as Baseline", "lucide-solid/icons/baseline")>]
     type Baseline() =
+        inherit IconNode()
+    [<Erase; Import("default as Barrel", "lucide-solid/icons/barrel")>]
+    type Barrel() =
         inherit IconNode()
     [<Erase; Import("default as Bath", "lucide-solid/icons/bath")>]
     type Bath() =
@@ -389,17 +389,17 @@ module Lucide =
     [<Erase; Import("default as BatteryCharging", "lucide-solid/icons/battery-charging")>]
     type BatteryCharging() =
         inherit IconNode()
-    [<Erase; Import("default as BatteryFull", "lucide-solid/icons/battery-full")>]
-    type BatteryFull() =
+    [<Erase; Import("default as BatteryMedium", "lucide-solid/icons/battery-medium")>]
+    type BatteryMedium() =
         inherit IconNode()
     [<Erase; Import("default as BatteryLow", "lucide-solid/icons/battery-low")>]
     type BatteryLow() =
         inherit IconNode()
+    [<Erase; Import("default as BatteryFull", "lucide-solid/icons/battery-full")>]
+    type BatteryFull() =
+        inherit IconNode()
     [<Erase; Import("default as BatteryPlus", "lucide-solid/icons/battery-plus")>]
     type BatteryPlus() =
-        inherit IconNode()
-    [<Erase; Import("default as BatteryMedium", "lucide-solid/icons/battery-medium")>]
-    type BatteryMedium() =
         inherit IconNode()
     [<Erase; Import("default as BatteryWarning", "lucide-solid/icons/battery-warning")>]
     type BatteryWarning() =
@@ -425,20 +425,20 @@ module Lucide =
     [<Erase; Import("default as Bed", "lucide-solid/icons/bed")>]
     type Bed() =
         inherit IconNode()
-    [<Erase; Import("default as BeerOff", "lucide-solid/icons/beer-off")>]
-    type BeerOff() =
-        inherit IconNode()
     [<Erase; Import("default as Beef", "lucide-solid/icons/beef")>]
     type Beef() =
+        inherit IconNode()
+    [<Erase; Import("default as BeerOff", "lucide-solid/icons/beer-off")>]
+    type BeerOff() =
         inherit IconNode()
     [<Erase; Import("default as Beer", "lucide-solid/icons/beer")>]
     type Beer() =
         inherit IconNode()
-    [<Erase; Import("default as BellDot", "lucide-solid/icons/bell-dot")>]
-    type BellDot() =
-        inherit IconNode()
     [<Erase; Import("default as BellElectric", "lucide-solid/icons/bell-electric")>]
     type BellElectric() =
+        inherit IconNode()
+    [<Erase; Import("default as BellDot", "lucide-solid/icons/bell-dot")>]
+    type BellDot() =
         inherit IconNode()
     [<Erase; Import("default as BellMinus", "lucide-solid/icons/bell-minus")>]
     type BellMinus() =
@@ -479,11 +479,11 @@ module Lucide =
     [<Erase; Import("default as Bird", "lucide-solid/icons/bird")>]
     type Bird() =
         inherit IconNode()
-    [<Erase; Import("default as Bitcoin", "lucide-solid/icons/bitcoin")>]
-    type Bitcoin() =
-        inherit IconNode()
     [<Erase; Import("default as Blend", "lucide-solid/icons/blend")>]
     type Blend() =
+        inherit IconNode()
+    [<Erase; Import("default as Bitcoin", "lucide-solid/icons/bitcoin")>]
+    type Bitcoin() =
         inherit IconNode()
     [<Erase; Import("default as Blinds", "lucide-solid/icons/blinds")>]
     type Blinds() =
@@ -491,11 +491,11 @@ module Lucide =
     [<Erase; Import("default as Blocks", "lucide-solid/icons/blocks")>]
     type Blocks() =
         inherit IconNode()
-    [<Erase; Import("default as BluetoothConnected", "lucide-solid/icons/bluetooth-connected")>]
-    type BluetoothConnected() =
-        inherit IconNode()
     [<Erase; Import("default as BluetoothOff", "lucide-solid/icons/bluetooth-off")>]
     type BluetoothOff() =
+        inherit IconNode()
+    [<Erase; Import("default as BluetoothConnected", "lucide-solid/icons/bluetooth-connected")>]
+    type BluetoothConnected() =
         inherit IconNode()
     [<Erase; Import("default as BluetoothSearching", "lucide-solid/icons/bluetooth-searching")>]
     type BluetoothSearching() =
@@ -518,14 +518,14 @@ module Lucide =
     [<Erase; Import("default as BookA", "lucide-solid/icons/book-a")>]
     type BookA() =
         inherit IconNode()
-    [<Erase; Import("default as BookAudio", "lucide-solid/icons/book-audio")>]
-    type BookAudio() =
-        inherit IconNode()
     [<Erase; Import("default as BookAlert", "lucide-solid/icons/book-alert")>]
     type BookAlert() =
         inherit IconNode()
     [<Erase; Import("default as BookCheck", "lucide-solid/icons/book-check")>]
     type BookCheck() =
+        inherit IconNode()
+    [<Erase; Import("default as BookAudio", "lucide-solid/icons/book-audio")>]
+    type BookAudio() =
         inherit IconNode()
     [<Erase; Import("default as BookCopy", "lucide-solid/icons/book-copy")>]
     type BookCopy() =
@@ -569,11 +569,11 @@ module Lucide =
     [<Erase; Import("default as BookText", "lucide-solid/icons/book-text")>]
     type BookText() =
         inherit IconNode()
-    [<Erase; Import("default as BookType", "lucide-solid/icons/book-type")>]
-    type BookType() =
-        inherit IconNode()
     [<Erase; Import("default as BookUp2", "lucide-solid/icons/book-up-2")>]
     type BookUp2() =
+        inherit IconNode()
+    [<Erase; Import("default as BookType", "lucide-solid/icons/book-type")>]
+    type BookType() =
         inherit IconNode()
     [<Erase; Import("default as BookUp", "lucide-solid/icons/book-up")>]
     type BookUp() =
@@ -602,11 +602,11 @@ module Lucide =
     [<Erase; Import("default as Bookmark", "lucide-solid/icons/bookmark")>]
     type Bookmark() =
         inherit IconNode()
-    [<Erase; Import("default as BoomBox", "lucide-solid/icons/boom-box")>]
-    type BoomBox() =
-        inherit IconNode()
     [<Erase; Import("default as BotMessageSquare", "lucide-solid/icons/bot-message-square")>]
     type BotMessageSquare() =
+        inherit IconNode()
+    [<Erase; Import("default as BoomBox", "lucide-solid/icons/boom-box")>]
+    type BoomBox() =
         inherit IconNode()
     [<Erase; Import("default as BotOff", "lucide-solid/icons/bot-off")>]
     type BotOff() =
@@ -623,14 +623,14 @@ module Lucide =
     [<Erase; Import("default as Box", "lucide-solid/icons/box")>]
     type Box() =
         inherit IconNode()
+    [<Erase; Import("default as Boxes", "lucide-solid/icons/boxes")>]
+    type Boxes() =
+        inherit IconNode()
     [<Erase; Import("default as Brackets", "lucide-solid/icons/brackets")>]
     type Brackets() =
         inherit IconNode()
     [<Erase; Import("default as BrainCircuit", "lucide-solid/icons/brain-circuit")>]
     type BrainCircuit() =
-        inherit IconNode()
-    [<Erase; Import("default as Boxes", "lucide-solid/icons/boxes")>]
-    type Boxes() =
         inherit IconNode()
     [<Erase; Import("default as BrainCog", "lucide-solid/icons/brain-cog")>]
     type BrainCog() =
@@ -647,26 +647,26 @@ module Lucide =
     [<Erase; Import("default as BrickWall", "lucide-solid/icons/brick-wall")>]
     type BrickWall() =
         inherit IconNode()
-    [<Erase; Import("default as BriefcaseConveyorBelt", "lucide-solid/icons/briefcase-conveyor-belt")>]
-    type BriefcaseConveyorBelt() =
-        inherit IconNode()
     [<Erase; Import("default as BriefcaseBusiness", "lucide-solid/icons/briefcase-business")>]
     type BriefcaseBusiness() =
+        inherit IconNode()
+    [<Erase; Import("default as BriefcaseConveyorBelt", "lucide-solid/icons/briefcase-conveyor-belt")>]
+    type BriefcaseConveyorBelt() =
         inherit IconNode()
     [<Erase; Import("default as BriefcaseMedical", "lucide-solid/icons/briefcase-medical")>]
     type BriefcaseMedical() =
         inherit IconNode()
+    [<Erase; Import("default as BringToFront", "lucide-solid/icons/bring-to-front")>]
+    type BringToFront() =
+        inherit IconNode()
     [<Erase; Import("default as Briefcase", "lucide-solid/icons/briefcase")>]
     type Briefcase() =
-        inherit IconNode()
-    [<Erase; Import("default as BrushCleaning", "lucide-solid/icons/brush-cleaning")>]
-    type BrushCleaning() =
         inherit IconNode()
     [<Erase; Import("default as Brush", "lucide-solid/icons/brush")>]
     type Brush() =
         inherit IconNode()
-    [<Erase; Import("default as BringToFront", "lucide-solid/icons/bring-to-front")>]
-    type BringToFront() =
+    [<Erase; Import("default as BrushCleaning", "lucide-solid/icons/brush-cleaning")>]
+    type BrushCleaning() =
         inherit IconNode()
     [<Erase; Import("default as Bubbles", "lucide-solid/icons/bubbles")>]
     type Bubbles() =
@@ -695,11 +695,11 @@ module Lucide =
     [<Erase; Import("default as CableCar", "lucide-solid/icons/cable-car")>]
     type CableCar() =
         inherit IconNode()
-    [<Erase; Import("default as CakeSlice", "lucide-solid/icons/cake-slice")>]
-    type CakeSlice() =
-        inherit IconNode()
     [<Erase; Import("default as Cable", "lucide-solid/icons/cable")>]
     type Cable() =
+        inherit IconNode()
+    [<Erase; Import("default as CakeSlice", "lucide-solid/icons/cake-slice")>]
+    type CakeSlice() =
         inherit IconNode()
     [<Erase; Import("default as Cake", "lucide-solid/icons/cake")>]
     type Cake() =
@@ -776,14 +776,14 @@ module Lucide =
     [<Erase; Import("default as Camera", "lucide-solid/icons/camera")>]
     type Camera() =
         inherit IconNode()
+    [<Erase; Import("default as CandyCane", "lucide-solid/icons/candy-cane")>]
+    type CandyCane() =
+        inherit IconNode()
     [<Erase; Import("default as CandyOff", "lucide-solid/icons/candy-off")>]
     type CandyOff() =
         inherit IconNode()
     [<Erase; Import("default as Candy", "lucide-solid/icons/candy")>]
     type Candy() =
-        inherit IconNode()
-    [<Erase; Import("default as CandyCane", "lucide-solid/icons/candy-cane")>]
-    type CandyCane() =
         inherit IconNode()
     [<Erase; Import("default as Cannabis", "lucide-solid/icons/cannabis")>]
     type Cannabis() =
@@ -827,11 +827,11 @@ module Lucide =
     [<Erase; Import("default as Castle", "lucide-solid/icons/castle")>]
     type Castle() =
         inherit IconNode()
-    [<Erase; Import("default as Cctv", "lucide-solid/icons/cctv")>]
-    type Cctv() =
-        inherit IconNode()
     [<Erase; Import("default as Cat", "lucide-solid/icons/cat")>]
     type Cat() =
+        inherit IconNode()
+    [<Erase; Import("default as Cctv", "lucide-solid/icons/cctv")>]
+    type Cctv() =
         inherit IconNode()
     [<Erase; Import("default as ChartBarDecreasing", "lucide-solid/icons/chart-bar-decreasing")>]
     type ChartBarDecreasing() =
@@ -875,17 +875,17 @@ module Lucide =
     [<Erase; Import("default as ChefHat", "lucide-solid/icons/chef-hat")>]
     type ChefHat() =
         inherit IconNode()
-    [<Erase; Import("default as Cherry", "lucide-solid/icons/cherry")>]
-    type Cherry() =
-        inherit IconNode()
     [<Erase; Import("default as ChevronDown", "lucide-solid/icons/chevron-down")>]
     type ChevronDown() =
         inherit IconNode()
-    [<Erase; Import("default as ChevronLast", "lucide-solid/icons/chevron-last")>]
-    type ChevronLast() =
+    [<Erase; Import("default as Cherry", "lucide-solid/icons/cherry")>]
+    type Cherry() =
         inherit IconNode()
     [<Erase; Import("default as ChevronFirst", "lucide-solid/icons/chevron-first")>]
     type ChevronFirst() =
+        inherit IconNode()
+    [<Erase; Import("default as ChevronLast", "lucide-solid/icons/chevron-last")>]
+    type ChevronLast() =
         inherit IconNode()
     [<Erase; Import("default as ChevronLeft", "lucide-solid/icons/chevron-left")>]
     type ChevronLeft() =
@@ -941,11 +941,11 @@ module Lucide =
     [<Erase; Import("default as CircleDotDashed", "lucide-solid/icons/circle-dot-dashed")>]
     type CircleDotDashed() =
         inherit IconNode()
-    [<Erase; Import("default as CircleEllipsis", "lucide-solid/icons/circle-ellipsis")>]
-    type CircleEllipsis() =
-        inherit IconNode()
     [<Erase; Import("default as CircleDot", "lucide-solid/icons/circle-dot")>]
     type CircleDot() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleEllipsis", "lucide-solid/icons/circle-ellipsis")>]
+    type CircleEllipsis() =
         inherit IconNode()
     [<Erase; Import("default as CircleEqual", "lucide-solid/icons/circle-equal")>]
     type CircleEqual() =
@@ -992,14 +992,14 @@ module Lucide =
     [<Erase; Import("default as ClipboardCopy", "lucide-solid/icons/clipboard-copy")>]
     type ClipboardCopy() =
         inherit IconNode()
-    [<Erase; Import("default as ClipboardMinus", "lucide-solid/icons/clipboard-minus")>]
-    type ClipboardMinus() =
+    [<Erase; Import("default as ClipboardList", "lucide-solid/icons/clipboard-list")>]
+    type ClipboardList() =
         inherit IconNode()
     [<Erase; Import("default as ClipboardPaste", "lucide-solid/icons/clipboard-paste")>]
     type ClipboardPaste() =
         inherit IconNode()
-    [<Erase; Import("default as ClipboardList", "lucide-solid/icons/clipboard-list")>]
-    type ClipboardList() =
+    [<Erase; Import("default as ClipboardMinus", "lucide-solid/icons/clipboard-minus")>]
+    type ClipboardMinus() =
         inherit IconNode()
     [<Erase; Import("default as ClipboardPlus", "lucide-solid/icons/clipboard-plus")>]
     type ClipboardPlus() =
@@ -1019,17 +1019,17 @@ module Lucide =
     [<Erase; Import("default as Clock10", "lucide-solid/icons/clock-10")>]
     type Clock10() =
         inherit IconNode()
-    [<Erase; Import("default as Clock2", "lucide-solid/icons/clock-2")>]
-    type Clock2() =
-        inherit IconNode()
     [<Erase; Import("default as Clock11", "lucide-solid/icons/clock-11")>]
     type Clock11() =
         inherit IconNode()
-    [<Erase; Import("default as Clock3", "lucide-solid/icons/clock-3")>]
-    type Clock3() =
-        inherit IconNode()
     [<Erase; Import("default as Clock12", "lucide-solid/icons/clock-12")>]
     type Clock12() =
+        inherit IconNode()
+    [<Erase; Import("default as Clock2", "lucide-solid/icons/clock-2")>]
+    type Clock2() =
+        inherit IconNode()
+    [<Erase; Import("default as Clock3", "lucide-solid/icons/clock-3")>]
+    type Clock3() =
         inherit IconNode()
     [<Erase; Import("default as Clock4", "lucide-solid/icons/clock-4")>]
     type Clock4() =
@@ -1043,14 +1043,14 @@ module Lucide =
     [<Erase; Import("default as Clock7", "lucide-solid/icons/clock-7")>]
     type Clock7() =
         inherit IconNode()
-    [<Erase; Import("default as Clock9", "lucide-solid/icons/clock-9")>]
-    type Clock9() =
-        inherit IconNode()
     [<Erase; Import("default as Clock8", "lucide-solid/icons/clock-8")>]
     type Clock8() =
         inherit IconNode()
     [<Erase; Import("default as ClockAlert", "lucide-solid/icons/clock-alert")>]
     type ClockAlert() =
+        inherit IconNode()
+    [<Erase; Import("default as Clock9", "lucide-solid/icons/clock-9")>]
+    type Clock9() =
         inherit IconNode()
     [<Erase; Import("default as ClockArrowDown", "lucide-solid/icons/clock-arrow-down")>]
     type ClockArrowDown() =
@@ -1058,14 +1058,14 @@ module Lucide =
     [<Erase; Import("default as ClockArrowUp", "lucide-solid/icons/clock-arrow-up")>]
     type ClockArrowUp() =
         inherit IconNode()
+    [<Erase; Import("default as ClockFading", "lucide-solid/icons/clock-fading")>]
+    type ClockFading() =
+        inherit IconNode()
     [<Erase; Import("default as ClockPlus", "lucide-solid/icons/clock-plus")>]
     type ClockPlus() =
         inherit IconNode()
     [<Erase; Import("default as Clock", "lucide-solid/icons/clock")>]
     type Clock() =
-        inherit IconNode()
-    [<Erase; Import("default as ClockFading", "lucide-solid/icons/clock-fading")>]
-    type ClockFading() =
         inherit IconNode()
     [<Erase; Import("default as ClosedCaption", "lucide-solid/icons/closed-caption")>]
     type ClosedCaption() =
@@ -1076,11 +1076,11 @@ module Lucide =
     [<Erase; Import("default as CloudCheck", "lucide-solid/icons/cloud-check")>]
     type CloudCheck() =
         inherit IconNode()
-    [<Erase; Import("default as CloudDrizzle", "lucide-solid/icons/cloud-drizzle")>]
-    type CloudDrizzle() =
-        inherit IconNode()
     [<Erase; Import("default as CloudCog", "lucide-solid/icons/cloud-cog")>]
     type CloudCog() =
+        inherit IconNode()
+    [<Erase; Import("default as CloudDrizzle", "lucide-solid/icons/cloud-drizzle")>]
+    type CloudDrizzle() =
         inherit IconNode()
     [<Erase; Import("default as CloudFog", "lucide-solid/icons/cloud-fog")>]
     type CloudFog() =
@@ -1094,11 +1094,11 @@ module Lucide =
     [<Erase; Import("default as CloudMoonRain", "lucide-solid/icons/cloud-moon-rain")>]
     type CloudMoonRain() =
         inherit IconNode()
-    [<Erase; Import("default as CloudMoon", "lucide-solid/icons/cloud-moon")>]
-    type CloudMoon() =
-        inherit IconNode()
     [<Erase; Import("default as CloudOff", "lucide-solid/icons/cloud-off")>]
     type CloudOff() =
+        inherit IconNode()
+    [<Erase; Import("default as CloudMoon", "lucide-solid/icons/cloud-moon")>]
+    type CloudMoon() =
         inherit IconNode()
     [<Erase; Import("default as CloudRainWind", "lucide-solid/icons/cloud-rain-wind")>]
     type CloudRainWind() =
@@ -1139,11 +1139,11 @@ module Lucide =
     [<Erase; Import("default as Coffee", "lucide-solid/icons/coffee")>]
     type Coffee() =
         inherit IconNode()
-    [<Erase; Import("default as Cog", "lucide-solid/icons/cog")>]
-    type Cog() =
-        inherit IconNode()
     [<Erase; Import("default as Coins", "lucide-solid/icons/coins")>]
     type Coins() =
+        inherit IconNode()
+    [<Erase; Import("default as Cog", "lucide-solid/icons/cog")>]
+    type Cog() =
         inherit IconNode()
     [<Erase; Import("default as Columns4", "lucide-solid/icons/columns-4")>]
     type Columns4() =
@@ -1232,17 +1232,14 @@ module Lucide =
     [<Erase; Import("default as CornerUpLeft", "lucide-solid/icons/corner-up-left")>]
     type CornerUpLeft() =
         inherit IconNode()
-    [<Erase; Import("default as Cpu", "lucide-solid/icons/cpu")>]
-    type Cpu() =
-        inherit IconNode()
     [<Erase; Import("default as CornerUpRight", "lucide-solid/icons/corner-up-right")>]
     type CornerUpRight() =
         inherit IconNode()
+    [<Erase; Import("default as Cpu", "lucide-solid/icons/cpu")>]
+    type Cpu() =
+        inherit IconNode()
     [<Erase; Import("default as CreativeCommons", "lucide-solid/icons/creative-commons")>]
     type CreativeCommons() =
-        inherit IconNode()
-    [<Erase; Import("default as Crop", "lucide-solid/icons/crop")>]
-    type Crop() =
         inherit IconNode()
     [<Erase; Import("default as CreditCard", "lucide-solid/icons/credit-card")>]
     type CreditCard() =
@@ -1250,17 +1247,20 @@ module Lucide =
     [<Erase; Import("default as Croissant", "lucide-solid/icons/croissant")>]
     type Croissant() =
         inherit IconNode()
+    [<Erase; Import("default as Crop", "lucide-solid/icons/crop")>]
+    type Crop() =
+        inherit IconNode()
     [<Erase; Import("default as Cross", "lucide-solid/icons/cross")>]
     type Cross() =
         inherit IconNode()
     [<Erase; Import("default as Crosshair", "lucide-solid/icons/crosshair")>]
     type Crosshair() =
         inherit IconNode()
-    [<Erase; Import("default as Crown", "lucide-solid/icons/crown")>]
-    type Crown() =
-        inherit IconNode()
     [<Erase; Import("default as Cuboid", "lucide-solid/icons/cuboid")>]
     type Cuboid() =
+        inherit IconNode()
+    [<Erase; Import("default as Crown", "lucide-solid/icons/crown")>]
+    type Crown() =
         inherit IconNode()
     [<Erase; Import("default as CupSoda", "lucide-solid/icons/cup-soda")>]
     type CupSoda() =
@@ -1271,11 +1271,11 @@ module Lucide =
     [<Erase; Import("default as Cylinder", "lucide-solid/icons/cylinder")>]
     type Cylinder() =
         inherit IconNode()
-    [<Erase; Import("default as DatabaseBackup", "lucide-solid/icons/database-backup")>]
-    type DatabaseBackup() =
-        inherit IconNode()
     [<Erase; Import("default as Dam", "lucide-solid/icons/dam")>]
     type Dam() =
+        inherit IconNode()
+    [<Erase; Import("default as DatabaseBackup", "lucide-solid/icons/database-backup")>]
+    type DatabaseBackup() =
         inherit IconNode()
     [<Erase; Import("default as DatabaseZap", "lucide-solid/icons/database-zap")>]
     type DatabaseZap() =
@@ -1340,11 +1340,11 @@ module Lucide =
     [<Erase; Import("default as DiscAlbum", "lucide-solid/icons/disc-album")>]
     type DiscAlbum() =
         inherit IconNode()
-    [<Erase; Import("default as Divide", "lucide-solid/icons/divide")>]
-    type Divide() =
-        inherit IconNode()
     [<Erase; Import("default as Disc", "lucide-solid/icons/disc")>]
     type Disc() =
+        inherit IconNode()
+    [<Erase; Import("default as Divide", "lucide-solid/icons/divide")>]
+    type Divide() =
         inherit IconNode()
     [<Erase; Import("default as DnaOff", "lucide-solid/icons/dna-off")>]
     type DnaOff() =
@@ -1493,11 +1493,11 @@ module Lucide =
     [<Erase; Import("default as Figma", "lucide-solid/icons/figma")>]
     type Figma() =
         inherit IconNode()
-    [<Erase; Import("default as FileAudio2", "lucide-solid/icons/file-audio-2")>]
-    type FileAudio2() =
-        inherit IconNode()
     [<Erase; Import("default as FileArchive", "lucide-solid/icons/file-archive")>]
     type FileArchive() =
+        inherit IconNode()
+    [<Erase; Import("default as FileAudio2", "lucide-solid/icons/file-audio-2")>]
+    type FileAudio2() =
         inherit IconNode()
     [<Erase; Import("default as FileAudio", "lucide-solid/icons/file-audio")>]
     type FileAudio() =
@@ -1505,11 +1505,11 @@ module Lucide =
     [<Erase; Import("default as FileBadge2", "lucide-solid/icons/file-badge-2")>]
     type FileBadge2() =
         inherit IconNode()
-    [<Erase; Import("default as FileBadge", "lucide-solid/icons/file-badge")>]
-    type FileBadge() =
-        inherit IconNode()
     [<Erase; Import("default as FileBox", "lucide-solid/icons/file-box")>]
     type FileBox() =
+        inherit IconNode()
+    [<Erase; Import("default as FileBadge", "lucide-solid/icons/file-badge")>]
+    type FileBadge() =
         inherit IconNode()
     [<Erase; Import("default as FileCheck2", "lucide-solid/icons/file-check-2")>]
     type FileCheck2() =
@@ -1532,23 +1532,23 @@ module Lucide =
     [<Erase; Import("default as FileDigit", "lucide-solid/icons/file-digit")>]
     type FileDigit() =
         inherit IconNode()
-    [<Erase; Import("default as FileDown", "lucide-solid/icons/file-down")>]
-    type FileDown() =
-        inherit IconNode()
-    [<Erase; Import("default as FileImage", "lucide-solid/icons/file-image")>]
-    type FileImage() =
-        inherit IconNode()
     [<Erase; Import("default as FileHeart", "lucide-solid/icons/file-heart")>]
     type FileHeart() =
+        inherit IconNode()
+    [<Erase; Import("default as FileDown", "lucide-solid/icons/file-down")>]
+    type FileDown() =
         inherit IconNode()
     [<Erase; Import("default as FileInput", "lucide-solid/icons/file-input")>]
     type FileInput() =
         inherit IconNode()
-    [<Erase; Import("default as FileJson2", "lucide-solid/icons/file-json-2")>]
-    type FileJson2() =
+    [<Erase; Import("default as FileImage", "lucide-solid/icons/file-image")>]
+    type FileImage() =
         inherit IconNode()
     [<Erase; Import("default as FileJson", "lucide-solid/icons/file-json")>]
     type FileJson() =
+        inherit IconNode()
+    [<Erase; Import("default as FileJson2", "lucide-solid/icons/file-json-2")>]
+    type FileJson2() =
         inherit IconNode()
     [<Erase; Import("default as FileKey2", "lucide-solid/icons/file-key-2")>]
     type FileKey2() =
@@ -1556,11 +1556,11 @@ module Lucide =
     [<Erase; Import("default as FileKey", "lucide-solid/icons/file-key")>]
     type FileKey() =
         inherit IconNode()
-    [<Erase; Import("default as FileLock", "lucide-solid/icons/file-lock")>]
-    type FileLock() =
-        inherit IconNode()
     [<Erase; Import("default as FileLock2", "lucide-solid/icons/file-lock-2")>]
     type FileLock2() =
+        inherit IconNode()
+    [<Erase; Import("default as FileLock", "lucide-solid/icons/file-lock")>]
+    type FileLock() =
         inherit IconNode()
     [<Erase; Import("default as FileMinus2", "lucide-solid/icons/file-minus-2")>]
     type FileMinus2() =
@@ -1613,14 +1613,14 @@ module Lucide =
     [<Erase; Import("default as FileType", "lucide-solid/icons/file-type")>]
     type FileType() =
         inherit IconNode()
+    [<Erase; Import("default as FileUp", "lucide-solid/icons/file-up")>]
+    type FileUp() =
+        inherit IconNode()
     [<Erase; Import("default as FileUser", "lucide-solid/icons/file-user")>]
     type FileUser() =
         inherit IconNode()
     [<Erase; Import("default as FileVolume2", "lucide-solid/icons/file-volume-2")>]
     type FileVolume2() =
-        inherit IconNode()
-    [<Erase; Import("default as FileUp", "lucide-solid/icons/file-up")>]
-    type FileUp() =
         inherit IconNode()
     [<Erase; Import("default as FileVolume", "lucide-solid/icons/file-volume")>]
     type FileVolume() =
@@ -1637,17 +1637,14 @@ module Lucide =
     [<Erase; Import("default as Files", "lucide-solid/icons/files")>]
     type Files() =
         inherit IconNode()
-    [<Erase; Import("default as File", "lucide-solid/icons/file")>]
-    type File() =
-        inherit IconNode()
     [<Erase; Import("default as Film", "lucide-solid/icons/film")>]
     type Film() =
         inherit IconNode()
     [<Erase; Import("default as Fingerprint", "lucide-solid/icons/fingerprint")>]
     type Fingerprint() =
         inherit IconNode()
-    [<Erase; Import("default as FishOff", "lucide-solid/icons/fish-off")>]
-    type FishOff() =
+    [<Erase; Import("default as File", "lucide-solid/icons/file")>]
+    type File() =
         inherit IconNode()
     [<Erase; Import("default as FireExtinguisher", "lucide-solid/icons/fire-extinguisher")>]
     type FireExtinguisher() =
@@ -1655,11 +1652,14 @@ module Lucide =
     [<Erase; Import("default as FishSymbol", "lucide-solid/icons/fish-symbol")>]
     type FishSymbol() =
         inherit IconNode()
-    [<Erase; Import("default as Fish", "lucide-solid/icons/fish")>]
-    type Fish() =
+    [<Erase; Import("default as FishOff", "lucide-solid/icons/fish-off")>]
+    type FishOff() =
         inherit IconNode()
     [<Erase; Import("default as FlagOff", "lucide-solid/icons/flag-off")>]
     type FlagOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Fish", "lucide-solid/icons/fish")>]
+    type Fish() =
         inherit IconNode()
     [<Erase; Import("default as FlagTriangleLeft", "lucide-solid/icons/flag-triangle-left")>]
     type FlagTriangleLeft() =
@@ -1670,17 +1670,17 @@ module Lucide =
     [<Erase; Import("default as Flag", "lucide-solid/icons/flag")>]
     type Flag() =
         inherit IconNode()
-    [<Erase; Import("default as FlameKindling", "lucide-solid/icons/flame-kindling")>]
-    type FlameKindling() =
-        inherit IconNode()
     [<Erase; Import("default as Flame", "lucide-solid/icons/flame")>]
     type Flame() =
         inherit IconNode()
-    [<Erase; Import("default as Flashlight", "lucide-solid/icons/flashlight")>]
-    type Flashlight() =
+    [<Erase; Import("default as FlameKindling", "lucide-solid/icons/flame-kindling")>]
+    type FlameKindling() =
         inherit IconNode()
     [<Erase; Import("default as FlashlightOff", "lucide-solid/icons/flashlight-off")>]
     type FlashlightOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Flashlight", "lucide-solid/icons/flashlight")>]
+    type Flashlight() =
         inherit IconNode()
     [<Erase; Import("default as FlaskConicalOff", "lucide-solid/icons/flask-conical-off")>]
     type FlaskConicalOff() =
@@ -1760,14 +1760,14 @@ module Lucide =
     [<Erase; Import("default as FolderLock", "lucide-solid/icons/folder-lock")>]
     type FolderLock() =
         inherit IconNode()
-    [<Erase; Import("default as FolderMinus", "lucide-solid/icons/folder-minus")>]
-    type FolderMinus() =
-        inherit IconNode()
     [<Erase; Import("default as FolderOpenDot", "lucide-solid/icons/folder-open-dot")>]
     type FolderOpenDot() =
         inherit IconNode()
     [<Erase; Import("default as FolderOpen", "lucide-solid/icons/folder-open")>]
     type FolderOpen() =
+        inherit IconNode()
+    [<Erase; Import("default as FolderMinus", "lucide-solid/icons/folder-minus")>]
+    type FolderMinus() =
         inherit IconNode()
     [<Erase; Import("default as FolderOutput", "lucide-solid/icons/folder-output")>]
     type FolderOutput() =
@@ -1778,20 +1778,20 @@ module Lucide =
     [<Erase; Import("default as FolderRoot", "lucide-solid/icons/folder-root")>]
     type FolderRoot() =
         inherit IconNode()
-    [<Erase; Import("default as FolderSearch2", "lucide-solid/icons/folder-search-2")>]
-    type FolderSearch2() =
-        inherit IconNode()
     [<Erase; Import("default as FolderSearch", "lucide-solid/icons/folder-search")>]
     type FolderSearch() =
+        inherit IconNode()
+    [<Erase; Import("default as FolderSearch2", "lucide-solid/icons/folder-search-2")>]
+    type FolderSearch2() =
         inherit IconNode()
     [<Erase; Import("default as FolderSymlink", "lucide-solid/icons/folder-symlink")>]
     type FolderSymlink() =
         inherit IconNode()
-    [<Erase; Import("default as FolderTree", "lucide-solid/icons/folder-tree")>]
-    type FolderTree() =
-        inherit IconNode()
     [<Erase; Import("default as FolderSync", "lucide-solid/icons/folder-sync")>]
     type FolderSync() =
+        inherit IconNode()
+    [<Erase; Import("default as FolderTree", "lucide-solid/icons/folder-tree")>]
+    type FolderTree() =
         inherit IconNode()
     [<Erase; Import("default as FolderUp", "lucide-solid/icons/folder-up")>]
     type FolderUp() =
@@ -1817,11 +1817,11 @@ module Lucide =
     [<Erase; Import("default as Frame", "lucide-solid/icons/frame")>]
     type Frame() =
         inherit IconNode()
-    [<Erase; Import("default as Framer", "lucide-solid/icons/framer")>]
-    type Framer() =
-        inherit IconNode()
     [<Erase; Import("default as Frown", "lucide-solid/icons/frown")>]
     type Frown() =
+        inherit IconNode()
+    [<Erase; Import("default as Framer", "lucide-solid/icons/framer")>]
+    type Framer() =
         inherit IconNode()
     [<Erase; Import("default as Fuel", "lucide-solid/icons/fuel")>]
     type Fuel() =
@@ -1856,11 +1856,11 @@ module Lucide =
     [<Erase; Import("default as Gauge", "lucide-solid/icons/gauge")>]
     type Gauge() =
         inherit IconNode()
-    [<Erase; Import("default as Gavel", "lucide-solid/icons/gavel")>]
-    type Gavel() =
-        inherit IconNode()
     [<Erase; Import("default as Gem", "lucide-solid/icons/gem")>]
     type Gem() =
+        inherit IconNode()
+    [<Erase; Import("default as Gavel", "lucide-solid/icons/gavel")>]
+    type Gavel() =
         inherit IconNode()
     [<Erase; Import("default as GeorgianLari", "lucide-solid/icons/georgian-lari")>]
     type GeorgianLari() =
@@ -1919,26 +1919,26 @@ module Lucide =
     [<Erase; Import("default as Gitlab", "lucide-solid/icons/gitlab")>]
     type Gitlab() =
         inherit IconNode()
-    [<Erase; Import("default as GlassWater", "lucide-solid/icons/glass-water")>]
-    type GlassWater() =
-        inherit IconNode()
     [<Erase; Import("default as Glasses", "lucide-solid/icons/glasses")>]
     type Glasses() =
         inherit IconNode()
-    [<Erase; Import("default as GlobeLock", "lucide-solid/icons/globe-lock")>]
-    type GlobeLock() =
-        inherit IconNode()
-    [<Erase; Import("default as Goal", "lucide-solid/icons/goal")>]
-    type Goal() =
-        inherit IconNode()
-    [<Erase; Import("default as Gpu", "lucide-solid/icons/gpu")>]
-    type Gpu() =
+    [<Erase; Import("default as GlassWater", "lucide-solid/icons/glass-water")>]
+    type GlassWater() =
         inherit IconNode()
     [<Erase; Import("default as Globe", "lucide-solid/icons/globe")>]
     type Globe() =
         inherit IconNode()
+    [<Erase; Import("default as GlobeLock", "lucide-solid/icons/globe-lock")>]
+    type GlobeLock() =
+        inherit IconNode()
+    [<Erase; Import("default as Gpu", "lucide-solid/icons/gpu")>]
+    type Gpu() =
+        inherit IconNode()
     [<Erase; Import("default as GraduationCap", "lucide-solid/icons/graduation-cap")>]
     type GraduationCap() =
+        inherit IconNode()
+    [<Erase; Import("default as Goal", "lucide-solid/icons/goal")>]
+    type Goal() =
         inherit IconNode()
     [<Erase; Import("default as Grape", "lucide-solid/icons/grape")>]
     type Grape() =
@@ -1967,11 +1967,11 @@ module Lucide =
     [<Erase; Import("default as Hamburger", "lucide-solid/icons/hamburger")>]
     type Hamburger() =
         inherit IconNode()
-    [<Erase; Import("default as Hammer", "lucide-solid/icons/hammer")>]
-    type Hammer() =
-        inherit IconNode()
     [<Erase; Import("default as HandCoins", "lucide-solid/icons/hand-coins")>]
     type HandCoins() =
+        inherit IconNode()
+    [<Erase; Import("default as Hammer", "lucide-solid/icons/hammer")>]
+    type Hammer() =
         inherit IconNode()
     [<Erase; Import("default as HandFist", "lucide-solid/icons/hand-fist")>]
     type HandFist() =
@@ -1991,14 +1991,14 @@ module Lucide =
     [<Erase; Import("default as Handbag", "lucide-solid/icons/handbag")>]
     type Handbag() =
         inherit IconNode()
-    [<Erase; Import("default as HardDriveDownload", "lucide-solid/icons/hard-drive-download")>]
-    type HardDriveDownload() =
-        inherit IconNode()
     [<Erase; Import("default as Handshake", "lucide-solid/icons/handshake")>]
     type Handshake() =
         inherit IconNode()
     [<Erase; Import("default as HardDriveUpload", "lucide-solid/icons/hard-drive-upload")>]
     type HardDriveUpload() =
+        inherit IconNode()
+    [<Erase; Import("default as HardDriveDownload", "lucide-solid/icons/hard-drive-download")>]
+    type HardDriveDownload() =
         inherit IconNode()
     [<Erase; Import("default as HardDrive", "lucide-solid/icons/hard-drive")>]
     type HardDrive() =
@@ -2033,11 +2033,11 @@ module Lucide =
     [<Erase; Import("default as Heading5", "lucide-solid/icons/heading-5")>]
     type Heading5() =
         inherit IconNode()
-    [<Erase; Import("default as Heading6", "lucide-solid/icons/heading-6")>]
-    type Heading6() =
-        inherit IconNode()
     [<Erase; Import("default as Heading", "lucide-solid/icons/heading")>]
     type Heading() =
+        inherit IconNode()
+    [<Erase; Import("default as Heading6", "lucide-solid/icons/heading-6")>]
+    type Heading6() =
         inherit IconNode()
     [<Erase; Import("default as HeadphoneOff", "lucide-solid/icons/headphone-off")>]
     type HeadphoneOff() =
@@ -2054,11 +2054,11 @@ module Lucide =
     [<Erase; Import("default as HeartHandshake", "lucide-solid/icons/heart-handshake")>]
     type HeartHandshake() =
         inherit IconNode()
-    [<Erase; Import("default as HeartOff", "lucide-solid/icons/heart-off")>]
-    type HeartOff() =
-        inherit IconNode()
     [<Erase; Import("default as HeartMinus", "lucide-solid/icons/heart-minus")>]
     type HeartMinus() =
+        inherit IconNode()
+    [<Erase; Import("default as HeartOff", "lucide-solid/icons/heart-off")>]
+    type HeartOff() =
         inherit IconNode()
     [<Erase; Import("default as HeartPlus", "lucide-solid/icons/heart-plus")>]
     type HeartPlus() =
@@ -2087,11 +2087,11 @@ module Lucide =
     [<Erase; Import("default as Hop", "lucide-solid/icons/hop")>]
     type Hop() =
         inherit IconNode()
-    [<Erase; Import("default as Hotel", "lucide-solid/icons/hotel")>]
-    type Hotel() =
-        inherit IconNode()
     [<Erase; Import("default as Hospital", "lucide-solid/icons/hospital")>]
     type Hospital() =
+        inherit IconNode()
+    [<Erase; Import("default as Hotel", "lucide-solid/icons/hotel")>]
+    type Hotel() =
         inherit IconNode()
     [<Erase; Import("default as Hourglass", "lucide-solid/icons/hourglass")>]
     type Hourglass() =
@@ -2126,23 +2126,20 @@ module Lucide =
     [<Erase; Import("default as ImagePlay", "lucide-solid/icons/image-play")>]
     type ImagePlay() =
         inherit IconNode()
-    [<Erase; Import("default as ImageUp", "lucide-solid/icons/image-up")>]
-    type ImageUp() =
-        inherit IconNode()
     [<Erase; Import("default as ImagePlus", "lucide-solid/icons/image-plus")>]
     type ImagePlus() =
         inherit IconNode()
     [<Erase; Import("default as ImageUpscale", "lucide-solid/icons/image-upscale")>]
     type ImageUpscale() =
         inherit IconNode()
+    [<Erase; Import("default as ImageUp", "lucide-solid/icons/image-up")>]
+    type ImageUp() =
+        inherit IconNode()
     [<Erase; Import("default as Image", "lucide-solid/icons/image")>]
     type Image() =
         inherit IconNode()
     [<Erase; Import("default as Images", "lucide-solid/icons/images")>]
     type Images() =
-        inherit IconNode()
-    [<Erase; Import("default as IndianRupee", "lucide-solid/icons/indian-rupee")>]
-    type IndianRupee() =
         inherit IconNode()
     [<Erase; Import("default as Import", "lucide-solid/icons/import")>]
     type Import() =
@@ -2153,20 +2150,23 @@ module Lucide =
     [<Erase; Import("default as Inbox", "lucide-solid/icons/inbox")>]
     type Inbox() =
         inherit IconNode()
+    [<Erase; Import("default as IndianRupee", "lucide-solid/icons/indian-rupee")>]
+    type IndianRupee() =
+        inherit IconNode()
     [<Erase; Import("default as Info", "lucide-solid/icons/info")>]
     type Info() =
         inherit IconNode()
     [<Erase; Import("default as InspectionPanel", "lucide-solid/icons/inspection-panel")>]
     type InspectionPanel() =
         inherit IconNode()
-    [<Erase; Import("default as Italic", "lucide-solid/icons/italic")>]
-    type Italic() =
+    [<Erase; Import("default as Instagram", "lucide-solid/icons/instagram")>]
+    type Instagram() =
         inherit IconNode()
     [<Erase; Import("default as IterationCcw", "lucide-solid/icons/iteration-ccw")>]
     type IterationCcw() =
         inherit IconNode()
-    [<Erase; Import("default as Instagram", "lucide-solid/icons/instagram")>]
-    type Instagram() =
+    [<Erase; Import("default as Italic", "lucide-solid/icons/italic")>]
+    type Italic() =
         inherit IconNode()
     [<Erase; Import("default as IterationCw", "lucide-solid/icons/iteration-cw")>]
     type IterationCw() =
@@ -2180,17 +2180,17 @@ module Lucide =
     [<Erase; Import("default as Kanban", "lucide-solid/icons/kanban")>]
     type Kanban() =
         inherit IconNode()
-    [<Erase; Import("default as KeySquare", "lucide-solid/icons/key-square")>]
-    type KeySquare() =
-        inherit IconNode()
-    [<Erase; Import("default as Key", "lucide-solid/icons/key")>]
-    type Key() =
-        inherit IconNode()
     [<Erase; Import("default as Kayak", "lucide-solid/icons/kayak")>]
     type Kayak() =
         inherit IconNode()
     [<Erase; Import("default as KeyRound", "lucide-solid/icons/key-round")>]
     type KeyRound() =
+        inherit IconNode()
+    [<Erase; Import("default as KeySquare", "lucide-solid/icons/key-square")>]
+    type KeySquare() =
+        inherit IconNode()
+    [<Erase; Import("default as Key", "lucide-solid/icons/key")>]
+    type Key() =
         inherit IconNode()
     [<Erase; Import("default as KeyboardMusic", "lucide-solid/icons/keyboard-music")>]
     type KeyboardMusic() =
@@ -2198,11 +2198,11 @@ module Lucide =
     [<Erase; Import("default as KeyboardOff", "lucide-solid/icons/keyboard-off")>]
     type KeyboardOff() =
         inherit IconNode()
-    [<Erase; Import("default as LampCeiling", "lucide-solid/icons/lamp-ceiling")>]
-    type LampCeiling() =
-        inherit IconNode()
     [<Erase; Import("default as Keyboard", "lucide-solid/icons/keyboard")>]
     type Keyboard() =
+        inherit IconNode()
+    [<Erase; Import("default as LampCeiling", "lucide-solid/icons/lamp-ceiling")>]
+    type LampCeiling() =
         inherit IconNode()
     [<Erase; Import("default as LampDesk", "lucide-solid/icons/lamp-desk")>]
     type LampDesk() =
@@ -2243,11 +2243,11 @@ module Lucide =
     [<Erase; Import("default as Laugh", "lucide-solid/icons/laugh")>]
     type Laugh() =
         inherit IconNode()
-    [<Erase; Import("default as LayoutDashboard", "lucide-solid/icons/layout-dashboard")>]
-    type LayoutDashboard() =
-        inherit IconNode()
     [<Erase; Import("default as Layers2", "lucide-solid/icons/layers-2")>]
     type Layers2() =
+        inherit IconNode()
+    [<Erase; Import("default as LayoutDashboard", "lucide-solid/icons/layout-dashboard")>]
+    type LayoutDashboard() =
         inherit IconNode()
     [<Erase; Import("default as LayoutGrid", "lucide-solid/icons/layout-grid")>]
     type LayoutGrid() =
@@ -2264,11 +2264,11 @@ module Lucide =
     [<Erase; Import("default as LayoutTemplate", "lucide-solid/icons/layout-template")>]
     type LayoutTemplate() =
         inherit IconNode()
-    [<Erase; Import("default as LeafyGreen", "lucide-solid/icons/leafy-green")>]
-    type LeafyGreen() =
-        inherit IconNode()
     [<Erase; Import("default as Leaf", "lucide-solid/icons/leaf")>]
     type Leaf() =
+        inherit IconNode()
+    [<Erase; Import("default as LeafyGreen", "lucide-solid/icons/leafy-green")>]
+    type LeafyGreen() =
         inherit IconNode()
     [<Erase; Import("default as Lectern", "lucide-solid/icons/lectern")>]
     type Lectern() =
@@ -2306,20 +2306,20 @@ module Lucide =
     [<Erase; Import("default as Linkedin", "lucide-solid/icons/linkedin")>]
     type Linkedin() =
         inherit IconNode()
-    [<Erase; Import("default as ListChecks", "lucide-solid/icons/list-checks")>]
-    type ListChecks() =
-        inherit IconNode()
     [<Erase; Import("default as ListCheck", "lucide-solid/icons/list-check")>]
     type ListCheck() =
+        inherit IconNode()
+    [<Erase; Import("default as ListChecks", "lucide-solid/icons/list-checks")>]
+    type ListChecks() =
         inherit IconNode()
     [<Erase; Import("default as ListChevronsDownUp", "lucide-solid/icons/list-chevrons-down-up")>]
     type ListChevronsDownUp() =
         inherit IconNode()
-    [<Erase; Import("default as ListChevronsUpDown", "lucide-solid/icons/list-chevrons-up-down")>]
-    type ListChevronsUpDown() =
-        inherit IconNode()
     [<Erase; Import("default as ListCollapse", "lucide-solid/icons/list-collapse")>]
     type ListCollapse() =
+        inherit IconNode()
+    [<Erase; Import("default as ListChevronsUpDown", "lucide-solid/icons/list-chevrons-up-down")>]
+    type ListChevronsUpDown() =
         inherit IconNode()
     [<Erase; Import("default as ListEnd", "lucide-solid/icons/list-end")>]
     type ListEnd() =
@@ -2348,14 +2348,14 @@ module Lucide =
     [<Erase; Import("default as ListStart", "lucide-solid/icons/list-start")>]
     type ListStart() =
         inherit IconNode()
+    [<Erase; Import("default as ListTree", "lucide-solid/icons/list-tree")>]
+    type ListTree() =
+        inherit IconNode()
     [<Erase; Import("default as ListTodo", "lucide-solid/icons/list-todo")>]
     type ListTodo() =
         inherit IconNode()
     [<Erase; Import("default as ListVideo", "lucide-solid/icons/list-video")>]
     type ListVideo() =
-        inherit IconNode()
-    [<Erase; Import("default as ListTree", "lucide-solid/icons/list-tree")>]
-    type ListTree() =
         inherit IconNode()
     [<Erase; Import("default as ListX", "lucide-solid/icons/list-x")>]
     type ListX() =
@@ -2363,11 +2363,11 @@ module Lucide =
     [<Erase; Import("default as List", "lucide-solid/icons/list")>]
     type List() =
         inherit IconNode()
-    [<Erase; Import("default as Loader", "lucide-solid/icons/loader")>]
-    type Loader() =
-        inherit IconNode()
     [<Erase; Import("default as LoaderPinwheel", "lucide-solid/icons/loader-pinwheel")>]
     type LoaderPinwheel() =
+        inherit IconNode()
+    [<Erase; Import("default as Loader", "lucide-solid/icons/loader")>]
+    type Loader() =
         inherit IconNode()
     [<Erase; Import("default as LocateFixed", "lucide-solid/icons/locate-fixed")>]
     type LocateFixed() =
@@ -2447,17 +2447,17 @@ module Lucide =
     [<Erase; Import("default as MapPinMinusInside", "lucide-solid/icons/map-pin-minus-inside")>]
     type MapPinMinusInside() =
         inherit IconNode()
-    [<Erase; Import("default as MapPinMinus", "lucide-solid/icons/map-pin-minus")>]
-    type MapPinMinus() =
-        inherit IconNode()
     [<Erase; Import("default as MapPinOff", "lucide-solid/icons/map-pin-off")>]
     type MapPinOff() =
         inherit IconNode()
-    [<Erase; Import("default as MapPinPlus", "lucide-solid/icons/map-pin-plus")>]
-    type MapPinPlus() =
+    [<Erase; Import("default as MapPinMinus", "lucide-solid/icons/map-pin-minus")>]
+    type MapPinMinus() =
         inherit IconNode()
     [<Erase; Import("default as MapPinPlusInside", "lucide-solid/icons/map-pin-plus-inside")>]
     type MapPinPlusInside() =
+        inherit IconNode()
+    [<Erase; Import("default as MapPinPlus", "lucide-solid/icons/map-pin-plus")>]
+    type MapPinPlus() =
         inherit IconNode()
     [<Erase; Import("default as MapPinXInside", "lucide-solid/icons/map-pin-x-inside")>]
     type MapPinXInside() =
@@ -2492,11 +2492,11 @@ module Lucide =
     [<Erase; Import("default as Maximize", "lucide-solid/icons/maximize")>]
     type Maximize() =
         inherit IconNode()
-    [<Erase; Import("default as Medal", "lucide-solid/icons/medal")>]
-    type Medal() =
-        inherit IconNode()
     [<Erase; Import("default as MegaphoneOff", "lucide-solid/icons/megaphone-off")>]
     type MegaphoneOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Medal", "lucide-solid/icons/medal")>]
+    type Medal() =
         inherit IconNode()
     [<Erase; Import("default as Megaphone", "lucide-solid/icons/megaphone")>]
     type Megaphone() =
@@ -2522,11 +2522,11 @@ module Lucide =
     [<Erase; Import("default as MessageCircleHeart", "lucide-solid/icons/message-circle-heart")>]
     type MessageCircleHeart() =
         inherit IconNode()
-    [<Erase; Import("default as MessageCircleOff", "lucide-solid/icons/message-circle-off")>]
-    type MessageCircleOff() =
-        inherit IconNode()
     [<Erase; Import("default as MessageCircleMore", "lucide-solid/icons/message-circle-more")>]
     type MessageCircleMore() =
+        inherit IconNode()
+    [<Erase; Import("default as MessageCircleOff", "lucide-solid/icons/message-circle-off")>]
+    type MessageCircleOff() =
         inherit IconNode()
     [<Erase; Import("default as MessageCirclePlus", "lucide-solid/icons/message-circle-plus")>]
     type MessageCirclePlus() =
@@ -2546,14 +2546,14 @@ module Lucide =
     [<Erase; Import("default as MessageSquareCode", "lucide-solid/icons/message-square-code")>]
     type MessageSquareCode() =
         inherit IconNode()
+    [<Erase; Import("default as MessageSquareDashed", "lucide-solid/icons/message-square-dashed")>]
+    type MessageSquareDashed() =
+        inherit IconNode()
     [<Erase; Import("default as MessageSquareDot", "lucide-solid/icons/message-square-dot")>]
     type MessageSquareDot() =
         inherit IconNode()
     [<Erase; Import("default as MessageSquareDiff", "lucide-solid/icons/message-square-diff")>]
     type MessageSquareDiff() =
-        inherit IconNode()
-    [<Erase; Import("default as MessageSquareDashed", "lucide-solid/icons/message-square-dashed")>]
-    type MessageSquareDashed() =
         inherit IconNode()
     [<Erase; Import("default as MessageSquareHeart", "lucide-solid/icons/message-square-heart")>]
     type MessageSquareHeart() =
@@ -2561,11 +2561,11 @@ module Lucide =
     [<Erase; Import("default as MessageSquareLock", "lucide-solid/icons/message-square-lock")>]
     type MessageSquareLock() =
         inherit IconNode()
-    [<Erase; Import("default as MessageSquareMore", "lucide-solid/icons/message-square-more")>]
-    type MessageSquareMore() =
-        inherit IconNode()
     [<Erase; Import("default as MessageSquareOff", "lucide-solid/icons/message-square-off")>]
     type MessageSquareOff() =
+        inherit IconNode()
+    [<Erase; Import("default as MessageSquareMore", "lucide-solid/icons/message-square-more")>]
+    type MessageSquareMore() =
         inherit IconNode()
     [<Erase; Import("default as MessageSquarePlus", "lucide-solid/icons/message-square-plus")>]
     type MessageSquarePlus() =
@@ -2573,11 +2573,11 @@ module Lucide =
     [<Erase; Import("default as MessageSquareQuote", "lucide-solid/icons/message-square-quote")>]
     type MessageSquareQuote() =
         inherit IconNode()
-    [<Erase; Import("default as MessageSquareShare", "lucide-solid/icons/message-square-share")>]
-    type MessageSquareShare() =
-        inherit IconNode()
     [<Erase; Import("default as MessageSquareReply", "lucide-solid/icons/message-square-reply")>]
     type MessageSquareReply() =
+        inherit IconNode()
+    [<Erase; Import("default as MessageSquareShare", "lucide-solid/icons/message-square-share")>]
+    type MessageSquareShare() =
         inherit IconNode()
     [<Erase; Import("default as MessageSquareText", "lucide-solid/icons/message-square-text")>]
     type MessageSquareText() =
@@ -2591,14 +2591,14 @@ module Lucide =
     [<Erase; Import("default as MessageSquare", "lucide-solid/icons/message-square")>]
     type MessageSquare() =
         inherit IconNode()
-    [<Erase; Import("default as MessagesSquare", "lucide-solid/icons/messages-square")>]
-    type MessagesSquare() =
+    [<Erase; Import("default as Mic", "lucide-solid/icons/mic")>]
+    type Mic() =
         inherit IconNode()
     [<Erase; Import("default as MicOff", "lucide-solid/icons/mic-off")>]
     type MicOff() =
         inherit IconNode()
-    [<Erase; Import("default as Mic", "lucide-solid/icons/mic")>]
-    type Mic() =
+    [<Erase; Import("default as MessagesSquare", "lucide-solid/icons/messages-square")>]
+    type MessagesSquare() =
         inherit IconNode()
     [<Erase; Import("default as Microchip", "lucide-solid/icons/microchip")>]
     type Microchip() =
@@ -2624,11 +2624,11 @@ module Lucide =
     [<Erase; Import("default as Minimize", "lucide-solid/icons/minimize")>]
     type Minimize() =
         inherit IconNode()
-    [<Erase; Import("default as MonitorCheck", "lucide-solid/icons/monitor-check")>]
-    type MonitorCheck() =
-        inherit IconNode()
     [<Erase; Import("default as Minus", "lucide-solid/icons/minus")>]
     type Minus() =
+        inherit IconNode()
+    [<Erase; Import("default as MonitorCheck", "lucide-solid/icons/monitor-check")>]
+    type MonitorCheck() =
         inherit IconNode()
     [<Erase; Import("default as MonitorCog", "lucide-solid/icons/monitor-cog")>]
     type MonitorCog() =
@@ -2636,17 +2636,14 @@ module Lucide =
     [<Erase; Import("default as MonitorDot", "lucide-solid/icons/monitor-dot")>]
     type MonitorDot() =
         inherit IconNode()
-    [<Erase; Import("default as MonitorOff", "lucide-solid/icons/monitor-off")>]
-    type MonitorOff() =
-        inherit IconNode()
     [<Erase; Import("default as MonitorDown", "lucide-solid/icons/monitor-down")>]
     type MonitorDown() =
         inherit IconNode()
+    [<Erase; Import("default as MonitorOff", "lucide-solid/icons/monitor-off")>]
+    type MonitorOff() =
+        inherit IconNode()
     [<Erase; Import("default as MonitorPause", "lucide-solid/icons/monitor-pause")>]
     type MonitorPause() =
-        inherit IconNode()
-    [<Erase; Import("default as MonitorSmartphone", "lucide-solid/icons/monitor-smartphone")>]
-    type MonitorSmartphone() =
         inherit IconNode()
     [<Erase; Import("default as MonitorPlay", "lucide-solid/icons/monitor-play")>]
     type MonitorPlay() =
@@ -2657,14 +2654,17 @@ module Lucide =
     [<Erase; Import("default as MonitorStop", "lucide-solid/icons/monitor-stop")>]
     type MonitorStop() =
         inherit IconNode()
+    [<Erase; Import("default as MonitorSmartphone", "lucide-solid/icons/monitor-smartphone")>]
+    type MonitorSmartphone() =
+        inherit IconNode()
     [<Erase; Import("default as MonitorUp", "lucide-solid/icons/monitor-up")>]
     type MonitorUp() =
         inherit IconNode()
-    [<Erase; Import("default as MonitorX", "lucide-solid/icons/monitor-x")>]
-    type MonitorX() =
-        inherit IconNode()
     [<Erase; Import("default as Monitor", "lucide-solid/icons/monitor")>]
     type Monitor() =
+        inherit IconNode()
+    [<Erase; Import("default as MonitorX", "lucide-solid/icons/monitor-x")>]
+    type MonitorX() =
         inherit IconNode()
     [<Erase; Import("default as MoonStar", "lucide-solid/icons/moon-star")>]
     type MoonStar() =
@@ -2672,11 +2672,11 @@ module Lucide =
     [<Erase; Import("default as Moon", "lucide-solid/icons/moon")>]
     type Moon() =
         inherit IconNode()
+    [<Erase; Import("default as Motorbike", "lucide-solid/icons/motorbike")>]
+    type Motorbike() =
+        inherit IconNode()
     [<Erase; Import("default as MountainSnow", "lucide-solid/icons/mountain-snow")>]
     type MountainSnow() =
-        inherit IconNode()
-    [<Erase; Import("default as Mountain", "lucide-solid/icons/mountain")>]
-    type Mountain() =
         inherit IconNode()
     [<Erase; Import("default as MouseOff", "lucide-solid/icons/mouse-off")>]
     type MouseOff() =
@@ -2686,6 +2686,9 @@ module Lucide =
         inherit IconNode()
     [<Erase; Import("default as MousePointerBan", "lucide-solid/icons/mouse-pointer-ban")>]
     type MousePointerBan() =
+        inherit IconNode()
+    [<Erase; Import("default as Mountain", "lucide-solid/icons/mountain")>]
+    type Mountain() =
         inherit IconNode()
     [<Erase; Import("default as MousePointerClick", "lucide-solid/icons/mouse-pointer-click")>]
     type MousePointerClick() =
@@ -2750,11 +2753,11 @@ module Lucide =
     [<Erase; Import("default as Navigation2Off", "lucide-solid/icons/navigation-2-off")>]
     type Navigation2Off() =
         inherit IconNode()
-    [<Erase; Import("default as NavigationOff", "lucide-solid/icons/navigation-off")>]
-    type NavigationOff() =
-        inherit IconNode()
     [<Erase; Import("default as Navigation2", "lucide-solid/icons/navigation-2")>]
     type Navigation2() =
+        inherit IconNode()
+    [<Erase; Import("default as NavigationOff", "lucide-solid/icons/navigation-off")>]
+    type NavigationOff() =
         inherit IconNode()
     [<Erase; Import("default as Navigation", "lucide-solid/icons/navigation")>]
     type Navigation() =
@@ -2765,23 +2768,23 @@ module Lucide =
     [<Erase; Import("default as Newspaper", "lucide-solid/icons/newspaper")>]
     type Newspaper() =
         inherit IconNode()
-    [<Erase; Import("default as NonBinary", "lucide-solid/icons/non-binary")>]
-    type NonBinary() =
-        inherit IconNode()
     [<Erase; Import("default as Nfc", "lucide-solid/icons/nfc")>]
     type Nfc() =
         inherit IconNode()
-    [<Erase; Import("default as NotebookTabs", "lucide-solid/icons/notebook-tabs")>]
-    type NotebookTabs() =
+    [<Erase; Import("default as NonBinary", "lucide-solid/icons/non-binary")>]
+    type NonBinary() =
         inherit IconNode()
     [<Erase; Import("default as NotebookPen", "lucide-solid/icons/notebook-pen")>]
     type NotebookPen() =
         inherit IconNode()
-    [<Erase; Import("default as NotebookText", "lucide-solid/icons/notebook-text")>]
-    type NotebookText() =
+    [<Erase; Import("default as NotebookTabs", "lucide-solid/icons/notebook-tabs")>]
+    type NotebookTabs() =
         inherit IconNode()
     [<Erase; Import("default as Notebook", "lucide-solid/icons/notebook")>]
     type Notebook() =
+        inherit IconNode()
+    [<Erase; Import("default as NotebookText", "lucide-solid/icons/notebook-text")>]
+    type NotebookText() =
         inherit IconNode()
     [<Erase; Import("default as NotepadTextDashed", "lucide-solid/icons/notepad-text-dashed")>]
     type NotepadTextDashed() =
@@ -2789,11 +2792,11 @@ module Lucide =
     [<Erase; Import("default as NotepadText", "lucide-solid/icons/notepad-text")>]
     type NotepadText() =
         inherit IconNode()
-    [<Erase; Import("default as Nut", "lucide-solid/icons/nut")>]
-    type Nut() =
-        inherit IconNode()
     [<Erase; Import("default as NutOff", "lucide-solid/icons/nut-off")>]
     type NutOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Nut", "lucide-solid/icons/nut")>]
+    type Nut() =
         inherit IconNode()
     [<Erase; Import("default as OctagonMinus", "lucide-solid/icons/octagon-minus")>]
     type OctagonMinus() =
@@ -2834,11 +2837,11 @@ module Lucide =
     [<Erase; Import("default as PackageX", "lucide-solid/icons/package-x")>]
     type PackageX() =
         inherit IconNode()
-    [<Erase; Import("default as PaintBucket", "lucide-solid/icons/paint-bucket")>]
-    type PaintBucket() =
-        inherit IconNode()
     [<Erase; Import("default as Package", "lucide-solid/icons/package")>]
     type Package() =
+        inherit IconNode()
+    [<Erase; Import("default as PaintBucket", "lucide-solid/icons/paint-bucket")>]
+    type PaintBucket() =
         inherit IconNode()
     [<Erase; Import("default as PaintRoller", "lucide-solid/icons/paint-roller")>]
     type PaintRoller() =
@@ -2852,11 +2855,11 @@ module Lucide =
     [<Erase; Import("default as Panda", "lucide-solid/icons/panda")>]
     type Panda() =
         inherit IconNode()
-    [<Erase; Import("default as PanelBottomOpen", "lucide-solid/icons/panel-bottom-open")>]
-    type PanelBottomOpen() =
-        inherit IconNode()
     [<Erase; Import("default as PanelBottomClose", "lucide-solid/icons/panel-bottom-close")>]
     type PanelBottomClose() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelBottomOpen", "lucide-solid/icons/panel-bottom-open")>]
+    type PanelBottomOpen() =
         inherit IconNode()
     [<Erase; Import("default as PanelBottom", "lucide-solid/icons/panel-bottom")>]
     type PanelBottom() =
@@ -2882,11 +2885,11 @@ module Lucide =
     [<Erase; Import("default as PanelTopOpen", "lucide-solid/icons/panel-top-open")>]
     type PanelTopOpen() =
         inherit IconNode()
-    [<Erase; Import("default as PanelsLeftBottom", "lucide-solid/icons/panels-left-bottom")>]
-    type PanelsLeftBottom() =
-        inherit IconNode()
     [<Erase; Import("default as PanelTop", "lucide-solid/icons/panel-top")>]
     type PanelTop() =
+        inherit IconNode()
+    [<Erase; Import("default as PanelsLeftBottom", "lucide-solid/icons/panels-left-bottom")>]
+    type PanelsLeftBottom() =
         inherit IconNode()
     [<Erase; Import("default as PanelsRightBottom", "lucide-solid/icons/panels-right-bottom")>]
     type PanelsRightBottom() =
@@ -2906,11 +2909,11 @@ module Lucide =
     [<Erase; Import("default as PawPrint", "lucide-solid/icons/paw-print")>]
     type PawPrint() =
         inherit IconNode()
-    [<Erase; Import("default as PcCase", "lucide-solid/icons/pc-case")>]
-    type PcCase() =
-        inherit IconNode()
     [<Erase; Import("default as Pause", "lucide-solid/icons/pause")>]
     type Pause() =
+        inherit IconNode()
+    [<Erase; Import("default as PcCase", "lucide-solid/icons/pc-case")>]
+    type PcCase() =
         inherit IconNode()
     [<Erase; Import("default as PenOff", "lucide-solid/icons/pen-off")>]
     type PenOff() =
@@ -2918,14 +2921,14 @@ module Lucide =
     [<Erase; Import("default as PenTool", "lucide-solid/icons/pen-tool")>]
     type PenTool() =
         inherit IconNode()
+    [<Erase; Import("default as PencilLine", "lucide-solid/icons/pencil-line")>]
+    type PencilLine() =
+        inherit IconNode()
     [<Erase; Import("default as PencilOff", "lucide-solid/icons/pencil-off")>]
     type PencilOff() =
         inherit IconNode()
     [<Erase; Import("default as PencilRuler", "lucide-solid/icons/pencil-ruler")>]
     type PencilRuler() =
-        inherit IconNode()
-    [<Erase; Import("default as PencilLine", "lucide-solid/icons/pencil-line")>]
-    type PencilLine() =
         inherit IconNode()
     [<Erase; Import("default as Pencil", "lucide-solid/icons/pencil")>]
     type Pencil() =
@@ -2936,11 +2939,11 @@ module Lucide =
     [<Erase; Import("default as Percent", "lucide-solid/icons/percent")>]
     type Percent() =
         inherit IconNode()
-    [<Erase; Import("default as PersonStanding", "lucide-solid/icons/person-standing")>]
-    type PersonStanding() =
-        inherit IconNode()
     [<Erase; Import("default as PhilippinePeso", "lucide-solid/icons/philippine-peso")>]
     type PhilippinePeso() =
+        inherit IconNode()
+    [<Erase; Import("default as PersonStanding", "lucide-solid/icons/person-standing")>]
+    type PersonStanding() =
         inherit IconNode()
     [<Erase; Import("default as PhoneCall", "lucide-solid/icons/phone-call")>]
     type PhoneCall() =
@@ -2969,14 +2972,11 @@ module Lucide =
     [<Erase; Import("default as Piano", "lucide-solid/icons/piano")>]
     type Piano() =
         inherit IconNode()
-    [<Erase; Import("default as PictureInPicture", "lucide-solid/icons/picture-in-picture")>]
-    type PictureInPicture() =
-        inherit IconNode()
     [<Erase; Import("default as Pickaxe", "lucide-solid/icons/pickaxe")>]
     type Pickaxe() =
         inherit IconNode()
-    [<Erase; Import("default as PiggyBank", "lucide-solid/icons/piggy-bank")>]
-    type PiggyBank() =
+    [<Erase; Import("default as PictureInPicture", "lucide-solid/icons/picture-in-picture")>]
+    type PictureInPicture() =
         inherit IconNode()
     [<Erase; Import("default as PictureInPicture2", "lucide-solid/icons/picture-in-picture-2")>]
     type PictureInPicture2() =
@@ -2987,17 +2987,23 @@ module Lucide =
     [<Erase; Import("default as PilcrowRight", "lucide-solid/icons/pilcrow-right")>]
     type PilcrowRight() =
         inherit IconNode()
+    [<Erase; Import("default as PiggyBank", "lucide-solid/icons/piggy-bank")>]
+    type PiggyBank() =
+        inherit IconNode()
     [<Erase; Import("default as Pilcrow", "lucide-solid/icons/pilcrow")>]
     type Pilcrow() =
         inherit IconNode()
     [<Erase; Import("default as PillBottle", "lucide-solid/icons/pill-bottle")>]
     type PillBottle() =
         inherit IconNode()
-    [<Erase; Import("default as Pin", "lucide-solid/icons/pin")>]
-    type Pin() =
-        inherit IconNode()
     [<Erase; Import("default as Pill", "lucide-solid/icons/pill")>]
     type Pill() =
+        inherit IconNode()
+    [<Erase; Import("default as PinOff", "lucide-solid/icons/pin-off")>]
+    type PinOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Pin", "lucide-solid/icons/pin")>]
+    type Pin() =
         inherit IconNode()
     [<Erase; Import("default as Pipette", "lucide-solid/icons/pipette")>]
     type Pipette() =
@@ -3005,29 +3011,26 @@ module Lucide =
     [<Erase; Import("default as Pizza", "lucide-solid/icons/pizza")>]
     type Pizza() =
         inherit IconNode()
-    [<Erase; Import("default as PinOff", "lucide-solid/icons/pin-off")>]
-    type PinOff() =
-        inherit IconNode()
     [<Erase; Import("default as PlaneLanding", "lucide-solid/icons/plane-landing")>]
     type PlaneLanding() =
         inherit IconNode()
     [<Erase; Import("default as PlaneTakeoff", "lucide-solid/icons/plane-takeoff")>]
     type PlaneTakeoff() =
         inherit IconNode()
+    [<Erase; Import("default as Plane", "lucide-solid/icons/plane")>]
+    type Plane() =
+        inherit IconNode()
     [<Erase; Import("default as Play", "lucide-solid/icons/play")>]
     type Play() =
         inherit IconNode()
-    [<Erase; Import("default as Plane", "lucide-solid/icons/plane")>]
-    type Plane() =
+    [<Erase; Import("default as Plug2", "lucide-solid/icons/plug-2")>]
+    type Plug2() =
         inherit IconNode()
     [<Erase; Import("default as Plug", "lucide-solid/icons/plug")>]
     type Plug() =
         inherit IconNode()
     [<Erase; Import("default as Plus", "lucide-solid/icons/plus")>]
     type Plus() =
-        inherit IconNode()
-    [<Erase; Import("default as Plug2", "lucide-solid/icons/plug-2")>]
-    type Plug2() =
         inherit IconNode()
     [<Erase; Import("default as PocketKnife", "lucide-solid/icons/pocket-knife")>]
     type PocketKnife() =
@@ -3053,11 +3056,11 @@ module Lucide =
     [<Erase; Import("default as PoundSterling", "lucide-solid/icons/pound-sterling")>]
     type PoundSterling() =
         inherit IconNode()
-    [<Erase; Import("default as Power", "lucide-solid/icons/power")>]
-    type Power() =
-        inherit IconNode()
     [<Erase; Import("default as PowerOff", "lucide-solid/icons/power-off")>]
     type PowerOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Power", "lucide-solid/icons/power")>]
+    type Power() =
         inherit IconNode()
     [<Erase; Import("default as Presentation", "lucide-solid/icons/presentation")>]
     type Presentation() =
@@ -3065,11 +3068,11 @@ module Lucide =
     [<Erase; Import("default as PrinterCheck", "lucide-solid/icons/printer-check")>]
     type PrinterCheck() =
         inherit IconNode()
-    [<Erase; Import("default as Printer", "lucide-solid/icons/printer")>]
-    type Printer() =
-        inherit IconNode()
     [<Erase; Import("default as Projector", "lucide-solid/icons/projector")>]
     type Projector() =
+        inherit IconNode()
+    [<Erase; Import("default as Printer", "lucide-solid/icons/printer")>]
+    type Printer() =
         inherit IconNode()
     [<Erase; Import("default as Proportions", "lucide-solid/icons/proportions")>]
     type Proportions() =
@@ -3080,14 +3083,14 @@ module Lucide =
     [<Erase; Import("default as Pyramid", "lucide-solid/icons/pyramid")>]
     type Pyramid() =
         inherit IconNode()
-    [<Erase; Import("default as QrCode", "lucide-solid/icons/qr-code")>]
-    type QrCode() =
-        inherit IconNode()
     [<Erase; Import("default as Quote", "lucide-solid/icons/quote")>]
     type Quote() =
         inherit IconNode()
     [<Erase; Import("default as Rabbit", "lucide-solid/icons/rabbit")>]
     type Rabbit() =
+        inherit IconNode()
+    [<Erase; Import("default as QrCode", "lucide-solid/icons/qr-code")>]
+    type QrCode() =
         inherit IconNode()
     [<Erase; Import("default as Radar", "lucide-solid/icons/radar")>]
     type Radar() =
@@ -3098,11 +3101,11 @@ module Lucide =
     [<Erase; Import("default as Radical", "lucide-solid/icons/radical")>]
     type Radical() =
         inherit IconNode()
-    [<Erase; Import("default as RadioTower", "lucide-solid/icons/radio-tower")>]
-    type RadioTower() =
-        inherit IconNode()
     [<Erase; Import("default as RadioReceiver", "lucide-solid/icons/radio-receiver")>]
     type RadioReceiver() =
+        inherit IconNode()
+    [<Erase; Import("default as RadioTower", "lucide-solid/icons/radio-tower")>]
+    type RadioTower() =
         inherit IconNode()
     [<Erase; Import("default as Radio", "lucide-solid/icons/radio")>]
     type Radio() =
@@ -3113,11 +3116,11 @@ module Lucide =
     [<Erase; Import("default as RailSymbol", "lucide-solid/icons/rail-symbol")>]
     type RailSymbol() =
         inherit IconNode()
-    [<Erase; Import("default as Rainbow", "lucide-solid/icons/rainbow")>]
-    type Rainbow() =
-        inherit IconNode()
     [<Erase; Import("default as Rat", "lucide-solid/icons/rat")>]
     type Rat() =
+        inherit IconNode()
+    [<Erase; Import("default as Rainbow", "lucide-solid/icons/rainbow")>]
+    type Rainbow() =
         inherit IconNode()
     [<Erase; Import("default as Ratio", "lucide-solid/icons/ratio")>]
     type Ratio() =
@@ -3128,11 +3131,11 @@ module Lucide =
     [<Erase; Import("default as ReceiptEuro", "lucide-solid/icons/receipt-euro")>]
     type ReceiptEuro() =
         inherit IconNode()
-    [<Erase; Import("default as ReceiptJapaneseYen", "lucide-solid/icons/receipt-japanese-yen")>]
-    type ReceiptJapaneseYen() =
-        inherit IconNode()
     [<Erase; Import("default as ReceiptIndianRupee", "lucide-solid/icons/receipt-indian-rupee")>]
     type ReceiptIndianRupee() =
+        inherit IconNode()
+    [<Erase; Import("default as ReceiptJapaneseYen", "lucide-solid/icons/receipt-japanese-yen")>]
+    type ReceiptJapaneseYen() =
         inherit IconNode()
     [<Erase; Import("default as ReceiptPoundSterling", "lucide-solid/icons/receipt-pound-sterling")>]
     type ReceiptPoundSterling() =
@@ -3146,17 +3149,17 @@ module Lucide =
     [<Erase; Import("default as ReceiptText", "lucide-solid/icons/receipt-text")>]
     type ReceiptText() =
         inherit IconNode()
-    [<Erase; Import("default as Receipt", "lucide-solid/icons/receipt")>]
-    type Receipt() =
-        inherit IconNode()
     [<Erase; Import("default as ReceiptTurkishLira", "lucide-solid/icons/receipt-turkish-lira")>]
     type ReceiptTurkishLira() =
         inherit IconNode()
-    [<Erase; Import("default as RectangleCircle", "lucide-solid/icons/rectangle-circle")>]
-    type RectangleCircle() =
+    [<Erase; Import("default as Receipt", "lucide-solid/icons/receipt")>]
+    type Receipt() =
         inherit IconNode()
     [<Erase; Import("default as RectangleGoggles", "lucide-solid/icons/rectangle-goggles")>]
     type RectangleGoggles() =
+        inherit IconNode()
+    [<Erase; Import("default as RectangleCircle", "lucide-solid/icons/rectangle-circle")>]
+    type RectangleCircle() =
         inherit IconNode()
     [<Erase; Import("default as RectangleHorizontal", "lucide-solid/icons/rectangle-horizontal")>]
     type RectangleHorizontal() =
@@ -3173,11 +3176,11 @@ module Lucide =
     [<Erase; Import("default as Redo2", "lucide-solid/icons/redo-2")>]
     type Redo2() =
         inherit IconNode()
-    [<Erase; Import("default as RefreshCcwDot", "lucide-solid/icons/refresh-ccw-dot")>]
-    type RefreshCcwDot() =
-        inherit IconNode()
     [<Erase; Import("default as Redo", "lucide-solid/icons/redo")>]
     type Redo() =
+        inherit IconNode()
+    [<Erase; Import("default as RefreshCcwDot", "lucide-solid/icons/refresh-ccw-dot")>]
+    type RefreshCcwDot() =
         inherit IconNode()
     [<Erase; Import("default as RefreshCcw", "lucide-solid/icons/refresh-ccw")>]
     type RefreshCcw() =
@@ -3206,20 +3209,20 @@ module Lucide =
     [<Erase; Import("default as Repeat", "lucide-solid/icons/repeat")>]
     type Repeat() =
         inherit IconNode()
-    [<Erase; Import("default as ReplaceAll", "lucide-solid/icons/replace-all")>]
-    type ReplaceAll() =
-        inherit IconNode()
     [<Erase; Import("default as Replace", "lucide-solid/icons/replace")>]
     type Replace() =
+        inherit IconNode()
+    [<Erase; Import("default as ReplaceAll", "lucide-solid/icons/replace-all")>]
+    type ReplaceAll() =
         inherit IconNode()
     [<Erase; Import("default as ReplyAll", "lucide-solid/icons/reply-all")>]
     type ReplyAll() =
         inherit IconNode()
-    [<Erase; Import("default as Reply", "lucide-solid/icons/reply")>]
-    type Reply() =
-        inherit IconNode()
     [<Erase; Import("default as Rewind", "lucide-solid/icons/rewind")>]
     type Rewind() =
+        inherit IconNode()
+    [<Erase; Import("default as Reply", "lucide-solid/icons/reply")>]
+    type Reply() =
         inherit IconNode()
     [<Erase; Import("default as Ribbon", "lucide-solid/icons/ribbon")>]
     type Ribbon() =
@@ -3275,11 +3278,11 @@ module Lucide =
     [<Erase; Import("default as RussianRuble", "lucide-solid/icons/russian-ruble")>]
     type RussianRuble() =
         inherit IconNode()
-    [<Erase; Import("default as Salad", "lucide-solid/icons/salad")>]
-    type Salad() =
-        inherit IconNode()
     [<Erase; Import("default as Sailboat", "lucide-solid/icons/sailboat")>]
     type Sailboat() =
+        inherit IconNode()
+    [<Erase; Import("default as Salad", "lucide-solid/icons/salad")>]
+    type Salad() =
         inherit IconNode()
     [<Erase; Import("default as Sandwich", "lucide-solid/icons/sandwich")>]
     type Sandwich() =
@@ -3320,20 +3323,23 @@ module Lucide =
     [<Erase; Import("default as ScanHeart", "lucide-solid/icons/scan-heart")>]
     type ScanHeart() =
         inherit IconNode()
-    [<Erase; Import("default as ScanLine", "lucide-solid/icons/scan-line")>]
-    type ScanLine() =
-        inherit IconNode()
     [<Erase; Import("default as ScanQrCode", "lucide-solid/icons/scan-qr-code")>]
     type ScanQrCode() =
         inherit IconNode()
-    [<Erase; Import("default as ScanText", "lucide-solid/icons/scan-text")>]
-    type ScanText() =
+    [<Erase; Import("default as ScanLine", "lucide-solid/icons/scan-line")>]
+    type ScanLine() =
         inherit IconNode()
     [<Erase; Import("default as ScanSearch", "lucide-solid/icons/scan-search")>]
     type ScanSearch() =
         inherit IconNode()
+    [<Erase; Import("default as ScanText", "lucide-solid/icons/scan-text")>]
+    type ScanText() =
+        inherit IconNode()
     [<Erase; Import("default as Scan", "lucide-solid/icons/scan")>]
     type Scan() =
+        inherit IconNode()
+    [<Erase; Import("default as School", "lucide-solid/icons/school")>]
+    type School() =
         inherit IconNode()
     [<Erase; Import("default as ScissorsLineDashed", "lucide-solid/icons/scissors-line-dashed")>]
     type ScissorsLineDashed() =
@@ -3341,17 +3347,14 @@ module Lucide =
     [<Erase; Import("default as Scissors", "lucide-solid/icons/scissors")>]
     type Scissors() =
         inherit IconNode()
-    [<Erase; Import("default as School", "lucide-solid/icons/school")>]
-    type School() =
-        inherit IconNode()
-    [<Erase; Import("default as ScreenShareOff", "lucide-solid/icons/screen-share-off")>]
-    type ScreenShareOff() =
-        inherit IconNode()
     [<Erase; Import("default as ScreenShare", "lucide-solid/icons/screen-share")>]
     type ScreenShare() =
         inherit IconNode()
     [<Erase; Import("default as ScrollText", "lucide-solid/icons/scroll-text")>]
     type ScrollText() =
+        inherit IconNode()
+    [<Erase; Import("default as ScreenShareOff", "lucide-solid/icons/screen-share-off")>]
+    type ScreenShareOff() =
         inherit IconNode()
     [<Erase; Import("default as Scroll", "lucide-solid/icons/scroll")>]
     type Scroll() =
@@ -3368,20 +3371,20 @@ module Lucide =
     [<Erase; Import("default as SearchX", "lucide-solid/icons/search-x")>]
     type SearchX() =
         inherit IconNode()
-    [<Erase; Import("default as Search", "lucide-solid/icons/search")>]
-    type Search() =
-        inherit IconNode()
     [<Erase; Import("default as Section", "lucide-solid/icons/section")>]
     type Section() =
+        inherit IconNode()
+    [<Erase; Import("default as Search", "lucide-solid/icons/search")>]
+    type Search() =
         inherit IconNode()
     [<Erase; Import("default as SendToBack", "lucide-solid/icons/send-to-back")>]
     type SendToBack() =
         inherit IconNode()
-    [<Erase; Import("default as Send", "lucide-solid/icons/send")>]
-    type Send() =
-        inherit IconNode()
     [<Erase; Import("default as SeparatorHorizontal", "lucide-solid/icons/separator-horizontal")>]
     type SeparatorHorizontal() =
+        inherit IconNode()
+    [<Erase; Import("default as Send", "lucide-solid/icons/send")>]
+    type Send() =
         inherit IconNode()
     [<Erase; Import("default as SeparatorVertical", "lucide-solid/icons/separator-vertical")>]
     type SeparatorVertical() =
@@ -3389,11 +3392,11 @@ module Lucide =
     [<Erase; Import("default as ServerCog", "lucide-solid/icons/server-cog")>]
     type ServerCog() =
         inherit IconNode()
-    [<Erase; Import("default as ServerCrash", "lucide-solid/icons/server-crash")>]
-    type ServerCrash() =
-        inherit IconNode()
     [<Erase; Import("default as ServerOff", "lucide-solid/icons/server-off")>]
     type ServerOff() =
+        inherit IconNode()
+    [<Erase; Import("default as ServerCrash", "lucide-solid/icons/server-crash")>]
+    type ServerCrash() =
         inherit IconNode()
     [<Erase; Import("default as Server", "lucide-solid/icons/server")>]
     type Server() =
@@ -3401,14 +3404,14 @@ module Lucide =
     [<Erase; Import("default as Settings2", "lucide-solid/icons/settings-2")>]
     type Settings2() =
         inherit IconNode()
+    [<Erase; Import("default as Settings", "lucide-solid/icons/settings")>]
+    type Settings() =
+        inherit IconNode()
     [<Erase; Import("default as Shapes", "lucide-solid/icons/shapes")>]
     type Shapes() =
         inherit IconNode()
     [<Erase; Import("default as Share2", "lucide-solid/icons/share-2")>]
     type Share2() =
-        inherit IconNode()
-    [<Erase; Import("default as Settings", "lucide-solid/icons/settings")>]
-    type Settings() =
         inherit IconNode()
     [<Erase; Import("default as Share", "lucide-solid/icons/share")>]
     type Share() =
@@ -3455,23 +3458,23 @@ module Lucide =
     [<Erase; Import("default as Ship", "lucide-solid/icons/ship")>]
     type Ship() =
         inherit IconNode()
-    [<Erase; Import("default as Shirt", "lucide-solid/icons/shirt")>]
-    type Shirt() =
-        inherit IconNode()
     [<Erase; Import("default as ShoppingBag", "lucide-solid/icons/shopping-bag")>]
     type ShoppingBag() =
+        inherit IconNode()
+    [<Erase; Import("default as Shirt", "lucide-solid/icons/shirt")>]
+    type Shirt() =
         inherit IconNode()
     [<Erase; Import("default as ShoppingBasket", "lucide-solid/icons/shopping-basket")>]
     type ShoppingBasket() =
         inherit IconNode()
-    [<Erase; Import("default as Shovel", "lucide-solid/icons/shovel")>]
-    type Shovel() =
+    [<Erase; Import("default as ShoppingCart", "lucide-solid/icons/shopping-cart")>]
+    type ShoppingCart() =
         inherit IconNode()
     [<Erase; Import("default as ShowerHead", "lucide-solid/icons/shower-head")>]
     type ShowerHead() =
         inherit IconNode()
-    [<Erase; Import("default as ShoppingCart", "lucide-solid/icons/shopping-cart")>]
-    type ShoppingCart() =
+    [<Erase; Import("default as Shovel", "lucide-solid/icons/shovel")>]
+    type Shovel() =
         inherit IconNode()
     [<Erase; Import("default as Shredder", "lucide-solid/icons/shredder")>]
     type Shredder() =
@@ -3494,11 +3497,11 @@ module Lucide =
     [<Erase; Import("default as SignalHigh", "lucide-solid/icons/signal-high")>]
     type SignalHigh() =
         inherit IconNode()
-    [<Erase; Import("default as SignalLow", "lucide-solid/icons/signal-low")>]
-    type SignalLow() =
-        inherit IconNode()
     [<Erase; Import("default as SignalMedium", "lucide-solid/icons/signal-medium")>]
     type SignalMedium() =
+        inherit IconNode()
+    [<Erase; Import("default as SignalLow", "lucide-solid/icons/signal-low")>]
+    type SignalLow() =
         inherit IconNode()
     [<Erase; Import("default as SignalZero", "lucide-solid/icons/signal-zero")>]
     type SignalZero() =
@@ -3512,20 +3515,20 @@ module Lucide =
     [<Erase; Import("default as SignpostBig", "lucide-solid/icons/signpost-big")>]
     type SignpostBig() =
         inherit IconNode()
-    [<Erase; Import("default as Siren", "lucide-solid/icons/siren")>]
-    type Siren() =
-        inherit IconNode()
     [<Erase; Import("default as Signpost", "lucide-solid/icons/signpost")>]
     type Signpost() =
+        inherit IconNode()
+    [<Erase; Import("default as Siren", "lucide-solid/icons/siren")>]
+    type Siren() =
         inherit IconNode()
     [<Erase; Import("default as SkipBack", "lucide-solid/icons/skip-back")>]
     type SkipBack() =
         inherit IconNode()
-    [<Erase; Import("default as Skull", "lucide-solid/icons/skull")>]
-    type Skull() =
-        inherit IconNode()
     [<Erase; Import("default as SkipForward", "lucide-solid/icons/skip-forward")>]
     type SkipForward() =
+        inherit IconNode()
+    [<Erase; Import("default as Skull", "lucide-solid/icons/skull")>]
+    type Skull() =
         inherit IconNode()
     [<Erase; Import("default as Slack", "lucide-solid/icons/slack")>]
     type Slack() =
@@ -3560,20 +3563,20 @@ module Lucide =
     [<Erase; Import("default as Snowflake", "lucide-solid/icons/snowflake")>]
     type Snowflake() =
         inherit IconNode()
-    [<Erase; Import("default as Sofa", "lucide-solid/icons/sofa")>]
-    type Sofa() =
-        inherit IconNode()
     [<Erase; Import("default as SoapDispenserDroplet", "lucide-solid/icons/soap-dispenser-droplet")>]
     type SoapDispenserDroplet() =
+        inherit IconNode()
+    [<Erase; Import("default as Sofa", "lucide-solid/icons/sofa")>]
+    type Sofa() =
         inherit IconNode()
     [<Erase; Import("default as Soup", "lucide-solid/icons/soup")>]
     type Soup() =
         inherit IconNode()
-    [<Erase; Import("default as Space", "lucide-solid/icons/space")>]
-    type Space() =
-        inherit IconNode()
     [<Erase; Import("default as Spade", "lucide-solid/icons/spade")>]
     type Spade() =
+        inherit IconNode()
+    [<Erase; Import("default as Space", "lucide-solid/icons/space")>]
+    type Space() =
         inherit IconNode()
     [<Erase; Import("default as Sparkle", "lucide-solid/icons/sparkle")>]
     type Sparkle() =
@@ -3581,17 +3584,17 @@ module Lucide =
     [<Erase; Import("default as Speaker", "lucide-solid/icons/speaker")>]
     type Speaker() =
         inherit IconNode()
-    [<Erase; Import("default as Speech", "lucide-solid/icons/speech")>]
-    type Speech() =
-        inherit IconNode()
     [<Erase; Import("default as SpellCheck2", "lucide-solid/icons/spell-check-2")>]
     type SpellCheck2() =
         inherit IconNode()
-    [<Erase; Import("default as SplinePointer", "lucide-solid/icons/spline-pointer")>]
-    type SplinePointer() =
+    [<Erase; Import("default as Speech", "lucide-solid/icons/speech")>]
+    type Speech() =
         inherit IconNode()
     [<Erase; Import("default as SpellCheck", "lucide-solid/icons/spell-check")>]
     type SpellCheck() =
+        inherit IconNode()
+    [<Erase; Import("default as SplinePointer", "lucide-solid/icons/spline-pointer")>]
+    type SplinePointer() =
         inherit IconNode()
     [<Erase; Import("default as Spline", "lucide-solid/icons/spline")>]
     type Spline() =
@@ -3599,11 +3602,11 @@ module Lucide =
     [<Erase; Import("default as Split", "lucide-solid/icons/split")>]
     type Split() =
         inherit IconNode()
-    [<Erase; Import("default as Spotlight", "lucide-solid/icons/spotlight")>]
-    type Spotlight() =
-        inherit IconNode()
     [<Erase; Import("default as Spool", "lucide-solid/icons/spool")>]
     type Spool() =
+        inherit IconNode()
+    [<Erase; Import("default as Spotlight", "lucide-solid/icons/spotlight")>]
+    type Spotlight() =
         inherit IconNode()
     [<Erase; Import("default as SprayCan", "lucide-solid/icons/spray-can")>]
     type SprayCan() =
@@ -3632,11 +3635,11 @@ module Lucide =
     [<Erase; Import("default as SquareSquare", "lucide-solid/icons/square-square")>]
     type SquareSquare() =
         inherit IconNode()
-    [<Erase; Import("default as SquareStack", "lucide-solid/icons/square-stack")>]
-    type SquareStack() =
-        inherit IconNode()
     [<Erase; Import("default as SquareStar", "lucide-solid/icons/square-star")>]
     type SquareStar() =
+        inherit IconNode()
+    [<Erase; Import("default as SquareStack", "lucide-solid/icons/square-stack")>]
+    type SquareStack() =
         inherit IconNode()
     [<Erase; Import("default as SquareStop", "lucide-solid/icons/square-stop")>]
     type SquareStop() =
@@ -3665,17 +3668,17 @@ module Lucide =
     [<Erase; Import("default as Squirrel", "lucide-solid/icons/squirrel")>]
     type Squirrel() =
         inherit IconNode()
-    [<Erase; Import("default as StarHalf", "lucide-solid/icons/star-half")>]
-    type StarHalf() =
-        inherit IconNode()
     [<Erase; Import("default as Stamp", "lucide-solid/icons/stamp")>]
     type Stamp() =
         inherit IconNode()
-    [<Erase; Import("default as Star", "lucide-solid/icons/star")>]
-    type Star() =
+    [<Erase; Import("default as StarHalf", "lucide-solid/icons/star-half")>]
+    type StarHalf() =
         inherit IconNode()
     [<Erase; Import("default as StarOff", "lucide-solid/icons/star-off")>]
     type StarOff() =
+        inherit IconNode()
+    [<Erase; Import("default as Star", "lucide-solid/icons/star")>]
+    type Star() =
         inherit IconNode()
     [<Erase; Import("default as StepBack", "lucide-solid/icons/step-back")>]
     type StepBack() =
@@ -3692,17 +3695,17 @@ module Lucide =
     [<Erase; Import("default as StickyNote", "lucide-solid/icons/sticky-note")>]
     type StickyNote() =
         inherit IconNode()
-    [<Erase; Import("default as StretchHorizontal", "lucide-solid/icons/stretch-horizontal")>]
-    type StretchHorizontal() =
-        inherit IconNode()
     [<Erase; Import("default as Store", "lucide-solid/icons/store")>]
     type Store() =
         inherit IconNode()
-    [<Erase; Import("default as Strikethrough", "lucide-solid/icons/strikethrough")>]
-    type Strikethrough() =
+    [<Erase; Import("default as StretchHorizontal", "lucide-solid/icons/stretch-horizontal")>]
+    type StretchHorizontal() =
         inherit IconNode()
     [<Erase; Import("default as StretchVertical", "lucide-solid/icons/stretch-vertical")>]
     type StretchVertical() =
+        inherit IconNode()
+    [<Erase; Import("default as Strikethrough", "lucide-solid/icons/strikethrough")>]
+    type Strikethrough() =
         inherit IconNode()
     [<Erase; Import("default as Subscript", "lucide-solid/icons/subscript")>]
     type Subscript() =
@@ -3716,11 +3719,11 @@ module Lucide =
     [<Erase; Import("default as SunMoon", "lucide-solid/icons/sun-moon")>]
     type SunMoon() =
         inherit IconNode()
-    [<Erase; Import("default as Sun", "lucide-solid/icons/sun")>]
-    type Sun() =
-        inherit IconNode()
     [<Erase; Import("default as SunSnow", "lucide-solid/icons/sun-snow")>]
     type SunSnow() =
+        inherit IconNode()
+    [<Erase; Import("default as Sun", "lucide-solid/icons/sun")>]
+    type Sun() =
         inherit IconNode()
     [<Erase; Import("default as Sunset", "lucide-solid/icons/sunset")>]
     type Sunset() =
@@ -3731,20 +3734,20 @@ module Lucide =
     [<Erase; Import("default as Superscript", "lucide-solid/icons/superscript")>]
     type Superscript() =
         inherit IconNode()
-    [<Erase; Import("default as SwatchBook", "lucide-solid/icons/swatch-book")>]
-    type SwatchBook() =
-        inherit IconNode()
     [<Erase; Import("default as SwissFranc", "lucide-solid/icons/swiss-franc")>]
     type SwissFranc() =
+        inherit IconNode()
+    [<Erase; Import("default as SwatchBook", "lucide-solid/icons/swatch-book")>]
+    type SwatchBook() =
         inherit IconNode()
     [<Erase; Import("default as SwitchCamera", "lucide-solid/icons/switch-camera")>]
     type SwitchCamera() =
         inherit IconNode()
-    [<Erase; Import("default as Swords", "lucide-solid/icons/swords")>]
-    type Swords() =
-        inherit IconNode()
     [<Erase; Import("default as Sword", "lucide-solid/icons/sword")>]
     type Sword() =
+        inherit IconNode()
+    [<Erase; Import("default as Swords", "lucide-solid/icons/swords")>]
+    type Swords() =
         inherit IconNode()
     [<Erase; Import("default as Syringe", "lucide-solid/icons/syringe")>]
     type Syringe() =
@@ -3755,11 +3758,11 @@ module Lucide =
     [<Erase; Import("default as TableCellsMerge", "lucide-solid/icons/table-cells-merge")>]
     type TableCellsMerge() =
         inherit IconNode()
-    [<Erase; Import("default as TableCellsSplit", "lucide-solid/icons/table-cells-split")>]
-    type TableCellsSplit() =
-        inherit IconNode()
     [<Erase; Import("default as TableColumnsSplit", "lucide-solid/icons/table-columns-split")>]
     type TableColumnsSplit() =
+        inherit IconNode()
+    [<Erase; Import("default as TableCellsSplit", "lucide-solid/icons/table-cells-split")>]
+    type TableCellsSplit() =
         inherit IconNode()
     [<Erase; Import("default as TableOfContents", "lucide-solid/icons/table-of-contents")>]
     type TableOfContents() =
@@ -3785,11 +3788,11 @@ module Lucide =
     [<Erase; Import("default as Tag", "lucide-solid/icons/tag")>]
     type Tag() =
         inherit IconNode()
-    [<Erase; Import("default as Tally1", "lucide-solid/icons/tally-1")>]
-    type Tally1() =
-        inherit IconNode()
     [<Erase; Import("default as Tags", "lucide-solid/icons/tags")>]
     type Tags() =
+        inherit IconNode()
+    [<Erase; Import("default as Tally1", "lucide-solid/icons/tally-1")>]
+    type Tally1() =
         inherit IconNode()
     [<Erase; Import("default as Tally2", "lucide-solid/icons/tally-2")>]
     type Tally2() =
@@ -3803,11 +3806,11 @@ module Lucide =
     [<Erase; Import("default as Tally5", "lucide-solid/icons/tally-5")>]
     type Tally5() =
         inherit IconNode()
-    [<Erase; Import("default as Target", "lucide-solid/icons/target")>]
-    type Target() =
-        inherit IconNode()
     [<Erase; Import("default as Tangent", "lucide-solid/icons/tangent")>]
     type Tangent() =
+        inherit IconNode()
+    [<Erase; Import("default as Target", "lucide-solid/icons/target")>]
+    type Target() =
         inherit IconNode()
     [<Erase; Import("default as Telescope", "lucide-solid/icons/telescope")>]
     type Telescope() =
@@ -3848,11 +3851,11 @@ module Lucide =
     [<Erase; Import("default as ThermometerSun", "lucide-solid/icons/thermometer-sun")>]
     type ThermometerSun() =
         inherit IconNode()
-    [<Erase; Import("default as ThumbsDown", "lucide-solid/icons/thumbs-down")>]
-    type ThumbsDown() =
-        inherit IconNode()
     [<Erase; Import("default as Thermometer", "lucide-solid/icons/thermometer")>]
     type Thermometer() =
+        inherit IconNode()
+    [<Erase; Import("default as ThumbsDown", "lucide-solid/icons/thumbs-down")>]
+    type ThumbsDown() =
         inherit IconNode()
     [<Erase; Import("default as ThumbsUp", "lucide-solid/icons/thumbs-up")>]
     type ThumbsUp() =
@@ -3860,14 +3863,14 @@ module Lucide =
     [<Erase; Import("default as TicketCheck", "lucide-solid/icons/ticket-check")>]
     type TicketCheck() =
         inherit IconNode()
+    [<Erase; Import("default as TicketMinus", "lucide-solid/icons/ticket-minus")>]
+    type TicketMinus() =
+        inherit IconNode()
     [<Erase; Import("default as TicketPercent", "lucide-solid/icons/ticket-percent")>]
     type TicketPercent() =
         inherit IconNode()
     [<Erase; Import("default as TicketPlus", "lucide-solid/icons/ticket-plus")>]
     type TicketPlus() =
-        inherit IconNode()
-    [<Erase; Import("default as TicketMinus", "lucide-solid/icons/ticket-minus")>]
-    type TicketMinus() =
         inherit IconNode()
     [<Erase; Import("default as TicketSlash", "lucide-solid/icons/ticket-slash")>]
     type TicketSlash() =
@@ -3884,11 +3887,11 @@ module Lucide =
     [<Erase; Import("default as Tickets", "lucide-solid/icons/tickets")>]
     type Tickets() =
         inherit IconNode()
-    [<Erase; Import("default as TimerReset", "lucide-solid/icons/timer-reset")>]
-    type TimerReset() =
-        inherit IconNode()
     [<Erase; Import("default as TimerOff", "lucide-solid/icons/timer-off")>]
     type TimerOff() =
+        inherit IconNode()
+    [<Erase; Import("default as TimerReset", "lucide-solid/icons/timer-reset")>]
+    type TimerReset() =
         inherit IconNode()
     [<Erase; Import("default as Timer", "lucide-solid/icons/timer")>]
     type Timer() =
@@ -3908,11 +3911,11 @@ module Lucide =
     [<Erase; Import("default as ToolCase", "lucide-solid/icons/tool-case")>]
     type ToolCase() =
         inherit IconNode()
-    [<Erase; Import("default as TouchpadOff", "lucide-solid/icons/touchpad-off")>]
-    type TouchpadOff() =
-        inherit IconNode()
     [<Erase; Import("default as Torus", "lucide-solid/icons/torus")>]
     type Torus() =
+        inherit IconNode()
+    [<Erase; Import("default as TouchpadOff", "lucide-solid/icons/touchpad-off")>]
+    type TouchpadOff() =
         inherit IconNode()
     [<Erase; Import("default as Touchpad", "lucide-solid/icons/touchpad")>]
     type Touchpad() =
@@ -3974,11 +3977,11 @@ module Lucide =
     [<Erase; Import("default as TriangleRight", "lucide-solid/icons/triangle-right")>]
     type TriangleRight() =
         inherit IconNode()
-    [<Erase; Import("default as Triangle", "lucide-solid/icons/triangle")>]
-    type Triangle() =
-        inherit IconNode()
     [<Erase; Import("default as Trophy", "lucide-solid/icons/trophy")>]
     type Trophy() =
+        inherit IconNode()
+    [<Erase; Import("default as Triangle", "lucide-solid/icons/triangle")>]
+    type Triangle() =
         inherit IconNode()
     [<Erase; Import("default as Truck", "lucide-solid/icons/truck")>]
     type Truck() =
@@ -3998,20 +4001,20 @@ module Lucide =
     [<Erase; Import("default as TvMinimalPlay", "lucide-solid/icons/tv-minimal-play")>]
     type TvMinimalPlay() =
         inherit IconNode()
-    [<Erase; Import("default as Tv", "lucide-solid/icons/tv")>]
-    type Tv() =
-        inherit IconNode()
     [<Erase; Import("default as Twitch", "lucide-solid/icons/twitch")>]
     type Twitch() =
+        inherit IconNode()
+    [<Erase; Import("default as Tv", "lucide-solid/icons/tv")>]
+    type Tv() =
         inherit IconNode()
     [<Erase; Import("default as Twitter", "lucide-solid/icons/twitter")>]
     type Twitter() =
         inherit IconNode()
-    [<Erase; Import("default as Type", "lucide-solid/icons/type")>]
-    type Type() =
-        inherit IconNode()
     [<Erase; Import("default as TypeOutline", "lucide-solid/icons/type-outline")>]
     type TypeOutline() =
+        inherit IconNode()
+    [<Erase; Import("default as Type", "lucide-solid/icons/type")>]
+    type Type() =
         inherit IconNode()
     [<Erase; Import("default as UmbrellaOff", "lucide-solid/icons/umbrella-off")>]
     type UmbrellaOff() =
@@ -4040,11 +4043,11 @@ module Lucide =
     [<Erase; Import("default as Ungroup", "lucide-solid/icons/ungroup")>]
     type Ungroup() =
         inherit IconNode()
-    [<Erase; Import("default as Unlink2", "lucide-solid/icons/unlink-2")>]
-    type Unlink2() =
-        inherit IconNode()
     [<Erase; Import("default as Unlink", "lucide-solid/icons/unlink")>]
     type Unlink() =
+        inherit IconNode()
+    [<Erase; Import("default as Unlink2", "lucide-solid/icons/unlink-2")>]
+    type Unlink2() =
         inherit IconNode()
     [<Erase; Import("default as Unplug", "lucide-solid/icons/unplug")>]
     type Unplug() =
@@ -4058,14 +4061,14 @@ module Lucide =
     [<Erase; Import("default as UserCheck", "lucide-solid/icons/user-check")>]
     type UserCheck() =
         inherit IconNode()
+    [<Erase; Import("default as UserLock", "lucide-solid/icons/user-lock")>]
+    type UserLock() =
+        inherit IconNode()
     [<Erase; Import("default as UserCog", "lucide-solid/icons/user-cog")>]
     type UserCog() =
         inherit IconNode()
     [<Erase; Import("default as UserMinus", "lucide-solid/icons/user-minus")>]
     type UserMinus() =
-        inherit IconNode()
-    [<Erase; Import("default as UserLock", "lucide-solid/icons/user-lock")>]
-    type UserLock() =
         inherit IconNode()
     [<Erase; Import("default as UserPen", "lucide-solid/icons/user-pen")>]
     type UserPen() =
@@ -4130,14 +4133,14 @@ module Lucide =
     [<Erase; Import("default as Video", "lucide-solid/icons/video")>]
     type Video() =
         inherit IconNode()
+    [<Erase; Import("default as Videotape", "lucide-solid/icons/videotape")>]
+    type Videotape() =
+        inherit IconNode()
     [<Erase; Import("default as View", "lucide-solid/icons/view")>]
     type View() =
         inherit IconNode()
     [<Erase; Import("default as Voicemail", "lucide-solid/icons/voicemail")>]
     type Voicemail() =
-        inherit IconNode()
-    [<Erase; Import("default as Videotape", "lucide-solid/icons/videotape")>]
-    type Videotape() =
         inherit IconNode()
     [<Erase; Import("default as Volleyball", "lucide-solid/icons/volleyball")>]
     type Volleyball() =
@@ -4151,11 +4154,11 @@ module Lucide =
     [<Erase; Import("default as VolumeOff", "lucide-solid/icons/volume-off")>]
     type VolumeOff() =
         inherit IconNode()
-    [<Erase; Import("default as Volume", "lucide-solid/icons/volume")>]
-    type Volume() =
-        inherit IconNode()
     [<Erase; Import("default as VolumeX", "lucide-solid/icons/volume-x")>]
     type VolumeX() =
+        inherit IconNode()
+    [<Erase; Import("default as Volume", "lucide-solid/icons/volume")>]
+    type Volume() =
         inherit IconNode()
     [<Erase; Import("default as Vote", "lucide-solid/icons/vote")>]
     type Vote() =
@@ -4208,11 +4211,11 @@ module Lucide =
     [<Erase; Import("default as Wheat", "lucide-solid/icons/wheat")>]
     type Wheat() =
         inherit IconNode()
-    [<Erase; Import("default as WifiCog", "lucide-solid/icons/wifi-cog")>]
-    type WifiCog() =
-        inherit IconNode()
     [<Erase; Import("default as WholeWord", "lucide-solid/icons/whole-word")>]
     type WholeWord() =
+        inherit IconNode()
+    [<Erase; Import("default as WifiCog", "lucide-solid/icons/wifi-cog")>]
+    type WifiCog() =
         inherit IconNode()
     [<Erase; Import("default as WifiHigh", "lucide-solid/icons/wifi-high")>]
     type WifiHigh() =
@@ -4226,17 +4229,17 @@ module Lucide =
     [<Erase; Import("default as WifiPen", "lucide-solid/icons/wifi-pen")>]
     type WifiPen() =
         inherit IconNode()
-    [<Erase; Import("default as WifiZero", "lucide-solid/icons/wifi-zero")>]
-    type WifiZero() =
-        inherit IconNode()
     [<Erase; Import("default as WifiSync", "lucide-solid/icons/wifi-sync")>]
     type WifiSync() =
         inherit IconNode()
-    [<Erase; Import("default as WindArrowDown", "lucide-solid/icons/wind-arrow-down")>]
-    type WindArrowDown() =
+    [<Erase; Import("default as WifiZero", "lucide-solid/icons/wifi-zero")>]
+    type WifiZero() =
         inherit IconNode()
     [<Erase; Import("default as Wifi", "lucide-solid/icons/wifi")>]
     type Wifi() =
+        inherit IconNode()
+    [<Erase; Import("default as WindArrowDown", "lucide-solid/icons/wind-arrow-down")>]
+    type WindArrowDown() =
         inherit IconNode()
     [<Erase; Import("default as Wind", "lucide-solid/icons/wind")>]
     type Wind() =
@@ -4364,17 +4367,17 @@ module Lucide =
     [<Erase; Import("default as ChartNoAxesColumnIncreasing", "lucide-solid/icons/chart-no-axes-column-increasing")>]
     type ChartNoAxesColumnIncreasing() =
         inherit IconNode()
-    [<Erase; Import("default as ChartNoAxesGantt", "lucide-solid/icons/chart-no-axes-gantt")>]
-    type ChartNoAxesGantt() =
-        inherit IconNode()
     [<Erase; Import("default as ChartNoAxesColumn", "lucide-solid/icons/chart-no-axes-column")>]
     type ChartNoAxesColumn() =
         inherit IconNode()
-    [<Erase; Import("default as ChartPie", "lucide-solid/icons/chart-pie")>]
-    type ChartPie() =
+    [<Erase; Import("default as ChartNoAxesGantt", "lucide-solid/icons/chart-no-axes-gantt")>]
+    type ChartNoAxesGantt() =
         inherit IconNode()
     [<Erase; Import("default as ChartScatter", "lucide-solid/icons/chart-scatter")>]
     type ChartScatter() =
+        inherit IconNode()
+    [<Erase; Import("default as ChartPie", "lucide-solid/icons/chart-pie")>]
+    type ChartPie() =
         inherit IconNode()
     [<Erase; Import("default as Chromium", "lucide-solid/icons/chromium")>]
     type Chromium() =
@@ -4385,17 +4388,17 @@ module Lucide =
     [<Erase; Import("default as CircleArrowDown", "lucide-solid/icons/circle-arrow-down")>]
     type CircleArrowDown() =
         inherit IconNode()
-    [<Erase; Import("default as CircleArrowLeft", "lucide-solid/icons/circle-arrow-left")>]
-    type CircleArrowLeft() =
-        inherit IconNode()
     [<Erase; Import("default as CircleArrowOutDownLeft", "lucide-solid/icons/circle-arrow-out-down-left")>]
     type CircleArrowOutDownLeft() =
         inherit IconNode()
-    [<Erase; Import("default as CircleArrowOutDownRight", "lucide-solid/icons/circle-arrow-out-down-right")>]
-    type CircleArrowOutDownRight() =
+    [<Erase; Import("default as CircleArrowLeft", "lucide-solid/icons/circle-arrow-left")>]
+    type CircleArrowLeft() =
         inherit IconNode()
     [<Erase; Import("default as CircleArrowOutUpLeft", "lucide-solid/icons/circle-arrow-out-up-left")>]
     type CircleArrowOutUpLeft() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleArrowOutDownRight", "lucide-solid/icons/circle-arrow-out-down-right")>]
+    type CircleArrowOutDownRight() =
         inherit IconNode()
     [<Erase; Import("default as CircleArrowOutUpRight", "lucide-solid/icons/circle-arrow-out-up-right")>]
     type CircleArrowOutUpRight() =
@@ -4403,11 +4406,11 @@ module Lucide =
     [<Erase; Import("default as CircleArrowRight", "lucide-solid/icons/circle-arrow-right")>]
     type CircleArrowRight() =
         inherit IconNode()
-    [<Erase; Import("default as CircleArrowUp", "lucide-solid/icons/circle-arrow-up")>]
-    type CircleArrowUp() =
-        inherit IconNode()
     [<Erase; Import("default as CircleCheckBig", "lucide-solid/icons/circle-check-big")>]
     type CircleCheckBig() =
+        inherit IconNode()
+    [<Erase; Import("default as CircleArrowUp", "lucide-solid/icons/circle-arrow-up")>]
+    type CircleArrowUp() =
         inherit IconNode()
     [<Erase; Import("default as CircleCheck", "lucide-solid/icons/circle-check")>]
     type CircleCheck() =
