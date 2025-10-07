@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <FablePackageType>library</FablePackageType>
@@ -21,7 +22,7 @@
         <PackageVersion>0.1.0</PackageVersion>
         <!--        <PackageReleaseNotes>Init</PackageReleaseNotes>-->
         <NpmDependencies>
-            <NpmPackage Name="@tanstack/solid-virtual" Version=">= 3.0.0" />
+            <NpmPackage Name="@tanstack/solid-virtual" Version="&gt;= 3.0.0" />
         </NpmDependencies>
     </PropertyGroup>
 
