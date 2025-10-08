@@ -1,5 +1,6 @@
 ﻿namespace rec Partas.Solid.TanStack.Virtual
 
+open System.Runtime.CompilerServices
 open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
@@ -45,19 +46,19 @@ type Exports =
     [<Import("defaultRangeExtractor", "@tanstack/solid-virtual")>]
     static member inline defaultRangeExtractor: (Range -> ResizeArray<float>) = nativeOnly
     [<Import("observeElementRect", "@tanstack/solid-virtual")>]
-    static member inline observeElementRect: Exports.observeElementRect = nativeOnly
+    static member inline observeElementRect: ObserveElementRect = nativeOnly
     [<Import("observeWindowRect", "@tanstack/solid-virtual")>]
-    static member inline observeWindowRect: Exports.observeWindowRect = nativeOnly
+    static member inline observeWindowRect: ObserveWindowRect = nativeOnly
     [<Import("observeElementOffset", "@tanstack/solid-virtual")>]
-    static member inline observeElementOffset: Exports.observeElementOffset = nativeOnly
+    static member inline observeElementOffset: ObserveElementOffset = nativeOnly
     [<Import("observeWindowOffset", "@tanstack/solid-virtual")>]
-    static member inline observeWindowOffset: Exports.observeWindowOffset = nativeOnly
+    static member inline observeWindowOffset: ObserveWindowOffset = nativeOnly
     [<Import("measureElement", "@tanstack/solid-virtual")>]
-    static member inline measureElement: Exports.measureElement<'TItemElement> = nativeOnly
+    static member inline measureElement: MeasureElement<'TItemElement> = nativeOnly
     [<Import("windowScroll", "@tanstack/solid-virtual")>]
-    static member inline windowScroll: Exports.windowScroll = nativeOnly
+    static member inline windowScroll: WindowScroll = nativeOnly
     [<Import("elementScroll", "@tanstack/solid-virtual")>]
-    static member inline elementScroll: Exports.elementScroll = nativeOnly
+    static member inline elementScroll: ElementScroll = nativeOnly
 
 [<JS.Pojo>]
 type ScrollToOptions(?align: ScrollAlignment option, ?behavior: ScrollBehavior option) =
@@ -129,13 +130,13 @@ type VirtualizerOptions<'TItemElement>
         ?count: float,
         ?getScrollElement: (unit -> HtmlElement option),
         ?estimateSize: (float -> float),
-        ?scrollToFn: VirtualizerOptions.scrollToFn<'TItemElement>,
-        ?observeElementRect: VirtualizerOptions.observeElementRect<'TItemElement>,
-        ?observeElementOffset: VirtualizerOptions.observeElementOffset<'TItemElement>,
+        ?scrollToFn: ScrollToFn<'TItemElement>,
+        ?observeElementRect: ObserveElementRect,
+        ?observeElementOffset: ObserveElementOffset,
         ?debug: bool,
         ?initialRect: Rect,
-        ?onChange: VirtualizerOptions.onChange<'TItemElement>,
-        ?measureElement: VirtualizerOptions.measureElement<'TItemElement>,
+        ?onChange: OnChangeFn<'TItemElement>,
+        ?measureElement: MeasureElement<'TItemElement>,
         ?overscan: float,
         ?horizontal: bool,
         ?paddingStart: float,
@@ -166,13 +167,13 @@ type VirtualizerOptions<'TItemElement>
     member val estimateSize: (float -> float) = JS.undefined with get , set
 
     [<Erase>]
-    member val scrollToFn: VirtualizerOptions.scrollToFn<'TItemElement> = JS.undefined with get , set
+    member val scrollToFn: ScrollToFn<'TItemElement> = JS.undefined with get , set
 
     [<Erase>]
-    member val observeElementRect: VirtualizerOptions.observeElementRect<'TItemElement> = JS.undefined with get , set
+    member val observeElementRect: ObserveElementRect = JS.undefined with get , set
 
     [<Erase>]
-    member val observeElementOffset: VirtualizerOptions.observeElementOffset<'TItemElement> = JS.undefined with get , set
+    member val observeElementOffset: ObserveElementOffset = JS.undefined with get , set
 
     [<Erase>]
     member val debug: bool option = JS.undefined with get , set
@@ -181,10 +182,10 @@ type VirtualizerOptions<'TItemElement>
     member val initialRect: Rect option = JS.undefined with get , set
 
     [<Erase>]
-    member val onChange: VirtualizerOptions.onChange<'TItemElement> option = JS.undefined with get , set
+    member val onChange: OnChangeFn<'TItemElement> option = JS.undefined with get , set
 
     [<Erase>]
-    member val measureElement: VirtualizerOptions.measureElement<'TItemElement> option = JS.undefined with get , set
+    member val measureElement: MeasureElement<'TItemElement> option = JS.undefined with get , set
 
     [<Erase>]
     member val overscan: float option = JS.undefined with get , set
@@ -254,24 +255,24 @@ type Virtualizer<'TItemElement> =
     abstract member scrollRect: Rect option with get, set
     abstract member scrollOffset: float option with get, set
     abstract member scrollDirection: ScrollDirection option with get, set
-    abstract member shouldAdjustScrollPositionOnItemSizeChange: Virtualizer.shouldAdjustScrollPositionOnItemSizeChange<'TItemElement> option with get, set
+    abstract member shouldAdjustScrollPositionOnItemSizeChange: ShouldAdjustScrollPositionOnItemSizeChangeFn<'TItemElement> option with get, set
     abstract member elementsCache: Map<Key, 'TItemElement> with get, set
-    abstract member range: Virtualizer.range option with get, set
+    abstract member range: Range option with get, set
     abstract member setOptions: (VirtualizerOptions<'TItemElement> -> unit) with get, set
     abstract member _didMount: (unit -> (unit -> unit)) with get, set
     abstract member _willUpdate: (unit -> unit) with get, set
-    abstract member calculateRange: Virtualizer.calculateRange with get, set
-    abstract member getVirtualIndexes: Virtualizer.getVirtualIndexes with get, set
+    abstract member calculateRange: CalculateRangeFn with get, set
+    abstract member getVirtualIndexes: GetVirtualIndexesFn with get, set
     abstract member indexFromElement: ('TItemElement -> float) with get, set
-    abstract member resizeItem: Virtualizer.resizeItem with get, set
+    abstract member resizeItem: ResizeItemFn with get, set
     abstract member measureElement: ('TItemElement option -> unit) with get, set
-    abstract member getVirtualItems: Virtualizer.getVirtualItems with get, set
+    abstract member getVirtualItems: GetVirtualItemsFn with get, set
     abstract member getVirtualItemForOffset: (float -> VirtualItem option) with get, set
-    abstract member getOffsetForAlignment: Virtualizer.getOffsetForAlignment with get, set
-    abstract member getOffsetForIndex: Virtualizer.getOffsetForIndex with get, set
-    abstract member scrollToOffset: Virtualizer.scrollToOffset with get, set
-    abstract member scrollToIndex: Virtualizer.scrollToIndex with get, set
-    abstract member scrollBy: Virtualizer.scrollBy with get, set
+    abstract member getOffsetForAlignment: GetOffsetForAlignmentFn with get, set
+    abstract member getOffsetForIndex: GetOffsetForIndexFn with get, set
+    abstract member scrollToOffset: ScrollToOffsetFn with get, set
+    abstract member scrollToIndex: ScrollToIndexFn with get, set
+    abstract member scrollBy: ScrollByFn with get, set
     abstract member getTotalSize: (unit -> float) with get, set
     abstract member ``measure``: (unit -> unit) with get, set
     
@@ -281,13 +282,13 @@ type Exports with
             ?count: float,
             ?getScrollElement: (unit -> HtmlElement option),
             ?estimateSize: (float -> float),
-            ?scrollToFn: VirtualizerOptions.scrollToFn<'TItemElement>,
-            ?observeElementRect: VirtualizerOptions.observeElementRect<'TItemElement>,
-            ?observeElementOffset: VirtualizerOptions.observeElementOffset<'TItemElement>,
+            ?scrollToFn: ScrollToFn<'TItemElement>,
+            ?observeElementRect: ObserveElementRect,
+            ?observeElementOffset: ObserveElementOffset,
             ?debug: bool,
             ?initialRect: Rect,
-            ?onChange: VirtualizerOptions.onChange<'TItemElement>,
-            ?measureElement: VirtualizerOptions.measureElement<'TItemElement>,
+            ?onChange: OnChangeFn<'TItemElement>,
+            ?measureElement: MeasureElement<'TItemElement>,
             ?overscan: float,
             ?horizontal: bool,
             ?paddingStart: float,
@@ -316,13 +317,13 @@ type Exports with
             ?count: float,
             ?getScrollElement: unit -> HtmlElement option,
             ?estimateSize: float -> float,
-            ?scrollToFn: VirtualizerOptions.scrollToFn<'TItemElement>,
-            ?observeElementRect: VirtualizerOptions.observeElementRect<'TItemElement>,
-            ?observeElementOffset: VirtualizerOptions.observeElementOffset<'TItemElement>,
+            ?scrollToFn: ScrollToFn<'TItemElement>,
+            ?observeElementRect: ObserveElementRect,
+            ?observeElementOffset: ObserveElementOffset,
             ?debug: bool,
             ?initialRect: Rect,
-            ?onChange: VirtualizerOptions.onChange<'TItemElement>,
-            ?measureElement: VirtualizerOptions.measureElement<'TItemElement>,
+            ?onChange: OnChangeFn<'TItemElement>,
+            ?measureElement: MeasureElement<'TItemElement>,
             ?overscan: float,
             ?horizontal: bool,
             ?paddingStart: float,
@@ -354,170 +355,79 @@ type ScrollToFnOptions(
     member val adjustments : float option = nativeOnly with get, set
     member val behavior : ScrollBehavior option = nativeOnly with get, set
     
-module VirtualizerOptions =
 
-    type scrollToFn<'TItemElement> =
-        delegate of offset: float * options: ScrollToFnOptions * instance: Virtualizer<'TItemElement> -> unit
+type ScrollToFn<'TItemElement> =
+    delegate of offset: float * options: ScrollToFnOptions * instance: Virtualizer<'TItemElement> -> unit
 
-    type observeElementRect<'TItemElement> =
-        delegate of instance: Virtualizer<'TItemElement> * cb: (Rect -> unit) -> U2<(unit -> unit), unit>
+type ObserveElementRectFn<'TItemElement> =
+    delegate of instance: Virtualizer<'TItemElement> * cb: (Rect -> unit) -> U2<(unit -> unit), unit>
 
-    type observeElementOffset<'TItemElement> =
-        delegate of instance: Virtualizer<'TItemElement> * cb: ObserveOffsetCallback -> U2<unit,(unit -> unit)>
+type ObserveElementOffsetFn<'TItemElement> =
+    delegate of instance: Virtualizer<'TItemElement> * cb: ObserveOffsetCallback -> U2<unit,(unit -> unit)>
 
-    type onChange<'TItemElement> =
-        delegate of instance: Virtualizer<'TItemElement> * sync: bool -> unit
+type OnChangeFn<'TItemElement> =
+    delegate of instance: Virtualizer<'TItemElement> * sync: bool -> unit
 
-    type measureElement<'TItemElement> =
-        delegate of element: 'TItemElement * entry: ResizeObserverEntry option * instance: Virtualizer<'TItemElement> -> float
+type MeasureElementFn<'TItemElement> =
+    delegate of element: 'TItemElement * entry: ResizeObserverEntry option * instance: Virtualizer<'TItemElement> -> float
 
-module Virtualizer =
-
-    type shouldAdjustScrollPositionOnItemSizeChange<'TItemElement> =
-        delegate of item: VirtualItem * delta: float * instance: Virtualizer<'TItemElement> -> bool
-
-    [<Global>]
-    [<AllowNullLiteral>]
-    type range
-        [<ParamObject; Emit("$0")>]
-        (
-            startIndex: float,
-            endIndex: float
-        ) =
-
-        member val startIndex : float = nativeOnly with get, set
-        member val endIndex : float = nativeOnly with get, set
-
-    // [<Global>]
-    // [<AllowNullLiteral>]
-    // type calculateRange
-    //     [<ParamObject; Emit("$0")>]
-    //     (
-    //         updateDeps: unit,
-    //         ?Invoke: Virtualizer.calculateRange.Invoke
-    //     ) =
-    //
-    //     member val updateDeps : unit = nativeOnly
-    //     member val Invoke : Virtualizer.calculateRange.Invoke option = nativeOnly
-    type calculateRange = delegate of unit -> range option
-
-    type getVirtualIndexes = delegate of unit -> int array
-    // [<Global>]
-    // [<AllowNullLiteral>]
-    // type getVirtualIndexes
-    //     [<ParamObject; Emit("$0")>]
-    //     (
-    //         Invoke: ResizeArray<float>,
-    //         updateDeps: unit
-    //     ) =
-    //
-    //     member val Invoke : ResizeArray<float> = nativeOnly
-    //     member val updateDeps : unit = nativeOnly
-
-    type resizeItem =
-        delegate of index: float * size: float -> unit
+type ShouldAdjustScrollPositionOnItemSizeChangeFn<'TItemElement> =
+    delegate of item: VirtualItem * delta: float * instance: Virtualizer<'TItemElement> -> bool
     
+type CalculateRangeFn = delegate of unit -> Range option
 
-    // [<Global>]
-    // [<AllowNullLiteral>]
-    // type getVirtualItems
-    //     [<ParamObject; Emit("$0")>]
-    //     (
-    //         Invoke: ResizeArray<VirtualItem>,
-    //         updateDeps: unit
-    //     ) =
-    //
-    //     member val Invoke : ResizeArray<VirtualItem> = nativeOnly
-    //     member val updateDeps : unit = nativeOnly
-    type getVirtualItems = delegate of unit -> VirtualItem array
+type GetVirtualIndexesFn = delegate of unit -> int array
 
-    type getOffsetForAlignment =
-        delegate of toOffset: float * align: ScrollAlignment * ?itemSize: float -> float
+type ResizeItemFn =
+    delegate of index: float * size: float -> unit
 
-    type getOffsetForIndex =
-        delegate of index: float * ?align: ScrollAlignment -> U2<float * string, float * Virtualizer.getOffsetForIndex.U2.Case2> option
 
-    type scrollToOffset =
-        delegate of toOffset: float * ?arg1: ScrollToOffsetOptions -> unit
+[<AutoOpen>]
+module Extensions =
+    [<Erase>]
+    type DelegateExtension =
+        [<Extension; Emit("$0.updateDeps()")>]
+        static member inline updateDeps(this: GetVirtualItemsFn): unit = jsNative
+        [<Extension; Emit("$0.updateDeps()")>]
+        static member inline updateDeps(this: GetVirtualIndexesFn): unit = jsNative
+        [<Extension; Emit("$0.updateDeps()")>]
+        static member inline updateDeps(this: CalculateRangeFn): unit = jsNative
+        
+    
+type GetVirtualItemsFn = delegate of unit -> VirtualItem array
 
-    type scrollToIndex =
-        delegate of index: float * ?arg1: ScrollToIndexOptions -> unit
+type GetOffsetForAlignmentFn =
+    delegate of toOffset: float * align: ScrollAlignment * ?itemSize: float -> float
 
-    type scrollBy =
-        delegate of delta: float * ?arg1: ScrollToOffsetOptions -> unit
+type GetOffsetForIndexFn =
+    delegate of index: float * ?align: ScrollAlignment -> U2<float * string, float * ScrollAlignment option>
 
-    module calculateRange =
+type ScrollToOffsetFn =
+    delegate of toOffset: float * ?arg1: ScrollToOffsetOptions -> unit
 
-        [<Global>]
-        [<AllowNullLiteral>]
-        type Invoke
-            [<ParamObject; Emit("$0")>]
-            (
-                startIndex: float,
-                endIndex: float
-            ) =
+type ScrollToIndexFn =
+    delegate of index: float * ?arg1: ScrollToIndexOptions -> unit
 
-            member val startIndex : float = nativeOnly with get, set
-            member val endIndex : float = nativeOnly with get, set
+type ScrollByFn =
+    delegate of delta: float * ?arg1: ScrollToOffsetOptions -> unit
 
-    module getOffsetForIndex =
+type ObserveElementRect =
+    delegate of instance: Virtualizer<obj> * cb: (Rect -> unit) -> (unit -> unit) option
 
-        module U2 =
+type ObserveWindowRect =
+    delegate of instance: Virtualizer<obj> * cb: (Rect -> unit) -> (unit -> unit) option
 
-            [<RequireQualifiedAccess>]
-            [<StringEnum(CaseRules.None)>]
-            type Case2 =
-                | start
-                | center
-                | ``end``
+type ObserveElementOffset =
+    delegate of instance: Virtualizer<obj> * cb: ObserveOffsetCallback -> (unit -> unit) option
 
-module Exports =
+type ObserveWindowOffset =
+    delegate of instance: Virtualizer<obj> * cb: ObserveOffsetCallback -> (unit -> unit) option
 
-    type observeElementRect =
-        delegate of instance: Virtualizer<obj> * cb: (Rect -> unit) -> (unit -> unit) option
+type MeasureElement<'TItemElement> =
+    delegate of element: 'TItemElement * entry: ResizeObserverEntry option * instance: Virtualizer<'TItemElement> -> float
 
-    type observeWindowRect =
-        delegate of instance: Virtualizer<obj> * cb: (Rect -> unit) -> (unit -> unit) option
+type WindowScroll =
+    delegate of offset: float * arg1: ScrollToFnOptions * instance: Virtualizer<obj> -> unit
 
-    type observeElementOffset =
-        delegate of instance: Virtualizer<obj> * cb: ObserveOffsetCallback -> (unit -> unit) option
-
-    type observeWindowOffset =
-        delegate of instance: Virtualizer<obj> * cb: ObserveOffsetCallback -> (unit -> unit) option
-
-    type measureElement<'TItemElement> =
-        delegate of element: 'TItemElement * entry: ResizeObserverEntry option * instance: Virtualizer<'TItemElement> -> float
-
-    type windowScroll =
-        delegate of offset: float * arg1: Exports.windowScroll.arg1 * instance: Virtualizer<obj> -> unit
-
-    type elementScroll =
-        delegate of offset: float * arg1: Exports.elementScroll.arg1 * instance: Virtualizer<obj> -> unit
-
-    module windowScroll =
-
-        [<Global>]
-        [<AllowNullLiteral>]
-        type arg1
-            [<ParamObject; Emit("$0")>]
-            (
-                ?adjustments: float,
-                ?behavior: ScrollBehavior
-            ) =
-
-            member val adjustments : float option = nativeOnly with get, set
-            member val behavior : ScrollBehavior option = nativeOnly with get, set
-
-    module elementScroll =
-
-        [<Global>]
-        [<AllowNullLiteral>]
-        type arg1
-            [<ParamObject; Emit("$0")>]
-            (
-                ?adjustments: float,
-                ?behavior: ScrollBehavior
-            ) =
-
-            member val adjustments : float option = nativeOnly with get, set
-            member val behavior : ScrollBehavior option = nativeOnly with get, set
+type ElementScroll =
+    delegate of offset: float * arg1: ScrollToFnOptions * instance: Virtualizer<obj> -> unit
