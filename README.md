@@ -30,6 +30,7 @@ Visit the [`Partas.Solid` docs](https://partas-solid.vercel.app/) for more infor
 | Cmdk              | Stable            |
 | ArkUI             | Partial-Stable    |
 | Corvu             | Partial-Beta      |
+| TanStack.Virtual  | Beta              |
 | Sonner            | Beta              |
 | Tabler (Icons)    | Beta              |
 | ApexCharts        | Beta-ish          |
@@ -40,7 +41,6 @@ Visit the [`Partas.Solid` docs](https://partas-solid.vercel.app/) for more infor
 | Dnd               | _Incomplete_      |
 | DndKit            | _Incomplete_      |
 | EmblaCarousel     | _Incomplete_      |
-| TanStack.Virtual  | _Incomplete_      |
 | Internationalised | _Dependency_      |
 
 > - Stable
