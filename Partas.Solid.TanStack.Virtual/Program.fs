@@ -276,7 +276,7 @@ type Virtualizer<'TItemElement> =
     abstract member ``measure``: (unit -> unit) with get, set
     
 type Exports with
-    [<ImportMember("@tanstack/solid-virtual")>]
+    [<ImportMember("@tanstack/solid-virtual"); ParamObject>]
     static member createVirtualizer<'TItemElement>(
             ?count: float,
             ?getScrollElement: (unit -> HtmlElement option),
@@ -308,8 +308,10 @@ type Exports with
             ?isRtl: bool,
             ?useAnimationFrameWithResizeObserver: bool      
         ): Virtualizer<'TItemElement> = jsNative
-
     [<ImportMember("@tanstack/solid-virtual")>]
+    static member createVirtualizer<'TItemElement>(options: VirtualizerOptions<'TItemElement>) = jsNative
+
+    [<ImportMember("@tanstack/solid-virtual"); ParamObject>]
     static member createWindowVirtualizer<'TItemElement>(
             ?count: float,
             ?getScrollElement: unit -> HtmlElement option,
@@ -341,6 +343,8 @@ type Exports with
             ?isRtl: bool,
             ?useAnimationFrameWithResizeObserver: bool      
         ): Virtualizer<'TItemElement> = jsNative
+    [<ImportMember("@tanstack/solid-virtual")>]
+    static member createWindowVirtualizer<'TItemElement>(options: VirtualizerOptions<'TItemElement>) = jsNative
 
 [<JS.Pojo>]
 type ScrollToFnOptions(
@@ -384,44 +388,48 @@ module Virtualizer =
         member val startIndex : float = nativeOnly with get, set
         member val endIndex : float = nativeOnly with get, set
 
-    [<Global>]
-    [<AllowNullLiteral>]
-    type calculateRange
-        [<ParamObject; Emit("$0")>]
-        (
-            updateDeps: unit,
-            ?Invoke: Virtualizer.calculateRange.Invoke
-        ) =
+    // [<Global>]
+    // [<AllowNullLiteral>]
+    // type calculateRange
+    //     [<ParamObject; Emit("$0")>]
+    //     (
+    //         updateDeps: unit,
+    //         ?Invoke: Virtualizer.calculateRange.Invoke
+    //     ) =
+    //
+    //     member val updateDeps : unit = nativeOnly
+    //     member val Invoke : Virtualizer.calculateRange.Invoke option = nativeOnly
+    type calculateRange = delegate of unit -> range option
 
-        member val updateDeps : unit = nativeOnly
-        member val Invoke : Virtualizer.calculateRange.Invoke option = nativeOnly
-
-    [<Global>]
-    [<AllowNullLiteral>]
-    type getVirtualIndexes
-        [<ParamObject; Emit("$0")>]
-        (
-            Invoke: ResizeArray<float>,
-            updateDeps: unit
-        ) =
-
-        member val Invoke : ResizeArray<float> = nativeOnly
-        member val updateDeps : unit = nativeOnly
+    type getVirtualIndexes = delegate of unit -> int array
+    // [<Global>]
+    // [<AllowNullLiteral>]
+    // type getVirtualIndexes
+    //     [<ParamObject; Emit("$0")>]
+    //     (
+    //         Invoke: ResizeArray<float>,
+    //         updateDeps: unit
+    //     ) =
+    //
+    //     member val Invoke : ResizeArray<float> = nativeOnly
+    //     member val updateDeps : unit = nativeOnly
 
     type resizeItem =
         delegate of index: float * size: float -> unit
+    
 
-    [<Global>]
-    [<AllowNullLiteral>]
-    type getVirtualItems
-        [<ParamObject; Emit("$0")>]
-        (
-            Invoke: ResizeArray<VirtualItem>,
-            updateDeps: unit
-        ) =
-
-        member val Invoke : ResizeArray<VirtualItem> = nativeOnly
-        member val updateDeps : unit = nativeOnly
+    // [<Global>]
+    // [<AllowNullLiteral>]
+    // type getVirtualItems
+    //     [<ParamObject; Emit("$0")>]
+    //     (
+    //         Invoke: ResizeArray<VirtualItem>,
+    //         updateDeps: unit
+    //     ) =
+    //
+    //     member val Invoke : ResizeArray<VirtualItem> = nativeOnly
+    //     member val updateDeps : unit = nativeOnly
+    type getVirtualItems = delegate of unit -> VirtualItem array
 
     type getOffsetForAlignment =
         delegate of toOffset: float * align: ScrollAlignment * ?itemSize: float -> float
