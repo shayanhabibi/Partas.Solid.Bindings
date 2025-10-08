@@ -31,7 +31,7 @@ module Spec =
 module TablerGenerator =
     let renderIdentifierMember (identifier: string) =
         $"""
-    [<Erase; Import("{identifier}", "@tabler/icons-solidjs")>]
+    [<Erase; Import("Icon{identifier}", "@tabler/icons-solidjs")>]
     type {identifier |> Lucide.Helpers.appendApostropheToReservedKeywords}() =
         inherit IconNode()"""
     let renderDocument (parsedIdentifiers: string array) =
