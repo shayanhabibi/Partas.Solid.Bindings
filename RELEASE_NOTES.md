@@ -19,8 +19,8 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Corvu**](#corvu) | [0.2.5](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Corvu%29_0.2.4..._%28Corvu%29_0.2.5) | 3 commits
 [**Cva**](#cva) | [0.1.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Cva%29_0.1.1..._%28Cva%29_0.1.2) | 2 commits
 [**Internationalised**](#internationalised) | [0.1.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.3..._%28Internationalised%29_0.1.4) | 3 commits
-[**Kobalte**](#kobalte) | [0.4.7](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.6..._%28Kobalte%29_0.4.7) | 11 commits
-[**Lucide**](#lucide) | [0.516.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.515.0..._%28Lucide%29_0.516.0) | 9 commits
+[**Kobalte**](#kobalte) | [0.4.8](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.7..._%28Kobalte%29_0.4.8) | 12 commits
+[**Lucide**](#lucide) | [0.517.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.516.0..._%28Lucide%29_0.517.0) | 13 commits
 [**ModularForms**](#modularforms) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.3..._%28ModularForms%29_0.2.4) | 3 commits
 [**Motion**](#motion) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.3..._%28Motion%29_0.2.4) | 3 commits
 [**NeoDrag**](#neodrag) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.2..._%28NeoDrag%29_0.2.3) | 3 commits
@@ -28,7 +28,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Storybook**](#storybook) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Storybook%29_0.2.2..._%28Storybook%29_0.2.3) | 3 commits
 [**Table**](#table) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Table%29_0.2.2..._%28Table%29_0.2.3) | 3 commits
 [**Tabler**](#tabler) | [0.4.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Tabler%29_0.3.0..._%28Tabler%29_0.4.0) | 5 commits
-[**Virtual**](#virtual) | [0.2.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Virtual%29_0.2.0..._%28Virtual%29_0.2.1) | 3 commits
+[**Virtual**](#virtual) | [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Virtual%29_0.2.1..._%28Virtual%29_0.2.2) | 3 commits
 [**Build**](#build) | Unreleased | None yet!
 [**Zag**](#zag) | [0.1.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Zag%29_0.1.2..._%28Zag%29_0.1.3) | 4 commits
 [**ZagJs**](#zagjs) | [0.4.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ZagJs%29_0.4.1..._%28ZagJs%29_0.4.2) | 5 commits
@@ -226,7 +226,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Kobalte
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.7...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.8...HEAD)
+
+### [0.4.8](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.7..._%28Kobalte%29_0.4.8) - (2025-10-08)
+
+#### <!-- 2 --> Fixed
+
+* type fixes for Kobalte Combobox and Select components - remvoed Virtualiser suffixed component and fused with generic implementation by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#f824f](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/f824f689d383a185e2e00fc53dae91a36d36e569)
+  
 
 ### [0.4.7](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.6..._%28Kobalte%29_0.4.7) - (2025-10-07)
 
@@ -305,7 +312,23 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Lucide
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.516.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.517.0...HEAD)
+
+* autoupdate lucide package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#a14c4](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/a14c42130ad85a19ee7718382391d8da338a4d86)
+  
+
+* lucide no longer autoopens (protects from name collisions) by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#6da55](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/6da55d7aeb0ec2dabedec4e45951a13c97170125)
+  
+
+### [0.517.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.516.0..._%28Lucide%29_0.517.0) - (2025-10-08)
+
+#### <!-- 6 --> Others
+
+* autoupdate lucide package by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#a14c4](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/a14c42130ad85a19ee7718382391d8da338a4d86)
+  
+
+* lucide no longer autoopens (protects from name collisions) by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#6da55](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/6da55d7aeb0ec2dabedec4e45951a13c97170125)
+  
 
 ### [0.516.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.515.0..._%28Lucide%29_0.516.0) - (2025-10-08)
 
@@ -579,7 +602,11 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # Virtual
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Virtual%29_0.2.1...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Virtual%29_0.2.2...HEAD)
+
+### [0.2.2](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Virtual%29_0.2.1..._%28Virtual%29_0.2.2) - (2025-10-08)
+
+#### <!-- 2 --> Fixed
 
 * createVirtualiser functions should have ParamObject attributes. Fix Glutinum incorrect binding of function objects by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#52a3b](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/52a3b23ceb8827a81fc57c24673eff588c3272fd)
   
