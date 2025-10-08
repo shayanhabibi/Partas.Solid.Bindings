@@ -107,22 +107,15 @@ module Combobox =
         interface Polymorph
         [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.combobox)>]
-    type Listbox<'T>() = // v0.13.9
-        inherit div()
-        interface Polymorph
-        [<Erase>] member val scrollRef : Accessor<HtmlElement> = JS.undefined with get,set
-        [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
-    [<Erase; Import("Listbox", Spec.combobox)>]
-    type ListboxVirtualiser<'T>() =
+    type Listbox<'T>() =
         interface HtmlTag
         interface Polymorph
         interface ChildLambdaProvider<Accessor<Collection<CollectionNode<'T>>>>
         [<Erase>] member val scrollRef : Accessor<HtmlElement> = JS.undefined with get,set
         [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.combobox)>]
-    type Listbox = Listbox<obj>
-    [<Erase; Import("Listbox", Spec.combobox)>]
-    type ListboxVirtualiser() = inherit ListboxVirtualiser<obj>()
+    type Listbox() =
+        inherit Listbox<obj>()
     /// <param name="data-disabled">Present when the item is disabled</param>
     /// <param name="data-selected">Present when the item is selected</param>
     /// <param name="data-highlighted">Present when the item is highlighted</param>
@@ -279,7 +272,7 @@ type Combobox<'Value>() =
     [<Erase>] member val arrowPadding : int = JS.undefined with get,set
     [<Erase>] member val overflowPadding : int = JS.undefined with get,set
 [<Erase; Import("Root", Spec.combobox)>]
-type Combobox = Combobox<obj>
+type Combobox() = inherit Combobox<obj>()
 
 [<AutoOpen; Erase>]
 module ComboboxContext =

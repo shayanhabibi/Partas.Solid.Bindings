@@ -103,18 +103,23 @@ module Select =
         interface Polymorph
         [<Erase>] member val size : int = JS.undefined with get,set
     [<Erase; Import("Listbox", Spec.select)>]
-    type Listbox() =
+    type Listbox<'T>() =
         inherit div()
         interface Polymorph
+        interface ChildLambdaProvider<Accessor<Collection<CollectionNode<'T>>>>
         [<Erase>] member val scrollRef : unit -> HtmlElement = JS.undefined with get,set
         [<Erase>] member val scrollToItem : string -> unit = JS.undefined with get,set
-        [<Erase>] member val children : obj[] -> HtmlElement = JS.undefined with get,set
+    [<Erase; Import("Listbox", Spec.select)>]
+    type Listbox() =
+        inherit Listbox<obj>()
     [<Erase; Import("Item", Spec.select)>]
     type Item<'T>() =
         inherit div()
         interface Polymorph
         [<Erase>] member val item : 'T = JS.undefined with get,set
-    type Item = Item<obj>
+    [<Erase; Import("Item", Spec.select)>]
+    type Item() =
+        inherit Item<obj>()
     [<Erase; Import("ItemIndicator", Spec.select)>]
     type ItemIndicator() =
         inherit div()
