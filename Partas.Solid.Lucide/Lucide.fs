@@ -27,7 +27,7 @@ type IconNode() =
     [<Erase>]
     member val absoluteStrokeWidth : bool = unbox null with get,set
 
-[<Erase; AutoOpen>]
+[<Erase>]
 module Lucide =
     [<Erase; Import("default as AArrowUp", "lucide-solid/icons/a-arrow-up")>]
     type AArrowUp() =

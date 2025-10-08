@@ -167,7 +167,7 @@ type IconNode() =
     [<Erase>]
     member val absoluteStrokeWidth : bool = unbox null with get,set
 
-[<Erase; AutoOpen>]
+[<Erase>]
 module Lucide ="""
             for identifierPair: string * string  in parsedIdentifiers do
                 if fst identifierPair <> "Icon" then
