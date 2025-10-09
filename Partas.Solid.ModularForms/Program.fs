@@ -84,11 +84,31 @@ type FieldArrayStore =
     abstract active: bool
     abstract touched: bool
     abstract dirty: bool
-type TransformField<'ValueType, 'ResultType> = 'ValueType option -> Event -> 'ResultType 
-type CustomValidator<'T> = 'T option  -> Promise<string>
-type Validator<'T> = ('T option -> string)[]
-type ValidateFieldArray = float[] -> U2<Promise<string>, string>
-type ValidateForm<'T> = 'T -> U2<FormErrors, Promise<FormErrors>>
+type TransformField<'ValueType, 'ResultType> = delegate of input: 'ValueType option * triggeringEvent: Event -> 'ResultType
+
+[<Erase>]
+type ValidationResult<'Error> =
+    | Valid
+    | Invalid of 'Error
+
+/// In modular forms, a validator is just a function which takes the input
+/// and either returns an error as a string or nothing.
+/// No type check is done no the error return, so we can return anything.
+type SyncValidator<'T, 'Error> = 'T option -> ValidationResult<'Error>
+type AsyncValidator<'T, 'Error> = 'T option -> Promise<ValidationResult<'Error>>
+/// <summary>
+/// Warning: Erased union; you will not be able to distinguish whether sync or async validator after.
+/// </summary>
+[<Erase>]
+type Validator<'T, 'Error> =
+    | Sync of SyncValidator<'T, 'Error>
+    | Async of AsyncValidator<'T, 'Error>
+    static member inline Create(validator: SyncValidator<'T, 'Error>): Validator<'T, 'Error> = Sync validator
+    static member inline Create(validator: AsyncValidator<'T, 'Error>): Validator<'T, 'Error> = Async validator
+[<Erase>]
+type Validators<'T, 'Error> = Validator<'T, 'Error>[]
+type ValidateFieldArray = Validator<float, string>
+type ValidateForm<'T> = Validator<'T, FormErrors>
 
 [<StringEnum; RequireQualifiedAccess>]
 type ValidateOn =
@@ -111,6 +131,7 @@ type ModularFormsType =
 
 [<Erase>]
 module FormErrors =
+    open Fable.Core.DynamicExtensions
     let toArray (formErrors: FormErrors) =
         Constructors.Object.entries formErrors
         |> _.ToArray()
@@ -119,6 +140,18 @@ module FormErrors =
         formErrors
         |> toArray
         |> Array.toList
+    let inline get (map: 'T -> 'F) (formErrors: FormErrors): 'ErrorType option =
+        formErrors[lambdaPath map]
+        |> unbox
+    let inline tryGet (map: 'T -> 'F) (formErrors: FormErrors): Result<'ErrorType option, unit> =
+        if JsInterop.isIn (lambdaPath map) formErrors then
+            formErrors[lambdaPath map]
+            |> Option.ofObj
+            |> Ok
+            |> unbox
+        else
+            Error()
+            
 [<StringEnum>]
 type OnCustomAction =
     | Input
@@ -146,12 +179,13 @@ type Form<'Form, 'Response>() =
     [<DefaultValue>] val mutable shouldDirty: bool
     [<DefaultValue>] val mutable shouldFocus: bool
 [<PartasImport("Field", path)>]
-type Field<'Form, 'ValueType, 'Response>() =
-    interface RegularNode
+type Field<'Form, 'ValueType, 'Response, 'ErrorType>() =
+    interface VoidNode
+    interface ChildLambdaProvider2<FieldStore<'Form, 'ValueType>, FieldElementProps>
     [<DefaultValue>] val mutable of': FormStore<'Form, 'Response>
     [<DefaultValue>] val mutable name: string
     [<DefaultValue>] val mutable type': ModularFormsType
-    [<DefaultValue>] val mutable validate: Validator<'ValueType>
+    [<DefaultValue>] val mutable validate: Validators<'ValueType, 'ErrorType>
     [<DefaultValue>] val mutable validateOn: ValidateOn
     [<DefaultValue>] val mutable revalidateOn: ValidateOn
     [<DefaultValue>] val mutable transform: TransformField<'ValueType, 'ValueType>[]
@@ -183,15 +217,17 @@ type Field<'Form, 'ValueType, 'Response>() =
         secondIndex: int,
         thirdPath: 'G -> 'ValueType[],
         thirdIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}.{thirdIndex}")
-    [<Erase>]
-    member inline _.Yield(PARTAS_ELEMENT: FieldStore<'Form, 'ValueType> -> FieldElementProps -> #HtmlElement) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
+[<PartasImport("Field", path)>]
+type Field<'Form, 'ValueType, 'Response>() =
+    inherit Field<'Form, 'ValueType, 'Response, string>()
 [<PartasImport("FieldArray", path)>]
 type FieldArray<'Form, 'ValueType, 'Response>() =
-    interface RegularNode
+    interface VoidNode
+    interface ChildLambdaProvider<FieldArrayStore>
     [<DefaultValue>] val mutable of': FormStore<'Form, 'Response>
     [<DefaultValue>] val mutable name: string
     [<DefaultValue>] val mutable type': ModularFormsType
-    [<DefaultValue>] val mutable validate: ValidateFieldArray
+    [<DefaultValue>] val mutable validate: ValidateFieldArray[]
     [<DefaultValue>] val mutable validateOn: ValidateOn
     [<DefaultValue>] val mutable revalidateOn: ValidateOn
     [<DefaultValue>] val mutable keepActive: bool
@@ -222,8 +258,6 @@ type FieldArray<'Form, 'ValueType, 'Response>() =
         secondIndex: int,
         thirdPath: 'G -> 'ValueType[],
         thirdIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}.{thirdIndex}")
-    [<Erase>]
-    member inline _.Yield(PARTAS_ELEMENT: FieldArrayStore -> #HtmlElement) : HtmlContainerFun = fun PARTAS_CONT -> ignore PARTAS_ELEMENT
 
 
 [<AutoOpen; Erase>]
@@ -509,51 +543,53 @@ type ModularFormsBindings =
     static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[]): unit = jsNative
     [<ImportMember(path); ParamObject(1)>]
     static member validate<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string[], ?shouldActive: bool, ?shouldFocus: bool): unit = jsNative
-    [<ImportMember(path)>] // todo type
-    static member custom(requirement: (obj option -> bool), error: string): CustomValidator<obj> = jsNative
+    [<ImportMember(path)>] 
+    static member custom<'ValueType>(requirement: ('ValueType option -> bool), error: string): Validator<'ValueType, string> = jsNative
     [<ImportMember(path)>]
-    static member email(error: string): Validator<string> = jsNative
+    static member custom<'ValueType>(requirement: ('ValueType option -> Promise<bool>), error: string): Validator<'ValueType, string> = jsNative
+    [<ImportMember(path)>]
+    static member email(error: string): Validator<string, string> = jsNative
     /// Can be used when 'T = string | string[] | int[]
     [<ImportMember(path)>]
-    static member maxLength(requirement: int, error: string): Validator<'T> = jsNative
+    static member maxLength(requirement: int, error: string): Validator<'T, string> = jsNative
     [<ImportMember(path)>]
-    static member maxRange(requirement: string, error: string): Validator<string> = jsNative
+    static member maxRange(requirement: string, error: string): Validator<string, string> = jsNative
     [<ImportMember(path)>]
-    static member maxRange(requirement: int, error: string): Validator<int> = jsNative
+    static member maxRange(requirement: int, error: string): Validator<int, string> = jsNative
     [<ImportMember(path)>]
-    static member maxRange(requirement: Date, error: string): Validator<Date> = jsNative
+    static member maxRange(requirement: Date, error: string): Validator<Date, string> = jsNative
     [<ImportMember(path)>]
-    static member maxSize(requirement: int, error: string): Validator<U2<File, File[]>> = jsNative
+    static member maxSize(requirement: int, error: string): Validator<U2<File, File[]>, string> = jsNative
     [<ImportMember(path)>]
-    static member maxTotalSize(requirement: int, error: string): Validator<File[]> = jsNative
+    static member maxTotalSize(requirement: int, error: string): Validator<File[], string> = jsNative
     [<ImportMember(path)>]
-    static member mimeType(requirement: string, error: string): Validator<U2<File, File[]>> = jsNative
+    static member mimeType(requirement: string, error: string): Validator<U2<File, File[]>, string> = jsNative
     [<ImportMember(path)>]
-    static member mimeType(requirement: string[], error: string): Validator<U2<File, File[]>> = jsNative
+    static member mimeType(requirement: string[], error: string): Validator<U2<File, File[]>, string> = jsNative
     [<ImportMember(path)>]
-    static member minLength(requirement: int, error: string): Validator<'T> = jsNative
+    static member minLength(requirement: int, error: string): Validator<'T, string> = jsNative
     [<ImportMember(path)>]
-    static member minRange(requirement: string, error: string): Validator<string> = jsNative
+    static member minRange(requirement: string, error: string): Validator<string, string> = jsNative
     [<ImportMember(path)>]
-    static member minRange(requirement: int, error: string): Validator<int> = jsNative
+    static member minRange(requirement: int, error: string): Validator<int, string> = jsNative
     [<ImportMember(path)>]
-    static member minRange(requirement: Date, error: string): Validator<Date> = jsNative
+    static member minRange(requirement: Date, error: string): Validator<Date, string> = jsNative
     [<ImportMember(path)>]
-    static member minSize(requirement: int, error: string): Validator<U2<File, File[]>> = jsNative
+    static member minSize(requirement: int, error: string): Validator<U2<File, File[]>, string> = jsNative
     [<ImportMember(path)>]
-    static member minTotalSize(requirement: int, error: string): Validator<File[]> = jsNative
+    static member minTotalSize(requirement: int, error: string): Validator<File[], string> = jsNative
     [<ImportMember(path)>]
-    static member pattern(requirement: Regex, error: string): Validator<string> = jsNative
+    static member pattern(requirement: Regex, error: string): Validator<string, string> = jsNative
     [<ImportMember(path)>]
-    static member required(error: string): Validator<U2<obj, int[]>> = jsNative
+    static member required(error: string): Validator<U2<obj, int[]>, string> = jsNative
     [<ImportMember(path)>]
-    static member url(error: string): Validator<string> = jsNative
+    static member url(error: string): Validator<string, string> = jsNative
     [<ImportMember(path)>]
-    static member value(requirement: string, error: string): Validator<string> = jsNative
+    static member value(requirement: string, error: string): Validator<string, string> = jsNative
     [<ImportMember(path)>]
-    static member value(requirement: int, error: string): Validator<int> = jsNative
+    static member value(requirement: int, error: string): Validator<int, string> = jsNative
     [<ImportMember(path)>]
-    static member value(requirement: float, error: string): Validator<float> = jsNative
+    static member value(requirement: float, error: string): Validator<float, string> = jsNative
     // [<ImportMember(path); ParamObject(1)>] 
     // static member toCustom<'Input,'Output>(action: TransformField<'Input, 'Output>, on: OnCustomAction ): obj = jsNative
     [<ImportMember(path); ParamObject(1)>] 
