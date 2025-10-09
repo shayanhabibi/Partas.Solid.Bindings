@@ -179,7 +179,7 @@ type Form<'Form, 'Response>() =
     [<DefaultValue>] val mutable shouldDirty: bool
     [<DefaultValue>] val mutable shouldFocus: bool
 [<PartasImport("Field", path)>]
-type Field<'Form, 'ValueType, 'Response, 'ErrorType>() =
+type Field<'Form, 'ValueType, 'ErrorType, 'Response>() =
     interface VoidNode
     interface ChildLambdaProvider2<FieldStore<'Form, 'ValueType>, FieldElementProps>
     [<DefaultValue>] val mutable of': FormStore<'Form, 'Response>
@@ -217,9 +217,6 @@ type Field<'Form, 'ValueType, 'Response, 'ErrorType>() =
         secondIndex: int,
         thirdPath: 'G -> 'ValueType[],
         thirdIndex: int) = this.attr("name", $"{lambdaPath path}.{index}.{lambdaPath secondPath}.{secondIndex}.{lambdaPath thirdPath}.{thirdIndex}")
-[<PartasImport("Field", path)>]
-type Field<'Form, 'ValueType, 'Response>() =
-    inherit Field<'Form, 'ValueType, 'Response, string>()
 [<PartasImport("FieldArray", path)>]
 type FieldArray<'Form, 'ValueType, 'Response>() =
     interface VoidNode
@@ -287,9 +284,18 @@ type ModularFormsBindings =
                            ?shouldActive: bool (*true*),
                            ?shouldTouched: bool (*false*),
                            ?shouldDirty: bool (*false*)): string option = getError(form, lambdaPath path, ?shouldActive = shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty)
+    [<ParamObject(2)>]
+    static member inline getError<'Form, 'ValueType, 'Error, 'Response>(
+            form: FormStore<'Form, 'Response>,
+            field: Field<'Form, 'ValueType, 'Error, 'Response>,
+            ?shouldActive: bool,
+            ?shouldTouched: bool,
+            ?shouldDirty: bool
+        ): 'Error option = getError(form, field.name, ?shouldActive = shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty) |> unbox<'Error option>
     [<ImportMember(path)>]
     static member getError<'Form, 'Response>(form: FormStore<'Form, 'Response>, name: string): string option = jsNative
     static member inline getError<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): string option = getError(form, lambdaPath path)
+    static member inline getError<'Form, 'ValueType, 'Error, 'Response>(form: FormStore<'Form, 'Response>, field: Field<'Form, 'ValueType, 'Error, 'Response>): 'Error option = getError(form, field.name) |> unbox<'Error option>
     [<ImportMember(path); ParamObject(2)>]
     static member getErrors<'Form, 'Response>(form: FormStore<'Form, 'Response>, names: string,
                             ?shouldActive: bool,
@@ -322,6 +328,20 @@ type ModularFormsBindings =
                            ?shouldTouched: bool,
                            ?shouldDirty: bool,
                            ?shouldValid: bool): 'ValueType option = getValue(form, lambdaPath path, ?shouldActive=shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty, ?shouldValid = shouldValid)
+    [<ParamObject(2)>]
+    static member inline getValue<'Form, 'ValueType, 'Error, 'Response>(
+            form: FormStore<'Form, 'Response>,
+            field: Field<'Form, 'ValueType, 'Error, 'Response>,
+            ?shouldActive: bool,
+            ?shouldTouched: bool,
+            ?shouldDirty: bool,
+            ?shouldValid: bool): 'ValueType option = getValue(form, field.name, ?shouldActive = shouldActive, ?shouldTouched = shouldTouched, ?shouldDirty = shouldDirty, ?shouldValid = shouldValid) 
+    [<ParamObject(2)>]
+    static member inline getValue<'Form, 'ValueType, 'Error, 'Response>(
+            form: FormStore<'Form, 'Response>,
+            field: Field<'Form, 'ValueType, 'Error, 'Response>
+            ): 'ValueType option = getValue(form, field.name) |> unbox<'ValueType option>
+        
     [<ImportMember(path)>]
     static member getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name: string): 'ValueType option = jsNative
     static member inline getValue<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, path: 'Form -> 'ValueType): 'ValueType option = getValue(form, lambdaPath path)
@@ -447,9 +467,31 @@ type ModularFormsBindings =
                          ?keepDirty: bool): unit = reset(form, lambdaPath name, ?initialValues=initialValues, ?initialValue=initialValue, ?keepResponse=keepResponse,?keepSubmitCount=keepSubmitCount
                                                          ,?keepSubmitted=keepSubmitted,?keepValues=keepValues,?keepDirtyValues=keepDirtyValues,?keepItems=keepItems,?keepDirtyItems=keepDirtyItems,?keepErrors=keepErrors
                                                          ,?keepTouched=keepTouched,?keepDirty=keepDirty)
+    [<ParamObject(2)>]
+    static member inline reset<'Form, 'ValueType, 'Error, 'Response>(
+                         form: FormStore<'Form, 'Response>,
+                         field: Field<'Form, 'ValueType, 'Error, 'Response>,
+                         ?initialValues: 'ValueType[],
+                         ?initialValue: 'ValueType,
+                         ?keepResponse: bool,
+                         ?keepSubmitCount: bool,
+                         ?keepSubmitted: bool,
+                         ?keepValues: bool,
+                         ?keepDirtyValues: bool,
+                         ?keepItems: bool,
+                         ?keepDirtyItems: bool,
+                         ?keepErrors: bool,
+                         ?keepTouched: bool,
+                         ?keepDirty: bool): unit = reset(form, field.name, ?initialValues=initialValues, ?initialValue=initialValue, ?keepResponse=keepResponse,?keepSubmitCount=keepSubmitCount
+                                                         ,?keepSubmitted=keepSubmitted,?keepValues=keepValues,?keepDirtyValues=keepDirtyValues,?keepItems=keepItems,?keepDirtyItems=keepDirtyItems,?keepErrors=keepErrors
+                                                         ,?keepTouched=keepTouched,?keepDirty=keepDirty)
+    
     [<ImportMember(path)>]
     static member reset<'Form, 'Response>(form: FormStore<'Form, 'Response>, name:string): unit = jsNative
     static member inline reset<'Form, 'ValueType, 'Response>(form: FormStore<'Form, 'Response>, name:'Form -> 'ValueType): unit = reset(form, lambdaPath name)
+    static member inline reset<'Form, 'ValueType, 'Error, 'Response>(
+                         form: FormStore<'Form, 'Response>,
+                         field: Field<'Form, 'ValueType, 'Error, 'Response>): unit = reset(form, field.name)
     [<ImportMember(path); ParamObject(1)>]
     static member reset<'Form, 'Response>(form: FormStore<'Form, 'Response>,
                          ?initialValues: 'Form[],
