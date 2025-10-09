@@ -86,9 +86,9 @@ type FieldArrayStore =
     abstract dirty: bool
 type TransformField<'ValueType, 'ResultType> = delegate of input: 'ValueType option * triggeringEvent: Event -> 'ResultType
 
-[<Erase>]
+[<Erase; Struct>]
 type ValidationResult<'Error> =
-    | Valid
+    | [<CompiledName(null)>] Valid
     | Invalid of 'Error
 
 /// In modular forms, a validator is just a function which takes the input
