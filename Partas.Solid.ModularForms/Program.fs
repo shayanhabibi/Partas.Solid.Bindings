@@ -17,11 +17,17 @@ module private Helpers =
     let path = "@modular-forms/solid"
     let inline lambdaPath map = Experimental.namesofLambda map |> String.concat "."
 
+[<Erase; Struct>]
+type ValidationResult<'Error> =
+    | [<CompiledName("")>] Valid
+    | Invalid of 'Error
+
 [<StringEnum; RequireQualifiedAccess>]
 type FormResponseStatus =
     | Info
     | Error
     | Success
+
 [<Pojo>]
 type FormResponse<'Response>(
         ?status: FormResponseStatus,
@@ -63,7 +69,7 @@ type FormStore<'Form, 'Response> =
 type FieldStore<'Form, 'ValueType, 'Error> =
     abstract name: string
     abstract value: 'ValueType option
-    abstract error: 'Error option
+    abstract error: ValidationResult<'Error>
     abstract active: bool
     abstract touched: bool
     abstract dirty: bool
@@ -86,10 +92,6 @@ type FieldArrayStore =
     abstract dirty: bool
 type TransformField<'ValueType, 'ResultType> = delegate of input: 'ValueType option * triggeringEvent: Event -> 'ResultType
 
-[<Erase; Struct>]
-type ValidationResult<'Error> =
-    | [<CompiledName(null)>] Valid
-    | Invalid of 'Error
 
 /// In modular forms, a validator is just a function which takes the input
 /// and either returns an error as a string or nothing.
