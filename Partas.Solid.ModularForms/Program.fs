@@ -162,8 +162,8 @@ type OnCustomAction =
     
 [<Import("Form", path)>]
 type Form<'Form, 'Response>() =    
-    interface RegularNode
-    [<DefaultValue>] val mutable of': FormStore<'Form, 'Response>
+    inherit form()
+    [<Erase>] member val of': FormStore<'Form, 'Response> = undefined with get,set
     /// <summary>
     /// Use the stronger typed overloads which avoid explicit delegate construction:<br/>
     /// _.onAsyncSubmit<br/>
@@ -174,12 +174,12 @@ type Form<'Form, 'Response>() =
     /// type SubmitHandler:'Form, 'R: = delegate of 'Form * SubmitEvent -> U2:Promise:'R:, 'R:
     /// </code>
     /// </summary>
-    [<DefaultValue>] val mutable onSubmit: ('Form -> SubmitEvent -> Promise<'Response>)
-    [<DefaultValue>] val mutable keepResponse: bool
-    [<DefaultValue>] val mutable shouldActive: bool
-    [<DefaultValue>] val mutable shouldTouched: bool
-    [<DefaultValue>] val mutable shouldDirty: bool
-    [<DefaultValue>] val mutable shouldFocus: bool
+    [<Erase>] member val onSubmit: ('Form -> SubmitEvent -> Promise<'Response>) = undefined with get,set
+    [<Erase>] member val keepResponse: bool = undefined with get,set
+    [<Erase>] member val shouldActive: bool = undefined with get,set
+    [<Erase>] member val shouldTouched: bool = undefined with get,set
+    [<Erase>] member val shouldDirty: bool = undefined with get,set
+    [<Erase>] member val shouldFocus: bool = undefined with get,set
 [<PartasImport("Field", path)>]
 type Field<'Form, 'ValueType, 'ErrorType, 'Response>() =
     interface VoidNode
