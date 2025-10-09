@@ -17,8 +17,8 @@
         <PackageTags>Partas;Oxpecker;F#;FSharp;Fable;fable-javascript;Web;Framework;Solid;Solidjs;Bindings;Solid-ModularForms</PackageTags>
         <Authors>Shayan Habibi</Authors>
         <Copyright>Copyright (c) Shayan Habibi 2025</Copyright>
-        <Version>1.0.2</Version>
-        <PackageVersion>1.0.2</PackageVersion>
+        <Version>1.0.3</Version>
+        <PackageVersion>1.0.3</PackageVersion>
         <GitNetInitialVersion>0.2.1</GitNetInitialVersion>
         <NpmDependencies>
             <NpmPackage Name="@modular-forms/solid" Version="&gt;= 0.29.1" />
