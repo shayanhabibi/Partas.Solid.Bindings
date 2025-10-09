@@ -21,7 +21,7 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 [**Internationalised**](#internationalised) | [0.1.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Internationalised%29_0.1.3..._%28Internationalised%29_0.1.4) | 3 commits
 [**Kobalte**](#kobalte) | [0.4.8](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Kobalte%29_0.4.7..._%28Kobalte%29_0.4.8) | 12 commits
 [**Lucide**](#lucide) | [0.518.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Lucide%29_0.517.0..._%28Lucide%29_0.518.0) | 13 commits
-[**ModularForms**](#modularforms) | [1.0.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.4..._%28ModularForms%29_1.0.0) | 5 commits
+[**ModularForms**](#modularforms) | [1.0.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_1.0.0..._%28ModularForms%29_1.0.1) | 6 commits
 [**Motion**](#motion) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Motion%29_0.2.3..._%28Motion%29_0.2.4) | 3 commits
 [**NeoDrag**](#neodrag) | [0.2.3](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28NeoDrag%29_0.2.2..._%28NeoDrag%29_0.2.3) | 3 commits
 [**Sonner**](#sonner) | [0.2.4](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28Sonner%29_0.2.3..._%28Sonner%29_0.2.4) | 3 commits
@@ -397,7 +397,14 @@ which includes [Scopes and Epochs](#epoch-scoped-semver).
 
 # ModularForms
 
-### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_1.0.0...HEAD)
+### [UNRELEASED](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_1.0.1...HEAD)
+
+### [1.0.1](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_1.0.0..._%28ModularForms%29_1.0.1) - (2025-10-09)
+
+#### <!-- 2 --> Fixed
+
+* prevent Valid from generating string by [@GitHub Action](https://github.com/shayanhabibi/Partas.Solid.Bindings/GitHub Action) with [#ea26a](https://github.com/shayanhabibi/Partas.Solid.Bindings/commit/ea26a7dd2708037c624fe253a4cf2408b41504ac)
+  
 
 ### [1.0.0](https://github.com/shayanhabibi/Partas.Solid.Bindings/compare/_%28ModularForms%29_0.2.4..._%28ModularForms%29_1.0.0) - (2025-10-09)
 
