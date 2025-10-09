@@ -60,10 +60,10 @@ type FormStore<'Form, 'Response> =
     abstract invalid: bool
     abstract response: FormResponse<'Response>
 [<Interface; AllowNullLiteral>]
-type FieldStore<'Form, 'ValueType> =
+type FieldStore<'Form, 'ValueType, 'Error> =
     abstract name: string
     abstract value: 'ValueType option
-    abstract error: string
+    abstract error: 'Error option
     abstract active: bool
     abstract touched: bool
     abstract dirty: bool
@@ -181,7 +181,7 @@ type Form<'Form, 'Response>() =
 [<PartasImport("Field", path)>]
 type Field<'Form, 'ValueType, 'ErrorType, 'Response>() =
     interface VoidNode
-    interface ChildLambdaProvider2<FieldStore<'Form, 'ValueType>, FieldElementProps>
+    interface ChildLambdaProvider2<FieldStore<'Form, 'ValueType, 'ErrorType>, FieldElementProps>
     [<DefaultValue>] val mutable of': FormStore<'Form, 'Response>
     [<DefaultValue>] val mutable name: string
     [<DefaultValue>] val mutable type': ModularFormsType
